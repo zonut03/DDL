@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>România necunoscută — locuri de descoperit</title>
+  <meta name="description" content="Un ghid către satele uitate, traseele neobișnuite și poveștile mai puțin cunoscute ale României.">
+
+  <style>
+    :root {
+      --verde: #28483a;
+      --crem: #f5f0e5;
+      --teracota: #bc6849;
+      --text: #252820;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--crem);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.6;
+    }
+
+    header {
+      min-height: 75vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(20, 35, 27, .78), rgba(20, 35, 27, .12)),
+        url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2000&q=85")
+        center / cover;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 7%;
+    }
+
+    .logo {
+      font-size: 1.15rem;
+      font-weight: bold;
+      letter-spacing: .04em;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 22px;
+      font-family: Arial, sans-serif;
+      font-size: .95rem;
+    }
+
+    .hero {
+      max-width: 760px;
+      padding: 40px 7% 90px;
+    }
+
+    .eyebrow {
+      color: #f0c7a3;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font: 700 .78rem Arial, sans-serif;
+    }
+
+    h1 {
+      max-width: 700px;
+      margin: 12px 0;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      line-height: .98;
+    }
+
+    .hero p {
+      max-width: 560px;
+      font-size: 1.2rem;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 13px 20px;
+      border-radius: 3px;
+      color: white;
+      background: var(--teracota);
+      text-decoration: none;
+      font: 700 .95rem Arial, sans-serif;
+    }
+
+    main {
+      width: min(1120px, 86%);
+      margin: auto;
+    }
+
+    section {
+      padding: 76px 0;
+    }
+
+    .intro {
+      max-width: 720px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .intro h2, .section-title {
+      color: var(--verde);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 34px;
+    }
+
+    .card {
+      overflow: hidden;
+      background: #fffdf8;
+      box-shadow: 0 8px 25px rgba(35, 39, 30, .08);
+    }
+
+    .card img {
+      display: block;
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .tag {
+      color: var(--teracota);
+      font: 700 .75rem Arial, sans-serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .card h3 {
+      margin: 8px 0;
+      color: var(--verde);
+      font-size: 1.5rem;
+    }
+
+    .story {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 45px;
+      background: #e9e3d5;
+      padding: 40px;
+    }
+
+    .story img {
+      width: 100%;
+      min-height: 300px;
+      object-fit: cover;
+    }
+
+    footer {
+      padding: 30px 7%;
+      color: white;
+      background: var(--verde);
+      text-align: center;
+      font: .9rem Arial, sans-serif;
+    }
+
+    @media (max-width: 760px) {
+      nav {
+        align-items: flex-start;
+        gap: 14px;
+        flex-direction: column;
+      }
+
+      nav a {
+        margin: 0 14px 0 0;
+      }
+
+      .cards, .story {
+        grid-template-columns: 1fr;
+      }
+
+      .story {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <!-- Schimbă aici numele site-ului și linkurile din meniu -->
+      <div class="logo">ROMÂNIA NECUNOSCUTĂ</div>
+      <div>
+        <a href="#despre">Despre</a>
+        <a href="#descopera">Descoperă</a>
+        <a href="#povesti">Povești</a>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div class="eyebrow">Locuri, oameni și povești</div>
+      <h1>România necunoscută</h1>
+      <p>Sate uitate, poteci neobișnuite și meșteșuguri rare. România se descoperă cel mai frumos dincolo de drumurile bătute.</p>
+      <a class="button" href="#descopera">Începe explorarea</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="despre" class="intro">
+      <div class="eyebrow">Un ghid pentru curioși</div>
+      <h2>Poveștile locurilor care nu se grăbesc să fie găsite</h2>
+      <p>Aici adunăm locuri mai puțin promovate, clădiri cu istorii neașteptate și oameni care duc mai departe tradiții rare. Idei pentru călătorii lente și descoperiri cu rost.</p>
+    </section>
+
+    <section id="descopera">
+      <div class="eyebrow">Alege-ți următoarea oprire</div>
+      <h2 class="section-title">Explorează România altfel</h2>
+
+      <div class="cards">
+        <!-- Pentru fiecare card, schimbă fotografia, categoria, titlul și descrierea -->
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80" alt="Peisaj montan cu sat îndepărtat">
+          <div class="card-content">
+            <div class="tag">Sate uitate</div>
+            <h3>Drumuri spre tihnă</h3>
+            <p>Așezări mici, ulițe vechi și locuri unde ritmul zilei încă urmează anotimpurile.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=900&q=80" alt="Potecă printr-un peisaj natural">
+          <div class="card-content">
+            <div class="tag">Trasee neobișnuite</div>
+            <h3>Poteci cu surprize</h3>
+            <p>Idei de ieșiri pentru cei care preferă cărările liniștite și opririle neașteptate.</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=900&q=80" alt="Lucru manual într-un atelier">
+          <div class="card-content">
+            <div class="tag">Meșteșuguri rare</div>
+            <h3>Lucruri făcute cu răbdare</h3>
+            <p>Ateliere și meșteșugari care păstrează vii tehnici învățate de la generațiile dinainte.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="povesti">
+      <div class="story">
+        <div>
+          <div class="eyebrow">Poveste de început</div>
+          <h2 class="section-title">Fiecare loc are un secret bun de ascultat</h2>
+          <p>Uneori e o biserică ascunsă după o livadă. Alteori, o casă veche, un pod de piatră sau un om care încă știe să facă lucrurile ca odinioară.</p>
+          <a class="button" href="mailto:salut@romania-necunoscuta.ro">Trimite-ne o poveste</a>
+        </div>
+        <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1000&q=85" alt="Clădire veche cu detalii arhitecturale">
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 România necunoscută · Un proiect despre locuri și povești de descoperit
+  </footer>
+</body>
+</html>
