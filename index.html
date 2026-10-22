@@ -1,10 +1,14 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ro">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>România necunoscută — locuri de descoperit</title>
-  <meta name="description" content="Un ghid către satele uitate, traseele neobișnuite și poveștile mai puțin cunoscute ale României.">
+  <meta
+    name="description"
+    content="Un ghid către satele uitate, traseele neobișnuite și poveștile mai puțin cunoscute ale României."
+  >
 
   <style>
     :root {
@@ -16,6 +20,10 @@
 
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -42,21 +50,46 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 20px;
       padding: 24px 7%;
     }
 
     .logo {
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       font-weight: bold;
       letter-spacing: .04em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin-left: 22px;
       font-family: Arial, sans-serif;
       font-size: .95rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    #languageSelect {
+      padding: 8px;
+      border: 1px solid rgba(255, 255, 255, .7);
+      border-radius: 3px;
+      color: white;
+      background: rgba(0, 0, 0, .25);
+      font: .9rem Arial, sans-serif;
+    }
+
+    #languageSelect option {
+      color: #222;
+      background: white;
     }
 
     .hero {
@@ -94,6 +127,10 @@
       font: 700 .95rem Arial, sans-serif;
     }
 
+    .button:hover {
+      background: #a75438;
+    }
+
     main {
       width: min(1120px, 86%);
       margin: auto;
@@ -109,7 +146,8 @@
       text-align: center;
     }
 
-    .intro h2, .section-title {
+    .intro h2,
+    .section-title {
       color: var(--verde);
       font-size: clamp(2rem, 4vw, 3.2rem);
       line-height: 1.1;
@@ -157,8 +195,8 @@
       grid-template-columns: 1fr 1fr;
       align-items: center;
       gap: 45px;
-      background: #e9e3d5;
       padding: 40px;
+      background: #e9e3d5;
     }
 
     .story img {
@@ -178,15 +216,15 @@
     @media (max-width: 760px) {
       nav {
         align-items: flex-start;
-        gap: 14px;
         flex-direction: column;
       }
 
-      nav a {
-        margin: 0 14px 0 0;
+      .nav-links {
+        gap: 12px;
       }
 
-      .cards, .story {
+      .cards,
+      .story {
         grid-template-columns: 1fr;
       }
 
@@ -200,60 +238,104 @@
 <body>
   <header>
     <nav>
-      <!-- Schimbă aici numele site-ului și linkurile din meniu -->
-      <div class="logo">ROMÂNIA NECUNOSCUTĂ</div>
-      <div>
-        <a href="#despre">Despre</a>
-        <a href="#descopera">Descoperă</a>
-        <a href="#povesti">Povești</a>
+      <div class="logo" data-i18n="siteName">ROMÂNIA NECUNOSCUTĂ</div>
+
+      <div class="nav-links">
+        <a href="#despre" data-i18n="navAbout">Despre</a>
+        <a href="#descopera" data-i18n="navExplore">Descoperă</a>
+        <a href="#povesti" data-i18n="navStories">Povești</a>
+
+        <select id="languageSelect" aria-label="Select language">
+          <option value="ro">Română</option>
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="it">Italiano</option>
+          <option value="de">Deutsch</option>
+          <option value="es">Español</option>
+        </select>
       </div>
     </nav>
 
     <div class="hero">
-      <div class="eyebrow">Locuri, oameni și povești</div>
-      <h1>România necunoscută</h1>
-      <p>Sate uitate, poteci neobișnuite și meșteșuguri rare. România se descoperă cel mai frumos dincolo de drumurile bătute.</p>
-      <a class="button" href="#descopera">Începe explorarea</a>
+      <div class="eyebrow" data-i18n="heroEyebrow">Locuri, oameni și povești</div>
+      <h1 data-i18n="heroTitle">România necunoscută</h1>
+      <p data-i18n="heroText">
+        Sate uitate, poteci neobișnuite și meșteșuguri rare. România se
+        descoperă cel mai frumos dincolo de drumurile bătute.
+      </p>
+      <a class="button" href="#descopera" data-i18n="heroButton">
+        Începe explorarea
+      </a>
     </div>
   </header>
 
   <main>
     <section id="despre" class="intro">
-      <div class="eyebrow">Un ghid pentru curioși</div>
-      <h2>Poveștile locurilor care nu se grăbesc să fie găsite</h2>
-      <p>Aici adunăm locuri mai puțin promovate, clădiri cu istorii neașteptate și oameni care duc mai departe tradiții rare. Idei pentru călătorii lente și descoperiri cu rost.</p>
+      <div class="eyebrow" data-i18n="introEyebrow">Un ghid pentru curioși</div>
+      <h2 data-i18n="introTitle">
+        Poveștile locurilor care nu se grăbesc să fie găsite
+      </h2>
+      <p data-i18n="introText">
+        Aici adunăm locuri mai puțin promovate, clădiri cu istorii neașteptate
+        și oameni care duc mai departe tradiții rare. Idei pentru călătorii
+        lente și descoperiri cu rost.
+      </p>
     </section>
 
     <section id="descopera">
-      <div class="eyebrow">Alege-ți următoarea oprire</div>
-      <h2 class="section-title">Explorează România altfel</h2>
+      <div class="eyebrow" data-i18n="exploreEyebrow">
+        Alege-ți următoarea oprire
+      </div>
+      <h2 class="section-title" data-i18n="exploreTitle">
+        Explorează România altfel
+      </h2>
 
       <div class="cards">
-        <!-- Pentru fiecare card, schimbă fotografia, categoria, titlul și descrierea -->
         <article class="card">
-          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80" alt="Peisaj montan cu sat îndepărtat">
+          <img
+            src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80"
+            alt="Peisaj montan cu sat îndepărtat"
+            data-i18n-attr="alt:card1Alt"
+          >
           <div class="card-content">
-            <div class="tag">Sate uitate</div>
-            <h3>Drumuri spre tihnă</h3>
-            <p>Așezări mici, ulițe vechi și locuri unde ritmul zilei încă urmează anotimpurile.</p>
+            <div class="tag" data-i18n="card1Tag">Sate uitate</div>
+            <h3 data-i18n="card1Title">Drumuri spre tihnă</h3>
+            <p data-i18n="card1Text">
+              Așezări mici, ulițe vechi și locuri unde ritmul zilei încă
+              urmează anotimpurile.
+            </p>
           </div>
         </article>
 
         <article class="card">
-          <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=900&q=80" alt="Potecă printr-un peisaj natural">
+          <img
+            src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=900&q=80"
+            alt="Potecă printr-un peisaj natural"
+            data-i18n-attr="alt:card2Alt"
+          >
           <div class="card-content">
-            <div class="tag">Trasee neobișnuite</div>
-            <h3>Poteci cu surprize</h3>
-            <p>Idei de ieșiri pentru cei care preferă cărările liniștite și opririle neașteptate.</p>
+            <div class="tag" data-i18n="card2Tag">Trasee neobișnuite</div>
+            <h3 data-i18n="card2Title">Poteci cu surprize</h3>
+            <p data-i18n="card2Text">
+              Idei de ieșiri pentru cei care preferă cărările liniștite și
+              opririle neașteptate.
+            </p>
           </div>
         </article>
 
         <article class="card">
-          <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=900&q=80" alt="Lucru manual într-un atelier">
+          <img
+            src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=900&q=80"
+            alt="Lucru manual într-un atelier"
+            data-i18n-attr="alt:card3Alt"
+          >
           <div class="card-content">
-            <div class="tag">Meșteșuguri rare</div>
-            <h3>Lucruri făcute cu răbdare</h3>
-            <p>Ateliere și meșteșugari care păstrează vii tehnici învățate de la generațiile dinainte.</p>
+            <div class="tag" data-i18n="card3Tag">Meșteșuguri rare</div>
+            <h3 data-i18n="card3Title">Lucruri făcute cu răbdare</h3>
+            <p data-i18n="card3Text">
+              Ateliere și meșteșugari care păstrează vii tehnici învățate de
+              la generațiile dinainte.
+            </p>
           </div>
         </article>
       </div>
@@ -262,18 +344,288 @@
     <section id="povesti">
       <div class="story">
         <div>
-          <div class="eyebrow">Poveste de început</div>
-          <h2 class="section-title">Fiecare loc are un secret bun de ascultat</h2>
-          <p>Uneori e o biserică ascunsă după o livadă. Alteori, o casă veche, un pod de piatră sau un om care încă știe să facă lucrurile ca odinioară.</p>
-          <a class="button" href="mailto:salut@romania-necunoscuta.ro">Trimite-ne o poveste</a>
+          <div class="eyebrow" data-i18n="storyEyebrow">Poveste de început</div>
+          <h2 class="section-title" data-i18n="storyTitle">
+            Fiecare loc are un secret bun de ascultat
+          </h2>
+          <p data-i18n="storyText">
+            Uneori e o biserică ascunsă după o livadă. Alteori, o casă veche,
+            un pod de piatră sau un om care încă știe să facă lucrurile ca
+            odinioară.
+          </p>
+          <a
+            class="button"
+            href="mailto:salut@romania-necunoscuta.ro"
+            data-i18n="storyButton"
+          >
+            Trimite-ne o poveste
+          </a>
         </div>
-        <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1000&q=85" alt="Clădire veche cu detalii arhitecturale">
+
+        <img
+          src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1000&q=85"
+          alt="Clădire veche cu detalii arhitecturale"
+          data-i18n-attr="alt:storyAlt"
+        >
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer data-i18n="footerText">
     © 2026 România necunoscută · Un proiect despre locuri și povești de descoperit
   </footer>
+
+  <script>
+    const translations = {
+      ro: {
+        siteName: "ROMÂNIA NECUNOSCUTĂ",
+        navAbout: "Despre",
+        navExplore: "Descoperă",
+        navStories: "Povești",
+        heroEyebrow: "Locuri, oameni și povești",
+        heroTitle: "România necunoscută",
+        heroText: "Sate uitate, poteci neobișnuite și meșteșuguri rare. România se descoperă cel mai frumos dincolo de drumurile bătute.",
+        heroButton: "Începe explorarea",
+        introEyebrow: "Un ghid pentru curioși",
+        introTitle: "Poveștile locurilor care nu se grăbesc să fie găsite",
+        introText: "Aici adunăm locuri mai puțin promovate, clădiri cu istorii neașteptate și oameni care duc mai departe tradiții rare. Idei pentru călătorii lente și descoperiri cu rost.",
+        exploreEyebrow: "Alege-ți următoarea oprire",
+        exploreTitle: "Explorează România altfel",
+        card1Tag: "Sate uitate",
+        card1Title: "Drumuri spre tihnă",
+        card1Text: "Așezări mici, ulițe vechi și locuri unde ritmul zilei încă urmează anotimpurile.",
+        card1Alt: "Peisaj montan cu sat îndepărtat",
+        card2Tag: "Trasee neobișnuite",
+        card2Title: "Poteci cu surprize",
+        card2Text: "Idei de ieșiri pentru cei care preferă cărările liniștite și opririle neașteptate.",
+        card2Alt: "Potecă printr-un peisaj natural",
+        card3Tag: "Meșteșuguri rare",
+        card3Title: "Lucruri făcute cu răbdare",
+        card3Text: "Ateliere și meșteșugari care păstrează vii tehnici învățate de la generațiile dinainte.",
+        card3Alt: "Lucru manual într-un atelier",
+        storyEyebrow: "Poveste de început",
+        storyTitle: "Fiecare loc are un secret bun de ascultat",
+        storyText: "Uneori e o biserică ascunsă după o livadă. Alteori, o casă veche, un pod de piatră sau un om care încă știe să facă lucrurile ca odinioară.",
+        storyButton: "Trimite-ne o poveste",
+        storyAlt: "Clădire veche cu detalii arhitecturale",
+        footerText: "© 2026 România necunoscută · Un proiect despre locuri și povești de descoperit"
+      },
+
+      en: {
+        siteName: "UNKNOWN ROMANIA",
+        navAbout: "About",
+        navExplore: "Explore",
+        navStories: "Stories",
+        heroEyebrow: "Places, people and stories",
+        heroTitle: "Unknown Romania",
+        heroText: "Forgotten villages, unusual trails and rare crafts. Romania is best discovered beyond the beaten path.",
+        heroButton: "Start exploring",
+        introEyebrow: "A guide for the curious",
+        introTitle: "Stories from places that take their time to be found",
+        introText: "We collect lesser-known places, buildings with unexpected histories, and people keeping rare traditions alive. Ideas for slow travel and meaningful discoveries.",
+        exploreEyebrow: "Choose your next stop",
+        exploreTitle: "Explore Romania differently",
+        card1Tag: "Forgotten villages",
+        card1Title: "Roads to tranquility",
+        card1Text: "Small settlements, old lanes, and places where the rhythm of the day still follows the seasons.",
+        card1Alt: "Mountain landscape with a distant village",
+        card2Tag: "Unusual trails",
+        card2Title: "Paths full of surprises",
+        card2Text: "Ideas for outings for those who prefer quiet paths and unexpected stops.",
+        card2Alt: "A path through a natural landscape",
+        card3Tag: "Rare crafts",
+        card3Title: "Things made with patience",
+        card3Text: "Workshops and craftspeople keeping techniques learned from previous generations alive.",
+        card3Alt: "Handcrafting in a workshop",
+        storyEyebrow: "A story to begin",
+        storyTitle: "Every place has a secret worth hearing",
+        storyText: "Sometimes it’s a church hidden behind an orchard. Other times, an old house, a stone bridge, or someone who still knows how to make things the old-fashioned way.",
+        storyButton: "Send us a story",
+        storyAlt: "Old building with architectural details",
+        footerText: "© 2026 Unknown Romania · A project about places and stories waiting to be discovered"
+      },
+
+      fr: {
+        siteName: "LA ROUMANIE MÉCONNUE",
+        navAbout: "À propos",
+        navExplore: "Découvrir",
+        navStories: "Récits",
+        heroEyebrow: "Lieux, personnes et histoires",
+        heroTitle: "La Roumanie méconnue",
+        heroText: "Villages oubliés, sentiers insolites et artisanats rares. La Roumanie se découvre au mieux hors des sentiers battus.",
+        heroButton: "Commencer l’exploration",
+        introEyebrow: "Un guide pour les curieux",
+        introTitle: "Les histoires de lieux qui prennent leur temps pour être découverts",
+        introText: "Nous réunissons des lieux peu connus, des bâtiments à l’histoire inattendue et des personnes qui perpétuent des traditions rares. Des idées pour voyager lentement et faire de belles découvertes.",
+        exploreEyebrow: "Choisissez votre prochaine étape",
+        exploreTitle: "Découvrez la Roumanie autrement",
+        card1Tag: "Villages oubliés",
+        card1Title: "Des chemins vers la tranquillité",
+        card1Text: "De petits villages, de vieilles ruelles et des lieux où le rythme de la journée suit encore les saisons.",
+        card1Alt: "Paysage de montagne avec un village au loin",
+        card2Tag: "Sentiers insolites",
+        card2Title: "Des chemins pleins de surprises",
+        card2Text: "Des idées de sorties pour ceux qui préfèrent les chemins tranquilles et les haltes inattendues.",
+        card2Alt: "Sentier dans un paysage naturel",
+        card3Tag: "Artisanats rares",
+        card3Title: "Des objets façonnés avec patience",
+        card3Text: "Des ateliers et des artisans qui préservent des techniques transmises par les générations précédentes.",
+        card3Alt: "Travail artisanal dans un atelier",
+        storyEyebrow: "Une première histoire",
+        storyTitle: "Chaque lieu a un secret qui mérite d’être écouté",
+        storyText: "Parfois, c’est une église cachée derrière un verger. D’autres fois, une vieille maison, un pont de pierre ou quelqu’un qui sait encore travailler comme autrefois.",
+        storyButton: "Envoyez-nous une histoire",
+        storyAlt: "Ancien bâtiment aux détails architecturaux",
+        footerText: "© 2026 La Roumanie méconnue · Un projet consacré aux lieux et aux histoires à découvrir"
+      },
+
+      it: {
+        siteName: "ROMANIA SCONOSCIUTA",
+        navAbout: "Chi siamo",
+        navExplore: "Esplora",
+        navStories: "Storie",
+        heroEyebrow: "Luoghi, persone e storie",
+        heroTitle: "Romania sconosciuta",
+        heroText: "Villaggi dimenticati, sentieri insoliti e antichi mestieri. La Romania si scopre al meglio fuori dai percorsi più battuti.",
+        heroButton: "Inizia a esplorare",
+        introEyebrow: "Una guida per curiosi",
+        introTitle: "Storie di luoghi che non hanno fretta di farsi trovare",
+        introText: "Raccogliamo luoghi poco conosciuti, edifici con storie inaspettate e persone che portano avanti tradizioni rare. Idee per viaggi lenti e scoperte autentiche.",
+        exploreEyebrow: "Scegli la tua prossima tappa",
+        exploreTitle: "Scopri la Romania in modo diverso",
+        card1Tag: "Villaggi dimenticati",
+        card1Title: "Strade verso la quiete",
+        card1Text: "Piccoli paesi, vecchi vicoli e luoghi in cui il ritmo della giornata segue ancora le stagioni.",
+        card1Alt: "Paesaggio montano con un villaggio in lontananza",
+        card2Tag: "Sentieri insoliti",
+        card2Title: "Sentieri pieni di sorprese",
+        card2Text: "Idee per chi preferisce i percorsi tranquilli e le soste inaspettate.",
+        card2Alt: "Sentiero in un paesaggio naturale",
+        card3Tag: "Antichi mestieri",
+        card3Title: "Oggetti realizzati con pazienza",
+        card3Text: "Laboratori e artigiani che mantengono vive le tecniche tramandate dalle generazioni precedenti.",
+        card3Alt: "Lavoro manuale in un laboratorio",
+        storyEyebrow: "Una storia per cominciare",
+        storyTitle: "Ogni luogo ha un segreto che vale la pena ascoltare",
+        storyText: "A volte è una chiesa nascosta dietro un frutteto. Altre volte, una vecchia casa, un ponte di pietra o qualcuno che sa ancora fare le cose come una volta.",
+        storyButton: "Raccontaci una storia",
+        storyAlt: "Edificio antico con dettagli architettonici",
+        footerText: "© 2026 Romania sconosciuta · Un progetto dedicato a luoghi e storie da scoprire"
+      },
+
+      de: {
+        siteName: "UNBEKANNTES RUMÄNIEN",
+        navAbout: "Über uns",
+        navExplore: "Entdecken",
+        navStories: "Geschichten",
+        heroEyebrow: "Orte, Menschen und Geschichten",
+        heroTitle: "Unbekanntes Rumänien",
+        heroText: "Vergessene Dörfer, ungewöhnliche Wanderwege und seltene Handwerkskünste. Rumänien entdeckt man am besten abseits der bekannten Wege.",
+        heroButton: "Entdeckung beginnen",
+        introEyebrow: "Ein Wegweiser für Neugierige",
+        introTitle: "Geschichten von Orten, die sich Zeit lassen, entdeckt zu werden",
+        introText: "Wir sammeln weniger bekannte Orte, Gebäude mit überraschender Geschichte und Menschen, die seltene Traditionen weiterführen. Ideen für langsames Reisen und besondere Entdeckungen.",
+        exploreEyebrow: "Wähle deinen nächsten Halt",
+        exploreTitle: "Rumänien anders entdecken",
+        card1Tag: "Vergessene Dörfer",
+        card1Title: "Wege zur Ruhe",
+        card1Text: "Kleine Siedlungen, alte Gassen und Orte, an denen der Tagesrhythmus noch den Jahreszeiten folgt.",
+        card1Alt: "Berglandschaft mit einem Dorf in der Ferne",
+        card2Tag: "Ungewöhnliche Wege",
+        card2Title: "Pfade voller Überraschungen",
+        card2Text: "Ausflugsideen für alle, die ruhige Wege und unerwartete Zwischenstopps mögen.",
+        card2Alt: "Weg durch eine Naturlandschaft",
+        card3Tag: "Seltene Handwerkskünste",
+        card3Title: "Mit Geduld gefertigte Dinge",
+        card3Text: "Werkstätten und Handwerker, die überlieferte Techniken lebendig halten.",
+        card3Alt: "Handarbeit in einer Werkstatt",
+        storyEyebrow: "Eine Geschichte zum Anfang",
+        storyTitle: "Jeder Ort hat ein Geheimnis, das es wert ist, gehört zu werden",
+        storyText: "Manchmal ist es eine Kirche, versteckt hinter einem Obstgarten. Manchmal ein altes Haus, eine Steinbrücke oder jemand, der noch so arbeitet wie früher.",
+        storyButton: "Schick uns eine Geschichte",
+        storyAlt: "Altes Gebäude mit architektonischen Details",
+        footerText: "© 2026 Unbekanntes Rumänien · Ein Projekt über Orte und Geschichten, die darauf warten, entdeckt zu werden"
+      },
+
+      es: {
+        siteName: "RUMANÍA DESCONOCIDA",
+        navAbout: "Acerca de",
+        navExplore: "Descubrir",
+        navStories: "Historias",
+        heroEyebrow: "Lugares, personas e historias",
+        heroTitle: "Rumanía desconocida",
+        heroText: "Pueblos olvidados, rutas insólitas y oficios artesanales poco comunes. Rumanía se descubre mejor lejos de los caminos más transitados.",
+        heroButton: "Empezar a explorar",
+        introEyebrow: "Una guía para curiosos",
+        introTitle: "Historias de lugares que se toman su tiempo para ser descubiertos",
+        introText: "Reunimos lugares poco conocidos, edificios con historias inesperadas y personas que mantienen vivas tradiciones poco comunes. Ideas para viajar sin prisas y hacer descubrimientos con sentido.",
+        exploreEyebrow: "Elige tu próxima parada",
+        exploreTitle: "Descubre Rumanía de otra manera",
+        card1Tag: "Pueblos olvidados",
+        card1Title: "Caminos hacia la calma",
+        card1Text: "Pequeños pueblos, calles antiguas y lugares donde el ritmo del día todavía sigue las estaciones.",
+        card1Alt: "Paisaje de montaña con un pueblo a lo lejos",
+        card2Tag: "Rutas insólitas",
+        card2Title: "Senderos llenos de sorpresas",
+        card2Text: "Ideas para quienes prefieren los caminos tranquilos y las paradas inesperadas.",
+        card2Alt: "Sendero en un paisaje natural",
+        card3Tag: "Oficios artesanales poco comunes",
+        card3Title: "Objetos hechos con paciencia",
+        card3Text: "Talleres y artesanos que mantienen vivas las técnicas transmitidas por generaciones anteriores.",
+        card3Alt: "Trabajo artesanal en un taller",
+        storyEyebrow: "Una historia para empezar",
+        storyTitle: "Cada lugar tiene un secreto que merece ser escuchado",
+        storyText: "A veces es una iglesia escondida tras un huerto. Otras veces, una casa antigua, un puente de piedra o alguien que todavía sabe hacer las cosas como antes.",
+        storyButton: "Envíanos una historia",
+        storyAlt: "Edificio antiguo con detalles arquitectónicos",
+        footerText: "© 2026 Rumanía desconocida · Un proyecto sobre lugares e historias por descubrir"
+      }
+    };
+
+    const languageSelect = document.getElementById("languageSelect");
+
+    function setLanguage(language) {
+      const words = translations[language] || translations.ro;
+
+      document.documentElement.lang = language;
+
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.dataset.i18n;
+
+        if (words[key]) {
+          element.textContent = words[key];
+        }
+      });
+
+      document.querySelectorAll("[data-i18n-attr]").forEach((element) => {
+        const [attribute, key] = element.dataset.i18nAttr.split(":");
+
+        if (words[key]) {
+          element.setAttribute(attribute, words[key]);
+        }
+      });
+
+      languageSelect.value = language;
+      localStorage.setItem("preferredLanguage", language);
+
+      const pageTitle = {
+        ro: "România necunoscută — locuri de descoperit",
+        en: "Unknown Romania — places to discover",
+        fr: "La Roumanie méconnue — des lieux à découvrir",
+        it: "Romania sconosciuta — luoghi da scoprire",
+        de: "Unbekanntes Rumänien — Orte zum Entdecken",
+        es: "Rumanía desconocida — lugares por descubrir"
+      };
+
+      document.title = pageTitle[language] || pageTitle.ro;
+    }
+
+    languageSelect.addEventListener("change", (event) => {
+      setLanguage(event.target.value);
+    });
+
+    const savedLanguage = localStorage.getItem("preferredLanguage") || "ro";
+    setLanguage(savedLanguage);
+  </script>
 </body>
 </html>
