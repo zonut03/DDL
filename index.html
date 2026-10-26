@@ -1395,3 +1395,320 @@
 
 </body>
 </html>
+
+<section id="locatie" class="map-section">
+  <style>
+    .map-section {
+      padding: 80px 20px;
+      background: #f6f5f0;
+      font-family: Arial, sans-serif;
+      color: #173d32;
+    }
+
+    .map-container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .map-heading {
+      margin-bottom: 30px;
+    }
+
+    .map-heading span {
+      color: #788b6c;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .map-heading h2 {
+      margin: 12px 0;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 500;
+    }
+
+    .map-heading p {
+      color: #6b766e;
+      line-height: 1.7;
+    }
+
+    .romania-map {
+      position: relative;
+      min-height: 480px;
+      overflow: hidden;
+      border: 1px solid #dce2d8;
+      border-radius: 6px;
+      background:
+        linear-gradient(rgba(23,61,50,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(23,61,50,.05) 1px, transparent 1px),
+        #e9eee5;
+      background-size: 35px 35px;
+    }
+
+    .map-label {
+      position: absolute;
+      top: 25px;
+      left: 28px;
+      font-family: Georgia, serif;
+      font-size: clamp(30px, 5vw, 55px);
+      font-weight: bold;
+      color: #173d32;
+    }
+
+    .map-subtitle {
+      position: absolute;
+      top: 90px;
+      left: 32px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: #718176;
+    }
+
+    /* Siluetă decorativă, stilizată a României */
+    .romania-shape {
+      position: absolute;
+      width: 68%;
+      height: 68%;
+      left: 16%;
+      top: 19%;
+      background: #d2ddcb;
+      border: 3px solid #496b58;
+      clip-path: polygon(
+        9% 20%, 19% 11%, 29% 14%, 38% 6%,
+        49% 12%, 59% 5%, 67% 15%, 77% 17%,
+        86% 29%, 91% 43%, 84% 55%, 89% 69%,
+        78% 78%, 72% 91%, 60% 85%, 48% 96%,
+        36% 86%, 24% 89%, 14% 76%, 7% 68%,
+        11% 54%, 3% 43%, 12% 34%
+      );
+    }
+
+    .city {
+      position: absolute;
+      z-index: 2;
+      color: #284c3b;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .city::before {
+      content: "";
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      margin-right: 5px;
+      border-radius: 50%;
+      background: #284c3b;
+    }
+
+    .city-bucharest {
+      left: 54%;
+      top: 76%;
+    }
+
+    .city-timisoara {
+      left: 24%;
+      top: 55%;
+    }
+
+    .city-iasi {
+      left: 73%;
+      top: 36%;
+    }
+
+    .city-cluj {
+      left: 38%;
+      top: 39%;
+      font-size: 15px;
+    }
+
+    .city-cluj::before {
+      display: none;
+    }
+
+    /* Punctul roșu marchează zona Cluj-Napoca */
+    .office-marker {
+      position: absolute;
+      z-index: 5;
+      left: 39%;
+      top: 43%;
+      width: 25px;
+      height: 25px;
+      border: 4px solid white;
+      border-radius: 50%;
+      background: #e32232;
+      box-shadow: 0 0 0 5px rgba(227, 34, 50, .18);
+      transform: translate(-50%, -50%);
+    }
+
+    .office-label {
+      position: absolute;
+      z-index: 6;
+      left: calc(39% + 22px);
+      top: calc(43% - 72px);
+      max-width: 240px;
+      padding: 13px 16px;
+      border-radius: 5px;
+      background: #d91f32;
+      color: white;
+      box-shadow: 0 8px 24px rgba(30, 50, 35, .15);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .office-label strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .office-label::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -9px;
+      width: 15px;
+      height: 15px;
+      background: #d91f32;
+      transform: rotate(45deg);
+    }
+
+    .map-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 24px;
+      background: white;
+      border: 1px solid #dce2d8;
+      border-top: none;
+    }
+
+    .address-info strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+
+    .address-info p {
+      color: #6b766e;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .map-button {
+      display: inline-block;
+      padding: 14px 20px;
+      background: #173d32;
+      color: white;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background .2s;
+    }
+
+    .map-button:hover {
+      background: #285b4b;
+    }
+
+    @media (max-width: 600px) {
+      .romania-map {
+        min-height: 360px;
+      }
+
+      .romania-shape {
+        width: 90%;
+        height: 58%;
+        left: 5%;
+        top: 28%;
+      }
+
+      .map-label {
+        top: 15px;
+        left: 15px;
+      }
+
+      .map-subtitle {
+        top: 65px;
+        left: 18px;
+      }
+
+      .office-marker {
+        left: 39%;
+        top: 48%;
+      }
+
+      .office-label {
+        left: calc(39% + 17px);
+        top: calc(48% - 75px);
+        max-width: 190px;
+        padding: 10px;
+        font-size: 11px;
+      }
+
+      .office-label strong {
+        font-size: 13px;
+      }
+
+      .city {
+        font-size: 10px;
+      }
+
+      .map-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 20px;
+      }
+    }
+  </style>
+
+  <div class="map-container">
+    <div class="map-heading">
+      <span>Unde ne găsești</span>
+      <h2>Locația biroului</h2>
+      <p>
+        Ne găsești în Cluj-Napoca, în cartierul Mănăștur.
+      </p>
+    </div>
+
+    <div class="romania-map" role="img"
+         aria-label="Hartă schematică a României cu locația biroului în Cluj-Napoca">
+      <div class="map-label">România</div>
+      <div class="map-subtitle">HARTĂ DE LOCALIZARE</div>
+
+      <div class="romania-shape"></div>
+
+      <span class="city city-timisoara">Timișoara</span>
+      <span class="city city-bucharest">București</span>
+      <span class="city city-iasi">Iași</span>
+      <span class="city city-cluj">Cluj-Napoca</span>
+
+      <div class="office-marker"></div>
+
+      <div class="office-label">
+        <strong>Strada Tarnița 5</strong>
+        Cluj-Napoca, cartierul Mănăștur
+      </div>
+    </div>
+
+    <div class="map-footer">
+      <div class="address-info">
+        <strong>DDL Birou de Proiectare</strong>
+        <p>Strada Tarnița 5, Cluj-Napoca</p>
+        <p>Cartierul Mănăștur, România</p>
+      </div>
+
+      <a
+        class="map-button"
+        href="https://www.google.com/maps/search/?api=1&query=Strada+Tarni%C8%9Ba+5%2C+Cluj-Napoca%2C+Romania"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Deschide în Google Maps ↗
+      </a>
+    </div>
+  </div>
+</section>
