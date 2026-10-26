@@ -1712,3 +1712,185 @@
     </div>
   </div>
 </section>
+
+<section id="orar" class="schedule-section">
+  <style>
+    .schedule-section {
+      padding: 75px 20px;
+      background: #f6f5f0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #173d32;
+    }
+
+    .schedule-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .schedule-heading {
+      margin-bottom: 30px;
+    }
+
+    .schedule-eyebrow {
+      color: #788b6c;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .schedule-heading h2 {
+      margin: 12px 0;
+      font-size: clamp(32px, 5vw, 46px);
+      font-weight: 500;
+      letter-spacing: -1px;
+    }
+
+    .schedule-heading p {
+      color: #727b74;
+      line-height: 1.7;
+    }
+
+    .schedule-card {
+      padding: 12px 30px;
+      background: #fff;
+      border: 1px solid #e1e4dc;
+    }
+
+    .schedule-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 19px 0;
+      border-bottom: 1px solid #e8eae4;
+    }
+
+    .schedule-row:last-child {
+      border-bottom: none;
+    }
+
+    .schedule-day {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .schedule-hours {
+      color: #526257;
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .schedule-closed {
+      display: inline-block;
+      padding: 6px 12px;
+      background: #fbe9e8;
+      color: #bd3030;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+
+    .schedule-open {
+      display: inline-block;
+      padding: 6px 12px;
+      background: #e9efe4;
+      color: #285b4b;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .schedule-note {
+      margin-top: 18px;
+      color: #727b74;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 480px) {
+      .schedule-card {
+        padding: 8px 18px;
+      }
+
+      .schedule-row {
+        gap: 12px;
+        padding: 16px 0;
+      }
+
+      .schedule-day {
+        font-size: 13px;
+      }
+
+      .schedule-hours {
+        font-size: 12px;
+      }
+    }
+  </style>
+
+  <div class="schedule-container">
+    <div class="schedule-heading">
+      <span class="schedule-eyebrow">Program de lucru</span>
+      <h2>Orarul nostru</h2>
+      <p>
+        Te așteptăm la DDL Birou de Proiectare
+        în timpul programului de funcționare.
+      </p>
+    </div>
+
+    <div class="schedule-card">
+      <div class="schedule-row">
+        <span class="schedule-day">Luni</span>
+        <span class="schedule-hours">
+          <span class="schedule-open">10:00 – 19:00</span>
+        </span>
+      </div>
+
+      <div class="schedule-row">
+        <span class="schedule-day">Marți</span>
+        <span class="schedule-hours">
+          <span class="schedule-open">10:00 – 19:00</span>
+        </span>
+      </div>
+
+      <div class="schedule-row">
+        <span class="schedule-day">Miercuri</span>
+        <span class="schedule-hours">
+          <span class="schedule-open">10:00 – 19:00</span>
+        </span>
+      </div>
+
+      <div class="schedule-row">
+        <span class="schedule-day">Joi</span>
+        <span class="schedule-hours">
+          <span class="schedule-open">10:00 – 19:00</span>
+        </span>
+      </div>
+
+      <div class="schedule-row">
+        <span class="schedule-day">Vineri</span>
+        <span class="schedule-hours">
+          <span class="schedule-open">10:00 – 17:30</span>
+        </span>
+      </div>
+
+      <div class="schedule-row">
+        <span class="schedule-day">Sâmbătă</span>
+        <span class="schedule-hours">
+          <span class="schedule-closed">Închis</span>
+        </span>
+      </div>
+
+      <div class="schedule-row">
+        <span class="schedule-day">Duminică</span>
+        <span class="schedule-hours">
+          <span class="schedule-closed">Închis</span>
+        </span>
+      </div>
+    </div>
+
+    <p class="schedule-note">
+      Programul este afișat în ora locală a României.
+    </p>
+  </div>
+</section>
