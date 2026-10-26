@@ -1894,3 +1894,211 @@
     </p>
   </div>
 </section>
+
+<!-- PORTOFOLIU -->
+<section class="section portfolio" id="portofoliu">
+  <style>
+    .portfolio {
+      padding: 90px 0;
+      background: #173d32;
+      color: #fff;
+    }
+
+    .portfolio .container {
+      width: min(1160px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    .portfolio .eyebrow {
+      color: #c7d5a5;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .portfolio h2 {
+      margin: 18px 0;
+      font-size: clamp(32px, 5vw, 50px);
+      font-weight: 500;
+    }
+
+    .portfolio-intro {
+      max-width: 600px;
+      margin-bottom: 40px;
+      color: #c1cec6;
+      line-height: 1.8;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      overflow: hidden;
+      background: #20483b;
+      border: 1px solid rgba(255,255,255,.12);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,.18);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 250px;
+      display: block;
+      object-fit: cover;
+      background: #dce3d7;
+      transition: transform .4s ease;
+    }
+
+    .project-card:hover .project-image {
+      transform: scale(1.035);
+    }
+
+    .project-image-wrap {
+      overflow: hidden;
+    }
+
+    .project-info {
+      padding: 24px;
+    }
+
+    .project-category {
+      color: #c7d5a5;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .project-info h3 {
+      margin: 10px 0;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    .project-info p {
+      color: #c1cec6;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .portfolio-disclaimer {
+      margin-top: 24px;
+      color: #c1cec6;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 850px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .portfolio {
+        padding: 65px 0;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-image {
+        height: 240px;
+      }
+    }
+  </style>
+
+  <div class="container">
+    <span class="eyebrow">Selecție vizuală</span>
+
+    <h2>Portofoliu de proiectare</h2>
+
+    <p class="portfolio-intro">
+      Descoperă exemple vizuale de arhitectură, clădiri
+      multifuncționale și dezvoltare urbanistică.
+      Imaginile sunt orientative pentru prezentarea serviciilor.
+    </p>
+
+    <div class="portfolio-grid">
+
+      <!-- PROIECT 1: ARHITECTURĂ REZIDENȚIALĂ -->
+      <article class="project-card">
+        <div class="project-image-wrap">
+          <img
+            class="project-image"
+            src="https://ishino.com.au/wp-content/uploads/2024/01/Photography-File_6-14.jpg"
+            alt="Casă modernă cu fațadă minimalistă și suprafețe vitrate"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="project-info">
+          <span class="project-category">01 / Arhitectură</span>
+          <h3>Arhitectură rezidențială</h3>
+          <p>
+            Exemple de locuințe contemporane, cu forme clare,
+            lumină naturală și integrare în peisaj.
+          </p>
+        </div>
+      </article>
+
+      <!-- PROIECT 2: CLĂDIRI MULTIFUNCȚIONALE -->
+      <article class="project-card">
+        <div class="project-image-wrap">
+          <img
+            class="project-image"
+            src="https://cdn.sanity.io/images/sh65kmlf/production/9d3b41dd7cf48d868d3bbc8c6d94997604f581f6-1456x816.webp"
+            alt="Clădire urbană multifuncțională cu fațadă modernă și vitraje"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="project-info">
+          <span class="project-category">02 / Proiectare tehnică</span>
+          <h3>Clădiri multifuncționale</h3>
+          <p>
+            Inspirație pentru clădiri de birouri și spații
+            comerciale, cu accent pe funcționalitate și design.
+          </p>
+        </div>
+      </article>
+
+      <!-- PROIECT 3: URBANISM -->
+      <article class="project-card">
+        <div class="project-image-wrap">
+          <img
+            class="project-image"
+            src="https://cdn.archilovers.com/projects/b_730_f6864a7a-f2e2-494b-9a44-7b386e4ae6cb.jpg"
+            alt="Plan de dezvoltare urbanistică văzut de sus, cu clădiri și spații verzi"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="project-info">
+          <span class="project-category">03 / Urbanism</span>
+          <h3>Dezvoltare urbanistică</h3>
+          <p>
+            Exemple de organizare a ansamblurilor construite,
+            circulațiilor, spațiilor verzi și zonelor comune.
+          </p>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="portfolio-disclaimer">
+      Imaginile sunt exemple de inspirație preluate de pe
+      site-uri externe și nu reprezintă automat proiecte realizate
+      de DDL. Verifică drepturile de utilizare înainte de publicare.
+    </p>
+  </div>
+</section>
