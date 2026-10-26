@@ -1,39 +1,422 @@
- <section class="section stories" id="stories">
-  <div class="section-inner">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow" data-i18n="storiesEyebrow">Dincolo de hartă</p>
-        <h2 data-i18n="storiesTitle">Povești care rămân</h2>
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DDL Birou de Proiectare — proiectare de arhitectură și consultanță pentru construcții.">
+  <title>DDL Birou de Proiectare | Proiecte de arhitectură</title>
+
+  <style>
+    :root {
+      --ink: #202a24;
+      --muted: #68736c;
+      --cream: #f5f3ed;
+      --white: #fff;
+      --green: #607b62;
+      --dark-green: #344b39;
+      --line: #e5e5dd;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, .96);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: .06em;
+    }
+
+    .logo span {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover { color: var(--green); }
+
+    .button {
+      display: inline-block;
+      padding: 13px 20px;
+      border-radius: 4px;
+      color: var(--white);
+      background: var(--dark-green);
+      font-size: 14px;
+      font-weight: 700;
+      transition: background .2s, transform .2s;
+    }
+
+    .button:hover {
+      background: var(--green);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(20, 31, 24, .78), rgba(20, 31, 24, .18)),
+        url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=85")
+        center/cover;
+      color: var(--white);
+    }
+
+    .hero-content { max-width: 680px; padding: 80px 0; }
+
+    .eyebrow {
+      margin: 0 0 15px;
+      color: #d9e3d6;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 650px;
+      margin: 0 0 20px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(42px, 7vw, 72px);
+      font-weight: 400;
+      line-height: 1.07;
+    }
+
+    .hero p {
+      max-width: 540px;
+      margin: 0 0 30px;
+      color: #f0f1ec;
+      font-size: 18px;
+    }
+
+    .hero .button { background: #f5f3ed; color: var(--ink); }
+
+    section { padding: 88px 0; }
+
+    .section-heading {
+      max-width: 660px;
+      margin-bottom: 42px;
+    }
+
+    .section-heading .eyebrow { color: var(--green); }
+
+    h2 {
+      margin: 0 0 14px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .section-heading p, .about-copy p {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      min-height: 230px;
+      padding: 28px;
+      background: var(--cream);
+      border: 1px solid var(--line);
+    }
+
+    .service-number {
+      color: var(--green);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 30px;
+    }
+
+    .service-card h3 { margin: 16px 0 8px; font-size: 19px; }
+    .service-card p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .about {
+      background: var(--cream);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .about-image {
+      min-height: 430px;
+      background: url("https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=85")
+        center/cover;
+    }
+
+    .about-copy .eyebrow { color: var(--green); }
+    .about-copy p { margin-bottom: 18px; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      margin-top: 38px;
+    }
+
+    .step {
+      padding-top: 18px;
+      border-top: 2px solid var(--green);
+    }
+
+    .step strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 17px;
+    }
+
+    .step p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .contact {
+      color: var(--white);
+      background: var(--dark-green);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact .eyebrow { color: #cbd9c9; }
+    .contact p { color: #e0e7df; }
+
+    form { display: grid; gap: 13px; }
+
+    input, textarea {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 3px;
+      color: var(--white);
+      background: rgba(255,255,255,.08);
+      font: inherit;
+    }
+
+    input::placeholder, textarea::placeholder { color: #d2dbd1; }
+    textarea { min-height: 120px; resize: vertical; }
+    form .button { border: 0; cursor: pointer; justify-self: start; }
+
+    footer {
+      padding: 24px 0;
+      color: var(--muted);
+      background: #f8f8f5;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    @media (max-width: 760px) {
+      .nav { padding: 14px 0; align-items: flex-start; }
+      .nav-links { gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
+      .nav-links a:not(.button) { display: none; }
+      .hero { min-height: 560px; }
+      .services, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .about-image { min-height: 300px; }
+      section { padding: 64px 0; }
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#" aria-label="DDL Birou de Proiectare">
+        DDL
+        <span>Birou de proiectare</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navigare principală">
+        <a href="#servicii">Servicii</a>
+        <a href="#despre">Despre noi</a>
+        <a href="#proces">Cum lucrăm</a>
+        <a class="button" href="#contact">Cere o ofertă</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <p class="eyebrow">DDL Birou de Proiectare</p>
+          <h1>Proiectul tău începe cu o idee bine construită.</h1>
+          <p>
+            Proiectare de arhitectură și consultanță pentru locuințe și clădiri
+            gândite să răspundă nevoilor tale.
+          </p>
+          <a class="button" href="#contact">Hai să discutăm proiectul tău</a>
+        </div>
       </div>
-      <p class="section-intro" data-i18n="storiesIntro">
-        Uneori, cel mai bun lucru pe care îl poți lua dintr-o călătorie
-        este povestea pe care ai ascultat-o.
-      </p>
-    </div>
+    </section>
 
-    <div class="story-grid">
-      <article class="story-card">
-        <p class="eyebrow" data-i18n="storyOneLabel">Meșteșuguri vii</p>
-        <h3 data-i18n="storyOneTitle">
-          Lucrurile făcute încet au alt fel de a dăinui.
-        </h3>
-        <p data-i18n="storyOneText">
-          În satele României, meșteșugurile se transmit din generație în
-          generație. Caută ateliere locale și, când poți, cumpără direct
-          de la artizani.
-        </p>
-      </article>
+    <section id="servicii">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Cu ce te ajutăm</p>
+          <h2>De la concept la documentația de proiectare.</h2>
+          <p>
+            Îți oferim sprijin pe parcursul etapelor de proiectare, cu soluții
+            adaptate terenului, bugetului și modului tău de viață.
+          </p>
+        </div>
 
-      <article class="story-card story-card-small">
-        <p class="eyebrow" data-i18n="storyTwoLabel">Călătorește cu grijă</p>
-        <h3 data-i18n="storyTwoTitle">
-          Lasă loc pentru întâlniri neașteptate.
-        </h3>
-        <p data-i18n="storyTwoText">
-          Respectă liniștea satelor, proprietățile private și natura.
-          Întreabă înainte să fotografiezi oamenii.
-        </p>
-      </article>
+        <div class="services">
+          <article class="service-card">
+            <span class="service-number">01</span>
+            <h3>Proiectare de arhitectură</h3>
+            <p>Concepte și proiecte pentru case, renovări și alte tipuri de clădiri.</p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">02</span>
+            <h3>Documentații pentru autorizare</h3>
+            <p>Pregătirea documentațiilor necesare pentru etapele de avizare și autorizare.</p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-number">03</span>
+            <h3>Consultanță și coordonare</h3>
+            <p>Îndrumare pe parcursul proiectului și coordonare cu specialiștii implicați.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="despre">
+      <div class="container about-grid">
+        <div class="about-image" role="img" aria-label="Interior luminos al unei locuințe"></div>
+        <div class="about-copy">
+          <p class="eyebrow">Despre DDL</p>
+          <h2>Proiectare atentă. Comunicare clară.</h2>
+          <p>
+            Credem că un proiect reușit începe prin a înțelege ce îți dorești.
+            De aceea, discutăm fiecare etapă și căutăm soluții funcționale,
+            echilibrate și potrivite contextului.
+          </p>
+          <p>
+            De la primele schițe până la documentația proiectului, te ajutăm să
+            transformi ideea într-un plan concret.
+          </p>
+          <a class="button" href="#contact">Contactează-ne</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="proces">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Cum lucrăm</p>
+          <h2>Pași clari, de la prima discuție.</h2>
+          <p>Îți explicăm ce urmează și stabilim împreună direcția proiectului.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <strong>Discutăm</strong>
+            <p>Ne povestești despre teren, idee și obiective.</p>
+          </div>
+          <div class="step">
+            <strong>Analizăm</strong>
+            <p>Stabilim cerințele și etapele potrivite proiectului.</p>
+          </div>
+          <div class="step">
+            <strong>Proiectăm</strong>
+            <p>Dezvoltăm soluția și documentația agreată.</p>
+          </div>
+          <div class="step">
+            <strong>Te ghidăm</strong>
+            <p>Îți oferim suportul stabilit pe parcursul colaborării.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-grid">
+        <div>
+          <p class="eyebrow">Începem cu o conversație</p>
+          <h2>Ai un proiect în minte?</h2>
+          <p>
+            Scrie-ne câteva detalii despre proiectul tău. Revenim pentru a
+            discuta următorii pași.
+          </p>
+          <p><strong>Email:</strong> contact@ddlproiectare.ro</p>
+          <p><strong>Telefon:</strong> +40 700 000 000</p>
+        </div>
+
+        <form action="mailto:contact@ddlproiectare.ro" method="post" enctype="text/plain">
+          <input type="text" name="nume" placeholder="Numele tău" required>
+          <input type="email" name="email" placeholder="Adresa de email" required>
+          <input type="tel" name="telefon" placeholder="Număr de telefon">
+          <textarea name="mesaj" placeholder="Spune-ne câteva lucruri despre proiect"></textarea>
+          <button class="button" type="submit">Trimite mesajul</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 DDL Birou de Proiectare</span>
+      <span>Proiectare cu atenție la fiecare detaliu.</span>
     </div>
-  </div>
-</section>
+  </footer>
+</body>
+</html>
