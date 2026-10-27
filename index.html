@@ -3,17 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="DDL — birou de arhitectură. Proiectăm spații cu sens.">
-  <title>DDL — Birou de arhitectură</title>
+  <meta name="description" content="DDL — birou de proiectare. Arhitectură gândită cu atenție la detaliu.">
+  <meta name="theme-color" content="#0a0a09">
+  <title>DDL — Birou de proiectare</title>
 
   <style>
     :root {
-      --background: #f5f3ee;
-      --text: #20201e;
-      --muted: #74736e;
-      --accent: #a56c48;
-      --line: #dedbd3;
-      --white: #fff;
+      --black: #0a0a09;
+      --panel: #11110f;
+      --gold: #c9a45c;
+      --gold-light: #e1c887;
+      --text: #f3efe6;
+      --muted: #aaa69b;
+      --line: rgba(201, 164, 92, 0.28);
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Arial, Helvetica, sans-serif;
     }
 
     * {
@@ -24,13 +28,14 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 85px;
     }
 
     body {
-      background: var(--background);
+      background: var(--black);
       color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
+      font-family: var(--sans);
+      line-height: 1.65;
     }
 
     a {
@@ -38,202 +43,410 @@
       text-decoration: none;
     }
 
-    .container {
-      width: min(1120px, 90%);
-      margin: 0 auto;
+    button,
+    select,
+    input,
+    textarea {
+      font: inherit;
     }
 
-    header {
+    .container {
+      width: min(1160px, 88%);
+      margin-inline: auto;
+    }
+
+    .topbar {
       position: sticky;
       top: 0;
-      z-index: 10;
-      background: rgba(245, 243, 238, 0.96);
+      z-index: 20;
+      background: rgba(10, 10, 9, 0.95);
       border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
     }
 
-    .navbar {
-      min-height: 76px;
+    .nav {
+      min-height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 28px;
     }
 
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: 0.15em;
+    .brand {
+      display: inline-flex;
+      flex-direction: column;
+      line-height: 1;
+      flex-shrink: 0;
     }
 
-    nav {
+    .brand-name {
+      color: var(--gold-light);
+      font-family: var(--serif);
+      font-size: 2rem;
+      letter-spacing: 0.18em;
+    }
+
+    .brand-subtitle {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 0.59rem;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
       display: flex;
       align-items: center;
-      gap: 25px;
+      gap: clamp(14px, 2.5vw, 32px);
     }
 
-    nav a {
-      font-size: 0.9rem;
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      transition: color 0.2s;
     }
 
-    nav a:hover,
-    .text-link:hover {
-      color: var(--accent);
+    .nav-links a:hover {
+      color: var(--gold-light);
     }
 
-    .language-select {
+    .language {
+      padding: 9px 10px;
       border: 1px solid var(--line);
-      background: transparent;
-      color: var(--text);
-      padding: 9px 12px;
-      font: inherit;
+      background: var(--black);
+      color: var(--gold-light);
       cursor: pointer;
     }
 
     .hero {
-      min-height: 76vh;
+      position: relative;
+      min-height: min(760px, 88vh);
       display: flex;
       align-items: center;
-      padding: 90px 0;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
       background:
-        linear-gradient(90deg, rgba(20, 20, 18, 0.64), rgba(20, 20, 18, 0.08)),
-        url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=85")
-        center/cover;
-      color: var(--white);
+        radial-gradient(ellipse at 78% 48%, rgba(201, 164, 92, 0.09), transparent 34%),
+        linear-gradient(115deg, #0a0a09 0%, #0d0d0b 55%, #11100d 100%);
     }
 
-    .hero-content {
-      max-width: 720px;
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.16;
+      background-image:
+        linear-gradient(rgba(201, 164, 92, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201, 164, 92, 0.15) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(90deg, transparent, black 65%);
+      pointer-events: none;
+    }
+
+    .hero-layout {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 44px;
+      padding-block: 90px;
     }
 
     .eyebrow {
-      color: var(--accent);
-      font-size: 0.8rem;
+      color: var(--gold);
+      font-size: 0.73rem;
       font-weight: 700;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
     }
 
-    .hero .eyebrow {
-      color: #e9c4a5;
+    h1,
+    h2,
+    h3 {
+      font-family: var(--serif);
+      font-weight: 400;
     }
 
     h1 {
-      margin: 18px 0;
-      font-size: clamp(3rem, 8vw, 6.5rem);
-      line-height: 0.98;
-      letter-spacing: -0.06em;
+      max-width: 700px;
+      margin: 23px 0;
+      color: var(--gold-light);
+      font-size: clamp(4.3rem, 10vw, 8.4rem);
+      letter-spacing: 0.06em;
+      line-height: 0.88;
     }
 
-    .hero p {
-      max-width: 540px;
-      color: #f0efeb;
-      font-size: 1.1rem;
+    .hero-subtitle {
+      color: var(--text);
+      font-family: var(--serif);
+      font-size: clamp(1.15rem, 2vw, 1.65rem);
+      letter-spacing: 0.06em;
+    }
+
+    .hero-copy {
+      max-width: 480px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-top: 34px;
     }
 
     .button {
-      display: inline-block;
-      margin-top: 28px;
-      padding: 13px 21px;
-      background: var(--accent);
-      color: var(--white);
-      border: 1px solid var(--accent);
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 22px;
+      border: 1px solid var(--gold);
+      background: var(--gold);
+      color: var(--black);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       transition: 0.2s ease;
     }
 
     .button:hover {
       background: transparent;
-      color: var(--white);
+      color: var(--gold-light);
+    }
+
+    .button-outline {
+      background: transparent;
+      color: var(--gold-light);
+    }
+
+    .button-outline:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .drawing {
+      width: 100%;
+      max-width: 530px;
+      justify-self: end;
+      color: var(--gold);
+      filter: drop-shadow(0 0 30px rgba(201, 164, 92, 0.11));
+    }
+
+    .drawing .fine {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1;
+      opacity: 0.55;
+    }
+
+    .drawing .strong {
+      fill: none;
+      stroke: var(--gold-light);
+      stroke-width: 2;
+    }
+
+    .drawing text {
+      fill: var(--gold-light);
+      font-family: Arial, sans-serif;
+      font-size: 9px;
+      letter-spacing: 2px;
     }
 
     section {
-      padding: 100px 0;
-      scroll-margin-top: 76px;
+      padding: 108px 0;
+      border-bottom: 1px solid rgba(201, 164, 92, 0.16);
     }
 
     .section-heading {
-      max-width: 720px;
-      margin-bottom: 42px;
+      max-width: 680px;
+      margin-bottom: 48px;
     }
 
-    h2 {
-      margin-top: 10px;
-      font-size: clamp(2rem, 5vw, 3.8rem);
+    .section-heading h2 {
+      margin-top: 12px;
+      color: var(--gold-light);
+      font-size: clamp(2.7rem, 6vw, 4.5rem);
       line-height: 1.05;
-      letter-spacing: -0.04em;
     }
 
-    .intro {
+    .section-heading p:last-child {
+      margin-top: 16px;
       color: var(--muted);
-      font-size: 1.1rem;
     }
 
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 55px;
-      align-items: center;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 70px;
+      align-items: start;
     }
 
-    .about-image {
-      width: 100%;
-      min-height: 390px;
-      object-fit: cover;
-    }
-
-    .about-copy p + p {
-      margin-top: 18px;
-    }
-
-    .services-grid,
-    .projects-grid {
+    .about-mark {
+      min-height: 300px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .service-card {
-      padding: 28px;
+      place-items: center;
       border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, transparent 49.8%, var(--line) 50%, transparent 50.2%),
+        linear-gradient(45deg, transparent 49.8%, var(--line) 50%, transparent 50.2%),
+        var(--panel);
     }
 
-    .service-card h3 {
-      margin-bottom: 12px;
-      font-size: 1.25rem;
+    .about-mark span {
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: clamp(5rem, 12vw, 8rem);
+      letter-spacing: 0.18em;
     }
 
-    .service-card p,
-    .project-info p {
+    .about-text p {
+      margin-bottom: 18px;
       color: var(--muted);
     }
 
-    .project-card img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
+    .about-text strong {
+      color: var(--gold-light);
+      font-weight: 500;
     }
 
-    .project-info {
-      padding-top: 15px;
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
     }
 
-    .project-info h3 {
-      margin-bottom: 4px;
+    .service-card {
+      min-height: 250px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, rgba(201, 164, 92, 0.07), transparent 65%);
+      transition: transform 0.25s, border-color 0.25s;
     }
 
-    #contact {
-      background: #eae7df;
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold);
+    }
+
+    .service-number {
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 1.1rem;
+    }
+
+    .service-card h3 {
+      margin: 26px 0 12px;
+      color: var(--gold-light);
+      font-size: 1.65rem;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 0.91rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project-card {
+      position: relative;
+      min-height: 340px;
+      display: flex;
+      align-items: end;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background-color: #14130f;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.74;
+      background:
+        linear-gradient(0deg, #090908 0%, transparent 75%),
+        repeating-linear-gradient(90deg, transparent 0 23px, rgba(201, 164, 92, 0.13) 24px 25px),
+        repeating-linear-gradient(0deg, transparent 0 28px, rgba(201, 164, 92, 0.1) 29px 30px);
+      transition: transform 0.5s, opacity 0.5s;
+    }
+
+    .project-card:nth-child(2)::before {
+      background:
+        linear-gradient(0deg, #090908 0%, transparent 75%),
+        linear-gradient(90deg, transparent 15%, rgba(201, 164, 92, 0.16) 15.2%, transparent 15.5%),
+        repeating-linear-gradient(0deg, transparent 0 34px, rgba(201, 164, 92, 0.12) 35px 36px);
+    }
+
+    .project-card:nth-child(3)::before {
+      background:
+        linear-gradient(0deg, #090908 0%, transparent 75%),
+        repeating-linear-gradient(135deg, transparent 0 25px, rgba(201, 164, 92, 0.12) 26px 27px);
+    }
+
+    .project-card:hover::before {
+      transform: scale(1.06);
+      opacity: 1;
+    }
+
+    .project-content {
+      position: relative;
+      z-index: 1;
+      padding: 25px;
+    }
+
+    .project-type {
+      color: var(--gold);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .project-content h3 {
+      margin-top: 8px;
+      color: var(--text);
+      font-size: 1.7rem;
+    }
+
+    .contact-section {
+      background:
+        radial-gradient(ellipse at 85% 50%, rgba(201, 164, 92, 0.08), transparent 40%),
+        var(--black);
     }
 
     .contact-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 70px;
     }
 
-    .contact-details p {
-      margin-top: 12px;
+    .contact-copy h2 {
+      margin: 12px 0 18px;
+      color: var(--gold-light);
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      line-height: 1.05;
+    }
+
+    .contact-copy p {
       color: var(--muted);
+    }
+
+    .email-link {
+      display: inline-block;
+      margin-top: 24px;
+      color: var(--gold-light);
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 4px;
     }
 
     .contact-form {
@@ -244,11 +457,21 @@
     .contact-form input,
     .contact-form textarea {
       width: 100%;
-      padding: 14px;
+      padding: 15px 16px;
       border: 1px solid var(--line);
-      background: var(--background);
+      outline: none;
+      background: #11110f;
       color: var(--text);
-      font: inherit;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: #888477;
     }
 
     .contact-form textarea {
@@ -256,34 +479,35 @@
       resize: vertical;
     }
 
-    .contact-form button {
+    .contact-form .button {
       justify-self: start;
-      padding: 13px 21px;
-      border: 1px solid var(--accent);
-      background: var(--accent);
-      color: var(--white);
-      font: inherit;
       cursor: pointer;
-    }
-
-    .contact-form button:hover {
-      opacity: 0.85;
     }
 
     footer {
       padding: 25px 0;
-      border-top: 1px solid var(--line);
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.78rem;
     }
 
-    @media (max-width: 760px) {
-      .navbar {
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-content span:first-child {
+      color: var(--gold);
+      letter-spacing: 0.12em;
+    }
+
+    @media (max-width: 850px) {
+      .nav {
         flex-wrap: wrap;
         padding: 14px 0;
       }
 
-      nav {
+      .nav-links {
         order: 3;
         width: 100%;
         justify-content: space-between;
@@ -291,14 +515,43 @@
         overflow-x: auto;
       }
 
-      nav a {
+      .nav-links a {
         white-space: nowrap;
-        font-size: 0.82rem;
+        font-size: 0.68rem;
+      }
+
+      .hero-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .drawing {
+        width: min(440px, 100%);
+        justify-self: center;
       }
 
       .about-grid,
       .contact-grid {
         grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .services-grid,
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      section {
+        padding: 76px 0;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-layout {
+        padding-block: 72px;
       }
 
       .services-grid,
@@ -306,133 +559,26 @@
         grid-template-columns: 1fr;
       }
 
-      section {
-        padding: 72px 0;
+      .project-card {
+        min-height: 280px;
       }
 
-      .hero {
-        min-height: 68vh;
+      .footer-content {
+        flex-direction: column;
       }
-    } 
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&display=swap');
-
-:root {
-  --background: #080808;
-  --text: #d4af37;
-  --muted: #c2ad72;
-  --accent: #d4af37;
-  --line: #55451c;
-  --white: #080808;
-}
-
-body {
-  background: var(--background);
-  color: var(--text);
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.15rem;
-}
-
-header {
-  background: rgba(8, 8, 8, 0.97);
-  border-bottom-color: var(--line);
-}
-
-.logo,
-nav a,
-.language-select {
-  color: var(--text);
-}
-
-.language-select {
-  background: #080808;
-  border-color: var(--accent);
-}
-
-.hero {
-  background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.42)),
-    url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=85")
-    center/cover;
-  color: var(--text);
-}
-
-.hero p,
-.intro,
-.service-card p,
-.project-info p,
-.contact-details p,
-footer {
-  color: var(--muted);
-}
-
-.hero .eyebrow {
-  color: var(--accent);
-}
-
-h1,
-h2 {
-  font-family: 'Great Vibes', cursive;
-  font-weight: 400;
-  letter-spacing: 0;
-}
-
-h1 {
-  font-size: clamp(4rem, 10vw, 8rem);
-}
-
-h2 {
-  font-size: clamp(3rem, 7vw, 5rem);
-}
-
-h3 {
-  color: var(--accent);
-}
-
-.service-card {
-  border-color: var(--line);
-}
-
-#contact {
-  background: #11100c;
-}
-
-.contact-form input,
-.contact-form textarea {
-  background: #080808;
-  color: var(--text);
-  border-color: var(--line);
-}
-
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-  color: var(--muted);
-}
-
-.contact-form button,
-.button {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #080808;
-}
-
-.contact-form button:hover {
-  background: transparent;
-  color: var(--accent);
-}
-
-footer {
-  border-top-color: var(--line);
-}
-
+    }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="container navbar">
-      <a class="logo" href="#home" aria-label="DDL — Home">DDL</a>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="DDL — pagina principală">
+        <span class="brand-name">DDL</span>
+        <span class="brand-subtitle" data-i18n="brandSubtitle">Birou de proiectare</span>
+      </a>
 
-      <nav aria-label="Main navigation">
+      <nav class="nav-links" aria-label="Navigare principală">
         <a href="#home" data-i18n="navHome">Acasă</a>
         <a href="#about" data-i18n="navAbout">Despre</a>
         <a href="#services" data-i18n="navServices">Servicii</a>
@@ -440,51 +586,63 @@ footer {
         <a href="#contact" data-i18n="navContact">Contact</a>
       </nav>
 
-      <label>
-        <span class="visually-hidden" data-i18n="languageLabel">Alege limba</span>
-        <select class="language-select" id="languageSelect" aria-label="Select language">
-          <option value="ro">Română</option>
-          <option value="en">English</option>
-          <option value="es">Español</option>
-          <option value="it">Italiano</option>
-          <option value="fr">Français</option>
-          <option value="de">Deutsch</option>
-          <option value="nl">Nederlands</option>
-        </select>
-      </label>
+      <select class="language" id="languageSelect" aria-label="Alege limba">
+        <option value="ro">RO</option>
+        <option value="en">EN</option>
+        <option value="es">ES</option>
+        <option value="it">IT</option>
+        <option value="fr">FR</option>
+        <option value="de">DE</option>
+        <option value="nl">NL</option>
+      </select>
     </div>
   </header>
 
   <main>
     <section class="hero" id="home">
-      <div class="container hero-content">
-        <p class="eyebrow" data-i18n="heroEyebrow">Birou de arhitectură</p>
-        <h1 data-i18n="heroTitle">Spații cu sens.</h1>
-        <p data-i18n="heroText">
-          Proiectăm arhitectură atentă la oameni, context și felul în care trăim.
-        </p>
-        <a class="button" href="#projects" data-i18n="heroButton">Descoperă proiectele</a>
+      <div class="container hero-layout">
+        <div>
+          <p class="eyebrow" data-i18n="heroEyebrow">Arhitectură · Design · Proiectare</p>
+          <h1>DDL</h1>
+          <p class="hero-subtitle" data-i18n="heroSubtitle">Birou de proiectare</p>
+          <p class="hero-copy" data-i18n="heroCopy">
+            Gândim spații care îmbină funcționalitatea, expresia arhitecturală și atenția pentru detaliu.
+          </p>
+          <div class="actions">
+            <a class="button" href="#projects" data-i18n="heroButton">Vezi proiectele</a>
+            <a class="button button-outline" href="#contact" data-i18n="heroContact">Discută cu noi</a>
+          </div>
+        </div>
+
+        <svg class="drawing" viewBox="0 0 520 440" role="img" aria-label="Desen arhitectural stilizat">
+          <path class="fine" d="M35 380H485M65 405H450M95 355H465M70 105V390M450 52V390M110 70H450" />
+          <path class="strong" d="M130 355V170L275 80L420 170V355H130Z" />
+          <path class="fine" d="M130 170H420M275 80V355M180 355V230H235V355M315 225H375V275H315Z" />
+          <path class="fine" d="M145 190H258M292 190H405M145 205H258M292 205H405" />
+          <path class="strong" d="M110 355H440M260 80V52M275 80V40M420 170L450 155" />
+          <path class="fine" d="M155 355V295M170 355V295M245 355V295M300 355V295M385 355V295" />
+          <path class="fine" d="M95 170H130M420 170H465M130 365V385M420 365V385" />
+          <circle class="fine" cx="275" cy="80" r="4" />
+          <text x="132" y="420">PROIECTARE · 01</text>
+          <text x="30" y="100">A—01</text>
+        </svg>
       </div>
     </section>
 
     <section id="about">
       <div class="container about-grid">
-        <img
-          class="about-image"
-          src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85"
-          alt="Interior modern și luminos"
-        >
-
-        <div class="about-copy">
-          <p class="eyebrow" data-i18n="aboutEyebrow">Despre noi</p>
-          <h2 data-i18n="aboutTitle">Arhitectură pentru viața de zi cu zi.</h2>
+        <div class="about-mark" aria-hidden="true"><span>DDL</span></div>
+        <div class="about-text">
+          <p class="eyebrow" data-i18n="aboutEyebrow">Despre birou</p>
+          <div class="section-heading">
+            <h2 data-i18n="aboutTitle">Formă, funcție și context.</h2>
+          </div>
           <p data-i18n="aboutText1">
-            DDL este un birou de arhitectură dedicat proiectării unor spații
-            funcționale, echilibrate și durabile.
+            DDL este un birou de proiectare care transformă ideile în spații clare, durabile și bine gândite.
           </p>
           <p data-i18n="aboutText2">
-            De la primele schițe până la detaliile finale, colaborăm îndeaproape
-            cu fiecare client pentru a transforma ideile în locuri memorabile.
+            Abordăm fiecare proiect cu atenție la <strong>nevoile oamenilor</strong>, caracterul locului și calitatea detaliului.
+            De la concept la documentația de proiectare, construim soluții coerente și personalizate.
           </p>
         </div>
       </div>
@@ -493,25 +651,26 @@ footer {
     <section id="services">
       <div class="container">
         <div class="section-heading">
-          <p class="eyebrow" data-i18n="servicesEyebrow">Ce facem</p>
-          <h2 data-i18n="servicesTitle">Servicii</h2>
-          <p class="intro" data-i18n="servicesIntro">
-            Sprijinim proiectul în fiecare etapă, de la concept la realizare.
-          </p>
+          <p class="eyebrow" data-i18n="servicesEyebrow">Expertiză</p>
+          <h2 data-i18n="servicesTitle">Ce facem</h2>
+          <p data-i18n="servicesIntro">Servicii de proiectare adaptate fiecărei etape a proiectului.</p>
         </div>
 
         <div class="services-grid">
           <article class="service-card">
+            <span class="service-number">01 /</span>
             <h3 data-i18n="service1Title">Arhitectură</h3>
-            <p data-i18n="service1Text">Concepte și proiecte pentru locuințe și spații comerciale.</p>
+            <p data-i18n="service1Text">Concepte arhitecturale și proiectare pentru locuințe, clădiri și spații comerciale.</p>
           </article>
           <article class="service-card">
+            <span class="service-number">02 /</span>
             <h3 data-i18n="service2Title">Design interior</h3>
-            <p data-i18n="service2Text">Interioare coerente, confortabile și adaptate oamenilor.</p>
+            <p data-i18n="service2Text">Amenajări interioare în care materialele, lumina și funcționalitatea lucrează împreună.</p>
           </article>
           <article class="service-card">
-            <h3 data-i18n="service3Title">Consultanță</h3>
-            <p data-i18n="service3Text">Îndrumare de specialitate pentru decizii clare și bine fundamentate.</p>
+            <span class="service-number">03 /</span>
+            <h3 data-i18n="service3Title">Documentații</h3>
+            <p data-i18n="service3Text">Dezvoltarea proiectului și pregătirea documentațiilor necesare realizării acestuia.</p>
           </article>
         </div>
       </div>
@@ -520,265 +679,268 @@ footer {
     <section id="projects">
       <div class="container">
         <div class="section-heading">
-          <p class="eyebrow" data-i18n="projectsEyebrow">Selecție</p>
-          <h2 data-i18n="projectsTitle">Proiecte</h2>
-          <p class="intro" data-i18n="projectsIntro">
-            Câteva idei transformate în spații reale.
-          </p>
+          <p class="eyebrow" data-i18n="projectsEyebrow">Portofoliu</p>
+          <h2 data-i18n="projectsTitle">Proiecte selectate</h2>
+          <p data-i18n="projectsIntro">O selecție de concepte și direcții de proiectare DDL.</p>
         </div>
 
         <div class="projects-grid">
           <article class="project-card">
-            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85" alt="Casă contemporană">
-            <div class="project-info">
-              <h3 data-i18n="project1Title">Casa dintre grădini</h3>
-              <p data-i18n="project1Type">Locuință · 2024</p>
+            <div class="project-content">
+              <p class="project-type" data-i18n="project1Type">Rezidențial · 2025</p>
+              <h3 data-i18n="project1Title">Casa Nord</h3>
             </div>
           </article>
-
           <article class="project-card">
-            <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=900&q=85" alt="Interior de locuință">
-            <div class="project-info">
-              <h3 data-i18n="project2Title">Apartament luminos</h3>
-              <p data-i18n="project2Type">Design interior · 2023</p>
+            <div class="project-content">
+              <p class="project-type" data-i18n="project2Type">Design interior · 2024</p>
+              <h3 data-i18n="project2Title">Apartament Lumină</h3>
             </div>
           </article>
-
           <article class="project-card">
-            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85" alt="Spațiu modern">
-            <div class="project-info">
-              <h3 data-i18n="project3Title">Spațiu pentru comunitate</h3>
-              <p data-i18n="project3Type">Spațiu public · 2022</p>
+            <div class="project-content">
+              <p class="project-type" data-i18n="project3Type">Spațiu comercial · 2024</p>
+              <h3 data-i18n="project3Title">Atelier Urban</h3>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="contact">
+    <section class="contact-section" id="contact">
       <div class="container contact-grid">
-        <div class="contact-details">
-          <p class="eyebrow" data-i18n="contactEyebrow">Hai să discutăm</p>
-          <h2 data-i18n="contactTitle">Ai un proiect în minte?</h2>
-          <p data-i18n="contactText">Scrie-ne câteva detalii și te vom contacta.</p>
-          <p><a class="text-link" href="mailto:hello@ddl-architecture.com">hello@ddl-architecture.com</a></p>
+        <div class="contact-copy">
+          <p class="eyebrow" data-i18n="contactEyebrow">Contact</p>
+          <h2 data-i18n="contactTitle">Hai să proiectăm ceva memorabil.</h2>
+          <p data-i18n="contactText">Povestește-ne despre ideea ta și vom reveni cu un răspuns.</p>
+          <a class="email-link" href="mailto:contact@ddl.ro">contact@ddl.ro</a>
         </div>
 
         <form class="contact-form" id="contactForm">
           <input id="name" type="text" required data-i18n-placeholder="namePlaceholder" placeholder="Numele tău">
           <input id="email" type="email" required data-i18n-placeholder="emailPlaceholder" placeholder="Adresa ta de email">
-          <textarea id="message" required data-i18n-placeholder="messagePlaceholder" placeholder="Scrie mesajul tău"></textarea>
-          <button type="submit" data-i18n="sendButton">Trimite mesajul</button>
+          <textarea id="message" required data-i18n-placeholder="messagePlaceholder" placeholder="Descrie pe scurt proiectul tău"></textarea>
+          <button class="button" type="submit" data-i18n="sendButton">Trimite mesajul</button>
         </form>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      <span>© <span id="year"></span> DDL</span>
-      <span data-i18n="footerText"> — Birou de arhitectură</span>
+    <div class="container footer-content">
+      <span>DDL · <span data-i18n="brandSubtitle">Birou de proiectare</span></span>
+      <span>© <span id="year"></span> DDL. <span data-i18n="footerText">Toate drepturile rezervate.</span></span>
     </div>
   </footer>
 
   <script>
     const translations = {
       ro: {
+        brandSubtitle: "Birou de proiectare",
         navHome: "Acasă", navAbout: "Despre", navServices: "Servicii",
-        navProjects: "Proiecte", navContact: "Contact", languageLabel: "Alege limba",
-        heroEyebrow: "Birou de arhitectură", heroTitle: "Spații cu sens.",
-        heroText: "Proiectăm arhitectură atentă la oameni, context și felul în care trăim.",
-        heroButton: "Descoperă proiectele",
-        aboutEyebrow: "Despre noi", aboutTitle: "Arhitectură pentru viața de zi cu zi.",
-        aboutText1: "DDL este un birou de arhitectură dedicat proiectării unor spații funcționale, echilibrate și durabile.",
-        aboutText2: "De la primele schițe până la detaliile finale, colaborăm îndeaproape cu fiecare client pentru a transforma ideile în locuri memorabile.",
-        servicesEyebrow: "Ce facem", servicesTitle: "Servicii",
-        servicesIntro: "Sprijinim proiectul în fiecare etapă, de la concept la realizare.",
-        service1Title: "Arhitectură", service1Text: "Concepte și proiecte pentru locuințe și spații comerciale.",
-        service2Title: "Design interior", service2Text: "Interioare coerente, confortabile și adaptate oamenilor.",
-        service3Title: "Consultanță", service3Text: "Îndrumare de specialitate pentru decizii clare și bine fundamentate.",
-        projectsEyebrow: "Selecție", projectsTitle: "Proiecte",
-        projectsIntro: "Câteva idei transformate în spații reale.",
-        project1Title: "Casa dintre grădini", project1Type: "Locuință · 2024",
-        project2Title: "Apartament luminos", project2Type: "Design interior · 2023",
-        project3Title: "Spațiu pentru comunitate", project3Type: "Spațiu public · 2022",
-        contactEyebrow: "Hai să discutăm", contactTitle: "Ai un proiect în minte?",
-        contactText: "Scrie-ne câteva detalii și te vom contacta.",
+        navProjects: "Proiecte", navContact: "Contact",
+        heroEyebrow: "Arhitectură · Design · Proiectare",
+        heroSubtitle: "Birou de proiectare",
+        heroCopy: "Gândim spații care îmbină funcționalitatea, expresia arhitecturală și atenția pentru detaliu.",
+        heroButton: "Vezi proiectele", heroContact: "Discută cu noi",
+        aboutEyebrow: "Despre birou", aboutTitle: "Formă, funcție și context.",
+        aboutText1: "DDL este un birou de proiectare care transformă ideile în spații clare, durabile și bine gândite.",
+        aboutText2: "Abordăm fiecare proiect cu atenție la nevoile oamenilor, caracterul locului și calitatea detaliului. De la concept la documentația de proiectare, construim soluții coerente și personalizate.",
+        servicesEyebrow: "Expertiză", servicesTitle: "Ce facem",
+        servicesIntro: "Servicii de proiectare adaptate fiecărei etape a proiectului.",
+        service1Title: "Arhitectură", service1Text: "Concepte arhitecturale și proiectare pentru locuințe, clădiri și spații comerciale.",
+        service2Title: "Design interior", service2Text: "Amenajări interioare în care materialele, lumina și funcționalitatea lucrează împreună.",
+        service3Title: "Documentații", service3Text: "Dezvoltarea proiectului și pregătirea documentațiilor necesare realizării acestuia.",
+        projectsEyebrow: "Portofoliu", projectsTitle: "Proiecte selectate",
+        projectsIntro: "O selecție de concepte și direcții de proiectare DDL.",
+        project1Type: "Rezidențial · 2025", project1Title: "Casa Nord",
+        project2Type: "Design interior · 2024", project2Title: "Apartament Lumină",
+        project3Type: "Spațiu comercial · 2024", project3Title: "Atelier Urban",
+        contactEyebrow: "Contact", contactTitle: "Hai să proiectăm ceva memorabil.",
+        contactText: "Povestește-ne despre ideea ta și vom reveni cu un răspuns.",
         namePlaceholder: "Numele tău", emailPlaceholder: "Adresa ta de email",
-        messagePlaceholder: "Scrie mesajul tău", sendButton: "Trimite mesajul",
-        footerText: " — Birou de arhitectură", emailSubject: "Mesaj de pe site-ul DDL"
+        messagePlaceholder: "Descrie pe scurt proiectul tău", sendButton: "Trimite mesajul",
+        footerText: "Toate drepturile rezervate.", emailSubject: "Mesaj de pe site-ul DDL"
       },
       en: {
+        brandSubtitle: "Architecture & design studio",
         navHome: "Home", navAbout: "About", navServices: "Services",
-        navProjects: "Projects", navContact: "Contact", languageLabel: "Choose language",
-        heroEyebrow: "Architecture studio", heroTitle: "Spaces with purpose.",
-        heroText: "We design architecture shaped around people, context, and the way we live.",
-        heroButton: "Explore projects",
-        aboutEyebrow: "About us", aboutTitle: "Architecture for everyday life.",
-        aboutText1: "DDL is an architecture studio dedicated to creating functional, balanced, and lasting spaces.",
-        aboutText2: "From the first sketches to the final details, we work closely with each client to turn ideas into memorable places.",
-        servicesEyebrow: "What we do", servicesTitle: "Services",
-        servicesIntro: "We support your project at every stage, from concept to completion.",
-        service1Title: "Architecture", service1Text: "Concepts and designs for homes and commercial spaces.",
-        service2Title: "Interior design", service2Text: "Thoughtful, comfortable interiors tailored to people.",
-        service3Title: "Consulting", service3Text: "Expert guidance for clear, well-informed decisions.",
-        projectsEyebrow: "Selected work", projectsTitle: "Projects",
-        projectsIntro: "A selection of ideas brought to life.",
-        project1Title: "House Between Gardens", project1Type: "Residential · 2024",
-        project2Title: "Light-filled Apartment", project2Type: "Interior design · 2023",
-        project3Title: "Community Space", project3Type: "Public space · 2022",
-        contactEyebrow: "Let’s talk", contactTitle: "Have a project in mind?",
-        contactText: "Tell us a little about it and we’ll get back to you.",
+        navProjects: "Projects", navContact: "Contact",
+        heroEyebrow: "Architecture · Design · Planning",
+        heroSubtitle: "Architecture & design studio",
+        heroCopy: "We create spaces that bring together function, architectural expression, and attention to detail.",
+        heroButton: "View projects", heroContact: "Talk to us",
+        aboutEyebrow: "About the studio", aboutTitle: "Form, function, and context.",
+        aboutText1: "DDL is a design studio turning ideas into thoughtful, lasting, and well-resolved spaces.",
+        aboutText2: "Every project considers people, place, and detail. From concept to design documentation, we create coherent, tailored solutions.",
+        servicesEyebrow: "Expertise", servicesTitle: "What we do",
+        servicesIntro: "Design services tailored to every stage of your project.",
+        service1Title: "Architecture", service1Text: "Architectural concepts and design for homes, buildings, and commercial spaces.",
+        service2Title: "Interior design", service2Text: "Interiors where materials, light, and function work together.",
+        service3Title: "Documentation", service3Text: "Project development and preparation of design documentation.",
+        projectsEyebrow: "Portfolio", projectsTitle: "Selected projects",
+        projectsIntro: "A selection of DDL concepts and design directions.",
+        project1Type: "Residential · 2025", project1Title: "North House",
+        project2Type: "Interior design · 2024", project2Title: "Light Apartment",
+        project3Type: "Commercial · 2024", project3Title: "Urban Atelier",
+        contactEyebrow: "Contact", contactTitle: "Let’s design something memorable.",
+        contactText: "Tell us about your idea and we’ll get back to you.",
         namePlaceholder: "Your name", emailPlaceholder: "Your email address",
-        messagePlaceholder: "Write your message", sendButton: "Send message",
-        footerText: " — Architecture studio", emailSubject: "Message from the DDL website"
+        messagePlaceholder: "Briefly describe your project", sendButton: "Send message",
+        footerText: "All rights reserved.", emailSubject: "Message from the DDL website"
       },
       es: {
-        navHome: "Inicio", navAbout: "Nosotros", navServices: "Servicios",
-        navProjects: "Proyectos", navContact: "Contacto", languageLabel: "Elegir idioma",
-        heroEyebrow: "Estudio de arquitectura", heroTitle: "Espacios con sentido.",
-        heroText: "Diseñamos una arquitectura atenta a las personas, al contexto y a la forma de vivir.",
-        heroButton: "Ver proyectos",
-        aboutEyebrow: "Sobre nosotros", aboutTitle: "Arquitectura para la vida cotidiana.",
-        aboutText1: "DDL es un estudio de arquitectura dedicado a crear espacios funcionales, equilibrados y duraderos.",
-        aboutText2: "Desde los primeros bocetos hasta los detalles finales, colaboramos con cada cliente para convertir ideas en lugares memorables.",
-        servicesEyebrow: "Qué hacemos", servicesTitle: "Servicios",
-        servicesIntro: "Acompañamos cada proyecto, desde el concepto hasta su realización.",
-        service1Title: "Arquitectura", service1Text: "Conceptos y proyectos para viviendas y espacios comerciales.",
-        service2Title: "Diseño de interiores", service2Text: "Interiores cómodos, coherentes y pensados para las personas.",
-        service3Title: "Asesoramiento", service3Text: "Orientación profesional para tomar decisiones claras.",
-        projectsEyebrow: "Selección", projectsTitle: "Proyectos",
-        projectsIntro: "Ideas convertidas en espacios reales.",
-        project1Title: "Casa entre jardines", project1Type: "Vivienda · 2024",
-        project2Title: "Apartamento luminoso", project2Type: "Interiorismo · 2023",
-        project3Title: "Espacio comunitario", project3Type: "Espacio público · 2022",
-        contactEyebrow: "Hablemos", contactTitle: "¿Tienes un proyecto en mente?",
-        contactText: "Cuéntanos algunos detalles y nos pondremos en contacto contigo.",
+        brandSubtitle: "Estudio de arquitectura y diseño",
+        navHome: "Inicio", navAbout: "Estudio", navServices: "Servicios",
+        navProjects: "Proyectos", navContact: "Contacto",
+        heroEyebrow: "Arquitectura · Diseño · Proyecto",
+        heroSubtitle: "Estudio de arquitectura y diseño",
+        heroCopy: "Creamos espacios que combinan funcionalidad, expresión arquitectónica y atención al detalle.",
+        heroButton: "Ver proyectos", heroContact: "Hablemos",
+        aboutEyebrow: "El estudio", aboutTitle: "Forma, función y contexto.",
+        aboutText1: "DDL es un estudio que transforma ideas en espacios bien pensados, duraderos y claros.",
+        aboutText2: "Cada proyecto considera a las personas, el lugar y los detalles. Desde el concepto hasta la documentación, creamos soluciones coherentes y personalizadas.",
+        servicesEyebrow: "Especialidades", servicesTitle: "Qué hacemos",
+        servicesIntro: "Servicios de diseño adaptados a cada etapa del proyecto.",
+        service1Title: "Arquitectura", service1Text: "Conceptos y proyectos para viviendas, edificios y espacios comerciales.",
+        service2Title: "Diseño interior", service2Text: "Interiores donde materiales, luz y funcionalidad se complementan.",
+        service3Title: "Documentación", service3Text: "Desarrollo del proyecto y preparación de la documentación técnica.",
+        projectsEyebrow: "Portafolio", projectsTitle: "Proyectos seleccionados",
+        projectsIntro: "Una selección de conceptos y proyectos de DDL.",
+        project1Type: "Residencial · 2025", project1Title: "Casa Norte",
+        project2Type: "Diseño interior · 2024", project2Title: "Apartamento Luz",
+        project3Type: "Comercial · 2024", project3Title: "Atelier Urbano",
+        contactEyebrow: "Contacto", contactTitle: "Diseñemos algo memorable.",
+        contactText: "Cuéntanos tu idea y nos pondremos en contacto contigo.",
         namePlaceholder: "Tu nombre", emailPlaceholder: "Tu correo electrónico",
-        messagePlaceholder: "Escribe tu mensaje", sendButton: "Enviar mensaje",
-        footerText: " — Estudio de arquitectura", emailSubject: "Mensaje desde la web de DDL"
+        messagePlaceholder: "Describe brevemente tu proyecto", sendButton: "Enviar mensaje",
+        footerText: "Todos los derechos reservados.", emailSubject: "Mensaje desde la web de DDL"
       },
       it: {
-        navHome: "Home", navAbout: "Chi siamo", navServices: "Servizi",
-        navProjects: "Progetti", navContact: "Contatti", languageLabel: "Scegli la lingua",
-        heroEyebrow: "Studio di architettura", heroTitle: "Spazi con significato.",
-        heroText: "Progettiamo architetture attente alle persone, al contesto e al modo di vivere.",
-        heroButton: "Scopri i progetti",
-        aboutEyebrow: "Chi siamo", aboutTitle: "Architettura per la vita quotidiana.",
-        aboutText1: "DDL è uno studio di architettura dedicato alla progettazione di spazi funzionali, equilibrati e durevoli.",
-        aboutText2: "Dai primi schizzi ai dettagli finali, collaboriamo con ogni cliente per trasformare le idee in luoghi memorabili.",
-        servicesEyebrow: "Cosa facciamo", servicesTitle: "Servizi",
-        servicesIntro: "Seguiamo il progetto in ogni fase, dal concept alla realizzazione.",
-        service1Title: "Architettura", service1Text: "Progetti per abitazioni e spazi commerciali.",
-        service2Title: "Interior design", service2Text: "Interni confortevoli, coerenti e pensati per le persone.",
-        service3Title: "Consulenza", service3Text: "Supporto professionale per decisioni chiare e consapevoli.",
-        projectsEyebrow: "Una selezione", projectsTitle: "Progetti",
-        projectsIntro: "Idee trasformate in spazi reali.",
-        project1Title: "Casa tra i giardini", project1Type: "Residenziale · 2024",
-        project2Title: "Appartamento luminoso", project2Type: "Interior design · 2023",
-        project3Title: "Spazio per la comunità", project3Type: "Spazio pubblico · 2022",
-        contactEyebrow: "Parliamone", contactTitle: "Hai un progetto in mente?",
-        contactText: "Raccontaci qualche dettaglio e ti ricontatteremo.",
+        brandSubtitle: "Studio di architettura e design",
+        navHome: "Home", navAbout: "Studio", navServices: "Servizi",
+        navProjects: "Progetti", navContact: "Contatti",
+        heroEyebrow: "Architettura · Design · Progettazione",
+        heroSubtitle: "Studio di architettura e design",
+        heroCopy: "Creiamo spazi che uniscono funzionalità, espressione architettonica e attenzione ai dettagli.",
+        heroButton: "Scopri i progetti", heroContact: "Parliamone",
+        aboutEyebrow: "Lo studio", aboutTitle: "Forma, funzione e contesto.",
+        aboutText1: "DDL è uno studio di progettazione che trasforma le idee in spazi curati, durevoli e ben definiti.",
+        aboutText2: "Ogni progetto considera le persone, il luogo e i dettagli. Dal concept alla documentazione, realizziamo soluzioni coerenti e personalizzate.",
+        servicesEyebrow: "Competenze", servicesTitle: "Cosa facciamo",
+        servicesIntro: "Servizi di progettazione per ogni fase del progetto.",
+        service1Title: "Architettura", service1Text: "Concept e progettazione per abitazioni, edifici e spazi commerciali.",
+        service2Title: "Interior design", service2Text: "Interni in cui materiali, luce e funzionalità dialogano tra loro.",
+        service3Title: "Documentazione", service3Text: "Sviluppo del progetto e preparazione della documentazione tecnica.",
+        projectsEyebrow: "Portfolio", projectsTitle: "Progetti selezionati",
+        projectsIntro: "Una selezione di concept e progetti DDL.",
+        project1Type: "Residenziale · 2025", project1Title: "Casa Nord",
+        project2Type: "Interior design · 2024", project2Title: "Appartamento Luce",
+        project3Type: "Commerciale · 2024", project3Title: "Atelier Urbano",
+        contactEyebrow: "Contatti", contactTitle: "Progettiamo qualcosa di memorabile.",
+        contactText: "Raccontaci la tua idea e ti ricontatteremo.",
         namePlaceholder: "Il tuo nome", emailPlaceholder: "La tua email",
-        messagePlaceholder: "Scrivi il tuo messaggio", sendButton: "Invia messaggio",
-        footerText: " — Studio di architettura", emailSubject: "Messaggio dal sito DDL"
+        messagePlaceholder: "Descrivi brevemente il tuo progetto", sendButton: "Invia messaggio",
+        footerText: "Tutti i diritti riservati.", emailSubject: "Messaggio dal sito DDL"
       },
       fr: {
-        navHome: "Accueil", navAbout: "À propos", navServices: "Services",
-        navProjects: "Projets", navContact: "Contact", languageLabel: "Choisir la langue",
-        heroEyebrow: "Agence d’architecture", heroTitle: "Des espaces qui ont du sens.",
-        heroText: "Nous concevons une architecture attentive aux personnes, au contexte et aux modes de vie.",
-        heroButton: "Découvrir les projets",
-        aboutEyebrow: "À propos de nous", aboutTitle: "L’architecture au quotidien.",
-        aboutText1: "DDL est une agence d’architecture dédiée à la création d’espaces fonctionnels, équilibrés et durables.",
-        aboutText2: "Des premières esquisses aux détails finaux, nous travaillons avec chaque client pour transformer les idées en lieux mémorables.",
-        servicesEyebrow: "Nos activités", servicesTitle: "Services",
-        servicesIntro: "Nous accompagnons chaque projet, du concept à sa réalisation.",
-        service1Title: "Architecture", service1Text: "Conception de logements et d’espaces commerciaux.",
-        service2Title: "Design intérieur", service2Text: "Des intérieurs confortables, cohérents et adaptés aux personnes.",
-        service3Title: "Conseil", service3Text: "Un accompagnement expert pour des décisions éclairées.",
-        projectsEyebrow: "Sélection", projectsTitle: "Projets",
-        projectsIntro: "Des idées transformées en espaces réels.",
-        project1Title: "Maison entre jardins", project1Type: "Résidentiel · 2024",
-        project2Title: "Appartement lumineux", project2Type: "Design intérieur · 2023",
-        project3Title: "Espace communautaire", project3Type: "Espace public · 2022",
-        contactEyebrow: "Parlons-en", contactTitle: "Vous avez un projet en tête ?",
-        contactText: "Parlez-nous de votre projet et nous vous répondrons.",
+        brandSubtitle: "Studio d’architecture et de design",
+        navHome: "Accueil", navAbout: "Studio", navServices: "Services",
+        navProjects: "Projets", navContact: "Contact",
+        heroEyebrow: "Architecture · Design · Conception",
+        heroSubtitle: "Studio d’architecture et de design",
+        heroCopy: "Nous créons des espaces qui allient fonctionnalité, expression architecturale et souci du détail.",
+        heroButton: "Voir les projets", heroContact: "Parlons-en",
+        aboutEyebrow: "Le studio", aboutTitle: "Forme, fonction et contexte.",
+        aboutText1: "DDL est un studio de conception qui transforme les idées en espaces réfléchis, durables et harmonieux.",
+        aboutText2: "Chaque projet prend en compte les personnes, le lieu et les détails. Du concept aux documents de conception, nous créons des solutions cohérentes et sur mesure.",
+        servicesEyebrow: "Expertise", servicesTitle: "Nos activités",
+        servicesIntro: "Des services adaptés à chaque étape de votre projet.",
+        service1Title: "Architecture", service1Text: "Conception de logements, bâtiments et espaces commerciaux.",
+        service2Title: "Design intérieur", service2Text: "Des intérieurs où matériaux, lumière et fonctionnalité se rencontrent.",
+        service3Title: "Documentation", service3Text: "Développement du projet et préparation des documents techniques.",
+        projectsEyebrow: "Portfolio", projectsTitle: "Projets sélectionnés",
+        projectsIntro: "Une sélection de concepts et de projets DDL.",
+        project1Type: "Résidentiel · 2025", project1Title: "Maison Nord",
+        project2Type: "Design intérieur · 2024", project2Title: "Appartement Lumière",
+        project3Type: "Commercial · 2024", project3Title: "Atelier Urbain",
+        contactEyebrow: "Contact", contactTitle: "Imaginons un projet mémorable.",
+        contactText: "Parlez-nous de votre idée et nous vous répondrons.",
         namePlaceholder: "Votre nom", emailPlaceholder: "Votre adresse e-mail",
-        messagePlaceholder: "Écrivez votre message", sendButton: "Envoyer le message",
-        footerText: " — Agence d’architecture", emailSubject: "Message depuis le site DDL"
+        messagePlaceholder: "Décrivez brièvement votre projet", sendButton: "Envoyer le message",
+        footerText: "Tous droits réservés.", emailSubject: "Message depuis le site DDL"
       },
       de: {
+        brandSubtitle: "Architektur- und Designbüro",
         navHome: "Start", navAbout: "Über uns", navServices: "Leistungen",
-        navProjects: "Projekte", navContact: "Kontakt", languageLabel: "Sprache wählen",
-        heroEyebrow: "Architekturbüro", heroTitle: "Räume mit Bedeutung.",
-        heroText: "Wir entwerfen Architektur mit Blick auf Menschen, Kontext und Lebensweise.",
-        heroButton: "Projekte entdecken",
-        aboutEyebrow: "Über uns", aboutTitle: "Architektur für den Alltag.",
-        aboutText1: "DDL ist ein Architekturbüro für funktionale, ausgewogene und langlebige Räume.",
-        aboutText2: "Von den ersten Skizzen bis zu den letzten Details arbeiten wir eng mit unseren Kunden zusammen.",
-        servicesEyebrow: "Was wir tun", servicesTitle: "Leistungen",
-        servicesIntro: "Wir begleiten Ihr Projekt vom ersten Konzept bis zur Umsetzung.",
-        service1Title: "Architektur", service1Text: "Konzepte für Wohnhäuser und Gewerberäume.",
-        service2Title: "Innenarchitektur", service2Text: "Komfortable, stimmige und auf Menschen zugeschnittene Innenräume.",
-        service3Title: "Beratung", service3Text: "Fachkundige Unterstützung für fundierte Entscheidungen.",
-        projectsEyebrow: "Auswahl", projectsTitle: "Projekte",
-        projectsIntro: "Ideen, die zu realen Räumen wurden.",
-        project1Title: "Haus zwischen Gärten", project1Type: "Wohnen · 2024",
-        project2Title: "Lichtdurchflutete Wohnung", project2Type: "Innenarchitektur · 2023",
-        project3Title: "Gemeinschaftsraum", project3Type: "Öffentlicher Raum · 2022",
-        contactEyebrow: "Sprechen wir darüber", contactTitle: "Haben Sie ein Projekt im Sinn?",
-        contactText: "Erzählen Sie uns davon — wir melden uns bei Ihnen.",
+        navProjects: "Projekte", navContact: "Kontakt",
+        heroEyebrow: "Architektur · Design · Planung",
+        heroSubtitle: "Architektur- und Designbüro",
+        heroCopy: "Wir gestalten Räume, die Funktionalität, architektonischen Ausdruck und Liebe zum Detail verbinden.",
+        heroButton: "Projekte ansehen", heroContact: "Kontakt aufnehmen",
+        aboutEyebrow: "Das Büro", aboutTitle: "Form, Funktion und Kontext.",
+        aboutText1: "DDL ist ein Planungsbüro, das Ideen in durchdachte, langlebige und klare Räume verwandelt.",
+        aboutText2: "Jedes Projekt berücksichtigt Menschen, Ort und Details. Vom Konzept bis zur Planung entwickeln wir stimmige, individuelle Lösungen.",
+        servicesEyebrow: "Kompetenz", servicesTitle: "Was wir tun",
+        servicesIntro: "Planungsleistungen für jede Phase Ihres Projekts.",
+        service1Title: "Architektur", service1Text: "Konzepte und Planung für Wohnhäuser, Gebäude und Gewerberäume.",
+        service2Title: "Innenarchitektur", service2Text: "Innenräume, in denen Materialien, Licht und Funktion zusammenwirken.",
+        service3Title: "Dokumentation", service3Text: "Projektentwicklung und Erstellung der erforderlichen Planungsunterlagen.",
+        projectsEyebrow: "Portfolio", projectsTitle: "Ausgewählte Projekte",
+        projectsIntro: "Eine Auswahl an Konzepten und Planungen von DDL.",
+        project1Type: "Wohnen · 2025", project1Title: "Haus Nord",
+        project2Type: "Innenarchitektur · 2024", project2Title: "Wohnung Licht",
+        project3Type: "Gewerbe · 2024", project3Title: "Atelier Urban",
+        contactEyebrow: "Kontakt", contactTitle: "Lassen Sie uns etwas Besonderes entwerfen.",
+        contactText: "Erzählen Sie uns von Ihrer Idee — wir melden uns bei Ihnen.",
         namePlaceholder: "Ihr Name", emailPlaceholder: "Ihre E-Mail-Adresse",
-        messagePlaceholder: "Ihre Nachricht", sendButton: "Nachricht senden",
-        footerText: " — Architekturbüro", emailSubject: "Nachricht von der DDL-Website"
+        messagePlaceholder: "Beschreiben Sie Ihr Projekt kurz", sendButton: "Nachricht senden",
+        footerText: "Alle Rechte vorbehalten.", emailSubject: "Nachricht von der DDL-Website"
       },
       nl: {
+        brandSubtitle: "Architectuur- en ontwerpbureau",
         navHome: "Home", navAbout: "Over ons", navServices: "Diensten",
-        navProjects: "Projecten", navContact: "Contact", languageLabel: "Kies een taal",
-        heroEyebrow: "Architectenbureau", heroTitle: "Ruimtes met betekenis.",
-        heroText: "Wij ontwerpen architectuur met aandacht voor mensen, context en de manier waarop we leven.",
-        heroButton: "Bekijk projecten",
-        aboutEyebrow: "Over ons", aboutTitle: "Architectuur voor het dagelijks leven.",
-        aboutText1: "DDL is een architectenbureau dat functionele, evenwichtige en duurzame ruimtes ontwerpt.",
-        aboutText2: "Van de eerste schets tot de laatste details werken we samen met onze klanten aan bijzondere plekken.",
-        servicesEyebrow: "Wat we doen", servicesTitle: "Diensten",
-        servicesIntro: "We begeleiden projecten van het eerste idee tot de uitvoering.",
-        service1Title: "Architectuur", service1Text: "Ontwerpen voor woningen en commerciële ruimtes.",
-        service2Title: "Interieurontwerp", service2Text: "Comfortabele interieurs die aansluiten bij de mensen die ze gebruiken.",
-        service3Title: "Advies", service3Text: "Deskundige begeleiding bij heldere, goed onderbouwde keuzes.",
-        projectsEyebrow: "Selectie", projectsTitle: "Projecten",
-        projectsIntro: "Ideeën die zijn uitgegroeid tot echte ruimtes.",
-        project1Title: "Huis tussen tuinen", project1Type: "Wonen · 2024",
-        project2Title: "Licht appartement", project2Type: "Interieurontwerp · 2023",
-        project3Title: "Ruimte voor de buurt", project3Type: "Openbare ruimte · 2022",
-        contactEyebrow: "Laten we kennismaken", contactTitle: "Heb je een project in gedachten?",
-        contactText: "Vertel ons er iets over, dan nemen we contact met je op.",
-        namePlaceholder: "Je naam", emailPlaceholder: "Je e-mailadres",
-        messagePlaceholder: "Schrijf je bericht", sendButton: "Bericht versturen",
-        footerText: " — Architectenbureau", emailSubject: "Bericht via de DDL-website"
+        navProjects: "Projecten", navContact: "Contact",
+        heroEyebrow: "Architectuur · Design · Ontwerp",
+        heroSubtitle: "Architectuur- en ontwerpbureau",
+        heroCopy: "We ontwerpen ruimtes waarin functionaliteit, architectonische expressie en oog voor detail samenkomen.",
+        heroButton: "Bekijk projecten", heroContact: "Neem contact op",
+        aboutEyebrow: "Over het bureau", aboutTitle: "Vorm, functie en context.",
+        aboutText1: "DDL is een ontwerpbureau dat ideeën omzet in doordachte, duurzame en heldere ruimtes.",
+        aboutText2: "Elk project houdt rekening met mensen, locatie en details. Van concept tot ontwerpdocumentatie creëren we samenhangende oplossingen op maat.",
+        servicesEyebrow: "Expertise", servicesTitle: "Wat we doen",
+        servicesIntro: "Ontwerpdiensten voor elke fase van uw project.",
+        service1Title: "Architectuur", service1Text: "Concepten en ontwerpen voor woningen, gebouwen en commerciële ruimtes.",
+        service2Title: "Interieurontwerp", service2Text: "Interieurs waarin materialen, licht en functionaliteit samenkomen.",
+        service3Title: "Documentatie", service3Text: "Projectontwikkeling en voorbereiding van ontwerpdocumentatie.",
+        projectsEyebrow: "Portfolio", projectsTitle: "Geselecteerde projecten",
+        projectsIntro: "Een selectie van concepten en ontwerpen van DDL.",
+        project1Type: "Wonen · 2025", project1Title: "Huis Noord",
+        project2Type: "Interieurontwerp · 2024", project2Title: "Appartement Licht",
+        project3Type: "Commercieel · 2024", project3Title: "Atelier Urban",
+        contactEyebrow: "Contact", contactTitle: "Laten we iets bijzonders ontwerpen.",
+        contactText: "Vertel ons over uw idee, dan nemen we contact met u op.",
+        namePlaceholder: "Uw naam", emailPlaceholder: "Uw e-mailadres",
+        messagePlaceholder: "Beschrijf uw project kort", sendButton: "Bericht versturen",
+        footerText: "Alle rechten voorbehouden.", emailSubject: "Bericht via de DDL-website"
       }
     };
 
     const languageSelect = document.getElementById("languageSelect");
 
     function setLanguage(language) {
-      const selectedTranslations = translations[language] || translations.ro;
+      const words = translations[language] || translations.ro;
 
       document.documentElement.lang = language;
 
       document.querySelectorAll("[data-i18n]").forEach((element) => {
         const key = element.dataset.i18n;
-        if (selectedTranslations[key]) {
-          element.textContent = selectedTranslations[key];
-        }
+        if (words[key]) element.textContent = words[key];
       });
 
       document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
         const key = element.dataset.i18nPlaceholder;
-        if (selectedTranslations[key]) {
-          element.placeholder = selectedTranslations[key];
-        }
+        if (words[key]) element.placeholder = words[key];
       });
 
       languageSelect.value = language;
@@ -793,21 +955,19 @@ footer {
       event.preventDefault();
 
       const language = languageSelect.value;
-      const subject = translations[language].emailSubject;
+      const words = translations[language] || translations.ro;
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
       const message = document.getElementById("message").value.trim();
 
       const body = `${name}\n${email}\n\n${message}`;
-      const mailto = `mailto:hello@ddl-architecture.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const mailto = `mailto:contact@ddl.ro?subject=${encodeURIComponent(words.emailSubject)}&body=${encodeURIComponent(body)}`;
 
       window.location.href = mailto;
     });
 
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    const savedLanguage = localStorage.getItem("ddl-language") || "ro";
-    setLanguage(savedLanguage);
+    setLanguage(localStorage.getItem("ddl-language") || "ro");
   </script>
 </body>
 </html>
