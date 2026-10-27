@@ -1568,3 +1568,587 @@ if ("IntersectionObserver" in window) {
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f5f3ee">
+<title>Portofoliu | DDL — Birou de Proiectare</title>
+<meta name="description" content="Portofoliu de arhitectură contemporană și design interior DDL. Case moderne, fațade, birouri și spații premium.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* DDL — PORTOFOLIU ARHITECTURAL */
+#ddl-portfolio {
+  --paper: #f5f3ee;
+  --ink: #20221e;
+  --muted: #777970;
+  --line: #deddd5;
+  --accent: #a28b68;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  padding: 64px 5.5% 90px;
+}
+
+#ddl-portfolio * { box-sizing: border-box; }
+
+#ddl-portfolio .ddl-wrap {
+  max-width: 1500px;
+  margin: auto;
+}
+
+#ddl-portfolio .ddl-kicker {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+#ddl-portfolio .ddl-heading {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  font-size: clamp(38px, 6.3vw, 82px);
+  line-height: 1.04;
+  letter-spacing: -3.8px;
+  margin: 22px 0;
+}
+
+#ddl-portfolio .ddl-heading em {
+  font-weight: 400;
+  color: #8b8c82;
+}
+
+#ddl-portfolio .ddl-intro {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 46px;
+}
+
+#ddl-portfolio .ddl-description {
+  color: var(--muted);
+  max-width: 440px;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+#ddl-portfolio .ddl-count {
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+#ddl-portfolio .ddl-rule {
+  height: 1px;
+  background: var(--line);
+  margin-bottom: 26px;
+}
+
+#ddl-portfolio .ddl-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 35px;
+}
+
+#ddl-portfolio .ddl-filter {
+  font: inherit;
+  font-size: 12px;
+  padding: 12px 20px;
+  border: 1px solid var(--line);
+  border-radius: 50px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: .25s ease;
+}
+
+#ddl-portfolio .ddl-filter:hover,
+#ddl-portfolio .ddl-filter.active {
+  color: white;
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+#ddl-portfolio .ddl-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 42px 22px;
+}
+
+#ddl-portfolio .ddl-card {
+  grid-column: span 4;
+  min-width: 0;
+  animation: ddlAppear .5s ease both;
+}
+
+#ddl-portfolio .ddl-card.featured {
+  grid-column: span 8;
+}
+
+#ddl-portfolio .ddl-card[hidden] { display: none; }
+
+#ddl-portfolio .ddl-photo {
+  display: block;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  background: #e6e3dc;
+  cursor: zoom-in;
+  text-align: left;
+  aspect-ratio: 4 / 4.6;
+}
+
+#ddl-portfolio .featured .ddl-photo {
+  aspect-ratio: 1.57 / 1;
+}
+
+#ddl-portfolio .ddl-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .8s cubic-bezier(.2,.7,.2,1);
+}
+
+#ddl-portfolio .ddl-photo:hover img {
+  transform: scale(1.045);
+}
+
+#ddl-portfolio .ddl-photo::after {
+  content: "↗";
+  position: absolute;
+  right: 17px;
+  bottom: 17px;
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(245,243,238,.94);
+  color: var(--ink);
+  font-size: 20px;
+  opacity: 0;
+  transform: translateY(7px);
+  transition: .25s;
+}
+
+#ddl-portfolio .ddl-photo:hover::after,
+#ddl-portfolio .ddl-photo:focus-visible::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#ddl-portfolio .ddl-card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+  align-items: center;
+}
+
+#ddl-portfolio .ddl-type {
+  font-size: 9px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+#ddl-portfolio .ddl-number {
+  font-size: 10px;
+  color: #9b9c92;
+}
+
+#ddl-portfolio .ddl-name {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 500;
+  letter-spacing: -.7px;
+  margin: 10px 0 7px;
+}
+
+#ddl-portfolio .ddl-place {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+#ddl-portfolio .ddl-bottom {
+  border-top: 1px solid var(--line);
+  margin-top: 72px;
+  padding-top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+#ddl-portfolio .ddl-bottom p {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(21px, 3vw, 35px);
+  max-width: 600px;
+  line-height: 1.35;
+  margin: 0;
+}
+
+#ddl-portfolio .ddl-contact {
+  flex-shrink: 0;
+  text-decoration: none;
+  color: white;
+  background: var(--ink);
+  padding: 16px 23px;
+  font-size: 12px;
+  transition: background .2s;
+}
+
+#ddl-portfolio .ddl-contact:hover { background: #55594d; }
+
+#ddl-portfolio .ddl-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(17,18,16,.94);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+#ddl-portfolio .ddl-modal.open { display: flex; }
+
+#ddl-portfolio .ddl-modal-inner {
+  width: min(1100px, 100%);
+  color: white;
+  position: relative;
+}
+
+#ddl-portfolio .ddl-modal img {
+  display: block;
+  width: 100%;
+  max-height: 76vh;
+  object-fit: contain;
+}
+
+#ddl-portfolio .ddl-modal-caption {
+  padding-top: 17px;
+  font-size: 13px;
+  color: #e2e0d9;
+}
+
+#ddl-portfolio .ddl-close {
+  position: absolute;
+  right: 0;
+  top: -48px;
+  border: 1px solid #777;
+  background: transparent;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+@keyframes ddlAppear {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+  #ddl-portfolio .ddl-card { grid-column: span 6; }
+  #ddl-portfolio .ddl-card.featured { grid-column: span 12; }
+  #ddl-portfolio .ddl-intro { align-items: start; flex-direction: column; }
+}
+
+@media (max-width: 560px) {
+  #ddl-portfolio { padding: 48px 5% 60px; }
+  #ddl-portfolio .ddl-heading { letter-spacing: -2px; }
+  #ddl-portfolio .ddl-grid { gap: 30px 12px; }
+  #ddl-portfolio .ddl-card,
+  #ddl-portfolio .ddl-card.featured { grid-column: span 12; }
+  #ddl-portfolio .ddl-photo,
+  #ddl-portfolio .featured .ddl-photo { aspect-ratio: 1.15 / 1; }
+  #ddl-portfolio .ddl-bottom { align-items: flex-start; flex-direction: column; }
+  #ddl-portfolio .ddl-modal { padding: 12px; }
+}
+</style>
+</head>
+
+<body style="margin:0">
+
+<section id="ddl-portfolio">
+  <div class="ddl-wrap">
+
+    <div class="ddl-kicker">DDL / Arhitectură & design</div>
+
+    <h1 class="ddl-heading">
+      Spații cu<br>
+      <em>sens. Formă. Identitate.</em>
+    </h1>
+
+    <div class="ddl-intro">
+      <p class="ddl-description">
+        Explorăm relația dintre arhitectură, lumină și materialitate.
+        De la volume exterioare atent compuse la interioare de lucru
+        contemporane, fiecare concept pornește de la oameni și spațiu.
+      </p>
+      <div class="ddl-count" id="ddl-count">08 concepte prezentate</div>
+    </div>
+
+    <div class="ddl-rule"></div>
+
+    <nav class="ddl-filters" aria-label="Filtrează proiectele">
+      <button class="ddl-filter active" data-filter="all">Toate proiectele</button>
+      <button class="ddl-filter" data-filter="exterior">Arhitectură exterioară</button>
+      <button class="ddl-filter" data-filter="interior">Design interior</button>
+    </nav>
+
+    <div class="ddl-grid" id="ddl-grid">
+
+      <!-- EXTERIOR 01 -->
+      <article class="ddl-card featured" data-category="exterior">
+        <button class="ddl-photo" aria-label="Mărește imaginea: Reședință Zorilor">
+          <img
+            src="https://www.daibau.ro/showfile.php?id=143829"
+            alt="Concept de reședință contemporană cu volume geometrice, terasă și piscină"
+            loading="lazy">
+        </button>
+        <div class="ddl-card-top">
+          <span class="ddl-type">Arhitectură exterioară</span>
+          <span class="ddl-number">01 / 08</span>
+        </div>
+        <h2 class="ddl-name">Reședință Zorilor</h2>
+        <div class="ddl-place">Cluj-Napoca · Concept rezidențial</div>
+      </article>
+
+      <!-- EXTERIOR 02 -->
+      <article class="ddl-card" data-category="exterior">
+        <button class="ddl-photo" aria-label="Mărește imaginea: Casă urbană">
+          <img
+            src="https://www.wienerberger.fr/Realisations/Rechercher-votre-realisation/Maisons_individuelles/maison-individuelle-roumanie-elegance-sobriete/jcr%3Acontent/root/backgroundcontainer_1584798412/imagegallery/image/image.imgTransformer/crop_web/md-3/1725957342526/Cube%20House%20%282%29.jpg"
+            alt="Casă contemporană cu fațadă albă, cărămidă și suprafețe vitrate"
+            loading="lazy">
+        </button>
+        <div class="ddl-card-top">
+          <span class="ddl-type">Rezidențial</span>
+          <span class="ddl-number">02 / 08</span>
+        </div>
+        <h2 class="ddl-name">Volumetrie urbană</h2>
+        <div class="ddl-place">Turda · Concept rezidențial</div>
+      </article>
+
+      <!-- EXTERIOR 03 -->
+      <article class="ddl-card" data-category="exterior">
+        <button class="ddl-photo" aria-label="Mărește imaginea: Casă contemporană">
+          <img
+            src="https://www.uar-bna.ro/s/bna2018/ver/88cc99d7c67bbe0ab2ef7c43794f471c8465edd6/b18-prj-51-cover-full.jpg"
+            alt="Locuință modernă cu terasă, grădină și iluminat arhitectural"
+            loading="lazy">
+        </button>
+        <div class="ddl-card-top">
+          <span class="ddl-type">Locuință individuală</span>
+          <span class="ddl-number">03 / 08</span>
+        </div>
+        <h2 class="ddl-name">Casa din grădină</h2>
+        <div class="ddl-place">Piatra Neamț · Concept rezidențial</div>
+      </article>
+
+      <!-- EXTERIOR 04 -->
+      <article class="ddl-card" data-category="exterior">
+        <button class="ddl-photo" aria-label="Mărește imaginea: Vilă minimalistă">
+          <img
+            src="https://cdn.archilovers.com/projects/82b83591-6201-45bd-87c8-da53daf702ef.jpg"
+            alt="Vilă minimalistă cu volum alb, fațadă închisă și ferestre ample"
+            loading="lazy">
+        </button>
+        <div class="ddl-card-top">
+          <span class="ddl-type">Arhitectură contemporană</span>
+          <span class="ddl-number">04 / 08</span>
+        </div>
+        <h2 class="ddl-name">Casa în lumină</h2>
+        <div class="ddl-place">Brașov · Concept rezidențial</div>
+      </article>
+
+      <!-- INTERIOR 05 -->
+      <article class="ddl-card featured" data-category="interior">
+        <button class="ddl-photo" aria-label="Mărește imaginea: Birou contemporan">
+          <img
+            src="https://oss.gooood.cn/uploads/2025/02/35_Campomarzio_Arch_CIMeC_IMG_0379_GW.jpg"
+            alt="Interior de birou minimalist cu mobilier modern și compartimentări vitrate"
+            loading="lazy">
+        </button>
+        <div class="ddl-card-top">
+          <span class="ddl-type">Design interior</span>
+          <span class="ddl-number">05 / 08</span>
+        </div>
+        <h2 class="ddl-name">Office / The Quiet Space</h2>
+        <div class="ddl-place">Cluj-Napoca · Concept de birou</div>
+      </article>
+
+      <!-- INTERIOR 06 -->
+      <article class="ddl-card" data-category="interior">
+        <button class="ddl-photo" aria-label="Mărește imaginea: Spațiu de lucru">
+          <img
+            src="https://wondrouslavie.com/wp-content/uploads/2024/01/white-office-design.jpg"
+            alt="Spațiu de lucru luminos cu birouri albe și ferestre înalte"
+            loading="lazy">
+        </button>
+        <div class="ddl-card-top">
+          <span class="ddl-type">Spațiu profesional</span>
+          <span class="ddl-number">06 / 08</span>
+        </div>
+        <h2 class="ddl-name">Open Space Studio</h2>
+        <div class="ddl-place">București · Concept de birou</div>
+      </article>
+
+      <!-- INTERIOR 07 -->
+      <article class="ddl-card" data-category="interior">
+        <button class="ddl-photo" aria-label="Mărește imaginea: Birou cu materiale naturale">
+          <img
+            src="https://www.bricoflor.co.uk/img/600/600/resize/catalog/product/t/a/tatami_smoked_4.jpg"
+            alt="Birou modern cu lemn natural, corpuri de iluminat negre și ferestre ample"
+            loading="lazy">
+        </button>
+        <div class="ddl-card-top">
+          <span class="ddl-type">Amenajare interioară</span>
+          <span class="ddl-number">07 / 08</span>
+        </div>
+        <h2 class="ddl-name">Material & lumină</h2>
+        <div class="ddl-place">Oradea · Concept de birou</div>
+      </article>
+
+      <!-- EXTERIOR 08 -->
+      <article class="ddl-card" data-category="exterior">
+        <button class="ddl-photo" aria-label="Mărește imaginea: Vilă cu piscină">
+          <img
+            src="https://zcj.ro/images/db/1_3_287751_1762760695_06409.jpg"
+            alt="Vilă contemporană cu suprafețe vitrate, terasă și piscină"
+            loading="lazy">
+        </button>
+        <div class="ddl-card-top">
+          <span class="ddl-type">Arhitectură exterioară</span>
+          <span class="ddl-number">08 / 08</span>
+        </div>
+        <h2 class="ddl-name">Orizont contemporan</h2>
+        <div class="ddl-place">Constanța · Concept rezidențial</div>
+      </article>
+
+    </div>
+
+    <div class="ddl-bottom">
+      <p>Următorul proiect poate începe cu o simplă conversație.</p>
+      <!-- Înlocuiește adresa cu adresa reală de contact -->
+      <a class="ddl-contact" href="mailto:contact@exemplu.ro">
+        Discută un proiect ↗
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Galerie imagine mărită -->
+  <div class="ddl-modal" id="ddl-modal" role="dialog"
+       aria-modal="true" aria-label="Galerie proiect">
+    <div class="ddl-modal-inner">
+      <button class="ddl-close" id="ddl-close" aria-label="Închide">×</button>
+      <img id="ddl-modal-image" src="" alt="">
+      <div class="ddl-modal-caption" id="ddl-modal-caption"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(() => {
+  const root = document.getElementById('ddl-portfolio');
+  if (!root) return;
+
+  const filters = root.querySelectorAll('.ddl-filter');
+  const cards = root.querySelectorAll('.ddl-card');
+  const count = root.querySelector('#ddl-count');
+  const modal = root.querySelector('#ddl-modal');
+  const modalImage = root.querySelector('#ddl-modal-image');
+  const modalCaption = root.querySelector('#ddl-modal-caption');
+  const closeButton = root.querySelector('#ddl-close');
+  let lastFocused = null;
+
+  function filterCards(category) {
+    let visible = 0;
+
+    cards.forEach(card => {
+      const show = category === 'all' ||
+                   card.dataset.category === category;
+      card.hidden = !show;
+      if (show) visible++;
+    });
+
+    count.textContent = String(visible).padStart(2, '0') +
+      (visible === 1 ? ' proiect prezentat' : ' proiecte prezentate');
+
+    filters.forEach(button => {
+      const active = button.dataset.filter === category;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+  }
+
+  filters.forEach(button => {
+    button.addEventListener('click', () => {
+      filterCards(button.dataset.filter);
+    });
+  });
+
+  function openModal(button) {
+    const image = button.querySelector('img');
+    if (!image) return;
+
+    lastFocused = button;
+    modalImage.src = image.currentSrc || image.src;
+    modalImage.alt = image.alt;
+    modalCaption.textContent =
+      button.closest('.ddl-card').querySelector('.ddl-name').textContent +
+      ' — ' +
+      button.closest('.ddl-card').querySelector('.ddl-place').textContent;
+
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    closeButton.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    modalImage.src = '';
+    if (lastFocused) lastFocused.focus();
+  }
+
+  root.querySelectorAll('.ddl-photo').forEach(button => {
+    button.addEventListener('click', () => openModal(button));
+  });
+
+  closeButton.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', event => {
+    if (event.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && modal.classList.contains('open')) {
+      closeModal();
+    }
+  });
+
+  filterCards('all');
+})();
+</script>
+
+</body>
+</html>
