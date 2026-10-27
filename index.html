@@ -766,3 +766,260 @@
   </script>
 </body>
 </html>
+
+/* ========================================
+   DDL — PREMIUM VISUAL UPGRADE
+   Aspect modern pentru birou de arhitectură
+   ======================================== */
+
+:root {
+  --ddl-bg: #f7f6f2;
+  --ddl-white: #ffffff;
+  --ddl-dark: #20211f;
+  --ddl-muted: #77766f;
+  --ddl-accent: #a58a67;
+  --ddl-border: rgba(32, 33, 31, 0.13);
+  --ddl-radius: 4px;
+  --ddl-transition: 300ms ease;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  background: var(--ddl-bg);
+  color: var(--ddl-dark);
+  font-family: "Inter", "Helvetica Neue", sans-serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--ddl-accent);
+  color: white;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Antet și navigare */
+
+header {
+  transition:
+    background var(--ddl-transition),
+    box-shadow var(--ddl-transition);
+}
+
+header nav a,
+nav a {
+  position: relative;
+  transition: color var(--ddl-transition);
+}
+
+nav a:hover {
+  color: var(--ddl-accent);
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 1px;
+  background: var(--ddl-accent);
+  transition: width var(--ddl-transition);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Titluri elegante */
+
+h1,
+h2,
+h3 {
+  color: var(--ddl-dark);
+  letter-spacing: -0.045em;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.8rem, 7vw, 6.8rem);
+  font-weight: 500;
+}
+
+h2 {
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  font-weight: 500;
+}
+
+h3 {
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  font-weight: 500;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Secțiuni cu mai mult spațiu */
+
+section {
+  scroll-margin-top: 90px;
+}
+
+section:not(:first-child) {
+  padding-top: clamp(64px, 9vw, 120px);
+  padding-bottom: clamp(64px, 9vw, 120px);
+}
+
+/* Imagini — prezentare arhitecturală */
+
+section img {
+  transition:
+    transform 700ms cubic-bezier(.2, .7, .2, 1),
+    filter 500ms ease;
+}
+
+a img {
+  display: block;
+}
+
+a:hover img {
+  filter: brightness(.94);
+}
+
+/* Carduri și elemente de proiect */
+
+.project-card,
+.project,
+.service-card,
+.card {
+  overflow: hidden;
+  border: 1px solid var(--ddl-border);
+  border-radius: var(--ddl-radius);
+  background: var(--ddl-white);
+  transition:
+    transform var(--ddl-transition),
+    box-shadow var(--ddl-transition),
+    border-color var(--ddl-transition);
+}
+
+.project-card:hover,
+.project:hover,
+.service-card:hover,
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(165, 138, 103, .5);
+  box-shadow: 0 18px 45px rgba(32, 33, 31, .07);
+}
+
+/* Butoane */
+
+button,
+.button,
+.btn,
+a.button,
+a.btn {
+  transition:
+    color var(--ddl-transition),
+    background var(--ddl-transition),
+    border-color var(--ddl-transition),
+    transform var(--ddl-transition);
+}
+
+button:hover,
+.button:hover,
+.btn:hover,
+a.button:hover,
+a.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Formular de contact */
+
+input,
+textarea,
+select {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--ddl-border);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, .8);
+  padding: 14px 16px;
+  color: var(--ddl-dark);
+  font: inherit;
+  transition:
+    border-color var(--ddl-transition),
+    box-shadow var(--ddl-transition);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--ddl-accent);
+  box-shadow: 0 0 0 3px rgba(165, 138, 103, .12);
+}
+
+textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* Accesibilitate */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--ddl-accent);
+  outline-offset: 4px;
+}
+
+/* Telefon și tabletă */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: clamp(2.6rem, 12vw, 4.5rem);
+  }
+
+  h2 {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  section:not(:first-child) {
+    padding-top: 58px;
+    padding-bottom: 58px;
+  }
+
+  .project-card:hover,
+  .project:hover,
+  .service-card:hover,
+  .card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* Respectă preferința utilizatorului pentru
+   reducerea animațiilor */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
