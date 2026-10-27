@@ -2152,3 +2152,358 @@ if ("IntersectionObserver" in window) {
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DDL | Portofoliu magazine Pepco</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f3ee;
+  --ink: #20231f;
+  --muted: #777970;
+  --blue: #0878bd;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+}
+header {
+  padding: 24px 6%;
+  border-bottom: 1px solid #deddd5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  font-size: 23px;
+  letter-spacing: 5px;
+  font-weight: 700;
+}
+.brand small {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin-top: 5px;
+}
+header a, .cta a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 12px;
+}
+main {
+  max-width: 1450px;
+  padding: 70px 6% 90px;
+  margin: auto;
+}
+.eyebrow {
+  color: #9b805b;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+h1 {
+  font: 500 clamp(38px, 6vw, 76px)/1.06 "Manrope", sans-serif;
+  letter-spacing: -3px;
+  margin: 22px 0;
+}
+h1 span { color: #85877d; }
+.intro {
+  max-width: 580px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--muted);
+  margin-bottom: 35px;
+}
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 35px;
+}
+.filters button {
+  border: 1px solid #d6d5cd;
+  border-radius: 40px;
+  background: transparent;
+  padding: 12px 19px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+}
+.filters button.active,
+.filters button:hover {
+  background: var(--ink);
+  color: white;
+  border-color: var(--ink);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 34px 20px;
+}
+.project { min-width: 0; }
+.project[hidden] { display: none; }
+.photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: #e5e3dc;
+  cursor: zoom-in;
+  display: block;
+}
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .6s ease;
+}
+.photo:hover img { transform: scale(1.04); }
+.tag {
+  color: #9b805b;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 18px;
+  font-weight: 700;
+}
+h2 {
+  font: 500 22px "Manrope", sans-serif;
+  margin: 9px 0;
+}
+.location {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+.note {
+  margin-top: 12px;
+  font-size: 11px;
+  line-height: 1.6;
+  color: #85877d;
+}
+.cta {
+  border-top: 1px solid #deddd5;
+  margin-top: 70px;
+  padding-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.cta p {
+  font: 500 clamp(22px, 3vw, 35px) "Manrope", sans-serif;
+  max-width: 560px;
+}
+.cta a {
+  background: var(--ink);
+  color: white;
+  padding: 16px 22px;
+}
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: rgba(16,17,15,.95);
+  padding: 25px;
+  align-items: center;
+  justify-content: center;
+}
+.modal.open { display: flex; }
+.modal img {
+  max-width: 95%;
+  max-height: 85vh;
+  object-fit: contain;
+}
+.close {
+  position: fixed;
+  top: 20px;
+  right: 25px;
+  color: white;
+  background: transparent;
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  font-size: 25px;
+  cursor: pointer;
+}
+@media(max-width:850px) {
+  .grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:540px) {
+  main { padding: 48px 5% 60px; }
+  .grid { grid-template-columns: 1fr; }
+  h1 { letter-spacing: -1.8px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">DDL<small>BIROU DE PROIECTARE</small></div>
+  <a href="#proiecte">PORTOFOLIU ↘</a>
+</header>
+
+<main id="proiecte">
+  <div class="eyebrow">Arhitectură comercială · Retail</div>
+  <h1>PEPCO<br><span>Magazine & spații comerciale.</span></h1>
+  <p class="intro">
+    O galerie vizuală dedicată arhitecturii magazinelor Pepco,
+    fațadelor comerciale, acceselor și amenajărilor interioare
+    din România.
+  </p>
+
+  <div class="filters">
+    <button class="active" data-filter="all">Toate imaginile</button>
+    <button data-filter="exterior">Fațade și accese</button>
+    <button data-filter="interior">Interioare</button>
+  </div>
+
+  <section class="grid">
+
+    <article class="project" data-type="exterior">
+      <button class="photo" aria-label="Mărește fotografia Pepco Platinia">
+        <img src="https://cdn.storage.teliportme.com/360-content-thumbnail/6422303/2439854/800_300.jpg"
+          alt="Intrarea magazinului Pepco din centrul comercial Platinia, Cluj-Napoca"
+          loading="lazy">
+      </button>
+      <div class="tag">Fațadă comercială</div>
+      <h2>Pepco · Platinia</h2>
+      <div class="location">Cluj-Napoca · Calea Mănăștur</div>
+      <div class="note">Fotografie asociată magazinului din Platinia Shopping Center.</div>
+    </article>
+
+    <article class="project" data-type="interior">
+      <button class="photo" aria-label="Mărește fotografia interior Pepco">
+        <img src="https://zcj.ro/images/db/1_3_189543_1567676406_03923.jpg"
+          alt="Interior Pepco cu rafturi și standuri de îmbrăcăminte"
+          loading="lazy">
+      </button>
+      <div class="tag">Amenajare interioară</div>
+      <h2>Pepco · Cluj</h2>
+      <div class="location">Cluj-Napoca · Fotografie publicată în presă</div>
+      <div class="note">Imagine de interior; adresa exactă a filialei nu este confirmată.</div>
+    </article>
+
+    <article class="project" data-type="interior">
+      <button class="photo" aria-label="Mărește fotografia interior Pepco Bacău">
+        <img src="https://dr8a7gwjtpmtk.cloudfront.net/fileadmin/shared/Machete/Pepco_website__1_.jpeg"
+          alt="Rafturi și produse într-un magazin Pepco din Supernova Bacău"
+          loading="lazy">
+      </button>
+      <div class="tag">Design de retail</div>
+      <h2>Pepco · Supernova</h2>
+      <div class="location">Bacău · Centru comercial</div>
+      <div class="note">Fotografie de interior publicată pe pagina centrului comercial.</div>
+    </article>
+
+    <article class="project" data-type="interior">
+      <button class="photo" aria-label="Mărește fotografia cu produse Pepco">
+        <img src="https://media.revistabiz.ro/uploads/2025/09/Foto-magazin-500-PEPCO-1.jpg"
+          alt="Rafturi cu textile și produse pentru casă într-un magazin Pepco"
+          loading="lazy">
+      </button>
+      <div class="tag">Amenajare și expunere</div>
+      <h2>Pepco · Concept interior</h2>
+      <div class="location">România · Interior de magazin</div>
+      <div class="note">Imagine de interior; orașul exact nu este confirmat.</div>
+    </article>
+
+    <article class="project" data-type="interior">
+      <button class="photo" aria-label="Mărește fotografia magazinului Pepco">
+        <img src="https://www.retail.ro/storage/image_thumbs/thumbs/d2af61fa5e85defd8ef9403fb571988d/1200x628-00-90.png?v=1756205971"
+          alt="Intrare și spațiu de vânzare Pepco cu raioane de îmbrăcăminte"
+          loading="lazy">
+      </button>
+      <div class="tag">Spațiu comercial</div>
+      <h2>Pepco · Retail interior</h2>
+      <div class="location">România · Magazin Pepco</div>
+      <div class="note">Imagine de prezentare; filiala exactă nu este identificată.</div>
+    </article>
+
+    <article class="project" data-type="exterior">
+      <button class="photo" aria-label="Mărește fotografia intrării Pepco">
+        <img src="https://1.bp.blogspot.com/-z5rLBAxMcXA/XLnedGbBzwI/AAAAAAAAnlY/BcUYje1Y8koRQ72K3soDwemdHvnyH2cHACPcBGAYYCw/s1600/pepco-hello-shopping-park-bacau.jpg"
+          alt="Intrare Pepco cu firmă albastră în Bacău"
+          loading="lazy">
+      </button>
+      <div class="tag">Intrare comercială</div>
+      <h2>Pepco · Hello Shopping Park</h2>
+      <div class="location">Bacău · Fotografie de la deschidere</div>
+      <div class="note">Fotografie publicată despre magazinul din Hello Shopping Park.</div>
+    </article>
+
+    <!-- Adaugă aici fotografii verificate din Turda, Zorilor și Piatra Neamț -->
+
+  </section>
+
+  <div class="cta">
+    <p>Arhitectură comercială. Funcționalitate. Identitate.</p>
+    <a href="https://pepco.ro/store-locator" target="_blank" rel="noopener">
+      Localizator magazine Pepco ↗
+    </a>
+  </div>
+</main>
+
+<div class="modal" id="gallery-modal" role="dialog"
+     aria-modal="true" aria-label="Fotografie mărită">
+  <button class="close" aria-label="Închide fotografia">×</button>
+  <img src="" alt="" id="gallery-image">
+</div>
+
+<script>
+const cards = document.querySelectorAll('.project');
+const filters = document.querySelectorAll('.filters button');
+
+filters.forEach(button => {
+  button.addEventListener('click', () => {
+    filters.forEach(item => item.classList.remove('active'));
+    button.classList.add('active');
+
+    const filter = button.dataset.filter;
+    cards.forEach(card => {
+      card.hidden = filter !== 'all' && card.dataset.type !== filter;
+    });
+  });
+});
+
+const modal = document.getElementById('gallery-modal');
+const modalImage = document.getElementById('gallery-image');
+const closeButton = modal.querySelector('.close');
+
+document.querySelectorAll('.photo').forEach(button => {
+  button.addEventListener('click', () => {
+    const image = button.querySelector('img');
+    modalImage.src = image.currentSrc || image.src;
+    modalImage.alt = image.alt;
+    modal.classList.add('open');
+  });
+});
+
+function closeGallery() {
+  modal.classList.remove('open');
+  modalImage.src = '';
+}
+
+closeButton.addEventListener('click', closeGallery);
+modal.addEventListener('click', event => {
+  if (event.target === modal) closeGallery();
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') closeGallery();
+});
+</script>
+</body>
+</html>
