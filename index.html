@@ -1,665 +1,704 @@
+
 <!DOCTYPE html>
 <html lang="ro">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="DDL — Birou de proiectare arhitecturală.">
-  <title>DDL — Birou de proiectare</title>
+  <meta name="theme-color" content="#eae8e1">
+  <meta name="description" content="DDL — Birou de proiectare. Arhitectură contemporană, spații și idei.">
+  <title>DDL — Birou de Proiectare</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --paper: #f5f2eb;
-      --white: #fffefa;
-      --ink: #292923;
-      --muted: #777367;
-      --gold: #a77d35;
-      --gold-light: #c9a969;
-      --line: #ded7c8;
-      --serif: "Cormorant Garamond", Georgia, serif;
-      --sans: "DM Sans", Arial, sans-serif;
+      --paper: #eae8e1;
+      --ink: #24251f;
+      --muted: #77766d;
+      --line: rgba(36, 37, 31, .2);
+      --pad: clamp(20px, 5vw, 76px);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 82px;
+      scroll-padding-top: 90px;
     }
 
     body {
+      margin: 0;
       background: var(--paper);
       color: var(--ink);
-      font-family: var(--sans);
-      line-height: 1.7;
+      font-family: "Manrope", sans-serif;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    a { color: inherit; text-decoration: none; }
+
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    ::selection { background: var(--ink); color: var(--paper); }
+
+    .mono {
+      font-family: "DM Mono", monospace;
+      text-transform: uppercase;
+      font-size: 10px;
+      letter-spacing: .1em;
     }
 
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 5;
-      background: rgba(245, 242, 235, 0.95);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(12px);
-    }
+    /* NAVIGARE */
 
-    .nav {
-      width: min(1220px, 90%);
-      min-height: 76px;
-      margin: auto;
+    header {
+      height: 88px;
+      padding: 0 var(--pad);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 25px;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      z-index: 10;
     }
 
-    .logo {
-      color: var(--gold);
-      font-family: var(--serif);
-      font-size: 34px;
-      font-weight: 600;
-      font-style: italic;
-      letter-spacing: 0.12em;
-    }
-
-    .nav-links {
+    .brand {
       display: flex;
-      flex-wrap: wrap;
-      gap: 28px;
-      list-style: none;
+      flex-direction: column;
+      gap: 3px;
     }
 
-    .nav-links a {
-      color: var(--muted);
-      font-size: 13px;
-      transition: color 0.2s ease;
+    .brand-name {
+      font-size: 29px;
+      font-weight: 800;
+      letter-spacing: -.09em;
+      line-height: 1;
     }
 
-    .nav-links a:hover {
-      color: var(--gold);
+    .brand-sub {
+      font-family: "DM Mono", monospace;
+      font-size: 8px;
+      letter-spacing: .08em;
     }
+
+    nav {
+      display: flex;
+      gap: clamp(16px, 3vw, 44px);
+      align-items: center;
+    }
+
+    nav a {
+      font-size: 11px;
+      transition: opacity .2s;
+    }
+
+    nav a:hover { opacity: .5; }
+
+    .nav-cta {
+      border: 1px solid var(--ink);
+      padding: 12px 17px;
+      border-radius: 100px;
+    }
+
+    /* INTRO */
 
     .hero {
-      min-height: 76vh;
-      display: grid;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding: 100px 5%;
-      background: var(--white);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .hero::before {
-      content: "";
-      width: 410px;
-      height: 410px;
-      position: absolute;
-      right: 9%;
-      top: 50%;
-      border: 1px solid var(--line);
-      transform: translateY(-50%) rotate(45deg);
-    }
-
-    .hero::after {
-      content: "";
-      width: 320px;
-      height: 320px;
-      position: absolute;
-      right: calc(9% + 45px);
-      top: 50%;
-      border: 1px solid rgba(167, 125, 53, 0.25);
-      transform: translateY(-50%) rotate(45deg);
-    }
-
-    .hero-content {
-      width: min(1220px, 100%);
-      margin: auto;
-      position: relative;
-      z-index: 1;
+      padding: 52px var(--pad) 24px;
     }
 
     .eyebrow {
-      color: var(--gold);
-      font-size: 12px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      margin-bottom: 26px;
     }
 
     .hero h1 {
-      margin: 14px 0 0;
-      color: var(--gold);
-      font-family: var(--serif);
-      font-size: clamp(90px, 16vw, 185px);
-      font-weight: 500;
-      font-style: italic;
-      line-height: 0.95;
+      font-size: clamp(62px, 14.8vw, 218px);
+      line-height: .77;
+      letter-spacing: -.105em;
+      font-weight: 600;
+      margin: 0 0 35px -0.045em;
     }
 
-    .hero h2 {
-      margin-top: 6px;
-      color: var(--ink);
-      font-family: var(--serif);
-      font-size: clamp(24px, 4vw, 39px);
-      font-weight: 400;
-      font-style: italic;
+    .hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 25px;
+      margin: 36px 0 27px;
     }
 
-    .hero p {
-      max-width: 470px;
-      margin-top: 22px;
-      color: var(--muted);
-      font-size: 15px;
+    .hero-bottom p {
+      font-size: clamp(15px, 2vw, 22px);
+      line-height: 1.5;
+      max-width: 410px;
+      margin: 0;
+      letter-spacing: -.04em;
     }
 
-    .button {
-      display: inline-block;
-      margin-top: 28px;
-      padding: 12px 23px;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      font-family: var(--serif);
-      font-size: 18px;
-      font-style: italic;
-      transition: background 0.2s ease, color 0.2s ease;
+    .scroll-note { color: var(--muted); white-space: nowrap; }
+
+    .hero-image {
+      position: relative;
+      height: clamp(300px, 58vw, 720px);
+      overflow: hidden;
+      background: #c4b9a4;
     }
 
-    .button:hover {
-      background: var(--gold);
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 1.2s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .hero-image:hover img { transform: scale(1.025); }
+
+    .image-label {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      padding: 10px 13px;
+      background: var(--paper);
+    }
+
+    .image-number {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
       color: white;
+      text-shadow: 0 1px 10px #333;
     }
 
-    .section {
-      width: min(1220px, 90%);
-      margin: auto;
-      padding: 100px 0;
+    /* INTRODUCERE */
+
+    section { padding: 115px var(--pad); }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 20px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 48px;
     }
 
-    .section-title {
-      margin-bottom: 42px;
-    }
-
-    .section-title span {
-      color: var(--gold);
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-
-    .section-title h2 {
-      margin-top: 7px;
-      color: var(--ink);
-      font-family: var(--serif);
-      font-size: clamp(42px, 6vw, 64px);
+    .section-head h2 {
+      font-size: clamp(40px, 7vw, 95px);
       font-weight: 500;
-      font-style: italic;
-      line-height: 1.1;
+      letter-spacing: -.085em;
+      line-height: .95;
+      margin: 0;
     }
+
+    .section-index { color: var(--muted); padding-top: 9px; }
 
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 55px;
+      gap: 9vw;
     }
 
-    .about-copy p {
-      margin-bottom: 18px;
-      color: var(--muted);
-      font-size: 15px;
+    .about-statement {
+      font-size: clamp(24px, 3.8vw, 49px);
+      letter-spacing: -.065em;
+      line-height: 1.2;
+      margin: 0;
+      max-width: 600px;
     }
 
-    .about-copy em {
-      color: var(--gold);
-      font-family: var(--serif);
-      font-size: 22px;
-    }
-
-    .image-frame {
-      min-height: 350px;
-      display: grid;
-      place-items: center;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--gold-light);
-      background:
-        linear-gradient(145deg, rgba(201, 169, 105, 0.08), transparent 60%),
-        #eeeae0;
-      color: #9b8968;
-      text-align: center;
-    }
-
-    .image-frame::after {
-      content: "";
-      position: absolute;
-      inset: 12px;
-      border: 1px solid rgba(167, 125, 53, 0.25);
-      pointer-events: none;
-    }
-
-    .image-frame span {
-      padding: 25px;
-      font-family: var(--serif);
-      font-size: 19px;
-      font-style: italic;
-    }
-
-    .image-frame img {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      inset: 0;
-      object-fit: cover;
-    }
-
-    .services-section {
-      background: #ebe6da;
-      border-block: 1px solid var(--line);
-    }
-
-    .services-inner {
-      width: min(1220px, 90%);
-      margin: auto;
-      padding: 95px 0;
-    }
-
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .service-card {
-      min-height: 200px;
-      padding: 28px;
-      background: var(--white);
-      border: 1px solid var(--line);
-    }
-
-    .service-card .number {
-      color: var(--gold);
-      font-family: var(--serif);
-      font-size: 22px;
-      font-style: italic;
-    }
-
-    .service-card h3 {
-      margin: 12px 0 8px;
-      color: var(--ink);
-      font-family: var(--serif);
-      font-size: 27px;
-      font-weight: 500;
-      font-style: italic;
-    }
-
-    .service-card p {
-      color: var(--muted);
+    .about-copy {
+      max-width: 440px;
       font-size: 14px;
+      line-height: 1.9;
+      color: var(--muted);
     }
+
+    .about-copy p:first-child { margin-top: 0; }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding-bottom: 7px;
+      border-bottom: 1px solid var(--ink);
+      margin-top: 20px;
+      font-size: 12px;
+    }
+
+    /* PROIECTE */
+
+    .projects { background: #dfddd5; }
 
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 32px 22px;
+      grid-template-columns: 1.12fr .88fr;
+      column-gap: 24px;
+      row-gap: 65px;
     }
 
-    .project-frame {
-      min-height: 340px;
+    .project:nth-child(even) { margin-top: 100px; }
+
+    .project-image {
+      overflow: hidden;
+      background: #cbc5b8;
+      aspect-ratio: 4 / 5;
     }
 
-    .project-caption {
+    .project:nth-child(even) .project-image {
+      aspect-ratio: 4 / 4.7;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .8s ease;
+    }
+
+    .project:hover .project-image img { transform: scale(1.04); }
+
+    .project-meta {
       display: flex;
       justify-content: space-between;
       gap: 12px;
-      padding-top: 12px;
-      color: var(--ink);
-      font-family: var(--serif);
-      font-size: 22px;
-      font-style: italic;
+      margin-top: 17px;
+      color: var(--muted);
     }
 
-    .project-caption span:last-child {
-      color: var(--gold);
-      font-family: var(--sans);
+    .project h3 {
+      font-size: clamp(20px, 2.5vw, 32px);
+      font-weight: 500;
+      letter-spacing: -.06em;
+      margin: 10px 0 0;
+    }
+
+    .project p {
       font-size: 12px;
-      font-style: normal;
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 8px 0 0;
     }
 
-    .contact-section {
-      background: var(--white);
-      border-top: 1px solid var(--line);
+    .placeholder-note {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 35px;
     }
 
-    .contact-inner {
-      width: min(1220px, 90%);
-      margin: auto;
-      padding: 95px 0;
+    /* SERVICII */
+
+    .service-list { border-top: 1px solid var(--line); }
+
+    .service {
+      display: grid;
+      grid-template-columns: 65px 1fr 35px;
+      align-items: center;
+      gap: 20px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+      transition: padding .25s ease;
     }
+
+    .service:hover { padding-left: 10px; }
+
+    .service-num { color: var(--muted); }
+
+    .service h3 {
+      margin: 0;
+      font-size: clamp(21px, 3.5vw, 43px);
+      font-weight: 500;
+      letter-spacing: -.065em;
+    }
+
+    .service-arrow { text-align: right; font-size: 20px; }
+
+    /* PRINCIPII */
+
+    .manifesto {
+      background: var(--ink);
+      color: var(--paper);
+      padding-top: 110px;
+      padding-bottom: 110px;
+    }
+
+    .manifesto .mono { color: #b1afa4; }
+
+    .manifesto h2 {
+      font-size: clamp(38px, 8vw, 110px);
+      line-height: 1.03;
+      font-weight: 500;
+      letter-spacing: -.085em;
+      max-width: 1050px;
+      margin: 50px 0;
+    }
+
+    .manifesto h2 span { color: #aaa99e; }
+
+    .manifesto-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+      align-items: end;
+    }
+
+    .manifesto-bottom p {
+      max-width: 350px;
+      font-size: 13px;
+      line-height: 1.8;
+      color: #b1afa4;
+    }
+
+    .light-link {
+      display: inline-block;
+      border-bottom: 1px solid #aaa99e;
+      padding-bottom: 9px;
+      font-size: 12px;
+    }
+
+    /* CONTACT */
 
     .contact-grid {
       display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 60px;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .contact-title {
+      font-size: clamp(48px, 9vw, 120px);
+      line-height: .9;
+      letter-spacing: -.1em;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    .contact-info {
+      align-self: end;
+      justify-self: end;
+      width: 100%;
+      max-width: 400px;
     }
 
     .contact-info p {
-      margin: 0 0 15px;
-      color: var(--muted);
       font-size: 14px;
+      line-height: 1.8;
+      color: var(--muted);
     }
 
-    .contact-info strong {
-      color: var(--gold);
-      font-family: var(--serif);
-      font-size: 20px;
-      font-style: italic;
-      font-weight: 500;
-    }
-
-    .contact-form {
-      display: grid;
-      gap: 13px;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 14px 15px;
-      border: 1px solid var(--line);
-      background: var(--paper);
-      color: var(--ink);
-      font: 14px var(--sans);
-      outline: none;
-    }
-
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      border-color: var(--gold);
-    }
-
-    .contact-form textarea {
-      min-height: 135px;
-      resize: vertical;
-    }
-
-    .contact-form button {
-      justify-self: start;
-      padding: 12px 24px;
-      border: 1px solid var(--gold);
-      background: var(--gold);
-      color: white;
-      font: italic 18px var(--serif);
-      cursor: pointer;
-    }
-
-    .contact-form button:hover {
-      background: transparent;
-      color: var(--gold);
+    .email-link {
+      font-size: clamp(16px, 2vw, 23px);
+      letter-spacing: -.04em;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 8px;
+      display: inline-block;
+      margin-top: 16px;
+      overflow-wrap: anywhere;
     }
 
     footer {
-      padding: 23px 5%;
+      border-top: 1px solid var(--line);
+      padding: 25px var(--pad);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
       color: var(--muted);
-      text-align: center;
-      font-size: 12px;
     }
 
-    @media (max-width: 760px) {
-      .nav {
-        width: 90%;
-        padding: 12px 0;
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 4px;
-      }
+    footer a { color: var(--ink); }
 
-      .nav-links {
-        gap: 10px 18px;
-      }
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
 
-      .hero {
-        min-height: 72vh;
-        padding-block: 80px;
-      }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-      .hero::before {
-        width: 250px;
-        height: 250px;
-        right: -95px;
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
       }
+      .reveal { opacity: 1; transform: none; }
+    }
 
-      .hero::after {
-        width: 190px;
-        height: 190px;
-        right: -65px;
+    @media (max-width: 700px) {
+      header { height: 75px; }
+      nav { gap: 14px; }
+      nav a { font-size: 10px; }
+      nav .nav-cta { padding: 10px; }
+      .nav-extra { display: none; }
+      .hero { padding-top: 38px; }
+      .hero h1 { font-size: 19vw; }
+      .hero-bottom { align-items: start; }
+      .scroll-note { display: none; }
+      section { padding-top: 78px; padding-bottom: 78px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 30px; }
+      .contact-info { justify-self: start; }
+      .project-grid { grid-template-columns: 1fr; row-gap: 38px; }
+      .project:nth-child(even) { margin-top: 0; }
+      .project-image, .project:nth-child(even) .project-image {
+        aspect-ratio: 4 / 4.2;
       }
-
-      .about-grid,
-      .contact-grid,
-      .project-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .service-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section,
-      .services-inner,
-      .contact-inner {
-        padding-block: 70px;
-      }
-
-      .image-frame {
-        min-height: 260px;
-      }
-
-      .project-frame {
-        min-height: 270px;
-      }
+      .manifesto { padding-top: 80px; padding-bottom: 80px; }
+      .manifesto h2 { margin: 35px 0; }
+      .manifesto-bottom { align-items: start; flex-direction: column; }
+      .service { grid-template-columns: 35px 1fr 20px; gap: 12px; }
+      footer { flex-wrap: wrap; }
     }
   </style>
 </head>
 
 <body>
-  <header class="header">
-    <nav class="nav" aria-label="Navigare principală">
-      <a class="logo" href="#home">DDL</a>
-      <ul class="nav-links">
-        <li><a href="#home">Acasă</a></li>
-        <li><a href="#about">Despre noi</a></li>
-        <li><a href="#services">Servicii</a></li>
-        <li><a href="#projects">Proiecte</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+
+  <header>
+    <a href="#home" class="brand" aria-label="DDL — pagina principală">
+      <span class="brand-name">DDL.</span>
+      <span class="brand-sub">Birou de proiectare</span>
+    </a>
+
+    <nav aria-label="Navigare principală">
+      <a href="#despre" class="nav-extra">Despre</a>
+      <a href="#proiecte">Proiecte</a>
+      <a href="#servicii" class="nav-extra">Servicii</a>
+      <a href="#contact" class="nav-cta">Contact ↗</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero" id="home">
-      <div class="hero-content">
-        <span class="eyebrow">Arhitectură · Design · Proiectare</span>
-        <h1>DDL</h1>
-        <h2>Birou de proiectare</h2>
-        <p>Concepem spații echilibrate, cu atenție la detalii, lumină și felul în care oamenii le trăiesc.</p>
-        <a class="button" href="#projects">Descoperă proiectele</a>
+    <div class="hero" id="home">
+      <div class="eyebrow mono">
+        <span>Arhitectură · Spațiu · Formă</span>
+        <span>România / 2026</span>
       </div>
-    </section>
 
-    <section class="section" id="about">
-      <div class="about-grid">
+      <h1>DDL<span style="color:#a5a398">.</span></h1>
+
+      <div class="hero-bottom">
+        <p>
+          Spații gândite cu sens.<br>
+          Arhitectură construită în jurul vieții.
+        </p>
+        <span class="scroll-note mono">Explorează ↓</span>
+      </div>
+
+      <div class="hero-image">
+        <img
+          src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=85"
+          alt="Arhitectură contemporană și spațiu minimalist"
+          fetchpriority="high"
+        >
+        <span class="image-label mono">DDL — Birou de proiectare</span>
+        <span class="image-number mono">01 / 04</span>
+      </div>
+    </div>
+
+    <section id="despre">
+      <div class="section-head reveal">
+        <h2>Mai puțin,<br>dar mai bine.</h2>
+        <span class="section-index mono">01 / Despre noi</span>
+      </div>
+
+      <div class="about-grid reveal">
+        <p class="about-statement">
+          Credem în arhitectura care nu caută să impresioneze, ci să rămână relevantă.
+        </p>
+
         <div class="about-copy">
-          <div class="section-title">
-            <span>Cine suntem</span>
-            <h2>Despre noi</h2>
-          </div>
-          <p><em>DDL</em> este un birou de proiectare preocupat de arhitectură atentă, funcțională și conectată la contextul său.</p>
-          <p>Fiecare proiect pornește de la dialog și se dezvoltă printr-un proces clar, de la primele idei până la detaliile finale.</p>
-        </div>
-
-        <div class="image-frame" aria-label="Spațiu rezervat pentru o imagine">
-          <!-- Adaugă imaginea aici -->
-          <span>Imagine de prezentare</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="services-section" id="services">
-      <div class="services-inner">
-        <div class="section-title">
-          <span>Cu ce te putem ajuta</span>
-          <h2>Servicii</h2>
-        </div>
-
-        <div class="service-grid">
-          <article class="service-card">
-            <span class="number">01</span>
-            <h3>Arhitectură</h3>
-            <p>Proiectare arhitecturală și dezvoltarea conceptului pentru proiecte noi.</p>
-          </article>
-          <article class="service-card">
-            <span class="number">02</span>
-            <h3>Design interior</h3>
-            <p>Soluții interioare armonioase, adaptate spațiului și stilului de viață.</p>
-          </article>
-          <article class="service-card">
-            <span class="number">03</span>
-            <h3>Consultanță</h3>
-            <p>Sprijin și îndrumare în etapele de planificare și dezvoltare a proiectului.</p>
-          </article>
+          <p>
+            DDL este un birou de proiectare dedicat creării unor spații
+            contemporane, echilibrate și atent gândite.
+          </p>
+          <p>
+            De la prima idee la detaliile proiectului, urmărim relația
+            dintre lumină, materiale, proporții și felul în care oamenii
+            folosesc spațiul.
+          </p>
+          <a href="#contact" class="text-link">Hai să discutăm <span>↗</span></a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="projects">
-      <div class="section-title">
-        <span>Selecție de lucrări</span>
-        <h2>Proiecte</h2>
+    <section class="projects" id="proiecte">
+      <div class="section-head reveal">
+        <h2>Lucrări<br>selectate.</h2>
+        <span class="section-index mono">02 / Portofoliu</span>
       </div>
 
       <div class="project-grid">
-        <article>
-          <div class="image-frame project-frame">
-            <!-- Înlocuiește cu imaginea proiectului -->
-            <span>Imagine proiect</span>
+        <article class="project reveal">
+          <div class="project-image">
+            <img
+              src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85"
+              alt="Casă contemporană cu forme geometrice"
+              loading="lazy"
+            >
           </div>
-          <p class="project-caption">Casă contemporană <span>Rezidențial</span></p>
+          <div class="project-meta mono">
+            <span>Rezidențial</span><span>01</span>
+          </div>
+          <h3>Casa dintre volume</h3>
+          <p>Concept arhitectural · Locuire contemporană</p>
         </article>
 
-        <article>
-          <div class="image-frame project-frame">
-            <!-- Înlocuiește cu imaginea proiectului -->
-            <span>Imagine proiect</span>
+        <article class="project reveal">
+          <div class="project-image">
+            <img
+              src="https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=1200&q=85"
+              alt="Interior contemporan cu materiale naturale"
+              loading="lazy"
+            >
           </div>
-          <p class="project-caption">Spațiu interior <span>Interior</span></p>
+          <div class="project-meta mono">
+            <span>Interior</span><span>02</span>
+          </div>
+          <h3>Un interior calm</h3>
+          <p>Design interior · Lumină și materialitate</p>
         </article>
 
-        <article>
-          <div class="image-frame project-frame">
-            <!-- Înlocuiește cu imaginea proiectului -->
-            <span>Imagine proiect</span>
+        <article class="project reveal">
+          <div class="project-image">
+            <img
+              src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85"
+              alt="Volum arhitectural modern în peisaj"
+              loading="lazy"
+            >
           </div>
-          <p class="project-caption">Locuință urbană <span>Rezidențial</span></p>
+          <div class="project-meta mono">
+            <span>Concept</span><span>03</span>
+          </div>
+          <h3>Formă și peisaj</h3>
+          <p>Studiu de volumetrie · Relația cu natura</p>
         </article>
 
-        <article>
-          <div class="image-frame project-frame">
-            <!-- Înlocuiește cu imaginea proiectului -->
-            <span>Imagine proiect</span>
+        <article class="project reveal">
+          <div class="project-image">
+            <img
+              src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=85"
+              alt="Spațiu interior cu finisaje minimaliste"
+              loading="lazy"
+            >
           </div>
-          <p class="project-caption">Proiect în lucru <span>Concept</span></p>
+          <div class="project-meta mono">
+            <span>Interior</span><span>04</span>
+          </div>
+          <h3>Materia locuirii</h3>
+          <p>Design interior · Texturi și proporții</p>
         </article>
+      </div>
+
+      <p class="placeholder-note mono">
+        Imaginile și denumirile sunt demonstrative. Înlocuiește-le cu proiectele reale DDL.
+      </p>
+    </section>
+
+    <section id="servicii">
+      <div class="section-head reveal">
+        <h2>Ce facem.</h2>
+        <span class="section-index mono">03 / Servicii</span>
+      </div>
+
+      <div class="service-list">
+        <a href="#contact" class="service reveal">
+          <span class="service-num mono">01</span>
+          <h3>Arhitectură</h3>
+          <span class="service-arrow">↗</span>
+        </a>
+        <a href="#contact" class="service reveal">
+          <span class="service-num mono">02</span>
+          <h3>Design interior</h3>
+          <span class="service-arrow">↗</span>
+        </a>
+        <a href="#contact" class="service reveal">
+          <span class="service-num mono">03</span>
+          <h3>Concept și volumetrie</h3>
+          <span class="service-arrow">↗</span>
+        </a>
+        <a href="#contact" class="service reveal">
+          <span class="service-num mono">04</span>
+          <h3>Documentații de proiectare</h3>
+          <span class="service-arrow">↗</span>
+        </a>
       </div>
     </section>
 
-    <section class="contact-section" id="contact">
-      <div class="contact-inner">
-        <div class="section-title">
-          <span>Să discutăm</span>
-          <h2>Contact</h2>
+    <section class="manifesto">
+      <span class="mono">04 / Perspectiva noastră</span>
+      <h2 class="reveal">
+        Nu proiectăm doar clădiri.
+        <span>Gândim felul în care spațiile sunt trăite.</span>
+      </h2>
+      <div class="manifesto-bottom reveal">
+        <p>
+          Fiecare proiect începe cu o întrebare, continuă cu o idee
+          și prinde formă prin atenția acordată detaliilor.
+        </p>
+        <a href="#contact" class="light-link">Începe un proiect ↗</a>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact-grid reveal">
+        <div>
+          <span class="mono">05 / Contact</span>
+          <h2 class="contact-title" style="margin-top:35px">
+            Hai să<br>construim<br>o idee.
+          </h2>
         </div>
 
-        <div class="contact-grid">
-          <div class="contact-info">
-            <p>Ai un proiect în minte? Scrie-ne câteva detalii și vom lua legătura cu tine.</p>
-            <p><strong>Email</strong><br>contact@ddl.ro</p>
-            <p><strong>Telefon</strong><br>+40 700 000 000</p>
-          </div>
+        <div class="contact-info">
+          <p>
+            Ai un proiect în minte? Suntem deschiși să discutăm despre
+            idei noi, colaborări și spații care merită proiectate cu grijă.
+          </p>
 
-          <form class="contact-form" id="contactForm">
-            <input id="name" type="text" placeholder="Numele tău" required>
-            <input id="email" type="email" placeholder="Adresa de email" required>
-            <textarea id="message" placeholder="Mesajul tău" required></textarea>
-            <button type="submit">Trimite mesajul</button>
-          </form>
+          <!-- Înlocuiește adresa cu e-mailul real al biroului -->
+          <a class="email-link" href="mailto:contact@ddl.ro">
+            contact@ddl.ro ↗
+          </a>
+
+          <p class="mono" style="margin-top:40px">
+            DDL — Birou de proiectare<br>
+            România
+          </p>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    © <span id="year"></span> DDL — Birou de proiectare
+    <a href="#home" class="brand">
+      <span class="brand-name">DDL.</span>
+      <span class="brand-sub">Birou de proiectare</span>
+    </a>
+    <span class="mono">© <span id="year"></span> DDL</span>
+    <a href="#home" class="mono">Înapoi sus ↑</a>
   </footer>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
-    document.getElementById("contactForm").addEventListener("submit", function (event) {
-      event.preventDefault();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
 
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const message = document.getElementById("message").value.trim();
-
-      const subject = encodeURIComponent("Mesaj de pe site — DDL");
-      const body = encodeURIComponent(
-        `Nume: ${name}\nEmail: ${email}\n\nMesaj:\n${message}`
-      );
-
-      window.location.href =
-        `mailto:contact@ddl.ro?subject=${subject}&body=${body}`;
+    document.querySelectorAll(".reveal").forEach((element) => {
+      observer.observe(element);
     });
   </script>
 </body>
 </html>
-<div class="project-grid">
-  <article>
-    <div class="image-frame project-frame">
-      <img src="images/casa-faget.jpg" alt="Casă contemporană în zona Făgetului, Cluj">
-    </div>
-    <p class="project-caption">Casă contemporană <span>Făget, Cluj</span></p>
-  </article>
-
-  <article>
-    <div class="image-frame project-frame">
-      <img src="images/pepco-sigma-interior.jpg" alt="Interiorul magazinului Pepco din Sigma Center, Cluj">
-    </div>
-    <p class="project-caption">Interior magazin <span>Pepco · Sigma Center</span></p>
-  </article>
-
-  <article>
-    <div class="image-frame project-frame">
-      <img src="images/casa-cluj.jpg" alt="Casă contemporană din Cluj-Napoca">
-    </div>
-    <p class="project-caption">Locuință urbană <span>Cluj-Napoca</span></p>
-  </article>
-
-  <article>
-    <div class="image-frame project-frame">
-      <img src="images/pepco-in-constructie.jpg" alt="Magazin Pepco aflat în construcție">
-    </div>
-    <p class="project-caption">Proiect în lucru <span>Magazin Pepco</span></p>
-  </article>
-</div>
