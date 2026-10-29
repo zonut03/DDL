@@ -1765,5 +1765,207 @@
     }
   </script>
 
+<!-- PROGRAM DE LUCRU DDL -->
+<section id="program" class="program-section">
+  <div class="program-container">
+
+    <div class="program-heading">
+      <span class="program-label">DDL · BIROU DE PROIECTARE</span>
+      <h2>Program de <span>lucru</span></h2>
+      <p>Suntem disponibili în timpul săptămânii pentru solicitările tale.</p>
+    </div>
+
+    <div class="program-card">
+
+      <div class="program-row">
+        <span class="day">Luni</span>
+        <span class="hours">09:00 – 17:00</span>
+        <span class="status open">Deschis</span>
+      </div>
+
+      <div class="program-row">
+        <span class="day">Marți</span>
+        <span class="hours">09:00 – 17:00</span>
+        <span class="status open">Deschis</span>
+      </div>
+
+      <div class="program-row">
+        <span class="day">Miercuri</span>
+        <span class="hours">09:00 – 17:00</span>
+        <span class="status open">Deschis</span>
+      </div>
+
+      <div class="program-row">
+        <span class="day">Joi</span>
+        <span class="hours">09:00 – 17:00</span>
+        <span class="status open">Deschis</span>
+      </div>
+
+      <div class="program-row">
+        <span class="day">Vineri</span>
+        <span class="hours">09:00 – 17:00</span>
+        <span class="status open">Deschis</span>
+      </div>
+
+      <div class="program-row weekend">
+        <span class="day">Sâmbătă</span>
+        <span class="hours">Închis</span>
+        <span class="status closed">Închis</span>
+      </div>
+
+      <div class="program-row weekend">
+        <span class="day">Duminică</span>
+        <span class="hours">Închis</span>
+        <span class="status closed">Închis</span>
+      </div>
+
+      <div class="program-note">
+        <span class="note-icon">✦</span>
+        <p>DDL — Profesionalism și precizie, de luni până vineri.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .program-section {
+    background: #080808;
+    color: #f6f3ed;
+    padding: 90px 20px;
+    font-family: "DM Sans", Arial, sans-serif;
+  }
+
+  .program-container {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .program-heading {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .program-label {
+    color: #d6b36a;
+    font-size: 10px;
+    letter-spacing: 3px;
+    font-weight: 700;
+  }
+
+  .program-heading h2 {
+    font-family: "Manrope", Arial, sans-serif;
+    font-size: clamp(32px, 6vw, 48px);
+    margin: 15px 0;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+  }
+
+  .program-heading h2 span {
+    color: #d6b36a;
+  }
+
+  .program-heading p {
+    color: #a09c93;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .program-card {
+    border: 1px solid rgba(214, 179, 106, 0.3);
+    background: #111;
+    padding: 10px 30px 25px;
+  }
+
+  .program-row {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 19px 0;
+    border-bottom: 1px solid rgba(214, 179, 106, 0.14);
+  }
+
+  .program-row .day {
+    color: #f6f3ed;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .program-row .hours {
+    color: #d6b36a;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .status {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .status.open {
+    color: #d6b36a;
+  }
+
+  .status.closed {
+    color: #88837a;
+  }
+
+  .weekend .day,
+  .weekend .hours {
+    color: #88837a;
+  }
+
+  .program-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 25px;
+    padding: 17px;
+    background: rgba(214, 179, 106, 0.06);
+    border-left: 2px solid #d6b36a;
+  }
+
+  .note-icon {
+    color: #d6b36a;
+  }
+
+  .program-note p {
+    color: #b4afa5;
+    font-size: 12px;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  @media (max-width: 480px) {
+    .program-section {
+      padding: 65px 16px;
+    }
+
+    .program-card {
+      padding: 8px 15px 18px;
+    }
+
+    .program-row {
+      grid-template-columns: 0.8fr 1fr auto;
+      gap: 7px;
+      padding: 17px 0;
+    }
+
+    .program-row .day,
+    .program-row .hours {
+      font-size: 12px;
+    }
+
+    .status {
+      font-size: 9px;
+      letter-spacing: 0;
+    }
+  }
+</style>
+
 </body>
 </html>
