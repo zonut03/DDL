@@ -6,19 +6,21 @@
   <meta name="description" content="DDL — Birou de proiectare arhitecturală.">
   <title>DDL — Birou de proiectare</title>
 
-  <!-- Fonturi cursive pentru accente și serif elegante pentru text -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --black: #090909;
-      --black-soft: #11100e;
-      --gold: #c9a45c;
-      --gold-light: #e3c887;
-      --gold-dark: #80632f;
-      --text: #dfd4bd;
+      --paper: #f5f2eb;
+      --white: #fffefa;
+      --ink: #292923;
+      --muted: #777367;
+      --gold: #a77d35;
+      --gold-light: #c9a969;
+      --line: #ded7c8;
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
     }
 
     * {
@@ -29,14 +31,13 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 85px;
+      scroll-padding-top: 82px;
     }
 
     body {
-      background: var(--black);
-      color: var(--text);
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 18px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
       line-height: 1.7;
     }
 
@@ -45,189 +46,213 @@
       text-decoration: none;
     }
 
-    .site-header {
-      position: fixed;
-      inset: 0 0 auto;
-      z-index: 10;
-      padding: 14px 6%;
-      background: rgba(9, 9, 9, 0.94);
-      border-bottom: 1px solid rgba(201, 164, 92, 0.24);
-      backdrop-filter: blur(10px);
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: rgba(245, 242, 235, 0.95);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
     }
 
     .nav {
-      max-width: 1300px;
-      min-height: 48px;
-      margin: 0 auto;
+      width: min(1220px, 90%);
+      min-height: 76px;
+      margin: auto;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 24px;
+      justify-content: space-between;
+      gap: 25px;
     }
 
-    .brand {
-      color: var(--gold-light);
-      font-size: 27px;
+    .logo {
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 34px;
       font-weight: 600;
-      letter-spacing: 0.22em;
+      font-style: italic;
+      letter-spacing: 0.12em;
     }
 
     .nav-links {
       display: flex;
-      align-items: center;
-      gap: clamp(14px, 3vw, 38px);
+      flex-wrap: wrap;
+      gap: 28px;
       list-style: none;
     }
 
     .nav-links a {
-      color: var(--text);
-      font-size: 15px;
-      font-style: italic;
+      color: var(--muted);
+      font-size: 13px;
       transition: color 0.2s ease;
     }
 
-    .nav-links a:hover,
-    .nav-links a:focus {
-      color: var(--gold-light);
-    }
-
-    main {
-      overflow: hidden;
+    .nav-links a:hover {
+      color: var(--gold);
     }
 
     .hero {
-      min-height: 100svh;
+      min-height: 76vh;
       display: grid;
-      place-items: center;
-      padding: 130px 7% 85px;
-      text-align: center;
+      align-items: center;
       position: relative;
-      background:
-        radial-gradient(ellipse at center, rgba(201, 164, 92, 0.08), transparent 55%),
-        var(--black);
+      overflow: hidden;
+      padding: 100px 5%;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
     }
 
-    .hero::before,
+    .hero::before {
+      content: "";
+      width: 410px;
+      height: 410px;
+      position: absolute;
+      right: 9%;
+      top: 50%;
+      border: 1px solid var(--line);
+      transform: translateY(-50%) rotate(45deg);
+    }
+
     .hero::after {
       content: "";
+      width: 320px;
+      height: 320px;
       position: absolute;
-      width: min(34vw, 390px);
-      height: min(34vw, 390px);
-      border: 1px solid rgba(201, 164, 92, 0.2);
-      transform: rotate(45deg);
-      pointer-events: none;
-    }
-
-    .hero::after {
-      width: min(27vw, 310px);
-      height: min(27vw, 310px);
-      border-color: rgba(201, 164, 92, 0.12);
+      right: calc(9% + 45px);
+      top: 50%;
+      border: 1px solid rgba(167, 125, 53, 0.25);
+      transform: translateY(-50%) rotate(45deg);
     }
 
     .hero-content {
+      width: min(1220px, 100%);
+      margin: auto;
       position: relative;
       z-index: 1;
     }
 
-    .hero h1 {
-      color: var(--gold-light);
-      font-family: "Great Vibes", cursive;
-      font-size: clamp(100px, 20vw, 220px);
-      font-weight: 400;
-      line-height: 1;
-      text-shadow: 0 0 32px rgba(201, 164, 92, 0.15);
-    }
-
-    .hero-subtitle {
-      margin-top: 8px;
+    .eyebrow {
       color: var(--gold);
-      font-size: clamp(17px, 3vw, 25px);
-      font-style: italic;
-      letter-spacing: 0.25em;
+      font-size: 12px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
     }
 
-    .hero-rule {
-      width: 72px;
-      height: 1px;
-      margin: 30px auto;
-      background: var(--gold);
+    .hero h1 {
+      margin: 14px 0 0;
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: clamp(90px, 16vw, 185px);
+      font-weight: 500;
+      font-style: italic;
+      line-height: 0.95;
     }
 
-    .hero-note {
-      color: #b9ae98;
-      font-size: 20px;
+    .hero h2 {
+      margin-top: 6px;
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: clamp(24px, 4vw, 39px);
+      font-weight: 400;
       font-style: italic;
+    }
+
+    .hero p {
+      max-width: 470px;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 12px 23px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 18px;
+      font-style: italic;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .button:hover {
+      background: var(--gold);
+      color: white;
     }
 
     .section {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 110px 7%;
+      width: min(1220px, 90%);
+      margin: auto;
+      padding: 100px 0;
     }
 
-    .section-heading {
-      margin-bottom: 48px;
-      text-align: center;
+    .section-title {
+      margin-bottom: 42px;
     }
 
-    .section-heading h2 {
-      color: var(--gold-light);
-      font-size: clamp(38px, 6vw, 58px);
-      font-style: italic;
+    .section-title span {
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .section-title h2 {
+      margin-top: 7px;
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: clamp(42px, 6vw, 64px);
       font-weight: 500;
-      line-height: 1.1;
-    }
-
-    .section-heading p {
-      margin-top: 12px;
-      color: #a99c83;
-      font-size: 17px;
       font-style: italic;
+      line-height: 1.1;
     }
 
     .about-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
       gap: 55px;
     }
 
     .about-copy p {
       margin-bottom: 18px;
-      color: #d0c5ae;
-      font-size: 21px;
+      color: var(--muted);
+      font-size: 15px;
     }
 
-    .gold {
-      color: var(--gold-light);
-      font-style: italic;
+    .about-copy em {
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 22px;
     }
 
     .image-frame {
-      min-height: 300px;
+      min-height: 350px;
       display: grid;
       place-items: center;
       position: relative;
       overflow: hidden;
-      border: 1px solid var(--gold-dark);
+      border: 1px solid var(--gold-light);
       background:
-        linear-gradient(135deg, rgba(201, 164, 92, 0.04), transparent 55%),
-        #0d0d0c;
-      color: #92784a;
+        linear-gradient(145deg, rgba(201, 169, 105, 0.08), transparent 60%),
+        #eeeae0;
+      color: #9b8968;
       text-align: center;
     }
 
-    .image-frame::before {
+    .image-frame::after {
       content: "";
       position: absolute;
       inset: 12px;
-      border: 1px solid rgba(201, 164, 92, 0.22);
+      border: 1px solid rgba(167, 125, 53, 0.25);
       pointer-events: none;
     }
 
     .image-frame span {
       padding: 25px;
+      font-family: var(--serif);
+      font-size: 19px;
       font-style: italic;
     }
 
@@ -239,53 +264,55 @@
       object-fit: cover;
     }
 
-    .services {
-      background: var(--black-soft);
-      border-top: 1px solid rgba(201, 164, 92, 0.14);
-      border-bottom: 1px solid rgba(201, 164, 92, 0.14);
+    .services-section {
+      background: #ebe6da;
+      border-block: 1px solid var(--line);
     }
 
     .services-inner {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 100px 7%;
+      width: min(1220px, 90%);
+      margin: auto;
+      padding: 95px 0;
     }
 
     .service-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 18px;
     }
 
     .service-card {
-      min-height: 190px;
-      padding: 30px 25px;
-      border: 1px solid rgba(201, 164, 92, 0.4);
-      background: rgba(255, 255, 255, 0.01);
-      transition: transform 0.25s ease, border-color 0.25s ease;
+      min-height: 200px;
+      padding: 28px;
+      background: var(--white);
+      border: 1px solid var(--line);
     }
 
-    .service-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--gold-light);
+    .service-card .number {
+      color: var(--gold);
+      font-family: var(--serif);
+      font-size: 22px;
+      font-style: italic;
     }
 
     .service-card h3 {
-      margin-bottom: 12px;
-      color: var(--gold-light);
-      font-size: 25px;
-      font-style: italic;
+      margin: 12px 0 8px;
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 27px;
       font-weight: 500;
+      font-style: italic;
     }
 
     .service-card p {
-      color: #bcb09a;
+      color: var(--muted);
+      font-size: 14px;
     }
 
     .project-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      gap: 32px 22px;
     }
 
     .project-frame {
@@ -293,111 +320,130 @@
     }
 
     .project-caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
       padding-top: 12px;
-      color: var(--gold-light);
-      font-size: 21px;
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 22px;
       font-style: italic;
     }
 
-    .contact {
-      background: var(--black-soft);
-      border-top: 1px solid rgba(201, 164, 92, 0.14);
+    .project-caption span:last-child {
+      color: var(--gold);
+      font-family: var(--sans);
+      font-size: 12px;
+      font-style: normal;
+    }
+
+    .contact-section {
+      background: var(--white);
+      border-top: 1px solid var(--line);
     }
 
     .contact-inner {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 100px 7%;
+      width: min(1220px, 90%);
+      margin: auto;
+      padding: 95px 0;
     }
 
     .contact-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 55px;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 60px;
     }
 
-    .contact-copy p {
-      margin-bottom: 16px;
-      color: #d0c5ae;
+    .contact-info p {
+      margin: 0 0 15px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact-info strong {
+      color: var(--gold);
+      font-family: var(--serif);
       font-size: 20px;
+      font-style: italic;
+      font-weight: 500;
     }
 
     .contact-form {
       display: grid;
-      gap: 15px;
+      gap: 13px;
     }
 
     .contact-form input,
     .contact-form textarea {
       width: 100%;
-      padding: 14px 16px;
-      border: 1px solid rgba(201, 164, 92, 0.5);
-      border-radius: 0;
+      padding: 14px 15px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--ink);
+      font: 14px var(--sans);
       outline: none;
-      background: #0b0b0a;
-      color: var(--text);
-      font: inherit;
     }
 
     .contact-form input:focus,
     .contact-form textarea:focus {
-      border-color: var(--gold-light);
+      border-color: var(--gold);
     }
 
     .contact-form textarea {
-      min-height: 140px;
+      min-height: 135px;
       resize: vertical;
     }
 
     .contact-form button {
       justify-self: start;
-      padding: 12px 28px;
+      padding: 12px 24px;
       border: 1px solid var(--gold);
-      background: transparent;
-      color: var(--gold-light);
-      font: italic 18px "Cormorant Garamond", Georgia, serif;
+      background: var(--gold);
+      color: white;
+      font: italic 18px var(--serif);
       cursor: pointer;
-      transition: background 0.2s ease, color 0.2s ease;
     }
 
     .contact-form button:hover {
-      background: var(--gold);
-      color: var(--black);
+      background: transparent;
+      color: var(--gold);
     }
 
     footer {
-      padding: 25px 7%;
-      border-top: 1px solid rgba(201, 164, 92, 0.2);
-      color: #93866f;
+      padding: 23px 5%;
+      color: var(--muted);
       text-align: center;
-      font-size: 15px;
-      font-style: italic;
+      font-size: 12px;
     }
 
     @media (max-width: 760px) {
-      .site-header {
-        padding-inline: 5%;
-      }
-
       .nav {
+        width: 90%;
+        padding: 12px 0;
         align-items: flex-start;
         flex-direction: column;
-        gap: 8px;
+        gap: 4px;
       }
 
       .nav-links {
-        width: 100%;
-        flex-wrap: wrap;
-        gap: 7px 18px;
-      }
-
-      .nav-links a {
-        font-size: 14px;
+        gap: 10px 18px;
       }
 
       .hero {
-        min-height: 90svh;
-        padding-top: 150px;
+        min-height: 72vh;
+        padding-block: 80px;
+      }
+
+      .hero::before {
+        width: 250px;
+        height: 250px;
+        right: -95px;
+      }
+
+      .hero::after {
+        width: 190px;
+        height: 190px;
+        right: -65px;
       }
 
       .about-grid,
@@ -413,24 +459,24 @@
       .section,
       .services-inner,
       .contact-inner {
-        padding: 75px 6%;
+        padding-block: 70px;
       }
 
       .image-frame {
-        min-height: 250px;
+        min-height: 260px;
       }
 
       .project-frame {
-        min-height: 280px;
+        min-height: 270px;
       }
     }
   </style>
 </head>
 
 <body>
-  <header class="site-header">
+  <header class="header">
     <nav class="nav" aria-label="Navigare principală">
-      <a class="brand" href="#home">DDL</a>
+      <a class="logo" href="#home">DDL</a>
       <ul class="nav-links">
         <li><a href="#home">Acasă</a></li>
         <li><a href="#about">Despre noi</a></li>
@@ -444,114 +490,117 @@
   <main>
     <section class="hero" id="home">
       <div class="hero-content">
+        <span class="eyebrow">Arhitectură · Design · Proiectare</span>
         <h1>DDL</h1>
-        <p class="hero-subtitle">Birou de proiectare</p>
-        <div class="hero-rule"></div>
-        <p class="hero-note">Arhitectură cu identitate. Spații create pentru oameni.</p>
+        <h2>Birou de proiectare</h2>
+        <p>Concepem spații echilibrate, cu atenție la detalii, lumină și felul în care oamenii le trăiesc.</p>
+        <a class="button" href="#projects">Descoperă proiectele</a>
       </div>
     </section>
 
     <section class="section" id="about">
-      <div class="section-heading">
-        <h2>Despre noi</h2>
-        <p>Idei bine gândite. Arhitectură durabilă.</p>
-      </div>
-
       <div class="about-grid">
         <div class="about-copy">
-          <p><span class="gold">DDL</span> este un birou de proiectare dedicat realizării unor spații elegante, funcționale și bine integrate în contextul lor.</p>
-          <p>De la primele schițe până la detaliile finale, abordăm fiecare proiect cu atenție, creativitate și respect pentru nevoile beneficiarului.</p>
+          <div class="section-title">
+            <span>Cine suntem</span>
+            <h2>Despre noi</h2>
+          </div>
+          <p><em>DDL</em> este un birou de proiectare preocupat de arhitectură atentă, funcțională și conectată la contextul său.</p>
+          <p>Fiecare proiect pornește de la dialog și se dezvoltă printr-un proces clar, de la primele idei până la detaliile finale.</p>
         </div>
 
-        <div class="image-frame" aria-label="Chenare pentru fotografie de prezentare">
+        <div class="image-frame" aria-label="Spațiu rezervat pentru o imagine">
           <!-- Adaugă imaginea aici -->
-          <span>Loc rezervat pentru o imagine de prezentare</span>
+          <span>Imagine de prezentare</span>
         </div>
       </div>
     </section>
 
-    <section class="services" id="services">
+    <section class="services-section" id="services">
       <div class="services-inner">
-        <div class="section-heading">
+        <div class="section-title">
+          <span>Cu ce te putem ajuta</span>
           <h2>Servicii</h2>
-          <p>De la concept la spațiul construit.</p>
         </div>
 
         <div class="service-grid">
           <article class="service-card">
-            <h3>Proiectare arhitecturală</h3>
-            <p>Concepte și soluții arhitecturale adaptate fiecărui proiect.</p>
+            <span class="number">01</span>
+            <h3>Arhitectură</h3>
+            <p>Proiectare arhitecturală și dezvoltarea conceptului pentru proiecte noi.</p>
           </article>
           <article class="service-card">
+            <span class="number">02</span>
             <h3>Design interior</h3>
-            <p>Interioare armonioase, gândite pentru confort și funcționalitate.</p>
+            <p>Soluții interioare armonioase, adaptate spațiului și stilului de viață.</p>
           </article>
           <article class="service-card">
+            <span class="number">03</span>
             <h3>Consultanță</h3>
-            <p>Îndrumare pentru dezvoltarea și planificarea proiectului tău.</p>
+            <p>Sprijin și îndrumare în etapele de planificare și dezvoltare a proiectului.</p>
           </article>
         </div>
       </div>
     </section>
 
     <section class="section" id="projects">
-      <div class="section-heading">
+      <div class="section-title">
+        <span>Selecție de lucrări</span>
         <h2>Proiecte</h2>
-        <p>O selecție de proiecte DDL.</p>
       </div>
 
       <div class="project-grid">
         <article>
           <div class="image-frame project-frame">
-            <!-- Adaugă imaginea proiectului aici -->
-            <span>Loc rezervat pentru imaginea proiectului</span>
+            <!-- Înlocuiește cu imaginea proiectului -->
+            <span>Imagine proiect</span>
           </div>
-          <p class="project-caption">Proiect rezidențial</p>
+          <p class="project-caption">Casă contemporană <span>Rezidențial</span></p>
         </article>
 
         <article>
           <div class="image-frame project-frame">
-            <!-- Adaugă imaginea proiectului aici -->
-            <span>Loc rezervat pentru imaginea proiectului</span>
+            <!-- Înlocuiește cu imaginea proiectului -->
+            <span>Imagine proiect</span>
           </div>
-          <p class="project-caption">Spațiu contemporan</p>
+          <p class="project-caption">Spațiu interior <span>Interior</span></p>
         </article>
 
         <article>
           <div class="image-frame project-frame">
-            <!-- Adaugă imaginea proiectului aici -->
-            <span>Loc rezervat pentru imaginea proiectului</span>
+            <!-- Înlocuiește cu imaginea proiectului -->
+            <span>Imagine proiect</span>
           </div>
-          <p class="project-caption">Arhitectură și context</p>
+          <p class="project-caption">Locuință urbană <span>Rezidențial</span></p>
         </article>
 
         <article>
           <div class="image-frame project-frame">
-            <!-- Adaugă imaginea proiectului aici -->
-            <span>Loc rezervat pentru imaginea proiectului</span>
+            <!-- Înlocuiește cu imaginea proiectului -->
+            <span>Imagine proiect</span>
           </div>
-          <p class="project-caption">Proiect în lucru</p>
+          <p class="project-caption">Proiect în lucru <span>Concept</span></p>
         </article>
       </div>
     </section>
 
-    <section class="contact" id="contact">
+    <section class="contact-section" id="contact">
       <div class="contact-inner">
-        <div class="section-heading">
+        <div class="section-title">
+          <span>Să discutăm</span>
           <h2>Contact</h2>
-          <p>Spune-ne câteva cuvinte despre proiectul tău.</p>
         </div>
 
         <div class="contact-grid">
-          <div class="contact-copy">
-            <p>Suntem aici să discutăm despre ideile și planurile tale.</p>
-            <p><span class="gold">Email:</span> contact@ddl.ro</p>
-            <p><span class="gold">Telefon:</span> +40 700 000 000</p>
+          <div class="contact-info">
+            <p>Ai un proiect în minte? Scrie-ne câteva detalii și vom lua legătura cu tine.</p>
+            <p><strong>Email</strong><br>contact@ddl.ro</p>
+            <p><strong>Telefon</strong><br>+40 700 000 000</p>
           </div>
 
           <form class="contact-form" id="contactForm">
-            <input type="text" id="name" placeholder="Numele tău" required>
-            <input type="email" id="email" placeholder="Adresa ta de email" required>
+            <input id="name" type="text" placeholder="Numele tău" required>
+            <input id="email" type="email" placeholder="Adresa de email" required>
             <textarea id="message" placeholder="Mesajul tău" required></textarea>
             <button type="submit">Trimite mesajul</button>
           </form>
@@ -574,7 +623,7 @@
       const email = document.getElementById("email").value.trim();
       const message = document.getElementById("message").value.trim();
 
-      const subject = encodeURIComponent("Mesaj nou de pe site — DDL");
+      const subject = encodeURIComponent("Mesaj de pe site — DDL");
       const body = encodeURIComponent(
         `Nume: ${name}\nEmail: ${email}\n\nMesaj:\n${message}`
       );
