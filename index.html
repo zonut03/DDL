@@ -4,385 +4,427 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#eae8e1">
-  <meta name="description" content="DDL — Birou de proiectare. Arhitectură contemporană, spații și idei.">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="DDL — Birou de proiectare. Arhitectură contemporană și design premium.">
   <title>DDL — Birou de Proiectare</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --paper: #eae8e1;
-      --ink: #24251f;
-      --muted: #77766d;
-      --line: rgba(36, 37, 31, .2);
-      --pad: clamp(20px, 5vw, 76px);
+      --black: #080808;
+      --black2: #10100e;
+      --gold: #c9a45c;
+      --gold-light: #ead5a0;
+      --white: #f4f0e8;
+      --muted: #99958b;
+      --line: rgba(201,164,92,.27);
+      --pad: clamp(22px, 6vw, 90px);
     }
 
     * { box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 30px;
+      scroll-padding-top: 90px;
     }
 
     body {
       margin: 0;
-      background: var(--paper);
-      color: var(--ink);
+      background: var(--black);
+      color: var(--white);
       font-family: "Manrope", sans-serif;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    button, a { -webkit-tap-highlight-color: transparent; }
+    img { display: block; max-width: 100%; }
 
-    ::selection { background: var(--ink); color: var(--paper); }
+    ::selection {
+      background: var(--gold);
+      color: var(--black);
+    }
 
     .mono {
       font-family: "DM Mono", monospace;
-      text-transform: uppercase;
       font-size: 10px;
-      letter-spacing: .1em;
+      letter-spacing: .14em;
+      text-transform: uppercase;
     }
+
+    .gold { color: var(--gold); }
 
     /* NAVIGARE */
 
     header {
-      min-height: 88px;
-      padding: 18px var(--pad);
+      height: 92px;
+      padding: 0 var(--pad);
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       border-bottom: 1px solid var(--line);
-      position: relative;
-      z-index: 10;
+      background: rgba(8,8,8,.96);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
     }
 
     .brand {
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      flex-shrink: 0;
+      gap: 5px;
     }
 
     .brand-name {
-      font-size: 32px;
+      color: var(--gold);
+      font-size: 38px;
       font-weight: 800;
-      letter-spacing: -.09em;
-      line-height: 1;
+      letter-spacing: -.1em;
+      line-height: .9;
     }
 
     .brand-sub {
-      font-family: "DM Mono", monospace;
+      color: var(--muted);
       font-size: 8px;
-      letter-spacing: .08em;
+      letter-spacing: .15em;
       text-transform: uppercase;
     }
 
     nav {
       display: flex;
-      gap: clamp(12px, 2.3vw, 32px);
       align-items: center;
+      gap: clamp(13px, 2.5vw, 34px);
     }
 
     nav a {
+      color: #d5d0c5;
       font-size: 11px;
-      transition: opacity .2s;
+      transition: color .25s;
       white-space: nowrap;
     }
 
-    nav a:hover { opacity: .5; }
+    nav a:hover { color: var(--gold); }
 
-    .nav-cta {
-      border: 1px solid var(--ink);
-      padding: 12px 17px;
-      border-radius: 100px;
+    .nav-contact {
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 13px 19px;
+      transition: background .25s, color .25s;
     }
 
-    /* INTRO */
+    .nav-contact:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* HERO */
 
     .hero {
-      padding: 52px var(--pad) 24px;
+      padding: 45px var(--pad) 30px;
     }
 
-    .eyebrow {
+    .hero-top {
       display: flex;
       justify-content: space-between;
       gap: 20px;
       color: var(--muted);
-      margin-bottom: 26px;
+      margin-bottom: 38px;
     }
 
-    .hero h1 {
-      font-size: clamp(62px, 14.8vw, 218px);
-      line-height: .77;
-      letter-spacing: -.105em;
-      font-weight: 600;
-      margin: 0 0 35px -.045em;
+    .hero-title {
+      font-size: clamp(88px, 19vw, 260px);
+      font-weight: 500;
+      letter-spacing: -.12em;
+      line-height: .78;
+      margin: 0 0 35px -.07em;
     }
 
-    .hero-bottom {
+    .hero-title span { color: var(--gold); }
+
+    .hero-description {
       display: flex;
       justify-content: space-between;
       align-items: end;
       gap: 25px;
-      margin: 36px 0 27px;
+      margin-bottom: 35px;
     }
 
-    .hero-bottom p {
-      font-size: clamp(15px, 2vw, 22px);
-      line-height: 1.5;
-      max-width: 410px;
+    .hero-description h2 {
+      max-width: 640px;
       margin: 0;
-      letter-spacing: -.04em;
+      font-size: clamp(21px, 3.4vw, 43px);
+      font-weight: 400;
+      line-height: 1.3;
+      letter-spacing: -.055em;
     }
 
-    .scroll-note {
+    .hero-description h2 span { color: var(--gold); }
+
+    .hero-description p {
+      max-width: 230px;
       color: var(--muted);
-      white-space: nowrap;
+      font-size: 12px;
+      line-height: 1.8;
+      margin: 0;
     }
 
     .hero-image {
       position: relative;
-      height: clamp(300px, 58vw, 720px);
+      height: clamp(330px, 61vw, 740px);
       overflow: hidden;
-      background: #c4b9a4;
+      background: #24211b;
+    }
+
+    .hero-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        0deg,
+        rgba(0,0,0,.7),
+        transparent 45%,
+        rgba(0,0,0,.08)
+      );
+      pointer-events: none;
     }
 
     .hero-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
-      transition: transform 1.2s cubic-bezier(.2,.7,.2,1);
+      filter: brightness(.76);
+      transition: transform 1.2s ease;
     }
 
-    .hero-image:hover img { transform: scale(1.025); }
+    .hero-image:hover img { transform: scale(1.035); }
 
-    .image-label {
+    .hero-caption {
       position: absolute;
-      left: 20px;
-      bottom: 20px;
-      padding: 10px 13px;
-      background: var(--paper);
-    }
-
-    .image-number {
-      position: absolute;
-      right: 20px;
-      bottom: 20px;
-      color: white;
-      text-shadow: 0 1px 10px #333;
-    }
-
-    /* STIL GENERAL SECTIUNI */
-
-    section { scroll-margin-top: 20px; }
-
-    .content-section {
-      padding: 110px var(--pad);
-    }
-
-    .section-head {
+      bottom: 25px;
+      left: 25px;
+      right: 25px;
       display: flex;
       justify-content: space-between;
-      align-items: start;
       gap: 20px;
-      padding-bottom: 22px;
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 48px;
+      z-index: 1;
+      color: var(--white);
     }
 
-    .section-head h2 {
-      font-size: clamp(40px, 7vw, 95px);
-      font-weight: 500;
-      letter-spacing: -.085em;
-      line-height: .95;
+    .hero-caption .mono { color: var(--gold-light); }
+
+    /* INTRO */
+
+    .intro {
+      padding: 125px var(--pad);
+      display: grid;
+      grid-template-columns: .7fr 1.3fr;
+      gap: 8vw;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      margin-bottom: 22px;
+    }
+
+    .intro h2 {
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: 1;
+      letter-spacing: -.075em;
+      font-weight: 400;
       margin: 0;
     }
 
-    .section-index {
-      color: var(--muted);
-      padding-top: 9px;
+    .intro-copy {
+      align-self: end;
+      max-width: 650px;
+    }
+
+    .intro-copy p {
+      font-size: clamp(17px, 2.2vw, 25px);
+      line-height: 1.8;
+      font-weight: 300;
+      color: #c5c0b5;
+      margin: 0 0 24px;
+    }
+
+    .intro-copy strong {
+      color: var(--gold-light);
+      font-weight: 500;
+    }
+
+    .gold-link {
+      display: inline-flex;
+      gap: 22px;
+      align-items: center;
+      color: var(--gold);
+      font-size: 12px;
+      border-bottom: 1px solid var(--gold);
+      padding: 0 0 10px;
+      margin-top: 15px;
+      transition: gap .25s;
+    }
+
+    .gold-link:hover { gap: 32px; }
+
+    /* TITLURI SECTIUNI */
+
+    .section {
+      padding: 110px var(--pad);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 25px;
+      margin-bottom: 55px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(46px, 8vw, 105px);
+      line-height: .94;
+      font-weight: 400;
+      letter-spacing: -.085em;
+    }
+
+    .section-number {
+      color: var(--gold);
+      padding-bottom: 7px;
       white-space: nowrap;
     }
 
-    /* DESPRE */
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 9vw;
-    }
-
-    .about-statement {
-      font-size: clamp(24px, 3.8vw, 49px);
-      letter-spacing: -.065em;
-      line-height: 1.2;
-      margin: 0;
-      max-width: 600px;
-    }
-
-    .about-copy {
-      max-width: 440px;
+    .section-subtitle {
+      max-width: 450px;
+      color: var(--muted);
       font-size: 14px;
       line-height: 1.9;
-      color: var(--muted);
+      margin: -30px 0 48px;
     }
 
-    .about-copy p:first-child { margin-top: 0; }
-
-    .text-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 16px;
-      padding-bottom: 7px;
-      border-bottom: 1px solid var(--ink);
-      margin-top: 20px;
-      font-size: 12px;
-    }
-
-    /* ECHIPA DDL */
+    /* ECHIPA */
 
     .team-section {
-      padding: 110px var(--pad);
-      border-top: 1px solid var(--line);
-    }
-
-    .team-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 20px;
-      padding-bottom: 28px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .team-label {
-      color: var(--muted);
-    }
-
-    .team-header h2 {
-      font-size: clamp(54px, 9vw, 112px);
-      font-weight: 500;
-      letter-spacing: -.085em;
-      line-height: .9;
-      margin: 35px 0 0;
-    }
-
-    .team-index {
-      color: var(--muted);
-      padding-top: 8px;
-      white-space: nowrap;
+      background: #0d0d0b;
     }
 
     .team-intro {
-      max-width: 460px;
-      margin: 30px 0 55px;
-      font-size: 16px;
-      line-height: 1.8;
+      max-width: 480px;
       color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+      margin: -27px 0 50px;
     }
 
     .team-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;
+      gap: 25px;
     }
 
     .team-card { min-width: 0; }
 
     .team-photo {
       position: relative;
-      aspect-ratio: 4 / 5;
       display: flex;
       align-items: center;
       justify-content: center;
+      aspect-ratio: 4 / 5;
       overflow: hidden;
-      background: #d9d5ca;
-      transition: background .35s ease;
+      background: #171611;
+      border: 1px solid rgba(201,164,92,.16);
+      transition: border-color .3s, background .3s;
     }
 
-    .team-photo-two { background: #d2d0c5; }
-    .team-photo-three { background: #d7d2c8; }
+    .team-photo-two { background: #191813; }
+    .team-photo-three { background: #151510; }
 
-    .team-card:hover .team-photo { background: #c7c2b5; }
+    .team-card:hover .team-photo {
+      border-color: var(--gold);
+      background: #201d15;
+    }
 
     .team-number {
       position: absolute;
-      top: 18px;
-      left: 18px;
-      font-family: "DM Mono", monospace;
-      font-size: 10px;
-      color: var(--muted);
+      top: 19px;
+      left: 19px;
+      color: var(--gold);
     }
 
-    /* AVATAR FARA FOTOGRAFIE, FARA PAR */
+    .team-symbol {
+      position: absolute;
+      right: 19px;
+      top: 19px;
+      color: #777063;
+      font-size: 17px;
+    }
+
+    /* AVATAR SIMPLU FARA PAR */
 
     .profile-icon {
-      width: 65%;
-      max-width: 230px;
+      width: 64%;
+      max-width: 225px;
       height: auto;
-      display: block;
+      filter: drop-shadow(0 0 25px rgba(201,164,92,.04));
       transition: transform .4s ease;
     }
 
-    .team-card:hover .profile-icon { transform: scale(1.05); }
+    .team-card:hover .profile-icon {
+      transform: scale(1.06);
+    }
 
-    .team-info { padding-top: 20px; }
+    .team-info { padding-top: 22px; }
 
     .team-info h3 {
-      font-size: clamp(18px, 2vw, 25px);
-      font-weight: 600;
-      letter-spacing: -.055em;
+      font-size: clamp(18px, 2.1vw, 26px);
       line-height: 1.4;
+      letter-spacing: -.055em;
+      font-weight: 500;
       margin: 0;
-      overflow-wrap: anywhere;
     }
 
     .team-info p {
-      margin: 8px 0 20px;
       font-family: "DM Mono", monospace;
-      text-transform: uppercase;
       font-size: 10px;
-      letter-spacing: .08em;
-      color: var(--muted);
-      line-height: 1.7;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--gold);
+      margin: 10px 0 20px;
     }
 
     .team-line {
       display: block;
-      width: 100%;
       height: 1px;
       background: var(--line);
-      transition: background .3s ease;
+      transition: background .3s;
     }
 
-    .team-card:hover .team-line { background: var(--ink); }
+    .team-card:hover .team-line { background: var(--gold); }
 
     /* PROIECTE */
 
-    .projects { background: #dfddd5; }
+    .projects-section { background: var(--black); }
 
     .project-grid {
       display: grid;
-      grid-template-columns: 1.12fr .88fr;
-      column-gap: 24px;
-      row-gap: 65px;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 65px 25px;
     }
 
     .project:nth-child(even) { margin-top: 100px; }
 
     .project-image {
+      position: relative;
       overflow: hidden;
-      background: #cbc5b8;
-      aspect-ratio: 4 / 5;
-    }
-
-    .project:nth-child(even) .project-image {
+      background: #191711;
       aspect-ratio: 4 / 4.7;
     }
 
@@ -390,161 +432,190 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
-      transition: transform .8s ease;
+      filter: brightness(.78);
+      transition: transform .8s, filter .5s;
     }
 
-    .project:hover .project-image img { transform: scale(1.04); }
+    .project:hover .project-image img {
+      transform: scale(1.045);
+      filter: brightness(.96);
+    }
 
     .project-meta {
       display: flex;
       justify-content: space-between;
-      gap: 12px;
-      margin-top: 17px;
-      color: var(--muted);
+      gap: 15px;
+      color: var(--gold);
+      margin-top: 20px;
     }
 
     .project h3 {
-      font-size: clamp(20px, 2.5vw, 32px);
-      font-weight: 500;
+      font-size: clamp(23px, 3vw, 37px);
+      font-weight: 400;
       letter-spacing: -.06em;
-      margin: 10px 0 0;
+      margin: 13px 0 8px;
     }
 
     .project p {
-      font-size: 12px;
       color: var(--muted);
-      line-height: 1.7;
-      margin: 8px 0 0;
+      font-size: 12px;
+      line-height: 1.8;
+      margin: 0;
     }
 
-    .placeholder-note {
-      font-size: 10px;
+    .demo-note {
+      margin-top: 45px;
       color: var(--muted);
-      margin-top: 35px;
+      line-height: 1.8;
     }
 
     /* SERVICII */
+
+    .services-section { background: #0d0d0b; }
 
     .service-list { border-top: 1px solid var(--line); }
 
     .service {
       display: grid;
-      grid-template-columns: 65px 1fr 35px;
-      align-items: center;
+      grid-template-columns: 65px 1fr 40px;
       gap: 20px;
-      padding: 28px 0;
+      align-items: center;
+      padding: 30px 0;
       border-bottom: 1px solid var(--line);
-      transition: padding .25s ease;
+      transition: padding .3s;
     }
 
-    .service:hover { padding-left: 10px; }
+    .service:hover { padding-left: 12px; }
 
-    .service-num { color: var(--muted); }
+    .service-num { color: var(--gold); }
 
     .service h3 {
-      margin: 0;
-      font-size: clamp(21px, 3.5vw, 43px);
-      font-weight: 500;
+      font-size: clamp(23px, 4vw, 47px);
+      font-weight: 400;
       letter-spacing: -.065em;
+      margin: 0;
+      transition: color .25s;
     }
 
-    .service-arrow { text-align: right; font-size: 20px; }
+    .service:hover h3 { color: var(--gold-light); }
 
-    /* MANIFEST */
+    .service-arrow {
+      color: var(--gold);
+      font-size: 23px;
+      text-align: right;
+    }
+
+    /* VIZIUNE */
 
     .manifesto {
-      background: var(--ink);
-      color: var(--paper);
-      padding: 110px var(--pad);
+      position: relative;
+      overflow: hidden;
+      padding: 130px var(--pad);
+      background:
+        radial-gradient(ellipse at 85% 50%, rgba(201,164,92,.12), transparent 45%),
+        #10100e;
+      border-bottom: 1px solid var(--line);
     }
-
-    .manifesto .mono { color: #b1afa4; }
 
     .manifesto h2 {
-      font-size: clamp(38px, 8vw, 110px);
-      line-height: 1.03;
-      font-weight: 500;
+      position: relative;
+      max-width: 1100px;
+      font-size: clamp(42px, 8.5vw, 112px);
+      line-height: 1.04;
       letter-spacing: -.085em;
-      max-width: 1050px;
-      margin: 50px 0;
+      font-weight: 400;
+      margin: 55px 0;
     }
 
-    .manifesto h2 span { color: #aaa99e; }
+    .manifesto h2 span { color: var(--gold); }
 
     .manifesto-bottom {
       display: flex;
       justify-content: space-between;
-      gap: 25px;
       align-items: end;
+      gap: 30px;
     }
 
     .manifesto-bottom p {
-      max-width: 350px;
+      max-width: 420px;
+      color: var(--muted);
       font-size: 13px;
-      line-height: 1.8;
-      color: #b1afa4;
-    }
-
-    .light-link {
-      display: inline-block;
-      border-bottom: 1px solid #aaa99e;
-      padding-bottom: 9px;
-      font-size: 12px;
+      line-height: 1.9;
+      margin: 0;
     }
 
     /* CONTACT */
 
+    .contact-section { background: var(--black); }
+
     .contact-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 55px;
     }
 
     .contact-title {
-      font-size: clamp(48px, 9vw, 120px);
-      line-height: .9;
+      font-size: clamp(55px, 10vw, 135px);
+      line-height: .88;
       letter-spacing: -.1em;
-      font-weight: 500;
+      font-weight: 400;
       margin: 35px 0 0;
     }
 
+    .contact-title span { color: var(--gold); }
+
     .contact-info {
       align-self: end;
+      max-width: 450px;
       justify-self: end;
       width: 100%;
-      max-width: 400px;
     }
 
     .contact-info p {
       font-size: 14px;
-      line-height: 1.8;
+      line-height: 1.9;
       color: var(--muted);
     }
 
-    .email-link {
-      font-size: clamp(16px, 2vw, 23px);
-      letter-spacing: -.04em;
-      border-bottom: 1px solid var(--ink);
-      padding-bottom: 8px;
+    .contact-email {
       display: inline-block;
-      margin-top: 16px;
+      margin-top: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--gold);
+      color: var(--gold-light);
+      font-size: clamp(16px, 2.4vw, 24px);
       overflow-wrap: anywhere;
     }
 
-    /* SUBSOL */
+    .contact-details {
+      margin-top: 45px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      line-height: 2;
+    }
+
+    /* FOOTER */
 
     footer {
+      padding: 30px var(--pad);
       border-top: 1px solid var(--line);
-      padding: 25px var(--pad);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 20px;
+      flex-wrap: wrap;
+      gap: 25px;
       color: var(--muted);
     }
 
-    footer p { margin: 0; }
+    footer .brand-name { font-size: 29px; }
+
+    .back-top {
+      color: var(--gold);
+      transition: opacity .25s;
+    }
+
+    .back-top:hover { opacity: .65; }
 
     /* ANIMATII */
 
@@ -559,6 +630,90 @@
       transform: translateY(0);
     }
 
+    /* RESPONSIVE */
+
+    @media (max-width: 800px) {
+      header { height: 78px; }
+      nav { gap: 13px; }
+      nav a { font-size: 10px; }
+      nav .hide-tablet { display: none; }
+
+      .intro {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding-top: 85px;
+        padding-bottom: 85px;
+      }
+
+      .contact-grid { gap: 35px; }
+    }
+
+    @media (max-width: 600px) {
+      header { padding-inline: 20px; }
+      .brand-name { font-size: 31px; }
+      .brand-sub { font-size: 7px; }
+
+      nav { gap: 10px; }
+      nav a { font-size: 9px; }
+      nav .nav-contact { padding: 10px; }
+
+      .hero { padding-top: 35px; }
+      .hero-top { font-size: 8px; }
+      .hero-title { font-size: 22vw; }
+
+      .hero-description {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .hero-description p { max-width: 320px; }
+      .hero-image { height: 440px; }
+      .hero-caption { left: 15px; right: 15px; bottom: 15px; }
+
+      .section,
+      .team-section { padding-top: 78px; padding-bottom: 78px; }
+
+      .section-heading { margin-bottom: 38px; }
+
+      .team-grid { grid-template-columns: 1fr; gap: 40px; }
+
+      .team-photo { aspect-ratio: 4 / 3.5; }
+
+      .profile-icon { width: 43%; max-width: 190px; }
+
+      .team-info h3 { font-size: 25px; }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .project:nth-child(even) { margin-top: 0; }
+
+      .project-image { aspect-ratio: 4 / 4.1; }
+
+      .service {
+        grid-template-columns: 30px 1fr 22px;
+        gap: 12px;
+        padding: 24px 0;
+      }
+
+      .manifesto { padding-top: 85px; padding-bottom: 85px; }
+
+      .manifesto h2 { margin: 38px 0; }
+
+      .manifesto-bottom {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .contact-grid { grid-template-columns: 1fr; }
+
+      .contact-info { justify-self: start; }
+
+      footer { align-items: start; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         scroll-behavior: auto !important;
@@ -566,102 +721,6 @@
       }
 
       .reveal { opacity: 1; transform: none; }
-    }
-
-    /* TABLETE SI TELEFOANE */
-
-    @media (max-width: 800px) {
-      header { gap: 20px; }
-      nav { gap: 13px; }
-      nav a { font-size: 10px; }
-      .nav-extra { display: none; }
-      .about-grid { gap: 40px; }
-    }
-
-    @media (max-width: 700px) {
-      header { min-height: 75px; }
-
-      nav { gap: 10px; }
-      nav .nav-cta { padding: 10px; }
-
-      .hero { padding-top: 38px; }
-      .hero h1 { font-size: 19vw; }
-
-      .hero-bottom {
-        align-items: start;
-      }
-
-      .scroll-note { display: none; }
-
-      .content-section,
-      .team-section {
-        padding-top: 78px;
-        padding-bottom: 78px;
-      }
-
-      .about-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .contact-info { justify-self: start; }
-
-      .team-grid {
-        grid-template-columns: 1fr;
-        gap: 42px;
-      }
-
-      .team-photo {
-        aspect-ratio: 4 / 3.5;
-      }
-
-      .profile-icon {
-        width: 43%;
-        max-width: 190px;
-      }
-
-      .team-info h3 { font-size: 24px; }
-
-      .project-grid {
-        grid-template-columns: 1fr;
-        row-gap: 38px;
-      }
-
-      .project:nth-child(even) { margin-top: 0; }
-
-      .project-image,
-      .project:nth-child(even) .project-image {
-        aspect-ratio: 4 / 4.2;
-      }
-
-      .manifesto {
-        padding-top: 80px;
-        padding-bottom: 80px;
-      }
-
-      .manifesto h2 { margin: 35px 0; }
-
-      .manifesto-bottom {
-        align-items: start;
-        flex-direction: column;
-      }
-
-      .service {
-        grid-template-columns: 35px 1fr 20px;
-        gap: 12px;
-      }
-
-      footer { flex-wrap: wrap; }
-    }
-
-    @media (max-width: 390px) {
-      .brand-name { font-size: 28px; }
-      .brand-sub { font-size: 7px; }
-      nav { gap: 8px; }
-      nav a { font-size: 9px; }
-      nav .nav-cta { padding: 9px; }
-      .eyebrow { font-size: 8px; }
     }
   </style>
 </head>
@@ -671,17 +730,17 @@
   <!-- HEADER -->
 
   <header>
-    <a href="#home" class="brand" aria-label="DDL pagina principală">
+    <a href="#home" class="brand" aria-label="DDL - Acasă">
       <span class="brand-name">DDL.</span>
       <span class="brand-sub">Birou de proiectare</span>
     </a>
 
-    <nav aria-label="Navigare principală">
-      <a href="#despre" class="nav-extra">Despre</a>
-      <a href="#echipa" class="nav-extra">Echipa</a>
+    <nav aria-label="Navigare">
+      <a href="#despre" class="hide-tablet">Despre</a>
+      <a href="#echipa" class="hide-tablet">Echipa</a>
       <a href="#proiecte">Proiecte</a>
-      <a href="#servicii" class="nav-extra">Servicii</a>
-      <a href="#contact" class="nav-cta">Contact ↗</a>
+      <a href="#servicii" class="hide-tablet">Servicii</a>
+      <a href="#contact" class="nav-contact">Contact ↗</a>
     </nav>
   </header>
 
@@ -689,104 +748,98 @@
 
     <!-- HERO -->
 
-    <div class="hero" id="home">
-      <div class="eyebrow mono">
-        <span>Arhitectură · Spațiu · Formă</span>
-        <span>România / 2026</span>
+    <section class="hero" id="home">
+      <div class="hero-top mono">
+        <span>Arhitectură · Formă · Spațiu</span>
+        <span class="gold">Est. DDL / România</span>
       </div>
 
-      <h1>DDL<span style="color:#a5a398">.</span></h1>
+      <h1 class="hero-title">DDL<span>.</span></h1>
 
-      <div class="hero-bottom">
+      <div class="hero-description">
+        <h2>
+          Arhitectură cu <span>caracter.</span><br>
+          Spații care inspiră.
+        </h2>
         <p>
-          Spații gândite cu sens.<br>
-          Arhitectură construită în jurul vieții.
+          Un birou de proiectare dedicat
+          echilibrului dintre estetică,
+          funcționalitate și detaliu.
         </p>
-        <span class="scroll-note mono">Explorează ↓</span>
       </div>
 
       <div class="hero-image">
         <img
           src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=85"
-          alt="Arhitectură contemporană și spațiu minimalist"
+          alt="Interior arhitectural contemporan"
           fetchpriority="high"
         >
-        <span class="image-label mono">DDL — Birou de proiectare</span>
-        <span class="image-number mono">01 / 04</span>
-      </div>
-    </div>
-
-    <!-- DESPRE NOI -->
-
-    <section class="content-section" id="despre">
-      <div class="section-head reveal">
-        <h2>Mai puțin,<br>dar mai bine.</h2>
-        <span class="section-index mono">01 / Despre noi</span>
-      </div>
-
-      <div class="about-grid reveal">
-        <p class="about-statement">
-          Credem în arhitectura care nu caută să impresioneze,
-          ci să rămână relevantă.
-        </p>
-
-        <div class="about-copy">
-          <p>
-            DDL este un birou de proiectare dedicat creării unor
-            spații contemporane, echilibrate și atent gândite.
-          </p>
-          <p>
-            De la prima idee la detaliile proiectului, urmărim
-            relația dintre lumină, materiale, proporții și felul
-            în care oamenii folosesc spațiul.
-          </p>
-          <a href="#contact" class="text-link">
-            Hai să discutăm <span>↗</span>
-          </a>
+        <div class="hero-caption">
+          <span class="mono">DDL / Viziune contemporană</span>
+          <span class="mono">01 — Arhitectură</span>
         </div>
       </div>
     </section>
 
-    <!-- ECHIPA NOASTRA -->
+    <!-- DESPRE NOI -->
 
-    <section class="team-section" id="echipa">
+    <section class="intro" id="despre">
+      <div class="reveal">
+        <p class="eyebrow mono">01 / Despre DDL</p>
+        <h2>Eleganță în<br>fiecare <span class="gold">detaliu.</span></h2>
+      </div>
 
-      <div class="team-header reveal">
+      <div class="intro-copy reveal">
+        <p>
+          Credem că <strong>arhitectura de calitate</strong>
+          începe cu o idee clară și se definește prin
+          atenția acordată fiecărui detaliu.
+        </p>
+        <p>
+          DDL — Birou de proiectare urmărește să transforme
+          cerințele fiecărui proiect în spații coerente,
+          contemporane și atent proporționate.
+        </p>
+        <a href="#proiecte" class="gold-link">
+          Descoperă proiectele <span>↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ECHIPA -->
+
+    <section class="section team-section" id="echipa">
+      <div class="section-heading reveal">
         <div>
-          <span class="team-label mono">
-            DDL / Oamenii din spatele proiectelor
-          </span>
-          <h2>Echipa<br>noastră.</h2>
+          <p class="eyebrow mono">02 / Oamenii din spatele ideilor</p>
+          <h2>Echipa<br><span class="gold">noastră.</span></h2>
         </div>
-
-        <span class="team-index mono">02 / Echipa</span>
+        <span class="section-number mono">DDL / 03</span>
       </div>
 
       <p class="team-intro reveal">
-        Idei diferite, aceeași viziune.
-        O echipă dedicată arhitecturii și proiectării
-        unor spații gândite cu sens.
+        Trei perspective, o viziune comună.
+        O echipă dedicată arhitecturii, proiectării
+        și găsirii soluțiilor potrivite fiecărui spațiu.
       </p>
 
       <div class="team-grid">
 
-        <!-- DAN DOMSA STEFAN -->
-
         <article class="team-card reveal">
-          <div class="team-photo team-photo-one">
-            <span class="team-number">01</span>
+          <div class="team-photo">
+            <span class="team-number mono">01 / DDL</span>
+            <span class="team-symbol" aria-hidden="true">✳</span>
 
             <svg class="profile-icon"
                  viewBox="0 0 100 100"
                  xmlns="http://www.w3.org/2000/svg"
                  role="img"
-                 aria-label="Pictogramă de profil fără fotografie">
-              <circle cx="50" cy="34" r="17" fill="#a5a398"/>
+                 aria-label="Avatar fără fotografie">
+              <circle cx="50" cy="34" r="17" fill="#c9a45c"/>
               <path d="M17 91 C17 68 31 57 50 57 C69 57 83 68 83 91 Z"
-                    fill="#a5a398"/>
+                    fill="#c9a45c"/>
             </svg>
           </div>
-
           <div class="team-info">
             <h3>Dan Domșa Ștefan</h3>
             <p>Arhitect specializat</p>
@@ -794,23 +847,21 @@
           </div>
         </article>
 
-        <!-- LUCIA DOMSA -->
-
         <article class="team-card reveal">
           <div class="team-photo team-photo-two">
-            <span class="team-number">02</span>
+            <span class="team-number mono">02 / DDL</span>
+            <span class="team-symbol" aria-hidden="true">✳</span>
 
             <svg class="profile-icon"
                  viewBox="0 0 100 100"
                  xmlns="http://www.w3.org/2000/svg"
                  role="img"
-                 aria-label="Pictogramă de profil fără fotografie">
-              <circle cx="50" cy="34" r="17" fill="#a5a398"/>
+                 aria-label="Avatar fără fotografie">
+              <circle cx="50" cy="34" r="17" fill="#c9a45c"/>
               <path d="M17 91 C17 68 31 57 50 57 C69 57 83 68 83 91 Z"
-                    fill="#a5a398"/>
+                    fill="#c9a45c"/>
             </svg>
           </div>
-
           <div class="team-info">
             <h3>Lucia Domșa</h3>
             <p>Inginer specializat</p>
@@ -818,23 +869,21 @@
           </div>
         </article>
 
-        <!-- COSMIN CARLUGEA -->
-
         <article class="team-card reveal">
           <div class="team-photo team-photo-three">
-            <span class="team-number">03</span>
+            <span class="team-number mono">03 / DDL</span>
+            <span class="team-symbol" aria-hidden="true">✳</span>
 
             <svg class="profile-icon"
                  viewBox="0 0 100 100"
                  xmlns="http://www.w3.org/2000/svg"
                  role="img"
-                 aria-label="Pictogramă de profil fără fotografie">
-              <circle cx="50" cy="34" r="17" fill="#a5a398"/>
+                 aria-label="Avatar fără fotografie">
+              <circle cx="50" cy="34" r="17" fill="#c9a45c"/>
               <path d="M17 91 C17 68 31 57 50 57 C69 57 83 68 83 91 Z"
-                    fill="#a5a398"/>
+                    fill="#c9a45c"/>
             </svg>
           </div>
-
           <div class="team-info">
             <h3>Cosmin Cârlugea</h3>
             <p>Arhitect specializat</p>
@@ -847,88 +896,103 @@
 
     <!-- PROIECTE -->
 
-    <section class="content-section projects" id="proiecte">
-      <div class="section-head reveal">
-        <h2>Lucrări<br>selectate.</h2>
-        <span class="section-index mono">03 / Portofoliu</span>
+    <section class="section projects-section" id="proiecte">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow mono">03 / Portofoliu</p>
+          <h2>Forme.<br><span class="gold">Perspective.</span></h2>
+        </div>
+        <span class="section-number mono">Selectate / 04</span>
       </div>
+
+      <p class="section-subtitle reveal">
+        Fiecare proiect începe cu o idee și se dezvoltă
+        printr-o abordare atentă a spațiului, materialelor
+        și luminii.
+      </p>
 
       <div class="project-grid">
 
         <article class="project reveal">
           <div class="project-image">
             <img
-              src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85"
-              alt="Casă contemporană cu forme geometrice"
+              src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1300&q=85"
+              alt="Arhitectură rezidențială contemporană"
               loading="lazy"
             >
           </div>
           <div class="project-meta mono">
-            <span>Rezidențial</span><span>01</span>
+            <span>01 / Rezidențial</span>
+            <span>Arhitectură</span>
           </div>
           <h3>Casa dintre volume</h3>
-          <p>Concept arhitectural · Locuire contemporană</p>
+          <p>Forme contemporane și o relație echilibrată cu lumina.</p>
         </article>
 
         <article class="project reveal">
           <div class="project-image">
             <img
-              src="https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=1200&q=85"
-              alt="Interior contemporan cu materiale naturale"
+              src="https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=1300&q=85"
+              alt="Interior elegant cu materiale naturale"
               loading="lazy"
             >
           </div>
           <div class="project-meta mono">
-            <span>Interior</span><span>02</span>
+            <span>02 / Interior</span>
+            <span>Design</span>
           </div>
-          <h3>Un interior calm</h3>
-          <p>Design interior · Lumină și materialitate</p>
+          <h3>Eleganță naturală</h3>
+          <p>Materiale atent alese, texturi și proporții.</p>
         </article>
 
         <article class="project reveal">
           <div class="project-image">
             <img
-              src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85"
-              alt="Volum arhitectural modern în peisaj"
+              src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1300&q=85"
+              alt="Casă modernă și forme geometrice"
               loading="lazy"
             >
           </div>
           <div class="project-meta mono">
-            <span>Concept</span><span>03</span>
+            <span>03 / Concept</span>
+            <span>Volumetrie</span>
           </div>
-          <h3>Formă și peisaj</h3>
-          <p>Studiu de volumetrie · Relația cu natura</p>
+          <h3>Geometria spațiului</h3>
+          <p>Un studiu al formei, volumului și luminii.</p>
         </article>
 
         <article class="project reveal">
           <div class="project-image">
             <img
-              src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=85"
-              alt="Spațiu interior cu finisaje minimaliste"
+              src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1300&q=85"
+              alt="Interior minimalist cu finisaje premium"
               loading="lazy"
             >
           </div>
           <div class="project-meta mono">
-            <span>Interior</span><span>04</span>
+            <span>04 / Interior</span>
+            <span>Materialitate</span>
           </div>
-          <h3>Materia locuirii</h3>
-          <p>Design interior · Texturi și proporții</p>
+          <h3>Arta detaliului</h3>
+          <p>O compoziție calmă, definită prin detalii.</p>
         </article>
 
       </div>
 
-      <p class="placeholder-note mono">
-        Imaginile și denumirile sunt demonstrative.
-        Înlocuiește-le cu proiectele reale DDL.
+      <p class="demo-note mono">
+        Imagini demonstrative — înlocuiește-le cu fotografii ale proiectelor DDL.
       </p>
     </section>
 
     <!-- SERVICII -->
 
-    <section class="content-section" id="servicii">
-      <div class="section-head reveal">
-        <h2>Ce facem.</h2>
-        <span class="section-index mono">04 / Servicii</span>
+    <section class="section services-section" id="servicii">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow mono">04 / Expertiză</p>
+          <h2>Ce <span class="gold">facem.</span></h2>
+        </div>
+        <span class="section-number mono">Servicii DDL</span>
       </div>
 
       <div class="service-list">
@@ -947,7 +1011,7 @@
 
         <a href="#contact" class="service reveal">
           <span class="service-num mono">03</span>
-          <h3>Concept și volumetrie</h3>
+          <h3>Concept arhitectural</h3>
           <span class="service-arrow">↗</span>
         </a>
 
@@ -963,53 +1027,57 @@
     <!-- VIZIUNE -->
 
     <section class="manifesto">
-      <span class="mono">05 / Perspectiva noastră</span>
+      <p class="eyebrow mono reveal">05 / Filosofia DDL</p>
 
       <h2 class="reveal">
-        Nu proiectăm doar clădiri.
-        <span>Gândim felul în care spațiile sunt trăite.</span>
+        Mai mult decât formă.
+        <span>O viziune care transformă spațiul în experiență.</span>
       </h2>
 
       <div class="manifesto-bottom reveal">
         <p>
-          Fiecare proiect începe cu o întrebare, continuă cu o idee
-          și prinde formă prin atenția acordată detaliilor.
+          Credem în soluții atent gândite, în materiale
+          expresive și în arhitectura care își păstrează
+          valoarea dincolo de tendințe.
         </p>
 
-        <a href="#contact" class="light-link">
-          Începe un proiect ↗
+        <a href="#contact" class="gold-link">
+          Să discutăm proiectul tău <span>↗</span>
         </a>
       </div>
     </section>
 
     <!-- CONTACT -->
 
-    <section class="content-section" id="contact">
+    <section class="section contact-section" id="contact">
       <div class="contact-grid reveal">
 
         <div>
-          <span class="mono">06 / Contact</span>
+          <p class="eyebrow mono">06 / Contact</p>
           <h2 class="contact-title">
-            Hai să<br>construim<br>o idee.
+            Ideea ta.<br>
+            <span>Următorul</span><br>
+            proiect.
           </h2>
         </div>
 
         <div class="contact-info">
           <p>
-            Ai un proiect în minte? Suntem deschiși să discutăm
-            despre idei noi, colaborări și spații care merită
-            proiectate cu grijă.
+            Ai un proiect în minte? Contactează echipa DDL
+            pentru a discuta despre ideea ta, cerințe și
+            posibilități de colaborare.
           </p>
 
           <!-- Inlocuieste cu adresa reala de email -->
-          <a class="email-link" href="mailto:contact@ddl.ro">
+          <a href="mailto:contact@ddl.ro" class="contact-email">
             contact@ddl.ro ↗
           </a>
 
-          <p class="mono" style="margin-top:40px">
+          <div class="contact-details mono">
             DDL — Birou de proiectare<br>
-            România
-          </p>
+            România<br>
+            Arhitectură / Design / Proiectare
+          </div>
         </div>
 
       </div>
@@ -1025,33 +1093,35 @@
       <span class="brand-sub">Birou de proiectare</span>
     </a>
 
-    <p class="mono">
+    <span class="mono">
       © <span id="year"></span> DDL
-    </p>
+    </span>
 
-    <a href="#home" class="mono">Înapoi sus ↑</a>
+    <a href="#home" class="back-top mono">Înapoi sus ↑</a>
   </footer>
 
-  <!-- JAVASCRIPT -->
-
   <script>
-    // Actualizeaza automat anul din subsol
+    // Anul actual
     document.getElementById("year").textContent =
       new Date().getFullYear();
 
-    // Animatii discrete la derularea paginii
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
+    // Animatii la derularea paginii
+    const elements = document.querySelectorAll(".reveal");
 
-    document.querySelectorAll(".reveal").forEach((element) => {
-      observer.observe(element);
-    });
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      elements.forEach((element) => observer.observe(element));
+    } else {
+      elements.forEach((element) => element.classList.add("visible"));
+    }
   </script>
 
 </body>
