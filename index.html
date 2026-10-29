@@ -5,26 +5,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#080808">
-  <meta name="description" content="DDL — Birou de proiectare. Arhitectură contemporană și design premium.">
-  <title>DDL — Birou de Proiectare</title>
+  <meta name="description" content="DDL Birou de proiectare — arhitectură contemporană, proiectare și soluții construite cu viziune.">
+  <title>DDL | Birou de proiectare</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --black: #080808;
-      --black2: #10100e;
-      --gold: #c9a45c;
-      --gold-light: #ead5a0;
+      --panel: #10100f;
+      --gold: #d7b56d;
+      --gold-light: #f1d9a0;
       --white: #f4f0e8;
-      --muted: #99958b;
-      --line: rgba(201,164,92,.27);
-      --pad: clamp(22px, 6vw, 90px);
+      --muted: #99958c;
+      --line: rgba(215,181,109,.22);
+      --font: "Manrope", sans-serif;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     html {
       scroll-behavior: smooth;
@@ -32,10 +36,20 @@
     }
 
     body {
-      margin: 0;
       background: var(--black);
       color: var(--white);
-      font-family: "Manrope", sans-serif;
+      font-family: var(--font);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
+      opacity: .12;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.13'/%3E%3C/svg%3E");
     }
 
     a {
@@ -43,586 +57,727 @@
       text-decoration: none;
     }
 
-    img { display: block; max-width: 100%; }
-
-    ::selection {
-      background: var(--gold);
-      color: var(--black);
+    button {
+      font: inherit;
     }
 
-    .mono {
-      font-family: "DM Mono", monospace;
-      font-size: 10px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
+    .container {
+      width: min(1200px, 88%);
+      margin: auto;
     }
 
-    .gold { color: var(--gold); }
-
-    /* NAVIGARE */
-
-    header {
-      height: 92px;
-      padding: 0 var(--pad);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--line);
-      background: rgba(8,8,8,.96);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(16px);
-    }
-
-    .brand {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .brand-name {
+    .gold {
       color: var(--gold);
-      font-size: 38px;
-      font-weight: 800;
-      letter-spacing: -.1em;
-      line-height: .9;
-    }
-
-    .brand-sub {
-      color: var(--muted);
-      font-size: 8px;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: clamp(13px, 2.5vw, 34px);
-    }
-
-    nav a {
-      color: #d5d0c5;
-      font-size: 11px;
-      transition: color .25s;
-      white-space: nowrap;
-    }
-
-    nav a:hover { color: var(--gold); }
-
-    .nav-contact {
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      padding: 13px 19px;
-      transition: background .25s, color .25s;
-    }
-
-    .nav-contact:hover {
-      background: var(--gold);
-      color: var(--black);
-    }
-
-    /* HERO */
-
-    .hero {
-      padding: 45px var(--pad) 30px;
-    }
-
-    .hero-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      color: var(--muted);
-      margin-bottom: 38px;
-    }
-
-    .hero-title {
-      font-size: clamp(88px, 19vw, 260px);
-      font-weight: 500;
-      letter-spacing: -.12em;
-      line-height: .78;
-      margin: 0 0 35px -.07em;
-    }
-
-    .hero-title span { color: var(--gold); }
-
-    .hero-description {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 25px;
-      margin-bottom: 35px;
-    }
-
-    .hero-description h2 {
-      max-width: 640px;
-      margin: 0;
-      font-size: clamp(21px, 3.4vw, 43px);
-      font-weight: 400;
-      line-height: 1.3;
-      letter-spacing: -.055em;
-    }
-
-    .hero-description h2 span { color: var(--gold); }
-
-    .hero-description p {
-      max-width: 230px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.8;
-      margin: 0;
-    }
-
-    .hero-image {
-      position: relative;
-      height: clamp(330px, 61vw, 740px);
-      overflow: hidden;
-      background: #24211b;
-    }
-
-    .hero-image::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        0deg,
-        rgba(0,0,0,.7),
-        transparent 45%,
-        rgba(0,0,0,.08)
-      );
-      pointer-events: none;
-    }
-
-    .hero-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(.76);
-      transition: transform 1.2s ease;
-    }
-
-    .hero-image:hover img { transform: scale(1.035); }
-
-    .hero-caption {
-      position: absolute;
-      bottom: 25px;
-      left: 25px;
-      right: 25px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      z-index: 1;
-      color: var(--white);
-    }
-
-    .hero-caption .mono { color: var(--gold-light); }
-
-    /* INTRO */
-
-    .intro {
-      padding: 125px var(--pad);
-      display: grid;
-      grid-template-columns: .7fr 1.3fr;
-      gap: 8vw;
-      border-bottom: 1px solid var(--line);
     }
 
     .eyebrow {
-      color: var(--gold);
-      margin-bottom: 22px;
-    }
-
-    .intro h2 {
-      font-size: clamp(42px, 6vw, 78px);
-      line-height: 1;
-      letter-spacing: -.075em;
-      font-weight: 400;
-      margin: 0;
-    }
-
-    .intro-copy {
-      align-self: end;
-      max-width: 650px;
-    }
-
-    .intro-copy p {
-      font-size: clamp(17px, 2.2vw, 25px);
-      line-height: 1.8;
-      font-weight: 300;
-      color: #c5c0b5;
-      margin: 0 0 24px;
-    }
-
-    .intro-copy strong {
-      color: var(--gold-light);
-      font-weight: 500;
-    }
-
-    .gold-link {
-      display: inline-flex;
-      gap: 22px;
+      display: flex;
       align-items: center;
+      gap: 12px;
       color: var(--gold);
-      font-size: 12px;
-      border-bottom: 1px solid var(--gold);
-      padding: 0 0 10px;
-      margin-top: 15px;
-      transition: gap .25s;
+      text-transform: uppercase;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
     }
 
-    .gold-link:hover { gap: 32px; }
-
-    /* TITLURI SECTIUNI */
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
 
     .section {
-      padding: 110px var(--pad);
-      border-bottom: 1px solid var(--line);
+      padding: 125px 0;
     }
 
     .section-heading {
       display: flex;
       justify-content: space-between;
       align-items: end;
-      gap: 25px;
+      gap: 30px;
       margin-bottom: 55px;
     }
 
     .section-heading h2 {
-      margin: 0;
-      font-size: clamp(46px, 8vw, 105px);
-      line-height: .94;
+      font-size: clamp(36px, 5vw, 64px);
       font-weight: 400;
-      letter-spacing: -.085em;
+      line-height: 1.08;
+      letter-spacing: -2.5px;
+      margin-top: 20px;
     }
 
-    .section-number {
+    .section-heading p {
+      max-width: 320px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    /* HEADER */
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(8,8,8,.85);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .nav {
+      height: 82px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-symbol {
       color: var(--gold);
-      padding-bottom: 7px;
-      white-space: nowrap;
+      font-size: 35px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -5px;
+      padding-right: 5px;
     }
 
-    .section-subtitle {
-      max-width: 450px;
+    .brand-text {
+      border-left: 1px solid var(--line);
+      padding-left: 13px;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
+
+    .brand-text span {
+      display: block;
       color: var(--muted);
-      font-size: 14px;
-      line-height: 1.9;
-      margin: -30px 0 48px;
+      font-size: 9px;
+      margin-top: 4px;
     }
 
-    /* ECHIPA */
-
-    .team-section {
-      background: #0d0d0b;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 29px;
+      list-style: none;
     }
 
-    .team-intro {
-      max-width: 480px;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.9;
-      margin: -27px 0 50px;
+    .nav-links a {
+      color: #c3beb3;
+      font-size: 11px;
+      transition: color .25s;
     }
 
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 25px;
+    .nav-links a:hover {
+      color: var(--gold);
     }
 
-    .team-card { min-width: 0; }
+    .nav-cta {
+      padding: 13px 18px;
+      border: 1px solid var(--gold);
+      color: var(--gold) !important;
+      transition: background .25s, color .25s !important;
+    }
 
-    .team-photo {
+    .nav-cta:hover {
+      background: var(--gold);
+      color: #080808 !important;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      color: var(--gold);
+      border: 1px solid var(--line);
+      padding: 9px 12px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 790px;
+      min-height: 100svh;
+      padding: 140px 0 70px;
       position: relative;
       display: flex;
       align-items: center;
-      justify-content: center;
-      aspect-ratio: 4 / 5;
       overflow: hidden;
-      background: #171611;
-      border: 1px solid rgba(201,164,92,.16);
-      transition: border-color .3s, background .3s;
     }
 
-    .team-photo-two { background: #191813; }
-    .team-photo-three { background: #151510; }
-
-    .team-card:hover .team-photo {
-      border-color: var(--gold);
-      background: #201d15;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 45px;
+      align-items: center;
     }
 
-    .team-number {
-      position: absolute;
-      top: 19px;
-      left: 19px;
-      color: var(--gold);
+    .hero-content {
+      position: relative;
+      z-index: 2;
     }
 
-    .team-symbol {
-      position: absolute;
-      right: 19px;
-      top: 19px;
-      color: #777063;
-      font-size: 17px;
+    .hero h1 {
+      font-size: clamp(58px, 8.2vw, 112px);
+      line-height: .99;
+      font-weight: 400;
+      letter-spacing: -6px;
+      margin: 30px 0;
     }
 
-    /* AVATAR SIMPLU FARA PAR */
-
-    .profile-icon {
-      width: 64%;
-      max-width: 225px;
-      height: auto;
-      filter: drop-shadow(0 0 25px rgba(201,164,92,.04));
-      transition: transform .4s ease;
-    }
-
-    .team-card:hover .profile-icon {
-      transform: scale(1.06);
-    }
-
-    .team-info { padding-top: 22px; }
-
-    .team-info h3 {
-      font-size: clamp(18px, 2.1vw, 26px);
-      line-height: 1.4;
-      letter-spacing: -.055em;
-      font-weight: 500;
-      margin: 0;
-    }
-
-    .team-info p {
-      font-family: "DM Mono", monospace;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      color: var(--gold);
-      margin: 10px 0 20px;
-    }
-
-    .team-line {
+    .hero h1 span {
       display: block;
-      height: 1px;
-      background: var(--line);
-      transition: background .3s;
+      color: var(--gold);
+      font-weight: 300;
+      font-style: italic;
     }
 
-    .team-card:hover .team-line { background: var(--gold); }
+    .hero-description {
+      max-width: 420px;
+      color: #a7a299;
+      line-height: 1.9;
+      font-size: 13px;
+    }
 
-    /* PROIECTE */
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 25px;
+      margin-top: 35px;
+    }
 
-    .projects-section { background: var(--black); }
+    .button-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 28px;
+      background: var(--gold);
+      color: #0a0907;
+      padding: 17px 21px;
+      font-size: 11px;
+      font-weight: 800;
+      transition: background .25s, transform .25s;
+    }
+
+    .button-gold:hover {
+      background: var(--gold-light);
+      transform: translateY(-3px);
+    }
+
+    .button-gold span {
+      font-size: 18px;
+    }
+
+    .text-link {
+      font-size: 11px;
+      color: #d4cfc5;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+
+    .hero-art {
+      min-height: 490px;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .hero-art::before {
+      content: "";
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      border: 1px solid rgba(215,181,109,.13);
+    }
+
+    .hero-art::after {
+      content: "";
+      position: absolute;
+      width: 290px;
+      height: 290px;
+      border-radius: 50%;
+      border: 1px solid rgba(215,181,109,.2);
+    }
+
+    .architectural-art {
+      width: 100%;
+      max-width: 490px;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 25px 35px rgba(0,0,0,.4));
+      animation: float 7s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .art-label {
+      position: absolute;
+      bottom: 25px;
+      right: 0;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 2px;
+      writing-mode: vertical-rl;
+    }
+
+    .hero-bottom {
+      position: absolute;
+      bottom: 25px;
+      left: 6%;
+      right: 6%;
+      display: flex;
+      justify-content: space-between;
+      color: #777269;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .hero-bottom span:last-child {
+      color: var(--gold);
+    }
+
+    /* MOVING STRIP */
+
+    .ticker {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 21px 0;
+      overflow: hidden;
+      background: #0c0c0b;
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: ticker 32s linear infinite;
+    }
+
+    .ticker-item {
+      padding: 0 35px;
+      color: #c5bca8;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .ticker-item span {
+      color: var(--gold);
+      margin-right: 35px;
+    }
+
+    @keyframes ticker {
+      to { transform: translateX(-50%); }
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 100px;
+      align-items: start;
+    }
+
+    .about-side {
+      position: sticky;
+      top: 120px;
+    }
+
+    .about-number {
+      font-size: 150px;
+      font-weight: 300;
+      color: transparent;
+      -webkit-text-stroke: 1px var(--gold);
+      line-height: 1;
+      margin: 35px 0 20px;
+      letter-spacing: -10px;
+    }
+
+    .about-side p {
+      max-width: 260px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    .about-main h2 {
+      font-size: clamp(30px, 4vw, 49px);
+      font-weight: 400;
+      letter-spacing: -2px;
+      line-height: 1.3;
+      margin-bottom: 28px;
+    }
+
+    .about-main h2 em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .about-main > p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 2;
+      margin-bottom: 18px;
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 42px;
+    }
+
+    .principle {
+      padding: 22px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .principle strong {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .principle p {
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* PROJECTS */
+
+    .projects {
+      background: #0d0d0c;
+      border-top: 1px solid rgba(255,255,255,.04);
+      border-bottom: 1px solid rgba(255,255,255,.04);
+    }
 
     .project-grid {
       display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 65px 25px;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px 25px;
     }
 
-    .project:nth-child(even) { margin-top: 100px; }
+    .project-card {
+      cursor: default;
+    }
 
-    .project-image {
-      position: relative;
+    .project-card:nth-child(even) {
+      margin-top: 75px;
+    }
+
+    .project-visual {
+      height: 355px;
       overflow: hidden;
-      background: #191711;
-      aspect-ratio: 4 / 4.7;
+      position: relative;
+      background: #191916;
+      border: 1px solid rgba(215,181,109,.12);
     }
 
-    .project-image img {
+    .project-visual svg {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      filter: brightness(.78);
-      transition: transform .8s, filter .5s;
+      transition: transform .7s;
     }
 
-    .project:hover .project-image img {
+    .project-card:hover .project-visual svg {
       transform: scale(1.045);
-      filter: brightness(.96);
+    }
+
+    .project-visual::after {
+      content: "DDL / CONCEPT";
+      position: absolute;
+      left: 20px;
+      bottom: 17px;
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,.6);
     }
 
     .project-meta {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       gap: 15px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .project-meta h3 {
+      font-size: 17px;
+      font-weight: 500;
+    }
+
+    .project-meta p {
+      color: var(--muted);
+      font-size: 10px;
+      margin-top: 7px;
+    }
+
+    .project-index {
       color: var(--gold);
-      margin-top: 20px;
-    }
-
-    .project h3 {
-      font-size: clamp(23px, 3vw, 37px);
-      font-weight: 400;
-      letter-spacing: -.06em;
-      margin: 13px 0 8px;
-    }
-
-    .project p {
-      color: var(--muted);
       font-size: 12px;
-      line-height: 1.8;
-      margin: 0;
     }
 
-    .demo-note {
-      margin-top: 45px;
-      color: var(--muted);
+    .project-note {
+      margin-top: 35px;
+      color: #777269;
+      font-size: 10px;
       line-height: 1.8;
     }
 
-    /* SERVICII */
+    /* SERVICES */
 
-    .services-section { background: #0d0d0b; }
+    .service-list {
+      border-top: 1px solid var(--line);
+    }
 
-    .service-list { border-top: 1px solid var(--line); }
-
-    .service {
+    .service-row {
       display: grid;
-      grid-template-columns: 65px 1fr 40px;
+      grid-template-columns: 65px 1fr 1fr 35px;
       gap: 20px;
       align-items: center;
-      padding: 30px 0;
+      padding: 29px 0;
       border-bottom: 1px solid var(--line);
       transition: padding .3s;
     }
 
-    .service:hover { padding-left: 12px; }
-
-    .service-num { color: var(--gold); }
-
-    .service h3 {
-      font-size: clamp(23px, 4vw, 47px);
-      font-weight: 400;
-      letter-spacing: -.065em;
-      margin: 0;
-      transition: color .25s;
+    .service-row:hover {
+      padding-left: 12px;
+      padding-right: 12px;
     }
 
-    .service:hover h3 { color: var(--gold-light); }
+    .service-number {
+      color: var(--gold);
+      font-size: 11px;
+    }
+
+    .service-row h3 {
+      font-size: clamp(17px, 2vw, 23px);
+      font-weight: 400;
+    }
+
+    .service-row p {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.8;
+    }
 
     .service-arrow {
       color: var(--gold);
-      font-size: 23px;
+      font-size: 21px;
       text-align: right;
     }
 
-    /* VIZIUNE */
+    /* TEAM */
 
-    .manifesto {
-      position: relative;
-      overflow: hidden;
-      padding: 130px var(--pad);
-      background:
-        radial-gradient(ellipse at 85% 50%, rgba(201,164,92,.12), transparent 45%),
-        #10100e;
-      border-bottom: 1px solid var(--line);
+    .team {
+      background: #0d0d0c;
     }
 
-    .manifesto h2 {
-      position: relative;
-      max-width: 1100px;
-      font-size: clamp(42px, 8.5vw, 112px);
-      line-height: 1.04;
-      letter-spacing: -.085em;
-      font-weight: 400;
-      margin: 55px 0;
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
     }
 
-    .manifesto h2 span { color: var(--gold); }
-
-    .manifesto-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 30px;
+    .team-card {
+      padding: 28px 23px;
+      border: 1px solid rgba(215,181,109,.17);
+      background: linear-gradient(145deg, #141412, #0b0b0a);
+      transition: transform .3s, border-color .3s;
     }
 
-    .manifesto-bottom p {
-      max-width: 420px;
+    .team-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(215,181,109,.65);
+    }
+
+    .avatar-wrap {
+      height: 190px;
+      display: grid;
+      place-items: center;
+      background: #0a0a09;
+      border: 1px solid rgba(255,255,255,.04);
+      margin-bottom: 25px;
+    }
+
+    .avatar-wrap svg {
+      width: 100px;
+      height: 115px;
+    }
+
+    .team-role {
+      color: var(--gold);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .team-card h3 {
+      font-size: 19px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .team-card > p:last-child {
       color: var(--muted);
-      font-size: 13px;
-      line-height: 1.9;
-      margin: 0;
+      font-size: 11px;
+      line-height: 1.8;
     }
 
     /* CONTACT */
 
-    .contact-section { background: var(--black); }
+    .contact {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact::before {
+      content: "DDL";
+      position: absolute;
+      right: -25px;
+      bottom: -100px;
+      font-size: clamp(180px, 32vw, 450px);
+      font-weight: 800;
+      letter-spacing: -25px;
+      color: rgba(215,181,109,.025);
+      pointer-events: none;
+    }
 
     .contact-grid {
       display: grid;
       grid-template-columns: 1.1fr .9fr;
-      gap: 55px;
+      gap: 90px;
+      position: relative;
+      z-index: 1;
     }
 
-    .contact-title {
-      font-size: clamp(55px, 10vw, 135px);
-      line-height: .88;
-      letter-spacing: -.1em;
+    .contact h2 {
+      font-size: clamp(45px, 7vw, 83px);
       font-weight: 400;
-      margin: 35px 0 0;
+      line-height: 1.04;
+      letter-spacing: -4px;
+      margin: 27px 0;
     }
 
-    .contact-title span { color: var(--gold); }
-
-    .contact-info {
-      align-self: end;
-      max-width: 450px;
-      justify-self: end;
-      width: 100%;
+    .contact h2 em {
+      color: var(--gold);
+      font-style: italic;
     }
 
-    .contact-info p {
-      font-size: 14px;
-      line-height: 1.9;
+    .contact-intro {
       color: var(--muted);
-    }
-
-    .contact-email {
-      display: inline-block;
-      margin-top: 18px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--gold);
-      color: var(--gold-light);
-      font-size: clamp(16px, 2.4vw, 24px);
-      overflow-wrap: anywhere;
+      max-width: 400px;
+      font-size: 12px;
+      line-height: 2;
     }
 
     .contact-details {
-      margin-top: 45px;
-      padding-top: 22px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      line-height: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 27px;
+    }
+
+    .contact-item {
+      padding-bottom: 23px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contact-item span {
+      display: block;
+      color: var(--gold);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .contact-item a,
+    .contact-item p {
+      font-size: 15px;
+      color: var(--white);
+      overflow-wrap: anywhere;
+    }
+
+    .contact-item a:hover {
+      color: var(--gold);
+    }
+
+    .contact-button {
+      margin-top: 10px;
     }
 
     /* FOOTER */
 
     footer {
-      padding: 30px var(--pad);
       border-top: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 25px;
-      color: var(--muted);
+      padding: 28px 0;
+      background: #070707;
     }
 
-    footer .brand-name { font-size: 29px; }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-copy {
+      font-size: 10px;
+      color: #777269;
+      line-height: 1.8;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      font-size: 10px;
+      color: #aaa397;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
 
     .back-top {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
       color: var(--gold);
-      transition: opacity .25s;
     }
 
-    .back-top:hover { opacity: .65; }
-
-    /* ANIMATII */
+    /* REVEAL ANIMATIONS */
 
     .reveal {
       opacity: 0;
-      transform: translateY(22px);
-      transition: opacity .7s ease, transform .7s ease;
+      transform: translateY(25px);
+      transition: opacity .8s ease, transform .8s ease;
     }
 
     .reveal.visible {
@@ -630,497 +785,983 @@
       transform: translateY(0);
     }
 
-    /* RESPONSIVE */
-
-    @media (max-width: 800px) {
-      header { height: 78px; }
-      nav { gap: 13px; }
-      nav a { font-size: 10px; }
-      nav .hide-tablet { display: none; }
-
-      .intro {
-        grid-template-columns: 1fr;
-        gap: 35px;
-        padding-top: 85px;
-        padding-bottom: 85px;
-      }
-
-      .contact-grid { gap: 35px; }
+    .gold-line {
+      height: 1px;
+      width: 100%;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 1.2s ease;
     }
 
-    @media (max-width: 600px) {
-      header { padding-inline: 20px; }
-      .brand-name { font-size: 31px; }
-      .brand-sub { font-size: 7px; }
+    .gold-line.visible {
+      transform: scaleX(1);
+    }
 
-      nav { gap: 10px; }
-      nav a { font-size: 9px; }
-      nav .nav-contact { padding: 10px; }
+    /* RESPONSIVE */
 
-      .hero { padding-top: 35px; }
-      .hero-top { font-size: 8px; }
-      .hero-title { font-size: 22vw; }
-
-      .hero-description {
-        flex-direction: column;
-        align-items: start;
+    @media (max-width: 900px) {
+      .nav-links {
+        gap: 15px;
       }
 
-      .hero-description p { max-width: 320px; }
-      .hero-image { height: 440px; }
-      .hero-caption { left: 15px; right: 15px; bottom: 15px; }
+      .nav-links a {
+        font-size: 10px;
+      }
 
-      .section,
-      .team-section { padding-top: 78px; padding-bottom: 78px; }
+      .hero-grid {
+        gap: 10px;
+      }
 
-      .section-heading { margin-bottom: 38px; }
+      .hero h1 {
+        letter-spacing: -4px;
+      }
 
-      .team-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-art::before {
+        width: 290px;
+        height: 290px;
+      }
 
-      .team-photo { aspect-ratio: 4 / 3.5; }
+      .hero-art::after {
+        width: 220px;
+        height: 220px;
+      }
 
-      .profile-icon { width: 43%; max-width: 190px; }
+      .about-grid {
+        gap: 45px;
+      }
 
-      .team-info h3 { font-size: 25px; }
+      .contact-grid {
+        gap: 45px;
+      }
+    }
 
-      .project-grid {
+    @media (max-width: 680px) {
+      .container {
+        width: 89%;
+      }
+
+      .section {
+        padding: 85px 0;
+      }
+
+      .nav {
+        height: 72px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        padding: 25px 6%;
+        background: #0b0b0a;
+        border-bottom: 1px solid var(--line);
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 14px 0;
+        font-size: 12px;
+      }
+
+      .nav-cta {
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .hero {
+        padding-top: 120px;
+        min-height: auto;
+        padding-bottom: 100px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: clamp(58px, 15vw, 88px);
+        letter-spacing: -4px;
+      }
+
+      .hero-art {
+        min-height: 350px;
+        margin-top: 15px;
+      }
+
+      .architectural-art {
+        max-width: 380px;
+      }
+
+      .hero-art::before {
+        width: 260px;
+        height: 260px;
+      }
+
+      .hero-art::after {
+        width: 195px;
+        height: 195px;
+      }
+
+      .art-label {
+        right: 5px;
+      }
+
+      .hero-bottom {
+        bottom: 22px;
+        font-size: 7px;
+        letter-spacing: 1px;
+      }
+
+      .section-heading {
+        align-items: start;
+        flex-direction: column;
+        margin-bottom: 35px;
+      }
+
+      .section-heading h2 {
+        letter-spacing: -1.5px;
+      }
+
+      .about-grid {
         grid-template-columns: 1fr;
         gap: 40px;
       }
 
-      .project:nth-child(even) { margin-top: 0; }
+      .about-side {
+        position: static;
+      }
 
-      .project-image { aspect-ratio: 4 / 4.1; }
+      .about-number {
+        font-size: 105px;
+        margin: 20px 0 10px;
+      }
 
-      .service {
-        grid-template-columns: 30px 1fr 22px;
+      .about-main h2 {
+        letter-spacing: -1px;
+      }
+
+      .principles {
+        gap: 15px;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .project-card:nth-child(even) {
+        margin-top: 0;
+      }
+
+      .project-visual {
+        height: 270px;
+      }
+
+      .service-row {
+        grid-template-columns: 32px 1fr 25px;
         gap: 12px;
         padding: 24px 0;
       }
 
-      .manifesto { padding-top: 85px; padding-bottom: 85px; }
-
-      .manifesto h2 { margin: 38px 0; }
-
-      .manifesto-bottom {
-        align-items: start;
-        flex-direction: column;
+      .service-row p {
+        grid-column: 2;
+        grid-row: 2;
       }
 
-      .contact-grid { grid-template-columns: 1fr; }
+      .service-arrow {
+        grid-column: 3;
+        grid-row: 1;
+      }
 
-      .contact-info { justify-self: start; }
+      .team-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
 
-      footer { align-items: start; }
+      .team-card {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        column-gap: 20px;
+        padding: 18px;
+      }
+
+      .avatar-wrap {
+        grid-column: 1;
+        grid-row: 1 / span 3;
+        height: 130px;
+        margin: 0;
+      }
+
+      .avatar-wrap svg {
+        width: 75px;
+        height: 90px;
+      }
+
+      .team-role {
+        align-self: end;
+        margin-top: 8px;
+        line-height: 1.7;
+      }
+
+      .team-card h3 {
+        font-size: 16px;
+      }
+
+      .team-card > p:last-child {
+        align-self: start;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .contact h2 {
+        letter-spacing: -2px;
+      }
+
+      .footer-inner {
+        flex-wrap: wrap;
+      }
+
+      .footer-copy {
+        flex: 1 1 75%;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         scroll-behavior: auto !important;
+        animation: none !important;
         transition-duration: .01ms !important;
       }
 
-      .reveal { opacity: 1; transform: none; }
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
     }
   </style>
 </head>
 
-<body>
+<body id="top">
 
-  <!-- HEADER -->
+  <!-- NAVIGARE -->
+  <header class="header">
+    <nav class="nav container">
+      <a class="brand" href="#top" aria-label="DDL - pagina principală">
+        <div class="brand-symbol">DDL</div>
+        <div class="brand-text">
+          <strong>STUDIO</strong>
+          <span>Birou de proiectare</span>
+        </div>
+      </a>
 
-  <header>
-    <a href="#home" class="brand" aria-label="DDL - Acasă">
-      <span class="brand-name">DDL.</span>
-      <span class="brand-sub">Birou de proiectare</span>
-    </a>
+      <button class="menu-toggle" id="menuToggle"
+        aria-label="Deschide meniul" aria-expanded="false"
+        aria-controls="navLinks">MENIU +</button>
 
-    <nav aria-label="Navigare">
-      <a href="#despre" class="hide-tablet">Despre</a>
-      <a href="#echipa" class="hide-tablet">Echipa</a>
-      <a href="#proiecte">Proiecte</a>
-      <a href="#servicii" class="hide-tablet">Servicii</a>
-      <a href="#contact" class="nav-contact">Contact ↗</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#despre">Despre noi</a></li>
+        <li><a href="#proiecte">Proiecte</a></li>
+        <li><a href="#servicii">Servicii</a></li>
+        <li><a href="#echipa">Echipa</a></li>
+        <li><a href="#contact" class="nav-cta">Contact ↗</a></li>
+      </ul>
     </nav>
   </header>
 
   <main>
 
     <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="eyebrow">Arhitectură · Proiectare · Viziune</div>
 
-    <section class="hero" id="home">
-      <div class="hero-top mono">
-        <span>Arhitectură · Formă · Spațiu</span>
-        <span class="gold">Est. DDL / România</span>
-      </div>
+          <h1>
+            Spații cu
+            <span>sens.</span>
+            Forme cu
+            <span>viziune.</span>
+          </h1>
 
-      <h1 class="hero-title">DDL<span>.</span></h1>
+          <p class="hero-description">
+            La DDL, transformăm ideile în spații atent gândite.
+            Îmbinăm rigoarea tehnică, creativitatea și atenția la
+            detalii pentru a contura arhitectura de mâine.
+          </p>
 
-      <div class="hero-description">
-        <h2>
-          Arhitectură cu <span>caracter.</span><br>
-          Spații care inspiră.
-        </h2>
-        <p>
-          Un birou de proiectare dedicat
-          echilibrului dintre estetică,
-          funcționalitate și detaliu.
-        </p>
-      </div>
-
-      <div class="hero-image">
-        <img
-          src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=85"
-          alt="Interior arhitectural contemporan"
-          fetchpriority="high"
-        >
-        <div class="hero-caption">
-          <span class="mono">DDL / Viziune contemporană</span>
-          <span class="mono">01 — Arhitectură</span>
+          <div class="hero-actions">
+            <a href="#proiecte" class="button-gold">
+              DESCOPERĂ PROIECTELE <span>↗</span>
+            </a>
+            <a href="#despre" class="text-link">Povestea noastră ↓</a>
+          </div>
         </div>
+
+        <div class="hero-art">
+          <!-- Ilustrație arhitecturală originală, realizată în SVG -->
+          <svg class="architectural-art" viewBox="0 0 500 540"
+            xmlns="http://www.w3.org/2000/svg" role="img"
+            aria-label="Ilustrație geometrică inspirată de arhitectura contemporană">
+
+            <defs>
+              <linearGradient id="goldFront" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f2dca5"/>
+                <stop offset="100%" stop-color="#98743b"/>
+              </linearGradient>
+              <linearGradient id="darkFace" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#343128"/>
+                <stop offset="100%" stop-color="#11110f"/>
+              </linearGradient>
+              <linearGradient id="glass" x1="0" y1="0" x2="0.9" y2="1">
+                <stop offset="0%" stop-color="#bfa36c" stop-opacity=".6"/>
+                <stop offset="100%" stop-color="#30291c" stop-opacity=".15"/>
+              </linearGradient>
+            </defs>
+
+            <ellipse cx="255" cy="474" rx="180" ry="17"
+              fill="#000" opacity=".45"/>
+
+            <!-- Baza clădirii -->
+            <path d="M65 385 L255 275 L435 370 L244 484 Z"
+              fill="#151512" stroke="#8c7549" stroke-width="1"/>
+
+            <!-- Volum lateral -->
+            <path d="M255 275 L435 370 L435 405 L255 309 Z"
+              fill="#171713" stroke="#a58a54" stroke-width=".8"/>
+
+            <!-- Fațada principală -->
+            <path d="M65 385 L255 275 L255 420 L65 454 Z"
+              fill="url(#darkFace)" stroke="#d7b56d" stroke-width="1"/>
+
+            <!-- Acoperiș geometric -->
+            <path d="M45 365 L248 245 L456 350 L255 275 Z"
+              fill="#26231c" stroke="#d7b56d" stroke-width="1.2"/>
+
+            <path d="M45 365 L248 245 L456 350"
+              fill="none" stroke="#f1d9a0" stroke-width="1.4"/>
+
+            <!-- Ferestre -->
+            <path d="M91 390 L125 371 L125 441 L91 447 Z"
+              fill="url(#glass)" stroke="#a78a52" stroke-width=".8"/>
+
+            <path d="M143 361 L177 342 L177 432 L143 438 Z"
+              fill="url(#glass)" stroke="#a78a52" stroke-width=".8"/>
+
+            <path d="M195 331 L229 312 L229 423 L195 429 Z"
+              fill="url(#glass)" stroke="#a78a52" stroke-width=".8"/>
+
+            <!-- Linii de fațadă -->
+            <path d="M65 419 L255 383 M65 437 L255 402"
+              fill="none" stroke="#987b46" stroke-width=".7" opacity=".7"/>
+
+            <!-- Volum superior -->
+            <path d="M119 264 L255 184 L383 249 L246 326 Z"
+              fill="#222119" stroke="#d7b56d" stroke-width="1.1"/>
+
+            <path d="M119 264 L119 295 L246 358 L246 326 Z"
+              fill="#161612" stroke="#8e7548" stroke-width=".8"/>
+
+            <path d="M246 326 L383 249 L383 283 L246 358 Z"
+              fill="#11110f" stroke="#8e7548" stroke-width=".8"/>
+
+            <!-- Geometria fațadei -->
+            <path d="M139 265 L255 198 L255 308 L139 292 Z"
+              fill="url(#glass)" stroke="#c5a35e" stroke-width=".8"/>
+
+            <path d="M164 251 L164 295 M190 236 L190 300
+                     M216 220 L216 305 M241 205 L241 309"
+              fill="none" stroke="#d7b56d" stroke-width="1" opacity=".8"/>
+
+            <!-- Stâlpi -->
+            <path d="M151 297 L151 328 M177 300 L177 342
+                     M203 305 L203 354 M229 309 L229 368"
+              fill="none" stroke="#c8a760" stroke-width="2"/>
+
+            <!-- Detalii aurii -->
+            <path d="M68 385 L255 275 L432 369"
+              fill="none" stroke="#f1d9a0" stroke-width="1.4"/>
+
+            <path d="M91 459 L245 484 L435 405"
+              fill="none" stroke="#b99a59" stroke-width=".8"/>
+
+            <!-- Repere tehnice -->
+            <g stroke="#d7b56d" stroke-width=".7" opacity=".55">
+              <path d="M45 170 H145"/>
+              <path d="M45 170 V225"/>
+              <path d="M355 130 H445"/>
+              <path d="M445 130 V190"/>
+              <circle cx="45" cy="170" r="3" fill="#d7b56d"/>
+              <circle cx="445" cy="130" r="3" fill="#d7b56d"/>
+            </g>
+
+            <g fill="#d7b56d" font-family="sans-serif"
+              font-size="9" letter-spacing="2">
+              <text x="45" y="155">01 / FORM</text>
+              <text x="345" y="115">DDL / STUDIO</text>
+              <text x="55" y="500">ARCHITECTURE</text>
+              <text x="355" y="500">2026</text>
+            </g>
+          </svg>
+
+          <div class="art-label">CONCEPT · STRUCTURE · DETAIL</div>
+        </div>
+      </div>
+
+      <div class="hero-bottom">
+        <span>Proiectăm cu intenție.</span>
+        <span>Precizie în fiecare detaliu ↘</span>
       </div>
     </section>
 
-    <!-- DESPRE NOI -->
-
-    <section class="intro" id="despre">
-      <div class="reveal">
-        <p class="eyebrow mono">01 / Despre DDL</p>
-        <h2>Eleganță în<br>fiecare <span class="gold">detaliu.</span></h2>
+    <!-- BANDĂ ANIMATĂ -->
+    <div class="ticker" aria-label="Domenii de activitate">
+      <div class="ticker-track">
+        <div class="ticker-item"><span>✳</span>Arhitectură</div>
+        <div class="ticker-item"><span>✳</span>Proiectare</div>
+        <div class="ticker-item"><span>✳</span>Design funcțional</div>
+        <div class="ticker-item"><span>✳</span>Viziune contemporană</div>
+        <div class="ticker-item"><span>✳</span>Detalii bine gândite</div>
+        <div class="ticker-item"><span>✳</span>Arhitectură</div>
+        <div class="ticker-item"><span>✳</span>Proiectare</div>
+        <div class="ticker-item"><span>✳</span>Design funcțional</div>
+        <div class="ticker-item"><span>✳</span>Viziune contemporană</div>
+        <div class="ticker-item"><span>✳</span>Detalii bine gândite</div>
       </div>
+    </div>
 
-      <div class="intro-copy reveal">
-        <p>
-          Credem că <strong>arhitectura de calitate</strong>
-          începe cu o idee clară și se definește prin
-          atenția acordată fiecărui detaliu.
-        </p>
-        <p>
-          DDL — Birou de proiectare urmărește să transforme
-          cerințele fiecărui proiect în spații coerente,
-          contemporane și atent proporționate.
-        </p>
-        <a href="#proiecte" class="gold-link">
-          Descoperă proiectele <span>↗</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- ECHIPA -->
-
-    <section class="section team-section" id="echipa">
-      <div class="section-heading reveal">
-        <div>
-          <p class="eyebrow mono">02 / Oamenii din spatele ideilor</p>
-          <h2>Echipa<br><span class="gold">noastră.</span></h2>
+    <!-- DESPRE -->
+    <section class="section" id="despre">
+      <div class="container about-grid">
+        <div class="about-side reveal">
+          <div class="eyebrow">01 / Despre DDL</div>
+          <div class="about-number">DDL.</div>
+          <p>
+            Un birou de proiectare în care fiecare linie are un scop,
+            iar fiecare idee începe cu o întrebare bună.
+          </p>
         </div>
-        <span class="section-number mono">DDL / 03</span>
-      </div>
 
-      <p class="team-intro reveal">
-        Trei perspective, o viziune comună.
-        O echipă dedicată arhitecturii, proiectării
-        și găsirii soluțiilor potrivite fiecărui spațiu.
-      </p>
+        <div class="about-main reveal">
+          <h2>
+            Nu proiectăm doar clădiri.
+            Construim <em>felul în care trăim.</em>
+          </h2>
 
-      <div class="team-grid">
+          <p>
+            Credem că arhitectura de calitate pornește de la înțelegerea
+            oamenilor, a locului și a modului în care un spațiu va fi
+            folosit. De aceea, abordăm fiecare proiect cu atenție,
+            logică și deschidere către soluții noi.
+          </p>
 
-        <article class="team-card reveal">
-          <div class="team-photo">
-            <span class="team-number mono">01 / DDL</span>
-            <span class="team-symbol" aria-hidden="true">✳</span>
+          <p>
+            De la primele idei până la dezvoltarea soluțiilor tehnice,
+            urmărim echilibrul dintre expresia arhitecturală, funcționalitate
+            și cerințele concrete ale fiecărui proiect.
+          </p>
 
-            <svg class="profile-icon"
-                 viewBox="0 0 100 100"
-                 xmlns="http://www.w3.org/2000/svg"
-                 role="img"
-                 aria-label="Avatar fără fotografie">
-              <circle cx="50" cy="34" r="17" fill="#c9a45c"/>
-              <path d="M17 91 C17 68 31 57 50 57 C69 57 83 68 83 91 Z"
-                    fill="#c9a45c"/>
-            </svg>
+          <div class="gold-line"></div>
+
+          <div class="principles">
+            <div class="principle">
+              <strong>01 — CLARITATE</strong>
+              <p>Idei bine definite și soluții ușor de înțeles.</p>
+            </div>
+            <div class="principle">
+              <strong>02 — PRECIZIE</strong>
+              <p>Rigoare tehnică și atenție pentru fiecare detaliu.</p>
+            </div>
+            <div class="principle">
+              <strong>03 — ECHILIBRU</strong>
+              <p>Formă, funcție și context într-o relație coerentă.</p>
+            </div>
+            <div class="principle">
+              <strong>04 — COLABORARE</strong>
+              <p>Dialog constant și obiective stabilite împreună.</p>
+            </div>
           </div>
-          <div class="team-info">
-            <h3>Dan Domșa Ștefan</h3>
-            <p>Arhitect specializat</p>
-            <span class="team-line"></span>
-          </div>
-        </article>
-
-        <article class="team-card reveal">
-          <div class="team-photo team-photo-two">
-            <span class="team-number mono">02 / DDL</span>
-            <span class="team-symbol" aria-hidden="true">✳</span>
-
-            <svg class="profile-icon"
-                 viewBox="0 0 100 100"
-                 xmlns="http://www.w3.org/2000/svg"
-                 role="img"
-                 aria-label="Avatar fără fotografie">
-              <circle cx="50" cy="34" r="17" fill="#c9a45c"/>
-              <path d="M17 91 C17 68 31 57 50 57 C69 57 83 68 83 91 Z"
-                    fill="#c9a45c"/>
-            </svg>
-          </div>
-          <div class="team-info">
-            <h3>Lucia Domșa</h3>
-            <p>Inginer specializat</p>
-            <span class="team-line"></span>
-          </div>
-        </article>
-
-        <article class="team-card reveal">
-          <div class="team-photo team-photo-three">
-            <span class="team-number mono">03 / DDL</span>
-            <span class="team-symbol" aria-hidden="true">✳</span>
-
-            <svg class="profile-icon"
-                 viewBox="0 0 100 100"
-                 xmlns="http://www.w3.org/2000/svg"
-                 role="img"
-                 aria-label="Avatar fără fotografie">
-              <circle cx="50" cy="34" r="17" fill="#c9a45c"/>
-              <path d="M17 91 C17 68 31 57 50 57 C69 57 83 68 83 91 Z"
-                    fill="#c9a45c"/>
-            </svg>
-          </div>
-          <div class="team-info">
-            <h3>Cosmin Cârlugea</h3>
-            <p>Arhitect specializat</p>
-            <span class="team-line"></span>
-          </div>
-        </article>
-
+        </div>
       </div>
     </section>
 
     <!-- PROIECTE -->
-
-    <section class="section projects-section" id="proiecte">
-      <div class="section-heading reveal">
-        <div>
-          <p class="eyebrow mono">03 / Portofoliu</p>
-          <h2>Forme.<br><span class="gold">Perspective.</span></h2>
+    <section class="section projects" id="proiecte">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <div class="eyebrow">02 / Selecție vizuală</div>
+            <h2>Idei care prind<br><span class="gold">formă.</span></h2>
+          </div>
+          <p>
+            Fiecare proiect pornește de la un concept și evoluează
+            prin alegeri atente, proporții și funcționalitate.
+          </p>
         </div>
-        <span class="section-number mono">Selectate / 04</span>
+
+        <div class="project-grid">
+
+          <!-- Proiect conceptual 01 -->
+          <article class="project-card reveal">
+            <div class="project-visual">
+              <svg viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg"
+                role="img" aria-label="Concept vizual de locuință contemporană">
+                <defs>
+                  <linearGradient id="houseBg" x1="0" y1="0" x2="1" y2="1">
+                    <stop stop-color="#38372f"/>
+                    <stop offset="1" stop-color="#121210"/>
+                  </linearGradient>
+                  <linearGradient id="houseGlass" x1="0" y1="0" x2="1" y2="1">
+                    <stop stop-color="#c5ad7b" stop-opacity=".75"/>
+                    <stop offset="1" stop-color="#6b624c" stop-opacity=".12"/>
+                  </linearGradient>
+                </defs>
+                <rect width="600" height="420" fill="url(#houseBg)"/>
+                <circle cx="430" cy="100" r="95" fill="#b39b67" opacity=".06"/>
+                <path d="M0 340 L600 290 V420 H0Z" fill="#0c0c0b"/>
+                <path d="M75 185 L295 90 L505 170 L286 260Z"
+                  fill="#c1b08a" opacity=".8"/>
+                <path d="M75 185 L286 260 L286 370 L75 294Z"
+                  fill="#34332b" stroke="#c6a965"/>
+                <path d="M286 260 L505 170 L505 282 L286 370Z"
+                  fill="#1c1c18" stroke="#b99a59"/>
+                <path d="M105 195 L286 130 L286 247 L105 272Z"
+                  fill="url(#houseGlass)" stroke="#d2b776"/>
+                <path d="M130 188 V275 M175 172 V286 M220 155 V299"
+                  stroke="#d7b56d" fill="none" stroke-width="2"/>
+                <path d="M315 270 L475 205 V272 L315 337Z"
+                  fill="#b5a17a" opacity=".25" stroke="#b99a59"/>
+                <path d="M320 280 L320 335 M370 260 L370 315
+                         M420 239 L420 294"
+                  stroke="#c9a964" stroke-width="2"/>
+                <path d="M45 365 H545" stroke="#b99a59" opacity=".5"/>
+                <g fill="#d7b56d" font-size="10" letter-spacing="3">
+                  <text x="32" y="35">CONCEPT 01</text>
+                  <text x="430" y="395">RESIDENTIAL</text>
+                </g>
+              </svg>
+            </div>
+            <div class="project-meta">
+              <div>
+                <h3>Locuință contemporană</h3>
+                <p>Arhitectură rezidențială · Concept vizual</p>
+              </div>
+              <span class="project-index">01 ↗</span>
+            </div>
+          </article>
+
+          <!-- Proiect conceptual 02 -->
+          <article class="project-card reveal">
+            <div class="project-visual">
+              <svg viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg"
+                role="img" aria-label="Concept vizual de clădire cu volume geometrice">
+                <defs>
+                  <linearGradient id="officeBg" x1="0" y1="0" x2="0.9" y2="1">
+                    <stop stop-color="#292a26"/>
+                    <stop offset="1" stop-color="#11110f"/>
+                  </linearGradient>
+                </defs>
+                <rect width="600" height="420" fill="url(#officeBg)"/>
+                <path d="M0 325 L600 355 V420 H0Z" fill="#0a0a09"/>
+                <g stroke="#6f6040" stroke-width="1" opacity=".35">
+                  <path d="M0 100 H600 M0 150 H600 M0 200 H600
+                           M0 250 H600 M0 300 H600"/>
+                  <path d="M100 0 V420 M200 0 V420 M300 0 V420
+                           M400 0 V420 M500 0 V420"/>
+                </g>
+                <path d="M105 130 L325 80 L325 300 L105 340Z"
+                  fill="#b6a681" stroke="#e0c987"/>
+                <path d="M325 80 L478 140 L478 325 L325 300Z"
+                  fill="#171714" stroke="#d0ad63"/>
+                <path d="M130 151 L300 113 V159 L130 196Z"
+                  fill="#1b1b17" stroke="#c5a660"/>
+                <path d="M130 214 L300 176 V222 L130 260Z"
+                  fill="#1b1b17" stroke="#c5a660"/>
+                <path d="M130 277 L300 239 V285 L130 321Z"
+                  fill="#1b1b17" stroke="#c5a660"/>
+                <path d="M349 111 L455 153 V189 L349 150Z"
+                  fill="#8d7c56" opacity=".8"/>
+                <path d="M349 177 L455 219 V255 L349 216Z"
+                  fill="#8d7c56" opacity=".55"/>
+                <path d="M349 243 L455 285 V315 L349 291Z"
+                  fill="#8d7c56" opacity=".3"/>
+                <path d="M75 350 H525" stroke="#d7b56d" opacity=".5"/>
+                <g fill="#d7b56d" font-size="10" letter-spacing="3">
+                  <text x="32" y="35">CONCEPT 02</text>
+                  <text x="420" y="395">GEOMETRY</text>
+                </g>
+              </svg>
+            </div>
+            <div class="project-meta">
+              <div>
+                <h3>Volumetrie urbană</h3>
+                <p>Studiu de formă · Concept vizual</p>
+              </div>
+              <span class="project-index">02 ↗</span>
+            </div>
+          </article>
+
+          <!-- Proiect conceptual 03 -->
+          <article class="project-card reveal">
+            <div class="project-visual">
+              <svg viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg"
+                role="img" aria-label="Concept vizual pentru un spațiu interior">
+                <defs>
+                  <linearGradient id="interiorBg" x1="0" y1="0" x2="1" y2="1">
+                    <stop stop-color="#39352c"/>
+                    <stop offset="1" stop-color="#11110e"/>
+                  </linearGradient>
+                </defs>
+                <rect width="600" height="420" fill="url(#interiorBg)"/>
+                <path d="M0 320 L300 230 L600 320 V420 H0Z"
+                  fill="#151512"/>
+                <path d="M65 60 H390 V260 L65 330Z"
+                  fill="#c7b58d" opacity=".18" stroke="#c5a660"/>
+                <path d="M100 90 H355 V235 L100 285Z"
+                  fill="#171713" stroke="#d7b56d"/>
+                <path d="M125 110 H330 V218 L125 257Z"
+                  fill="#a78b56" opacity=".45"/>
+                <path d="M125 110 V257 M180 110 V247 M235 110 V236
+                         M290 110 V226"
+                  stroke="#e2c783" stroke-width="1.5"/>
+                <path d="M390 60 L525 120 V305 L390 260Z"
+                  fill="#191916" stroke="#b99a59"/>
+                <path d="M412 90 L500 130 V250 L412 221Z"
+                  fill="#d7b56d" opacity=".16"/>
+                <path d="M0 360 L300 278 L600 360"
+                  fill="none" stroke="#b99a59" opacity=".65"/>
+                <path d="M210 390 L300 278 L390 390"
+                  fill="none" stroke="#8b7548" opacity=".6"/>
+                <g fill="#d7b56d" font-size="10" letter-spacing="3">
+                  <text x="32" y="35">CONCEPT 03</text>
+                  <text x="420" y="395">INTERIOR</text>
+                </g>
+              </svg>
+            </div>
+            <div class="project-meta">
+              <div>
+                <h3>Dialog între materiale</h3>
+                <p>Design interior · Concept vizual</p>
+              </div>
+              <span class="project-index">03 ↗</span>
+            </div>
+          </article>
+
+          <!-- Proiect conceptual 04 -->
+          <article class="project-card reveal">
+            <div class="project-visual">
+              <svg viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg"
+                role="img" aria-label="Concept vizual pentru o structură arhitecturală">
+                <defs>
+                  <linearGradient id="structureBg" x1="0" y1="0" x2="1" y2="1">
+                    <stop stop-color="#34332c"/>
+                    <stop offset="1" stop-color="#0d0d0b"/>
+                  </linearGradient>
+                </defs>
+                <rect width="600" height="420" fill="url(#structureBg)"/>
+                <g fill="none" stroke="#d7b56d" stroke-width="1" opacity=".55">
+                  <path d="M60 345 L300 70 L540 345Z"/>
+                  <path d="M100 345 L300 120 L500 345Z"/>
+                  <path d="M140 345 L300 170 L460 345Z"/>
+                  <path d="M180 345 L300 220 L420 345Z"/>
+                </g>
+                <path d="M95 330 L300 120 L505 330 L300 390Z"
+                  fill="#a68c55" opacity=".17" stroke="#d7b56d"/>
+                <path d="M95 330 L300 120 L300 390Z"
+                  fill="#b7a16d" opacity=".15"/>
+                <path d="M300 120 L505 330 L300 390Z"
+                  fill="#0c0c0b" opacity=".55"/>
+                <g stroke="#d7b56d" stroke-width="1.5">
+                  <path d="M300 70 V390"/>
+                  <path d="M60 345 H540"/>
+                  <path d="M100 345 L300 220 L500 345"/>
+                </g>
+                <g fill="#d7b56d" font-size="10" letter-spacing="3">
+                  <text x="32" y="35">CONCEPT 04</text>
+                  <text x="410" y="395">STRUCTURE</text>
+                </g>
+              </svg>
+            </div>
+            <div class="project-meta">
+              <div>
+                <h3>Rigoare structurală</h3>
+                <p>Studiu geometric · Concept vizual</p>
+              </div>
+              <span class="project-index">04 ↗</span>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="project-note">
+          NOTĂ: Imaginile de mai sus sunt ilustrații conceptuale pentru designul site-ului,
+          nu proiecte construite sau lucrări reale atribuite biroului DDL.
+          Înlocuiește-le cu proiectele proprii înainte de publicare.
+        </p>
       </div>
-
-      <p class="section-subtitle reveal">
-        Fiecare proiect începe cu o idee și se dezvoltă
-        printr-o abordare atentă a spațiului, materialelor
-        și luminii.
-      </p>
-
-      <div class="project-grid">
-
-        <article class="project reveal">
-          <div class="project-image">
-            <img
-              src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1300&q=85"
-              alt="Arhitectură rezidențială contemporană"
-              loading="lazy"
-            >
-          </div>
-          <div class="project-meta mono">
-            <span>01 / Rezidențial</span>
-            <span>Arhitectură</span>
-          </div>
-          <h3>Casa dintre volume</h3>
-          <p>Forme contemporane și o relație echilibrată cu lumina.</p>
-        </article>
-
-        <article class="project reveal">
-          <div class="project-image">
-            <img
-              src="https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=1300&q=85"
-              alt="Interior elegant cu materiale naturale"
-              loading="lazy"
-            >
-          </div>
-          <div class="project-meta mono">
-            <span>02 / Interior</span>
-            <span>Design</span>
-          </div>
-          <h3>Eleganță naturală</h3>
-          <p>Materiale atent alese, texturi și proporții.</p>
-        </article>
-
-        <article class="project reveal">
-          <div class="project-image">
-            <img
-              src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1300&q=85"
-              alt="Casă modernă și forme geometrice"
-              loading="lazy"
-            >
-          </div>
-          <div class="project-meta mono">
-            <span>03 / Concept</span>
-            <span>Volumetrie</span>
-          </div>
-          <h3>Geometria spațiului</h3>
-          <p>Un studiu al formei, volumului și luminii.</p>
-        </article>
-
-        <article class="project reveal">
-          <div class="project-image">
-            <img
-              src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1300&q=85"
-              alt="Interior minimalist cu finisaje premium"
-              loading="lazy"
-            >
-          </div>
-          <div class="project-meta mono">
-            <span>04 / Interior</span>
-            <span>Materialitate</span>
-          </div>
-          <h3>Arta detaliului</h3>
-          <p>O compoziție calmă, definită prin detalii.</p>
-        </article>
-
-      </div>
-
-      <p class="demo-note mono">
-        Imagini demonstrative — înlocuiește-le cu fotografii ale proiectelor DDL.
-      </p>
     </section>
 
     <!-- SERVICII -->
-
-    <section class="section services-section" id="servicii">
-      <div class="section-heading reveal">
-        <div>
-          <p class="eyebrow mono">04 / Expertiză</p>
-          <h2>Ce <span class="gold">facem.</span></h2>
+    <section class="section" id="servicii">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <div class="eyebrow">03 / Ce facem</div>
+            <h2>De la idee<br>la <span class="gold">detaliu.</span></h2>
+          </div>
+          <p>
+            O abordare structurată, de la primele discuții până
+            la dezvoltarea soluțiilor de proiectare.
+          </p>
         </div>
-        <span class="section-number mono">Servicii DDL</span>
-      </div>
 
-      <div class="service-list">
+        <div class="service-list">
+          <article class="service-row reveal">
+            <span class="service-number">01</span>
+            <h3>Proiectare de arhitectură</h3>
+            <p>Concepte, organizare funcțională și dezvoltarea soluțiilor arhitecturale.</p>
+            <span class="service-arrow">↗</span>
+          </article>
 
-        <a href="#contact" class="service reveal">
-          <span class="service-num mono">01</span>
-          <h3>Arhitectură</h3>
-          <span class="service-arrow">↗</span>
-        </a>
+          <article class="service-row reveal">
+            <span class="service-number">02</span>
+            <h3>Documentații tehnice</h3>
+            <p>Elaborarea documentațiilor în funcție de cerințele și etapele proiectului.</p>
+            <span class="service-arrow">↗</span>
+          </article>
 
-        <a href="#contact" class="service reveal">
-          <span class="service-num mono">02</span>
-          <h3>Design interior</h3>
-          <span class="service-arrow">↗</span>
-        </a>
+          <article class="service-row reveal">
+            <span class="service-number">03</span>
+            <h3>Consultanță de proiectare</h3>
+            <p>Clarificarea cerințelor, analizarea opțiunilor și definirea direcției de lucru.</p>
+            <span class="service-arrow">↗</span>
+          </article>
 
-        <a href="#contact" class="service reveal">
-          <span class="service-num mono">03</span>
-          <h3>Concept arhitectural</h3>
-          <span class="service-arrow">↗</span>
-        </a>
-
-        <a href="#contact" class="service reveal">
-          <span class="service-num mono">04</span>
-          <h3>Documentații de proiectare</h3>
-          <span class="service-arrow">↗</span>
-        </a>
-
+          <article class="service-row reveal">
+            <span class="service-number">04</span>
+            <h3>Dezvoltare de concept</h3>
+            <p>Explorarea volumelor, proporțiilor și relației dintre spațiu și utilizator.</p>
+            <span class="service-arrow">↗</span>
+          </article>
+        </div>
       </div>
     </section>
 
-    <!-- VIZIUNE -->
+    <!-- ECHIPA -->
+    <section class="section team" id="echipa">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <div class="eyebrow">04 / Oamenii din spatele ideilor</div>
+            <h2>Minți diferite.<br><span class="gold">Aceeași viziune.</span></h2>
+          </div>
+          <p>
+            O echipă care pune împreună perspective complementare,
+            competențe tehnice și atenție pentru arhitectură.
+          </p>
+        </div>
 
-    <section class="manifesto">
-      <p class="eyebrow mono reveal">05 / Filosofia DDL</p>
+        <div class="team-grid">
 
-      <h2 class="reveal">
-        Mai mult decât formă.
-        <span>O viziune care transformă spațiul în experiență.</span>
-      </h2>
+          <article class="team-card reveal">
+            <div class="avatar-wrap">
+              <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg"
+                role="img" aria-label="Avatar ilustrat, fără fotografie">
+                <circle cx="60" cy="43" r="29" fill="#c8b58d"/>
+                <path d="M17 130 Q19 80 60 80 Q101 80 103 130Z"
+                  fill="#c8b58d"/>
+                <path d="M43 78 L60 99 L77 78"
+                  fill="#151512" stroke="#151512" stroke-width="2"/>
+                <path d="M48 79 L60 93 L72 79"
+                  fill="none" stroke="#d7b56d" stroke-width="1.5"/>
+                <circle cx="60" cy="43" r="29" fill="none"
+                  stroke="#d7b56d" stroke-width="1.2"/>
+              </svg>
+            </div>
+            <p class="team-role">Arhitectură</p>
+            <h3>Dan Domșa Ștefan</h3>
+            <p>Arhitect specializat</p>
+          </article>
 
-      <div class="manifesto-bottom reveal">
-        <p>
-          Credem în soluții atent gândite, în materiale
-          expresive și în arhitectura care își păstrează
-          valoarea dincolo de tendințe.
-        </p>
+          <article class="team-card reveal">
+            <div class="avatar-wrap">
+              <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg"
+                role="img" aria-label="Avatar ilustrat, fără fotografie">
+                <circle cx="60" cy="43" r="29" fill="#c8b58d"/>
+                <path d="M17 130 Q19 80 60 80 Q101 80 103 130Z"
+                  fill="#c8b58d"/>
+                <path d="M43 78 L60 99 L77 78"
+                  fill="#151512" stroke="#151512" stroke-width="2"/>
+                <path d="M48 79 L60 93 L72 79"
+                  fill="none" stroke="#d7b56d" stroke-width="1.5"/>
+                <circle cx="60" cy="43" r="29" fill="none"
+                  stroke="#d7b56d" stroke-width="1.2"/>
+              </svg>
+            </div>
+            <p class="team-role">Inginerie</p>
+            <h3>Lucia Domșa</h3>
+            <p>Inginer specializat</p>
+          </article>
 
-        <a href="#contact" class="gold-link">
-          Să discutăm proiectul tău <span>↗</span>
-        </a>
+          <article class="team-card reveal">
+            <div class="avatar-wrap">
+              <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg"
+                role="img" aria-label="Avatar ilustrat, fără fotografie">
+                <circle cx="60" cy="43" r="29" fill="#c8b58d"/>
+                <path d="M17 130 Q19 80 60 80 Q101 80 103 130Z"
+                  fill="#c8b58d"/>
+                <path d="M43 78 L60 99 L77 78"
+                  fill="#151512" stroke="#151512" stroke-width="2"/>
+                <path d="M48 79 L60 93 L72 79"
+                  fill="none" stroke="#d7b56d" stroke-width="1.5"/>
+                <circle cx="60" cy="43" r="29" fill="none"
+                  stroke="#d7b56d" stroke-width="1.2"/>
+              </svg>
+            </div>
+            <p class="team-role">Arhitectură</p>
+            <h3>Cosmin Cârlugea</h3>
+            <p>Arhitect specializat</p>
+          </article>
+
+        </div>
       </div>
     </section>
 
     <!-- CONTACT -->
-
-    <section class="section contact-section" id="contact">
-      <div class="contact-grid reveal">
-
-        <div>
-          <p class="eyebrow mono">06 / Contact</p>
-          <h2 class="contact-title">
-            Ideea ta.<br>
-            <span>Următorul</span><br>
-            proiect.
-          </h2>
+    <section class="section contact" id="contact">
+      <div class="container contact-grid">
+        <div class="reveal">
+          <div class="eyebrow">05 / Hai să discutăm</div>
+          <h2>Următoarea idee<br>poate deveni<br><em>realitate.</em></h2>
+          <p class="contact-intro">
+            Ai un proiect în minte sau vrei să discuți o posibilă colaborare?
+            Scrie-ne câteva rânduri și putem începe cu o conversație.
+          </p>
+          <a class="button-gold contact-button"
+            href="mailto:contact@ddl.ro?subject=Solicitare%20proiectare">
+            TRIMITE UN MESAJ <span>↗</span>
+          </a>
         </div>
 
-        <div class="contact-info">
-          <p>
-            Ai un proiect în minte? Contactează echipa DDL
-            pentru a discuta despre ideea ta, cerințe și
-            posibilități de colaborare.
-          </p>
+        <div class="contact-details reveal">
+          <div class="contact-item">
+            <span>E-mail</span>
+            <a href="mailto:contact@ddl.ro">contact@ddl.ro</a>
+          </div>
 
-          <!-- Inlocuieste cu adresa reala de email -->
-          <a href="mailto:contact@ddl.ro" class="contact-email">
-            contact@ddl.ro ↗
-          </a>
+          <div class="contact-item">
+            <span>Telefon</span>
+            <a href="tel:+40700000000">+40 700 000 000</a>
+          </div>
 
-          <div class="contact-details mono">
-            DDL — Birou de proiectare<br>
-            România<br>
-            Arhitectură / Design / Proiectare
+          <div class="contact-item">
+            <span>Birou</span>
+            <p>România</p>
+          </div>
+
+          <div class="contact-item">
+            <span>Program</span>
+            <p>Luni – Vineri · Cu programare</p>
           </div>
         </div>
-
       </div>
     </section>
 
   </main>
 
   <!-- FOOTER -->
-
   <footer>
-    <a href="#home" class="brand">
-      <span class="brand-name">DDL.</span>
-      <span class="brand-sub">Birou de proiectare</span>
-    </a>
+    <div class="container footer-inner">
+      <div class="brand">
+        <div class="brand-symbol">DDL</div>
+        <div class="brand-text">
+          <strong>STUDIO</strong>
+          <span>Birou de proiectare</span>
+        </div>
+      </div>
 
-    <span class="mono">
-      © <span id="year"></span> DDL
-    </span>
+      <p class="footer-copy">
+        © <span id="year"></span> DDL Studio.<br>
+        Concept și identitate digitală.
+      </p>
 
-    <a href="#home" class="back-top mono">Înapoi sus ↑</a>
+      <div class="footer-links">
+        <a href="#despre">Despre</a>
+        <a href="#proiecte">Proiecte</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <a class="back-top" href="#top" aria-label="Înapoi sus">↑</a>
+    </div>
   </footer>
 
   <script>
-    // Anul actual
+    // Anul actual în subsol
     document.getElementById("year").textContent =
       new Date().getFullYear();
 
-    // Animatii la derularea paginii
-    const elements = document.querySelectorAll(".reveal");
+    // Meniu pentru telefon
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", function () {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.textContent = isOpen ? "ÎNCHIDE −" : "MENIU +";
+    });
+
+    // Închide meniul după selectarea unei secțiuni
+    navLinks.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "MENIU +";
+      });
+    });
+
+    // Animații la derularea paginii
+    const revealElements = document.querySelectorAll(".reveal, .gold-line");
 
     if ("IntersectionObserver" in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12 });
+      const observer = new IntersectionObserver(
+        function (entries, currentObserver) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              currentObserver.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.12,
+          rootMargin: "0px 0px -35px 0px"
+        }
+      );
 
-      elements.forEach((element) => observer.observe(element));
+      revealElements.forEach(function (element) {
+        observer.observe(element);
+      });
     } else {
-      elements.forEach((element) => element.classList.add("visible"));
+      revealElements.forEach(function (element) {
+        element.classList.add("visible");
+      });
     }
   </script>
 
