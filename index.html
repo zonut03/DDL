@@ -25,7 +25,7 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 90px;
+      scroll-padding-top: 30px;
     }
 
     body {
@@ -51,8 +51,8 @@
     /* NAVIGARE */
 
     header {
-      height: 88px;
-      padding: 0 var(--pad);
+      min-height: 88px;
+      padding: 18px var(--pad);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -64,11 +64,12 @@
     .brand {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 4px;
+      flex-shrink: 0;
     }
 
     .brand-name {
-      font-size: 29px;
+      font-size: 32px;
       font-weight: 800;
       letter-spacing: -.09em;
       line-height: 1;
@@ -78,17 +79,19 @@
       font-family: "DM Mono", monospace;
       font-size: 8px;
       letter-spacing: .08em;
+      text-transform: uppercase;
     }
 
     nav {
       display: flex;
-      gap: clamp(16px, 3vw, 44px);
+      gap: clamp(12px, 2.3vw, 32px);
       align-items: center;
     }
 
     nav a {
       font-size: 11px;
       transition: opacity .2s;
+      white-space: nowrap;
     }
 
     nav a:hover { opacity: .5; }
@@ -118,7 +121,7 @@
       line-height: .77;
       letter-spacing: -.105em;
       font-weight: 600;
-      margin: 0 0 35px -0.045em;
+      margin: 0 0 35px -.045em;
     }
 
     .hero-bottom {
@@ -137,7 +140,10 @@
       letter-spacing: -.04em;
     }
 
-    .scroll-note { color: var(--muted); white-space: nowrap; }
+    .scroll-note {
+      color: var(--muted);
+      white-space: nowrap;
+    }
 
     .hero-image {
       position: relative;
@@ -172,9 +178,13 @@
       text-shadow: 0 1px 10px #333;
     }
 
-    /* INTRODUCERE */
+    /* STIL GENERAL SECTIUNI */
 
-    section { padding: 115px var(--pad); }
+    section { scroll-margin-top: 20px; }
+
+    .content-section {
+      padding: 110px var(--pad);
+    }
 
     .section-head {
       display: flex;
@@ -194,7 +204,13 @@
       margin: 0;
     }
 
-    .section-index { color: var(--muted); padding-top: 9px; }
+    .section-index {
+      color: var(--muted);
+      padding-top: 9px;
+      white-space: nowrap;
+    }
+
+    /* DESPRE */
 
     .about-grid {
       display: grid;
@@ -228,6 +244,124 @@
       margin-top: 20px;
       font-size: 12px;
     }
+
+    /* ECHIPA DDL */
+
+    .team-section {
+      padding: 110px var(--pad);
+      border-top: 1px solid var(--line);
+    }
+
+    .team-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .team-label {
+      color: var(--muted);
+    }
+
+    .team-header h2 {
+      font-size: clamp(54px, 9vw, 112px);
+      font-weight: 500;
+      letter-spacing: -.085em;
+      line-height: .9;
+      margin: 35px 0 0;
+    }
+
+    .team-index {
+      color: var(--muted);
+      padding-top: 8px;
+      white-space: nowrap;
+    }
+
+    .team-intro {
+      max-width: 460px;
+      margin: 30px 0 55px;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .team-card { min-width: 0; }
+
+    .team-photo {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #d9d5ca;
+      transition: background .35s ease;
+    }
+
+    .team-photo-two { background: #d2d0c5; }
+    .team-photo-three { background: #d7d2c8; }
+
+    .team-card:hover .team-photo { background: #c7c2b5; }
+
+    .team-number {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    /* AVATAR FARA FOTOGRAFIE, FARA PAR */
+
+    .profile-icon {
+      width: 65%;
+      max-width: 230px;
+      height: auto;
+      display: block;
+      transition: transform .4s ease;
+    }
+
+    .team-card:hover .profile-icon { transform: scale(1.05); }
+
+    .team-info { padding-top: 20px; }
+
+    .team-info h3 {
+      font-size: clamp(18px, 2vw, 25px);
+      font-weight: 600;
+      letter-spacing: -.055em;
+      line-height: 1.4;
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .team-info p {
+      margin: 8px 0 20px;
+      font-family: "DM Mono", monospace;
+      text-transform: uppercase;
+      font-size: 10px;
+      letter-spacing: .08em;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .team-line {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: var(--line);
+      transition: background .3s ease;
+    }
+
+    .team-card:hover .team-line { background: var(--ink); }
 
     /* PROIECTE */
 
@@ -317,13 +451,12 @@
 
     .service-arrow { text-align: right; font-size: 20px; }
 
-    /* PRINCIPII */
+    /* MANIFEST */
 
     .manifesto {
       background: var(--ink);
       color: var(--paper);
-      padding-top: 110px;
-      padding-bottom: 110px;
+      padding: 110px var(--pad);
     }
 
     .manifesto .mono { color: #b1afa4; }
@@ -373,7 +506,7 @@
       line-height: .9;
       letter-spacing: -.1em;
       font-weight: 500;
-      margin: 0;
+      margin: 35px 0 0;
     }
 
     .contact-info {
@@ -399,6 +532,8 @@
       overflow-wrap: anywhere;
     }
 
+    /* SUBSOL */
+
     footer {
       border-top: 1px solid var(--line);
       padding: 25px var(--pad);
@@ -409,7 +544,9 @@
       color: var(--muted);
     }
 
-    footer a { color: var(--ink); }
+    footer p { margin: 0; }
+
+    /* ANIMATII */
 
     .reveal {
       opacity: 0;
@@ -427,46 +564,121 @@
         scroll-behavior: auto !important;
         transition-duration: .01ms !important;
       }
+
       .reveal { opacity: 1; transform: none; }
     }
 
-    @media (max-width: 700px) {
-      header { height: 75px; }
-      nav { gap: 14px; }
+    /* TABLETE SI TELEFOANE */
+
+    @media (max-width: 800px) {
+      header { gap: 20px; }
+      nav { gap: 13px; }
       nav a { font-size: 10px; }
-      nav .nav-cta { padding: 10px; }
       .nav-extra { display: none; }
+      .about-grid { gap: 40px; }
+    }
+
+    @media (max-width: 700px) {
+      header { min-height: 75px; }
+
+      nav { gap: 10px; }
+      nav .nav-cta { padding: 10px; }
+
       .hero { padding-top: 38px; }
       .hero h1 { font-size: 19vw; }
-      .hero-bottom { align-items: start; }
+
+      .hero-bottom {
+        align-items: start;
+      }
+
       .scroll-note { display: none; }
-      section { padding-top: 78px; padding-bottom: 78px; }
-      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 30px; }
+
+      .content-section,
+      .team-section {
+        padding-top: 78px;
+        padding-bottom: 78px;
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
       .contact-info { justify-self: start; }
-      .project-grid { grid-template-columns: 1fr; row-gap: 38px; }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+        gap: 42px;
+      }
+
+      .team-photo {
+        aspect-ratio: 4 / 3.5;
+      }
+
+      .profile-icon {
+        width: 43%;
+        max-width: 190px;
+      }
+
+      .team-info h3 { font-size: 24px; }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+        row-gap: 38px;
+      }
+
       .project:nth-child(even) { margin-top: 0; }
-      .project-image, .project:nth-child(even) .project-image {
+
+      .project-image,
+      .project:nth-child(even) .project-image {
         aspect-ratio: 4 / 4.2;
       }
-      .manifesto { padding-top: 80px; padding-bottom: 80px; }
+
+      .manifesto {
+        padding-top: 80px;
+        padding-bottom: 80px;
+      }
+
       .manifesto h2 { margin: 35px 0; }
-      .manifesto-bottom { align-items: start; flex-direction: column; }
-      .service { grid-template-columns: 35px 1fr 20px; gap: 12px; }
+
+      .manifesto-bottom {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .service {
+        grid-template-columns: 35px 1fr 20px;
+        gap: 12px;
+      }
+
       footer { flex-wrap: wrap; }
+    }
+
+    @media (max-width: 390px) {
+      .brand-name { font-size: 28px; }
+      .brand-sub { font-size: 7px; }
+      nav { gap: 8px; }
+      nav a { font-size: 9px; }
+      nav .nav-cta { padding: 9px; }
+      .eyebrow { font-size: 8px; }
     }
   </style>
 </head>
 
 <body>
 
+  <!-- HEADER -->
+
   <header>
-    <a href="#home" class="brand" aria-label="DDL — pagina principală">
+    <a href="#home" class="brand" aria-label="DDL pagina principală">
       <span class="brand-name">DDL.</span>
       <span class="brand-sub">Birou de proiectare</span>
     </a>
 
     <nav aria-label="Navigare principală">
       <a href="#despre" class="nav-extra">Despre</a>
+      <a href="#echipa" class="nav-extra">Echipa</a>
       <a href="#proiecte">Proiecte</a>
       <a href="#servicii" class="nav-extra">Servicii</a>
       <a href="#contact" class="nav-cta">Contact ↗</a>
@@ -474,6 +686,9 @@
   </header>
 
   <main>
+
+    <!-- HERO -->
+
     <div class="hero" id="home">
       <div class="eyebrow mono">
         <span>Arhitectură · Spațiu · Formă</span>
@@ -501,7 +716,9 @@
       </div>
     </div>
 
-    <section id="despre">
+    <!-- DESPRE NOI -->
+
+    <section class="content-section" id="despre">
       <div class="section-head reveal">
         <h2>Mai puțin,<br>dar mai bine.</h2>
         <span class="section-index mono">01 / Despre noi</span>
@@ -509,31 +726,135 @@
 
       <div class="about-grid reveal">
         <p class="about-statement">
-          Credem în arhitectura care nu caută să impresioneze, ci să rămână relevantă.
+          Credem în arhitectura care nu caută să impresioneze,
+          ci să rămână relevantă.
         </p>
 
         <div class="about-copy">
           <p>
-            DDL este un birou de proiectare dedicat creării unor spații
-            contemporane, echilibrate și atent gândite.
+            DDL este un birou de proiectare dedicat creării unor
+            spații contemporane, echilibrate și atent gândite.
           </p>
           <p>
-            De la prima idee la detaliile proiectului, urmărim relația
-            dintre lumină, materiale, proporții și felul în care oamenii
-            folosesc spațiul.
+            De la prima idee la detaliile proiectului, urmărim
+            relația dintre lumină, materiale, proporții și felul
+            în care oamenii folosesc spațiul.
           </p>
-          <a href="#contact" class="text-link">Hai să discutăm <span>↗</span></a>
+          <a href="#contact" class="text-link">
+            Hai să discutăm <span>↗</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <section class="projects" id="proiecte">
+    <!-- ECHIPA NOASTRA -->
+
+    <section class="team-section" id="echipa">
+
+      <div class="team-header reveal">
+        <div>
+          <span class="team-label mono">
+            DDL / Oamenii din spatele proiectelor
+          </span>
+          <h2>Echipa<br>noastră.</h2>
+        </div>
+
+        <span class="team-index mono">02 / Echipa</span>
+      </div>
+
+      <p class="team-intro reveal">
+        Idei diferite, aceeași viziune.
+        O echipă dedicată arhitecturii și proiectării
+        unor spații gândite cu sens.
+      </p>
+
+      <div class="team-grid">
+
+        <!-- DAN DOMSA STEFAN -->
+
+        <article class="team-card reveal">
+          <div class="team-photo team-photo-one">
+            <span class="team-number">01</span>
+
+            <svg class="profile-icon"
+                 viewBox="0 0 100 100"
+                 xmlns="http://www.w3.org/2000/svg"
+                 role="img"
+                 aria-label="Pictogramă de profil fără fotografie">
+              <circle cx="50" cy="34" r="17" fill="#a5a398"/>
+              <path d="M17 91 C17 68 31 57 50 57 C69 57 83 68 83 91 Z"
+                    fill="#a5a398"/>
+            </svg>
+          </div>
+
+          <div class="team-info">
+            <h3>Dan Domșa Ștefan</h3>
+            <p>Arhitect specializat</p>
+            <span class="team-line"></span>
+          </div>
+        </article>
+
+        <!-- LUCIA DOMSA -->
+
+        <article class="team-card reveal">
+          <div class="team-photo team-photo-two">
+            <span class="team-number">02</span>
+
+            <svg class="profile-icon"
+                 viewBox="0 0 100 100"
+                 xmlns="http://www.w3.org/2000/svg"
+                 role="img"
+                 aria-label="Pictogramă de profil fără fotografie">
+              <circle cx="50" cy="34" r="17" fill="#a5a398"/>
+              <path d="M17 91 C17 68 31 57 50 57 C69 57 83 68 83 91 Z"
+                    fill="#a5a398"/>
+            </svg>
+          </div>
+
+          <div class="team-info">
+            <h3>Lucia Domșa</h3>
+            <p>Inginer specializat</p>
+            <span class="team-line"></span>
+          </div>
+        </article>
+
+        <!-- COSMIN CARLUGEA -->
+
+        <article class="team-card reveal">
+          <div class="team-photo team-photo-three">
+            <span class="team-number">03</span>
+
+            <svg class="profile-icon"
+                 viewBox="0 0 100 100"
+                 xmlns="http://www.w3.org/2000/svg"
+                 role="img"
+                 aria-label="Pictogramă de profil fără fotografie">
+              <circle cx="50" cy="34" r="17" fill="#a5a398"/>
+              <path d="M17 91 C17 68 31 57 50 57 C69 57 83 68 83 91 Z"
+                    fill="#a5a398"/>
+            </svg>
+          </div>
+
+          <div class="team-info">
+            <h3>Cosmin Cârlugea</h3>
+            <p>Arhitect specializat</p>
+            <span class="team-line"></span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- PROIECTE -->
+
+    <section class="content-section projects" id="proiecte">
       <div class="section-head reveal">
         <h2>Lucrări<br>selectate.</h2>
-        <span class="section-index mono">02 / Portofoliu</span>
+        <span class="section-index mono">03 / Portofoliu</span>
       </div>
 
       <div class="project-grid">
+
         <article class="project reveal">
           <div class="project-image">
             <img
@@ -593,74 +914,94 @@
           <h3>Materia locuirii</h3>
           <p>Design interior · Texturi și proporții</p>
         </article>
+
       </div>
 
       <p class="placeholder-note mono">
-        Imaginile și denumirile sunt demonstrative. Înlocuiește-le cu proiectele reale DDL.
+        Imaginile și denumirile sunt demonstrative.
+        Înlocuiește-le cu proiectele reale DDL.
       </p>
     </section>
 
-    <section id="servicii">
+    <!-- SERVICII -->
+
+    <section class="content-section" id="servicii">
       <div class="section-head reveal">
         <h2>Ce facem.</h2>
-        <span class="section-index mono">03 / Servicii</span>
+        <span class="section-index mono">04 / Servicii</span>
       </div>
 
       <div class="service-list">
+
         <a href="#contact" class="service reveal">
           <span class="service-num mono">01</span>
           <h3>Arhitectură</h3>
           <span class="service-arrow">↗</span>
         </a>
+
         <a href="#contact" class="service reveal">
           <span class="service-num mono">02</span>
           <h3>Design interior</h3>
           <span class="service-arrow">↗</span>
         </a>
+
         <a href="#contact" class="service reveal">
           <span class="service-num mono">03</span>
           <h3>Concept și volumetrie</h3>
           <span class="service-arrow">↗</span>
         </a>
+
         <a href="#contact" class="service reveal">
           <span class="service-num mono">04</span>
           <h3>Documentații de proiectare</h3>
           <span class="service-arrow">↗</span>
         </a>
+
       </div>
     </section>
 
+    <!-- VIZIUNE -->
+
     <section class="manifesto">
-      <span class="mono">04 / Perspectiva noastră</span>
+      <span class="mono">05 / Perspectiva noastră</span>
+
       <h2 class="reveal">
         Nu proiectăm doar clădiri.
         <span>Gândim felul în care spațiile sunt trăite.</span>
       </h2>
+
       <div class="manifesto-bottom reveal">
         <p>
           Fiecare proiect începe cu o întrebare, continuă cu o idee
           și prinde formă prin atenția acordată detaliilor.
         </p>
-        <a href="#contact" class="light-link">Începe un proiect ↗</a>
+
+        <a href="#contact" class="light-link">
+          Începe un proiect ↗
+        </a>
       </div>
     </section>
 
-    <section id="contact">
+    <!-- CONTACT -->
+
+    <section class="content-section" id="contact">
       <div class="contact-grid reveal">
+
         <div>
-          <span class="mono">05 / Contact</span>
-          <h2 class="contact-title" style="margin-top:35px">
+          <span class="mono">06 / Contact</span>
+          <h2 class="contact-title">
             Hai să<br>construim<br>o idee.
           </h2>
         </div>
 
         <div class="contact-info">
           <p>
-            Ai un proiect în minte? Suntem deschiși să discutăm despre
-            idei noi, colaborări și spații care merită proiectate cu grijă.
+            Ai un proiect în minte? Suntem deschiși să discutăm
+            despre idei noi, colaborări și spații care merită
+            proiectate cu grijă.
           </p>
 
-          <!-- Înlocuiește adresa cu e-mailul real al biroului -->
+          <!-- Inlocuieste cu adresa reala de email -->
           <a class="email-link" href="mailto:contact@ddl.ro">
             contact@ddl.ro ↗
           </a>
@@ -670,23 +1011,35 @@
             România
           </p>
         </div>
+
       </div>
     </section>
+
   </main>
+
+  <!-- FOOTER -->
 
   <footer>
     <a href="#home" class="brand">
       <span class="brand-name">DDL.</span>
       <span class="brand-sub">Birou de proiectare</span>
     </a>
-    <span class="mono">© <span id="year"></span> DDL</span>
+
+    <p class="mono">
+      © <span id="year"></span> DDL
+    </p>
+
     <a href="#home" class="mono">Înapoi sus ↑</a>
   </footer>
 
+  <!-- JAVASCRIPT -->
+
   <script>
+    // Actualizeaza automat anul din subsol
     document.getElementById("year").textContent =
       new Date().getFullYear();
 
+    // Animatii discrete la derularea paginii
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -700,5 +1053,6 @@
       observer.observe(element);
     });
   </script>
+
 </body>
 </html>
