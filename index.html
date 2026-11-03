@@ -14,141 +14,234 @@
 }
 
 body {
-    background: #050505;
-    color: white;
+    background: #000;
+    color: #fff;
     font-family: Arial, sans-serif;
 }
 
 header {
-    background: #101010;
-    padding: 25px 7%;
+    background: #080808;
+    padding: 22px 6%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #292929;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .logo {
-    font-size: 30px;
+    font-size: 27px;
     font-weight: 900;
     letter-spacing: 2px;
+    color: white;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    margin-left: 25px;
+    font-weight: bold;
 }
 
 nav a:hover {
-    color: #888;
+    color: #aaa;
 }
 
 .hero {
     text-align: center;
-    padding: 90px 20px;
+    padding: 85px 20px;
     background: linear-gradient(135deg, #181818, #000);
 }
 
 .hero h1 {
-    font-size: 55px;
+    font-size: 50px;
     margin-bottom: 15px;
 }
 
 .hero p {
-    color: #aaa;
-    font-size: 18px;
-    margin-bottom: 30px;
+    color: #ccc;
+    margin-bottom: 25px;
 }
 
-.btn {
+.search {
+    width: 90%;
+    max-width: 500px;
+    padding: 15px;
+    background: #111;
+    border: 1px solid #555;
+    border-radius: 7px;
+    color: white;
+    font-size: 16px;
+}
+
+.search::placeholder {
+    color: #aaa;
+}
+
+.categories, .games {
+    padding: 35px 6%;
+}
+
+h2 {
+    margin-bottom: 22px;
+}
+
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.category-btn {
+    background: #151515;
+    color: white;
+    border: 1px solid #444;
+    padding: 13px 20px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.category-btn:hover,
+.category-btn.active {
     background: white;
     color: black;
-    padding: 14px 30px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    display: inline-block;
-}
-
-.games {
-    padding: 55px 7%;
-}
-
-.games h2 {
-    font-size: 32px;
-    margin-bottom: 30px;
 }
 
 .game-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 25px;
 }
 
 .game {
-    background: #151515;
+    background: #111;
+    border: 1px solid #292929;
     border-radius: 12px;
     overflow: hidden;
-    transition: 0.3s;
-    border: 1px solid #252525;
+    transition: .3s;
 }
 
 .game:hover {
-    transform: translateY(-8px);
-    border-color: white;
+    transform: translateY(-7px);
+    border-color: #888;
 }
 
 .game img {
     width: 100%;
-    height: 200px;
+    height: 165px;
     object-fit: cover;
 }
 
+.game-info {
+    padding: 17px;
+}
+
 .game h3 {
-    font-size: 23px;
-    padding: 18px;
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
 .game p {
-    color: #aaa;
-    padding: 0 18px 20px;
+    color: #bbb;
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 42px;
+    margin-bottom: 15px;
 }
 
-.game button {
+.play-btn {
     background: white;
     color: black;
     border: none;
-    padding: 12px 25px;
-    margin: 0 18px 20px;
+    padding: 12px 22px;
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
 }
 
-.game button:hover {
-    background: #bbb;
+.play-btn:hover {
+    background: #ccc;
+}
+
+.empty {
+    display: none;
+    padding: 25px 0;
+    color: #aaa;
+}
+
+#gameScreen {
+    display: none;
+    padding: 30px 6%;
+    min-height: 450px;
+}
+
+.game-window {
+    background: #111;
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+}
+
+.game-window h2 {
+    margin-bottom: 20px;
+}
+
+#gameCanvas {
+    background: #222;
+    border: 1px solid #555;
+    width: 100%;
+    max-width: 650px;
+    height: 300px;
+    border-radius: 8px;
+    touch-action: manipulation;
+}
+
+.game-controls {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.game-controls button {
+    background: white;
+    color: black;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 footer {
+    border-top: 1px solid #292929;
     text-align: center;
     padding: 30px;
-    color: #777;
-    border-top: 1px solid #222;
+    color: #aaa;
 }
 
-@media(max-width: 600px) {
+@media(max-width:650px) {
     header {
         flex-direction: column;
-        gap: 20px;
+        gap: 17px;
     }
 
-    nav a {
-        margin: 0 8px;
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .hero h1 {
-        font-size: 38px;
+        font-size: 35px;
     }
 }
 </style>
@@ -160,68 +253,580 @@ footer {
     <div class="logo">EPIC GAMES</div>
 
     <nav>
-        <a href="#">Acasă</a>
-        <a href="#games">Jocuri</a>
+        <a href="#">ACASĂ</a>
+        <a href="#categories">CATEGORII</a>
+        <a href="#games">JOCURI</a>
     </nav>
 </header>
 
 <section class="hero">
-    <h1>BINE AI VENIT LA EPIC GAMES</h1>
-    <p>Descoperă cele mai tari jocuri!</p>
-    <a href="#games" class="btn">VEZI JOCURILE</a>
+    <h1>EPIC GAMES</h1>
+    <p>DESCOPERĂ. JOACĂ. EXPLOREAZĂ.</p>
+
+    <input class="search" id="search"
+    placeholder="🔍 Caută un joc...">
+</section>
+
+<section class="categories" id="categories">
+    <h2>🎮 CATEGORII</h2>
+    <div class="category-list" id="categoryList"></div>
 </section>
 
 <section class="games" id="games">
+    <h2 id="sectionTitle">🔥 TOATE JOCURILE</h2>
+    <div class="game-container" id="gameContainer"></div>
+    <p class="empty" id="empty">Nu am găsit niciun joc.</p>
+</section>
 
-<h2>🔥 JOCURILE NOASTRE</h2>
+<section id="gameScreen">
+    <button class="play-btn" onclick="closeGame()">
+        ← ÎNAPOI LA JOCURI
+    </button>
 
-<div class="game-container">
-
-    <!-- FIFA -->
-    <div class="game">
-        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800"
-        alt="Fotbal">
-        <h3>⚽ FIFA</h3>
-        <p>Construiește-ți echipa și devino campion!</p>
-        <button onclick="openGame('fifa')">JOACĂ</button>
+    <div class="game-window">
+        <h2 id="gameTitle"></h2>
+        <p id="gameDescription"></p>
+        <canvas id="gameCanvas" width="650" height="300"></canvas>
+        <div class="game-controls" id="gameControls"></div>
+        <p id="gameMessage"></p>
     </div>
-
-    <!-- CS2 -->
-    <div class="game">
-        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800"
-        alt="Gaming CS2">
-        <h3>🎯 COUNTER-STRIKE 2</h3>
-        <p>Intră în lumea competitivă a shooterelor!</p>
-        <button onclick="openGame('cs2')">JOACĂ</button>
-    </div>
-
-    <!-- MINECRAFT -->
-    <div class="game">
-        <img src="https://images.unsplash.com/photo-1607513746994-51f730a44832?w=800"
-        alt="Minecraft">
-        <h3>⛏️ MINECRAFT</h3>
-        <p>Construiește, explorează și supraviețuiește!</p>
-        <button onclick="openGame('minecraft')">JOACĂ</button>
-    </div>
-
-</div>
 </section>
 
 <footer>
-    <p>© 2026 EPIC GAMES | Toate drepturile rezervate</p>
+    © 2026 EPIC GAMES | ALL RIGHTS RESERVED
 </footer>
 
 <script>
-function openGame(game) {
 
-    const games = {
-        fifa: "https://www.ea.com/games/ea-sports-fc",
-        cs2: "https://store.steampowered.com/app/730/CounterStrike_2/",
-        minecraft: "https://www.minecraft.net/"
+const categories = [
+    "Toate",
+    "Acțiune",
+    "Aventură",
+    "Sport",
+    "Relaxante",
+    "Curse",
+    "Strategie",
+    "Puzzle",
+    "Arcade",
+    "Multiplayer"
+];
+
+const games = [
+    {
+        name:"Counter-Strike 2",
+        category:"Acțiune",
+        description:"Shooter competitiv în echipă.",
+        image:"https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        url:"https://store.steampowered.com/app/730/"
+    },
+    {
+        name:"Fortnite",
+        category:"Acțiune",
+        description:"Descoperă universul Fortnite.",
+        image:"https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        url:"https://www.fortnite.com/"
+    },
+    {
+        name:"DOOM",
+        category:"Acțiune",
+        description:"Aventură de acțiune.",
+        image:"https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=600",
+        url:"https://store.steampowered.com/search/?term=DOOM"
+    },
+    {
+        name:"Minecraft",
+        category:"Aventură",
+        description:"Construiește și explorează lumi.",
+        image:"https://images.unsplash.com/photo-1607513746994-51f730a44832?w=600",
+        url:"https://www.minecraft.net/"
+    },
+    {
+        name:"Terraria",
+        category:"Aventură",
+        description:"Explorează și construiește.",
+        image:"https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        url:"https://terraria.org/"
+    },
+    {
+        name:"Subnautica",
+        category:"Aventură",
+        description:"Explorează adâncurile oceanului.",
+        image:"https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=600",
+        url:"https://store.steampowered.com/app/264710/"
+    },
+    {
+        name:"EA SPORTS FC",
+        category:"Sport",
+        description:"Fotbal și competiții sportive.",
+        image:"https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600",
+        url:"https://www.ea.com/games/ea-sports-fc"
+    },
+    {
+        name:"Rocket League",
+        category:"Sport",
+        description:"Fotbal cu mașini.",
+        image:"https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        url:"https://www.rocketleague.com/"
+    },
+    {
+        name:"NBA 2K",
+        category:"Sport",
+        description:"Baschet și competiții.",
+        image:"https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600",
+        url:"https://nba.2k.com/"
+    },
+    {
+        name:"The Sims 4",
+        category:"Relaxante",
+        description:"Creează personaje și case.",
+        image:"https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=600",
+        url:"https://www.ea.com/games/the-sims/the-sims-4"
+    },
+    {
+        name:"Stardew Valley",
+        category:"Relaxante",
+        description:"Bucură-te de viața la fermă.",
+        image:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600",
+        url:"https://www.stardewvalley.net/"
+    },
+    {
+        name:"Trackmania",
+        category:"Curse",
+        description:"Curse și trasee spectaculoase.",
+        image:"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600",
+        url:"https://www.trackmania.com/"
+    },
+    {
+        name:"Forza Horizon",
+        category:"Curse",
+        description:"Explorează lumea la volan.",
+        image:"https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600",
+        url:"https://forza.net/"
+    },
+    {
+        name:"Chess",
+        category:"Strategie",
+        description:"Testează-ți gândirea strategică.",
+        image:"https://images.unsplash.com/photo-1586165368502-1bad197a6461?w=600",
+        demo:"chess"
+    },
+    {
+        name:"Age of Empires",
+        category:"Strategie",
+        description:"Construiește un imperiu.",
+        image:"https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        url:"https://www.ageofempires.com/"
+    },
+    {
+        name:"Memory Game",
+        category:"Puzzle",
+        description:"Găsește perechile de simboluri.",
+        image:"https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=600",
+        demo:"memory"
+    },
+    {
+        name:"Tetris",
+        category:"Puzzle",
+        description:"Potrivește piesele colorate.",
+        image:"https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        url:"https://tetris.com/"
+    },
+    {
+        name:"Snake",
+        category:"Arcade",
+        description:"Joacă jocul clasic Snake.",
+        image:"https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        demo:"snake"
+    },
+    {
+        name:"Among Us",
+        category:"Multiplayer",
+        description:"Joacă împreună cu prietenii.",
+        image:"https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        url:"https://www.innersloth.com/games/among-us/"
+    },
+    {
+        name:"Roblox",
+        category:"Multiplayer",
+        description:"Descoperă milioane de experiențe.",
+        image:"https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=600",
+        url:"https://www.roblox.com/"
+    }
+];
+
+let activeCategory = "Toate";
+
+const categoryList = document.getElementById("categoryList");
+const gameContainer = document.getElementById("gameContainer");
+const search = document.getElementById("search");
+
+categories.forEach(category => {
+    const button = document.createElement("button");
+    button.className = "category-btn";
+    button.textContent = category;
+
+    button.onclick = () => {
+        activeCategory = category;
+        renderCategories();
+        renderGames();
+
+        document.getElementById("games").scrollIntoView({
+            behavior:"smooth"
+        });
     };
 
-    window.open(games[game], "_blank");
+    categoryList.appendChild(button);
+});
+
+function renderCategories() {
+    [...categoryList.children].forEach(button => {
+        button.classList.toggle(
+            "active",
+            button.textContent === activeCategory
+        );
+    });
 }
+
+function renderGames() {
+    gameContainer.innerHTML = "";
+
+    const term = search.value.toLowerCase();
+
+    const filtered = games.filter(game =>
+        (activeCategory === "Toate" ||
+        game.category === activeCategory) &&
+        game.name.toLowerCase().includes(term)
+    );
+
+    document.getElementById("sectionTitle").textContent =
+        activeCategory === "Toate"
+        ? "🔥 TOATE JOCURILE"
+        : "🎮 " + activeCategory.toUpperCase();
+
+    document.getElementById("empty").style.display =
+        filtered.length ? "none" : "block";
+
+    filtered.forEach(game => {
+        const card = document.createElement("div");
+        card.className = "game";
+
+        const img = document.createElement("img");
+        img.src = game.image;
+        img.alt = game.name;
+
+        const info = document.createElement("div");
+        info.className = "game-info";
+
+        const title = document.createElement("h3");
+        title.textContent = game.name;
+
+        const description = document.createElement("p");
+        description.textContent = game.description;
+
+        const button = document.createElement("button");
+        button.className = "play-btn";
+        button.textContent = "JOACĂ ACUM";
+
+        button.onclick = () => {
+            if(game.demo) {
+                startDemo(game);
+            } else {
+                window.open(game.url, "_blank");
+            }
+        };
+
+        info.append(title, description, button);
+        card.append(img, info);
+        gameContainer.appendChild(card);
+    });
+}
+
+search.addEventListener("input", renderGames);
+renderCategories();
+renderGames();
+
+// JOCURI DEMONSTRATIVE
+
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+
+let activeDemo = null;
+let snake = [];
+let direction = "right";
+let food = {};
+let score = 0;
+let memoryFirst = null;
+let memoryLocked = false;
+
+function startDemo(game) {
+    document.querySelector(".hero").style.display = "none";
+    document.getElementById("categories").style.display = "none";
+    document.getElementById("games").style.display = "none";
+    document.getElementById("gameScreen").style.display = "block";
+
+    document.getElementById("gameTitle").textContent = game.name;
+    document.getElementById("gameDescription").textContent = game.description;
+
+    activeDemo = game.demo;
+    score = 0;
+    canvas.style.display = "block";
+    canvas.onclick = null;
+
+    if(activeDemo === "snake") startSnake();
+    if(activeDemo === "memory") startMemory();
+    if(activeDemo === "chess") startChess();
+}
+
+function closeGame() {
+    activeDemo = null;
+
+    document.getElementById("gameScreen").style.display = "none";
+    document.querySelector(".hero").style.display = "block";
+    document.getElementById("categories").style.display = "block";
+    document.getElementById("games").style.display = "block";
+
+    document.getElementById("gameControls").innerHTML = "";
+    document.getElementById("gameMessage").textContent = "";
+    canvas.onclick = null;
+
+    renderGames();
+}
+
+// SNAKE
+
+function startSnake() {
+    snake = [{x:200,y:150}];
+    direction = "right";
+    food = {x:300,y:150};
+
+    document.getElementById("gameControls").innerHTML = `
+    <button onclick="changeDirection('up')">SUS</button>
+    <button onclick="changeDirection('left')">STÂNGA</button>
+    <button onclick="changeDirection('down')">JOS</button>
+    <button onclick="changeDirection('right')">DREAPTA</button>
+    `;
+
+    drawSnake();
+}
+
+function changeDirection(value) {
+    if(
+        (value === "up" && direction !== "down") ||
+        (value === "down" && direction !== "up") ||
+        (value === "left" && direction !== "right") ||
+        (value === "right" && direction !== "left")
+    ) {
+        direction = value;
+        moveSnake();
+    }
+}
+
+function drawSnake() {
+    ctx.fillStyle = "#222";
+    ctx.fillRect(0,0,650,300);
+
+    ctx.fillStyle = "#fff";
+
+    snake.forEach(part => {
+        ctx.fillRect(part.x,part.y,18,18);
+    });
+
+    ctx.fillStyle = "#888";
+    ctx.fillRect(food.x,food.y,18,18);
+
+    document.getElementById("gameMessage").textContent =
+        "Puncte: " + score;
+}
+
+function moveSnake() {
+    if(activeDemo !== "snake") return;
+
+    const head = {...snake[0]};
+
+    if(direction === "up") head.y -= 20;
+    if(direction === "down") head.y += 20;
+    if(direction === "left") head.x -= 20;
+    if(direction === "right") head.x += 20;
+
+    if(
+        head.x < 0 || head.x > 630 ||
+        head.y < 0 || head.y > 280 ||
+        snake.some(part => part.x === head.x && part.y === head.y)
+    ) {
+        activeDemo = null;
+        document.getElementById("gameMessage").textContent =
+            "Joc terminat! Scor: " + score;
+        return;
+    }
+
+    snake.unshift(head);
+
+    if(head.x === food.x && head.y === food.y) {
+        score++;
+        food = {
+            x:Math.floor(Math.random()*31)*20,
+            y:Math.floor(Math.random()*14)*20
+        };
+    } else {
+        snake.pop();
+    }
+
+    drawSnake();
+}
+
+document.addEventListener("keydown", event => {
+    if(activeDemo !== "snake") return;
+
+    const keys = {
+        ArrowUp:"up",
+        ArrowDown:"down",
+        ArrowLeft:"left",
+        ArrowRight:"right"
+    };
+
+    if(keys[event.key]) {
+        event.preventDefault();
+        direction = keys[event.key];
+        moveSnake();
+    }
+});
+
+// MEMORY
+
+function startMemory() {
+    canvas.style.display = "none";
+
+    const symbols = ["⭐","🌙","🔥","💎",
+                     "⭐","🌙","🔥","💎"];
+
+    symbols.sort(() => Math.random() - 0.5);
+
+    memoryFirst = null;
+    memoryLocked = false;
+    score = 0;
+
+    const controls = document.getElementById("gameControls");
+    controls.innerHTML = "";
+
+    symbols.forEach(symbol => {
+        const button = document.createElement("button");
+        button.textContent = "?";
+        button.style.fontSize = "25px";
+        button.style.width = "65px";
+        button.style.height = "65px";
+
+        button.onclick = () => {
+            if(memoryLocked || button.dataset.done ||
+               button.dataset.open) return;
+
+            button.textContent = symbol;
+            button.dataset.open = "yes";
+
+            if(!memoryFirst) {
+                memoryFirst = {button,symbol};
+                return;
+            }
+
+            if(memoryFirst.symbol === symbol) {
+                memoryFirst.button.dataset.done = "yes";
+                button.dataset.done = "yes";
+                memoryFirst = null;
+                score++;
+
+                document.getElementById("gameMessage").textContent =
+                    "Perechi găsite: " + score;
+
+                if(score === 4) {
+                    document.getElementById("gameMessage").textContent =
+                        "FELICITĂRI! AI CÂȘTIGAT!";
+                }
+            } else {
+                memoryLocked = true;
+                const first = memoryFirst.button;
+                memoryFirst = null;
+
+                setTimeout(() => {
+                    if(activeDemo !== "memory") return;
+                    first.textContent = "?";
+                    button.textContent = "?";
+                    first.dataset.open = "";
+                    button.dataset.open = "";
+                    memoryLocked = false;
+                },700);
+            }
+        };
+
+        controls.appendChild(button);
+    });
+
+    document.getElementById("gameMessage").textContent =
+        "Găsește toate cele 4 perechi!";
+}
+
+// ȘAH DEMONSTRATIV
+
+function startChess() {
+    const board = [
+        ["♜","♞","♝","♛","♚","♝","♞","♜"],
+        ["♟","♟","♟","♟","♟","♟","♟","♟"],
+        ["","","","","","","",""],
+        ["","","","","","","",""],
+        ["","","","","","","",""],
+        ["","","","","","","",""],
+        ["♙","♙","♙","♙","♙","♙","♙","♙"],
+        ["♖","♘","♗","♕","♔","♗","♘","♖"]
+    ];
+
+    let selected = null;
+    const size = 37;
+
+    function draw() {
+        ctx.fillStyle = "#111";
+        ctx.fillRect(0,0,650,300);
+
+        board.forEach((row,y) => {
+            row.forEach((piece,x) => {
+                ctx.fillStyle = (x+y)%2 ? "#777" : "#ddd";
+                ctx.fillRect(x*size,y*size,size,size);
+
+                ctx.fillStyle = "#222";
+                ctx.font = "27px Arial";
+                ctx.fillText(piece,x*size+5,y*size+29);
+            });
+        });
+    }
+
+    draw();
+
+    canvas.onclick = event => {
+        const rect = canvas.getBoundingClientRect();
+
+        const x = Math.floor(
+            (event.clientX-rect.left)*canvas.width/rect.width/size
+        );
+
+        const y = Math.floor(
+            (event.clientY-rect.top)*canvas.height/rect.height/size
+        );
+
+        if(x > 7 || y > 7) return;
+
+        if(selected) {
+            board[y][x] = board[selected.y][selected.x];
+            board[selected.y][selected.x] = "";
+            selected = null;
+            draw();
+        } else if(board[y][x]) {
+            selected = {x,y};
+            document.getElementById("gameMessage").textContent =
+                "Alege o poziție pentru piesă.";
+        }
+    };
+
+    document.getElementById("gameMessage").textContent =
+        "Șah demonstrativ: selectează și mută piesele.";
+}
+
 </script>
 
 </body>
