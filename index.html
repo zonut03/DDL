@@ -409,3 +409,510 @@ start.onclick=()=>{
 </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOLDEN ARCADE</title>
+
+<style>
+:root {
+  --gold:#e8bd55;
+  --gold2:#ffd978;
+  --bg:#080808;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:radial-gradient(ellipse at top,#30230c,#080808 55%);
+  color:white;
+  font-family:Arial,sans-serif;
+}
+a{text-decoration:none;color:inherit}
+header{
+  background:#090909;
+  border-bottom:1px solid #493719;
+  position:sticky;top:0;z-index:10;
+}
+.nav{
+  max-width:1200px;margin:auto;padding:22px 4%;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.logo{
+  font-size:23px;font-weight:900;color:var(--gold);
+  letter-spacing:2px;
+}
+.logo span{color:white}
+nav{display:flex;gap:25px}
+nav a:hover{color:var(--gold)}
+.container{width:92%;max-width:1200px;margin:auto}
+.hero{
+  padding:75px 0;
+  display:grid;grid-template-columns:1.2fr .8fr;
+  gap:35px;align-items:center;
+}
+.eyebrow{
+  color:var(--gold);letter-spacing:3px;
+  font-size:13px;font-weight:bold;
+}
+h1{font-size:clamp(45px,7vw,85px);line-height:.98;margin:18px 0}
+.gold{color:var(--gold)}
+.hero p{color:#bbb;line-height:1.7}
+.btn{
+  display:inline-block;padding:14px 20px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#ffd978,#b47b20);
+  color:#171006;font-weight:bold;border:0;cursor:pointer;
+}
+.hero-card{
+  background:linear-gradient(145deg,#28200f,#111);
+  border:1px solid #70551f;border-radius:25px;
+  padding:30px;min-height:270px;
+}
+.hero-icon{font-size:75px}
+.hero-card h2{color:var(--gold)}
+.stats{display:flex;gap:30px;margin-top:25px}
+.stats strong{display:block;color:var(--gold);font-size:25px}
+.stats small{color:#aaa}
+section{padding:35px 0}
+.section-title{font-size:30px;margin-bottom:25px}
+.toolbar{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:25px}
+input{
+  flex:1;min-width:220px;padding:14px;
+  background:#151515;border:1px solid #493719;
+  color:white;border-radius:12px;
+}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filter{
+  background:#171717;color:#ddd;
+  border:1px solid #493719;padding:10px 15px;
+  border-radius:30px;cursor:pointer;
+}
+.filter.active,.filter:hover{
+  color:var(--gold);background:#493719;
+}
+.grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+.game{
+  background:linear-gradient(160deg,#1c1c1c,#101010);
+  border:1px solid #30291d;border-radius:17px;
+  overflow:hidden;transition:.25s;
+}
+.game:hover{
+  transform:translateY(-6px);
+  border-color:var(--gold);
+  box-shadow:0 10px 30px #0009;
+}
+.cover{
+  height:165px;
+  background:radial-gradient(circle,#51401c,#17130c);
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.cover img{
+  width:100%;height:100%;
+  object-fit:contain;
+  padding:12px;
+  transition:.3s;
+}
+.game:hover .cover img{transform:scale(1.08)}
+.fallback{
+  font-size:65px;
+  position:absolute;
+}
+.tag{
+  position:absolute;top:10px;left:10px;
+  z-index:2;background:#080808dd;
+  color:var(--gold);padding:6px 10px;
+  border-radius:20px;font-size:11px;
+}
+.game-info{padding:16px}
+.game-info h3{margin:0 0 10px}
+.game-info p{
+  color:#aaa;font-size:13px;
+  line-height:1.5;min-height:40px;
+}
+.game-bottom{
+  display:flex;justify-content:space-between;
+  align-items:center;
+}
+.category{font-size:11px;color:var(--gold)}
+.play{
+  background:#493719;color:var(--gold2);
+  padding:9px 12px;border-radius:9px;
+  font-weight:bold;font-size:12px;
+}
+.empty{display:none;text-align:center;color:#aaa;padding:25px}
+.mini-panel{
+  background:linear-gradient(135deg,#211a0d,#111);
+  border:1px solid #62491c;border-radius:22px;
+  padding:25px;
+  display:grid;grid-template-columns:1fr 1fr;gap:25px;
+}
+.mini-panel p{color:#bbb;line-height:1.6}
+.gamebox{
+  background:#080808;border:1px solid #493719;
+  border-radius:16px;padding:15px;text-align:center;
+}
+.scoreline{
+  display:flex;justify-content:space-between;
+  color:var(--gold);margin-bottom:12px;
+}
+.arena{
+  height:220px;position:relative;
+  overflow:hidden;border-radius:12px;
+  background:radial-gradient(circle,#30230d,#111);
+}
+.coin{
+  position:absolute;width:42px;height:42px;
+  border-radius:50%;
+  background:linear-gradient(145deg,#ffe58a,#b77b12);
+  border:2px solid #ffe49a;color:#392300;
+  font-size:20px;font-weight:bold;cursor:pointer;
+}
+footer{
+  margin-top:50px;padding:30px 0;
+  border-top:1px solid #493719;color:#999;
+}
+@media(max-width:900px){
+  .grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:650px){
+  .hero{grid-template-columns:1fr;padding:50px 0}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .mini-panel{grid-template-columns:1fr}
+  nav{gap:12px;font-size:12px}
+}
+@media(max-width:420px){
+  .grid{gap:9px}
+  .cover{height:120px}
+  .game-info{padding:10px}
+  .game-info h3{font-size:14px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="nav">
+<a href="#" class="logo">GOLDEN<span> ARCADE</span></a>
+<nav>
+<a href="#jocuri">Jocuri</a>
+<a href="#categorii">Categorii</a>
+<a href="#mini-game">Mini-joc</a>
+</nav>
+</div>
+</header>
+
+<main>
+
+<div class="container hero">
+<div>
+<div class="eyebrow">YOUR NEXT LEVEL STARTS HERE</div>
+<h1>INTRĂ ÎN<br><span class="gold">LUMEA</span> GAMING-ULUI.</h1>
+<p>
+Un singur loc pentru jocurile tale preferate.
+Descoperă jocuri de acțiune, aventură, sport,
+strategie și multiplayer într-o interfață premium.
+</p>
+<br>
+<a class="btn" href="#jocuri">EXPLOREAZĂ JOCURILE ↗</a>
+</div>
+
+<div class="hero-card">
+<div class="hero-icon">🏆</div>
+<div class="eyebrow">GAMING ZONE</div>
+<h2>Joacă. Descoperă. Repetă.</h2>
+<p>Jocurile tale preferate într-un singur loc!</p>
+<div class="stats">
+<div><strong>22+</strong><small>Jocuri</small></div>
+<div><strong>6</strong><small>Categorii</small></div>
+<div><strong>∞</strong><small>Distracție</small></div>
+</div>
+</div>
+</div>
+
+<section class="container" id="jocuri">
+<div class="eyebrow">GAME LIBRARY</div>
+<h2 class="section-title">Descoperă jocurile</h2>
+
+<div class="toolbar">
+<input id="search" placeholder="🔎 Caută un joc...">
+<div class="filters" id="filters">
+<button class="filter active" data-cat="Toate">Toate</button>
+<button class="filter" data-cat="Acțiune">Acțiune</button>
+<button class="filter" data-cat="Aventură">Aventură</button>
+<button class="filter" data-cat="Sport">Sport</button>
+<button class="filter" data-cat="Battle Royale">Battle Royale</button>
+<button class="filter" data-cat="Multiplayer">Multiplayer</button>
+<button class="filter" data-cat="Strategie">Strategie</button>
+</div>
+</div>
+
+<div class="grid" id="gameGrid"></div>
+<div class="empty" id="empty">Nu am găsit jocuri.</div>
+</section>
+
+<section class="container" id="categorii">
+<div class="eyebrow">CHOOSE YOUR STYLE</div>
+<h2 class="section-title">Categorii populare</h2>
+<div class="filters">
+<button class="filter" data-jump="Acțiune">⚔️ Acțiune</button>
+<button class="filter" data-jump="Aventură">🧭 Aventură</button>
+<button class="filter" data-jump="Sport">⚽ Sport</button>
+<button class="filter" data-jump="Battle Royale">🎯 Battle Royale</button>
+<button class="filter" data-jump="Multiplayer">👥 Multiplayer</button>
+<button class="filter" data-jump="Strategie">♟️ Strategie</button>
+</div>
+</section>
+
+<section class="container" id="mini-game">
+<div class="mini-panel">
+<div>
+<div class="eyebrow">PLAY RIGHT HERE</div>
+<h2>💰 GOLD RUSH</h2>
+<p>
+Ai 30 de secunde să prinzi cât mai multe monede!
+Apasă pe monedele care apar și încearcă să-ți
+depășești recordul.
+</p>
+<p><strong style="color:#e8bd55">Pont:</strong> Fii rapid!</p>
+</div>
+
+<div class="gamebox">
+<div class="scoreline">
+<span>Scor: <b id="score">0</b></span>
+<span>Timp: <b id="time">30</b>s</span>
+<span>Record: <b id="best">0</b></span>
+</div>
+<div class="arena" id="arena">
+<span id="hint" style="color:#aaa;display:grid;place-items:center;height:100%">
+Apasă Start joc
+</span>
+</div>
+<br>
+<button class="btn" id="start">▶ START JOC</button>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container">
+<strong class="logo">GOLDEN ARCADE</strong>
+<p>Creat pentru gameri • 2026</p>
+<p style="font-size:12px">
+Site neoficial. Jocurile comerciale aparțin creatorilor
+lor. Imaginile sunt preluate automat din surse publice
+Wikipedia. Gold Rush este mini-jocul care poate fi
+jucat direct pe acest site.
+</p>
+</div>
+</footer>
+
+<script>
+
+// LISTA JOCURILOR
+// Ultimul element este numele paginii Wikipedia
+const games=[
+["EA SPORTS FC","⚽","Sport","Fotbal și competiții.","https://www.ea.com/games/ea-sports-fc","EA Sports FC"],
+["Minecraft","⛏️","Aventură","Construiește și explorează lumi.","https://www.minecraft.net/","Minecraft"],
+["Fortnite","🎯","Battle Royale","Battle royale și moduri creative.","https://www.fortnite.com/","Fortnite"],
+["Counter-Strike 2","💥","Acțiune","Shooter tactic competitiv.","https://www.counter-strike.net/cs2","Counter-Strike 2"],
+["Roblox","🧱","Multiplayer","Milioane de experiențe create de comunitate.","https://www.roblox.com/","Roblox"],
+["Brawl Stars","⭐","Acțiune","Lupte rapide și personaje speciale.","https://supercell.com/en/games/brawlstars/","Brawl Stars"],
+["Rocket League","🚗","Sport","Fotbal cu mașini.","https://www.rocketleague.com/","Rocket League"],
+["Apex Legends","🛡️","Battle Royale","Luptă în echipă.","https://www.ea.com/games/apex-legends","Apex Legends"],
+["Valorant","🎯","Acțiune","Shooter tactic 5v5.","https://playvalorant.com/","Valorant"],
+["League of Legends","🧙","Strategie","MOBA competitiv.","https://www.leagueoflegends.com/","League of Legends"],
+["Among Us","🚀","Multiplayer","Descoperă impostorul.","https://www.innersloth.com/games/among-us/","Among Us"],
+["GTA V","🌆","Acțiune","Explorează Los Santos.","https://www.rockstargames.com/gta-v","Grand Theft Auto V"],
+["Fall Guys","🏁","Multiplayer","Curse amuzante cu obstacole.","https://www.fallguys.com/","Fall Guys"],
+["The Sims 4","🏡","Aventură","Creează personaje și povești.","https://www.ea.com/games/the-sims/the-sims-4","The Sims 4"],
+["Terraria","🌳","Aventură","Explorează și construiește.","https://terraria.org/","Terraria"],
+["Overwatch 2","🤖","Acțiune","Luptă cu eroi în echipă.","https://overwatch.blizzard.com/","Overwatch 2"],
+["Trackmania","🏎️","Sport","Curse spectaculoase.","https://www.trackmania.com/","TrackMania"],
+["Clash Royale","👑","Strategie","Dueluri cu cărți și turnuri.","https://supercell.com/en/games/clashroyale/","Clash Royale"],
+["Genshin Impact","✨","Aventură","Explorează un univers fantasy.","https://genshin.hoyoverse.com/","Genshin Impact"],
+["Dota 2","🗡️","Strategie","Strategie MOBA.","https://www.dota2.com/","Dota 2"],
+["PUBG Battlegrounds","🪂","Battle Royale","Supraviețuiește în arenă.","https://pubg.com/","PUBG Battlegrounds"],
+["Stumble Guys","🎉","Multiplayer","Curse cu obstacole.","https://www.stumbleguys.com/","Stumble Guys"]
+];
+
+const grid=document.getElementById("gameGrid");
+const search=document.getElementById("search");
+const empty=document.getElementById("empty");
+let category="Toate";
+
+// ÎNCĂRCARE IMAGINI REALE DIN WIKIPEDIA
+async function loadImage(game,index){
+ const img=document.getElementById("image-"+index);
+ if(!img)return;
+
+ try{
+  const title=encodeURIComponent(game[5]);
+  const response=await fetch(
+   "https://en.wikipedia.org/api/rest_v1/page/summary/"+title
+  );
+
+  if(!response.ok)throw new Error("Imagine indisponibilă");
+
+  const data=await response.json();
+
+  if(data.thumbnail && data.thumbnail.source){
+   img.src=data.thumbnail.source;
+   img.style.display="block";
+   img.onload=()=>img.parentElement.querySelector(".fallback").style.display="none";
+  }
+ }catch(error){
+  console.log("Imagine indisponibilă pentru "+game[0]);
+ }
+}
+
+// AFIȘARE JOCURI
+function render(){
+ const q=search.value.toLowerCase();
+
+ const list=games.filter(g=>
+  (category==="Toate"||g[2]===category)&&
+  (g[0].toLowerCase().includes(q)||g[3].toLowerCase().includes(q))
+ );
+
+ grid.innerHTML=list.map(g=>{
+  const index=games.indexOf(g);
+  return `
+  <article class="game">
+   <div class="cover">
+    <span class="tag">${g[2]}</span>
+    <span class="fallback">${g[1]}</span>
+    <img id="image-${index}" alt="${g[0]}"
+    style="display:none" loading="lazy">
+   </div>
+   <div class="game-info">
+    <h3>${g[0]}</h3>
+    <p>${g[3]}</p>
+    <div class="game-bottom">
+     <span class="category">GOLDEN PICK</span>
+     <a class="play" href="${g[4]}"
+     target="_blank" rel="noopener noreferrer">JOACĂ ↗</a>
+    </div>
+   </div>
+  </article>`;
+ }).join("");
+
+ empty.style.display=list.length?"none":"block";
+
+ list.forEach(g=>loadImage(g,games.indexOf(g)));
+}
+
+document.querySelectorAll("#filters button").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+  document.querySelectorAll("#filters button").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  category=btn.dataset.cat;
+  render();
+ });
+});
+
+document.querySelectorAll("[data-jump]").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+  category=btn.dataset.jump;
+  document.querySelectorAll("#filters button").forEach(b=>{
+   b.classList.toggle("active",b.dataset.cat===category);
+  });
+  render();
+  document.getElementById("jocuri").scrollIntoView({behavior:"smooth"});
+ });
+});
+
+search.addEventListener("input",render);
+render();
+
+// MINI JOC GOLD RUSH
+const arena=document.getElementById("arena");
+const scoreEl=document.getElementById("score");
+const timeEl=document.getElementById("time");
+const bestEl=document.getElementById("best");
+const hint=document.getElementById("hint");
+const start=document.getElementById("start");
+
+let score=0,time=30,running=false,timer,spawnTimer;
+let best=Number(localStorage.getItem("goldBest")||0);
+bestEl.textContent=best;
+
+function spawnCoin(){
+ arena.querySelectorAll(".coin").forEach(c=>c.remove());
+
+ const coin=document.createElement("button");
+ coin.className="coin";
+ coin.textContent="★";
+ coin.setAttribute("aria-label","Prinde moneda");
+
+ coin.style.left=Math.random()*Math.max(0,arena.clientWidth-45)+"px";
+ coin.style.top=Math.random()*Math.max(0,arena.clientHeight-45)+"px";
+
+ coin.onclick=()=>{
+  if(!running)return;
+  score++;
+  scoreEl.textContent=score;
+  spawnCoin();
+ };
+
+ arena.appendChild(coin);
+}
+
+function endGame(){
+ running=false;
+ clearInterval(timer);
+ clearInterval(spawnTimer);
+
+ arena.querySelectorAll(".coin").forEach(c=>c.remove());
+
+ hint.style.display="grid";
+ hint.textContent="Timp expirat! Scor: "+score;
+
+ if(score>best){
+  best=score;
+  localStorage.setItem("goldBest",best);
+  bestEl.textContent=best;
+ }
+
+ start.textContent="↻ JOACĂ DIN NOU";
+}
+
+start.onclick=()=>{
+ if(running)return;
+
+ score=0;
+ time=30;
+ running=true;
+
+ scoreEl.textContent=0;
+ timeEl.textContent=30;
+ hint.style.display="none";
+
+ start.textContent="JOC ÎN DESFĂȘURARE...";
+
+ spawnCoin();
+
+ timer=setInterval(()=>{
+  time--;
+  timeEl.textContent=time;
+  if(time<=0)endGame();
+ },1000);
+
+ spawnTimer=setInterval(()=>{
+  if(running)spawnCoin();
+ },1100);
+};
+
+</script>
+</body>
+</html>
