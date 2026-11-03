@@ -4,6 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>EPIC GAMES</title>
 
 <style>
@@ -14,126 +15,136 @@
 }
 
 body {
-    background: #000;
-    color: white;
+    background: #000000;
+    color: #D4AF37;
     font-family: Arial, sans-serif;
 }
 
 header {
-    background: #080808;
-    padding: 25px 8%;
+    background: #000000;
+    padding: 25px 7%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #D4AF37;
 }
 
 .logo {
-    font-size: 28px;
-    font-weight: bold;
-    letter-spacing: 2px;
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #FFD700;
 }
 
 nav a {
-    color: white;
+    color: #D4AF37;
     text-decoration: none;
     margin-left: 25px;
-    font-size: 15px;
+    font-weight: bold;
 }
 
 nav a:hover {
-    color: #888;
+    color: #FFF0A0;
 }
 
 .hero {
     text-align: center;
     padding: 100px 20px;
-    background: linear-gradient(180deg, #151515, #000);
+    background: #000000;
 }
 
 .hero h1 {
     font-size: 55px;
+    color: #FFD700;
     margin-bottom: 20px;
+    text-shadow: 0 0 15px #806000;
 }
 
 .hero p {
-    color: #aaa;
-    font-size: 18px;
+    color: #D4AF37;
+    font-size: 19px;
     margin-bottom: 30px;
 }
 
 .btn {
-    background: white;
-    color: black;
-    padding: 14px 30px;
+    background: #D4AF37;
+    color: #000000;
+    padding: 15px 30px;
     text-decoration: none;
-    font-weight: bold;
     border-radius: 5px;
-    display: inline-block;
+    font-weight: bold;
 }
 
 .btn:hover {
-    background: #ccc;
+    background: #FFD700;
 }
 
 .games {
-    padding: 50px 8%;
+    padding: 55px 7%;
 }
 
 .games h2 {
-    font-size: 30px;
+    color: #FFD700;
+    font-size: 32px;
     margin-bottom: 30px;
 }
 
 .game-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 25px;
 }
 
 .game {
-    background: #151515;
-    border-radius: 10px;
+    background: #050505;
+    border: 1px solid #D4AF37;
+    border-radius: 12px;
     overflow: hidden;
     transition: 0.3s;
 }
 
 .game:hover {
     transform: translateY(-8px);
-    background: #222;
+    box-shadow: 0 0 20px #806000;
 }
 
 .game img {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
 }
 
 .game h3 {
-    padding: 15px;
+    color: #FFD700;
+    font-size: 23px;
+    padding: 18px;
 }
 
 .game p {
-    color: #aaa;
-    padding: 0 15px 15px;
+    color: #D4AF37;
+    padding: 0 18px 20px;
 }
 
 .game button {
-    margin: 0 15px 18px;
-    padding: 10px 20px;
-    background: white;
-    color: black;
+    background: #D4AF37;
+    color: #000000;
     border: none;
+    padding: 12px 25px;
+    margin: 0 18px 20px;
     border-radius: 5px;
-    cursor: pointer;
     font-weight: bold;
+    cursor: pointer;
+}
+
+.game button:hover {
+    background: #FFD700;
 }
 
 footer {
     text-align: center;
     padding: 30px;
-    color: #777;
-    border-top: 1px solid #222;
+    color: #D4AF37;
+    border-top: 1px solid #D4AF37;
     margin-top: 50px;
 }
 
@@ -148,7 +159,7 @@ footer {
     }
 
     .hero h1 {
-        font-size: 38px;
+        font-size: 36px;
     }
 }
 </style>
@@ -160,263 +171,41 @@ footer {
     <div class="logo">EPIC GAMES</div>
 
     <nav>
-        <a href="#">Acasă</a>
-        <a href="#games">Jocuri</a>
-        <a href="#contact">Contact</a>
+        <a href="#">ACASĂ</a>
+        <a href="#games">JOCURI</a>
     </nav>
 </header>
 
 <section class="hero">
     <h1>EPIC GAMES</h1>
-    <p>Descoperă jocuri. Explorează lumi. Joacă fără limite.</p>
+    <p>DESCOPERĂ UNIVERSUL GAMING-ULUI</p>
     <a href="#games" class="btn">DESCOPERĂ JOCURILE</a>
 </section>
 
 <section class="games" id="games">
-    <h2>Jocuri populare</h2>
 
-    <div class="game-container">
-
-        <div class="game">
-            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600" alt="Gaming">
-            <h3>Fortnite</h3>
-            <p>Battle Royale și distracție.</p>
-            <button onclick="alert('Fortnite - În curând!')">Joacă</button>
-        </div>
-
-        <div class="game">
-            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600" alt="Gaming">
-            <h3>Adventure World</h3>
-            <p>Explorează lumi uimitoare.</p>
-            <button onclick="alert('Adventure World - În curând!')">Joacă</button>
-        </div>
-
-        <div class="game">
-            <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=600" alt="Gaming">
-            <h3>Racing Game</h3>
-            <p>Curse și adrenalină.</p>
-            <button onclick="alert('Racing Game - În curând!')">Joacă</button>
-        </div>
-
-        <div class="game">
-            <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?w=600" alt="Gaming">
-            <h3>Cyber World</h3>
-            <p>Intră într-o lume futuristă.</p>
-            <button onclick="alert('Cyber World - În curând!')">Joacă</button>
-        </div>
-
-    </div>
-</section>
-
-<footer id="contact">
-    <p>© 2026 EPIC GAMES - Gaming Platform</p>
-</footer>
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EPIC GAMES</title>
-
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background: #050505;
-    color: white;
-    font-family: Arial, sans-serif;
-}
-
-header {
-    background: #101010;
-    padding: 25px 7%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #292929;
-}
-
-.logo {
-    font-size: 30px;
-    font-weight: 900;
-    letter-spacing: 2px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 25px;
-}
-
-nav a:hover {
-    color: #888;
-}
-
-.hero {
-    text-align: center;
-    padding: 90px 20px;
-    background: linear-gradient(135deg, #181818, #000);
-}
-
-.hero h1 {
-    font-size: 55px;
-    margin-bottom: 15px;
-}
-
-.hero p {
-    color: #aaa;
-    font-size: 18px;
-    margin-bottom: 30px;
-}
-
-.btn {
-    background: white;
-    color: black;
-    padding: 14px 30px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    display: inline-block;
-}
-
-.games {
-    padding: 55px 7%;
-}
-
-.games h2 {
-    font-size: 32px;
-    margin-bottom: 30px;
-}
-
-.game-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-}
-
-.game {
-    background: #151515;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: 0.3s;
-    border: 1px solid #252525;
-}
-
-.game:hover {
-    transform: translateY(-8px);
-    border-color: white;
-}
-
-.game img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.game h3 {
-    font-size: 23px;
-    padding: 18px;
-}
-
-.game p {
-    color: #aaa;
-    padding: 0 18px 20px;
-}
-
-.game button {
-    background: white;
-    color: black;
-    border: none;
-    padding: 12px 25px;
-    margin: 0 18px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.game button:hover {
-    background: #bbb;
-}
-
-footer {
-    text-align: center;
-    padding: 30px;
-    color: #777;
-    border-top: 1px solid #222;
-}
-
-@media(max-width: 600px) {
-    header {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    nav a {
-        margin: 0 8px;
-    }
-
-    .hero h1 {
-        font-size: 38px;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<header>
-    <div class="logo">EPIC GAMES</div>
-
-    <nav>
-        <a href="#">Acasă</a>
-        <a href="#games">Jocuri</a>
-    </nav>
-</header>
-
-<section class="hero">
-    <h1>BINE AI VENIT LA EPIC GAMES</h1>
-    <p>Descoperă cele mai tari jocuri!</p>
-    <a href="#games" class="btn">VEZI JOCURILE</a>
-</section>
-
-<section class="games" id="games">
-
-<h2>🔥 JOCURILE NOASTRE</h2>
+<h2>🏆 JOCURILE NOASTRE</h2>
 
 <div class="game-container">
 
-    <!-- FIFA -->
     <div class="game">
-        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800"
-        alt="Fotbal">
+        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800" alt="FIFA">
         <h3>⚽ FIFA</h3>
         <p>Construiește-ți echipa și devino campion!</p>
         <button onclick="openGame('fifa')">JOACĂ</button>
     </div>
 
-    <!-- CS2 -->
     <div class="game">
-        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800"
-        alt="Gaming CS2">
+        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800" alt="CS2">
         <h3>🎯 COUNTER-STRIKE 2</h3>
-        <p>Intră în lumea competitivă a shooterelor!</p>
+        <p>Intră în lumea shooterelor competitive!</p>
         <button onclick="openGame('cs2')">JOACĂ</button>
     </div>
 
-    <!-- MINECRAFT -->
     <div class="game">
-        <img src="https://images.unsplash.com/photo-1607513746994-51f730a44832?w=800"
-        alt="Minecraft">
+        <img src="https://images.unsplash.com/photo-1607513746994-51f730a44832?w=800" alt="Minecraft">
         <h3>⛏️ MINECRAFT</h3>
-        <p>Construiește, explorează și supraviețuiește!</p>
+        <p>Construiește și explorează lumi infinite!</p>
         <button onclick="openGame('minecraft')">JOACĂ</button>
     </div>
 
@@ -424,21 +213,21 @@ footer {
 </section>
 
 <footer>
-    <p>© 2026 EPIC GAMES | Toate drepturile rezervate</p>
+    © 2026 EPIC GAMES | ALL RIGHTS RESERVED
 </footer>
 
 <script>
 function openGame(game) {
-
-    const games = {
+    const links = {
         fifa: "https://www.ea.com/games/ea-sports-fc",
-        cs2: "https://store.steampowered.com/app/730/CounterStrike_2/",
+        cs2: "https://store.steampowered.com/app/730/",
         minecraft: "https://www.minecraft.net/"
     };
 
-    window.open(games[game], "_blank");
+    window.open(links[game], "_blank");
 }
 </script>
 
 </body>
 </html>
+
