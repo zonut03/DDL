@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="DDL - Birou de proiectare. Arhitectură, design și proiectare.">
-<title>DDL | Design & Architecture</title>
+<title>DDL | Birou de proiectare</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -344,40 +344,54 @@ section {
   text-transform: uppercase;
 }
 
+/* ECHIPA DDL */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(3,1fr);
-  gap: 20px;
+  gap: 25px;
 }
 
 .team-card {
   text-align: center;
-  padding: 30px;
+  padding: 40px 25px;
   border: 1px solid var(--line);
+  background: #111;
+  transition: .3s;
 }
 
-.team-card .avatar {
-  width: 100px;
-  height: 100px;
+.team-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-6px);
+}
+
+.avatar {
+  width: 115px;
+  height: 115px;
   border-radius: 50%;
-  margin: 0 auto 20px;
+  margin: 0 auto 25px;
   display: grid;
   place-items: center;
-  background: #29261f;
+  background: linear-gradient(145deg,#393124,#171613);
+  border: 1px solid var(--gold);
   color: var(--gold);
-  font: 38px 'Playfair Display', serif;
+  font: 43px 'Playfair Display',serif;
 }
 
 .team-card h3 {
-  font: 25px 'Playfair Display', serif;
+  font: 25px 'Playfair Display',serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 9px;
 }
 
 .team-card p {
   color: var(--gold);
   font-size: 11px;
-  margin-top: 5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
+/* RECENZII */
 .review-top {
   text-align: center;
   margin-bottom: 40px;
@@ -386,7 +400,7 @@ section {
 .review-top strong {
   display: block;
   color: var(--gold);
-  font: 60px 'Playfair Display', serif;
+  font: 60px 'Playfair Display',serif;
 }
 
 .stars {
@@ -414,7 +428,7 @@ section {
 
 .review-card .quote {
   color: var(--gold);
-  font: 48px 'Playfair Display', serif;
+  font: 48px 'Playfair Display',serif;
   line-height: 1;
 }
 
@@ -426,7 +440,7 @@ section {
 }
 
 .review-card h3 {
-  font: 22px 'Playfair Display', serif;
+  font: 22px 'Playfair Display',serif;
 }
 
 .review-card small {
@@ -442,7 +456,7 @@ section {
 }
 
 .review-form h3 {
-  font: 34px 'Playfair Display', serif;
+  font: 34px 'Playfair Display',serif;
   text-align: center;
   margin-bottom: 25px;
 }
@@ -497,7 +511,7 @@ section {
 }
 
 .contact-copy h2 {
-  font: 50px 'Playfair Display', serif;
+  font: 50px 'Playfair Display',serif;
   margin: 15px 0;
 }
 
@@ -575,13 +589,9 @@ footer span { color: var(--gold); }
   }
 
   section { padding: 75px 20px; }
-
   .hero { padding: 140px 25px 80px; }
-
   .stats { gap: 8px; }
-
   .stat strong { font-size: 28px; }
-
   .review-form { padding: 22px; }
 }
 </style>
@@ -596,15 +606,15 @@ footer span { color: var(--gold); }
   <button class="menu-button" id="menuButton" aria-label="Deschide meniul">☰</button>
 
   <ul class="nav-menu" id="navMenu">
-    <li><a href="#home" data-i18n="home">Acasă</a></li>
-    <li><a href="#about" data-i18n="about">Despre</a></li>
-    <li><a href="#services" data-i18n="services">Servicii</a></li>
-    <li><a href="#projects" data-i18n="projects">Proiecte</a></li>
-    <li><a href="#team" data-i18n="team">Echipă</a></li>
-    <li><a href="#reviews" data-i18n="reviews">Recenzii</a></li>
-    <li><a href="#contact" data-i18n="contact">Contact</a></li>
+    <li><a href="#home">Acasă</a></li>
+    <li><a href="#about">Despre</a></li>
+    <li><a href="#services">Servicii</a></li>
+    <li><a href="#projects">Proiecte</a></li>
+    <li><a href="#team">Echipă</a></li>
+    <li><a href="#reviews">Recenzii</a></li>
+    <li><a href="#contact">Contact</a></li>
     <li>
-      <select class="language" id="language" aria-label="Language">
+      <select class="language" id="language" aria-label="Selectează limba">
         <option value="ro">RO</option>
         <option value="en">EN</option>
       </select>
@@ -617,11 +627,11 @@ footer span { color: var(--gold); }
 
 <section class="hero" id="home">
   <div class="hero-content">
-    <div class="overline" data-i18n="heroOverline">DDL · Birou de proiectare</div>
-    <h1 data-i18n="heroTitle">Arta de a crea.<br><span>Viziunea de a construi.</span></h1>
-    <p data-i18n="heroText">Dezvoltăm proiecte în care arhitectura, funcționalitatea și estetica se întâlnesc într-o singură viziune.</p>
-    <a href="#contact" class="button" data-i18n="heroButton">Discută cu noi</a>
-    <a href="#projects" class="button button-outline" data-i18n="heroProjects">Vezi proiectele</a>
+    <div class="overline">DDL · Birou de proiectare</div>
+    <h1>Arta de a crea.<br><span>Viziunea de a construi.</span></h1>
+    <p>Dezvoltăm proiecte în care arhitectura, funcționalitatea și estetica se întâlnesc într-o singură viziune.</p>
+    <a href="#contact" class="button">Discută cu noi</a>
+    <a href="#projects" class="button button-outline">Vezi proiectele</a>
   </div>
 </section>
 
@@ -632,10 +642,10 @@ footer span { color: var(--gold); }
     </div>
 
     <div class="about-copy">
-      <div class="overline" data-i18n="aboutOverline">Povestea noastră</div>
-      <h2 data-i18n="aboutTitle">Mai mult decât un proiect. <span>O viziune.</span></h2>
-      <p data-i18n="aboutText1">Credem că fiecare spațiu merită o abordare atentă, creativă și adaptată oamenilor care îl folosesc.</p>
-      <p data-i18n="aboutText2">La DDL urmărim echilibrul dintre estetică, funcționalitate și soluții tehnice bine gândite.</p>
+      <div class="overline">Povestea noastră</div>
+      <h2>Mai mult decât un proiect. <span>O viziune.</span></h2>
+      <p>Credem că fiecare spațiu merită o abordare atentă, creativă și adaptată oamenilor care îl folosesc.</p>
+      <p>La DDL urmărim echilibrul dintre estetică, funcționalitate și soluții tehnice bine gândite.</p>
 
       <div class="stats">
         <div class="stat"><strong>01</strong><small>Creativitate</small></div>
@@ -649,28 +659,28 @@ footer span { color: var(--gold); }
 <section class="services" id="services">
   <div class="container">
     <div class="section-title center">
-      <div class="overline" data-i18n="servicesOverline">Expertiză</div>
-      <h2 data-i18n="servicesTitle">Ce putem <span>realiza</span></h2>
-      <p data-i18n="servicesIntro">Servicii dezvoltate în jurul ideilor și nevoilor fiecărui client.</p>
+      <div class="overline">Expertiză</div>
+      <h2>Ce putem <span>realiza</span></h2>
+      <p>Servicii dezvoltate în jurul ideilor și nevoilor fiecărui client.</p>
     </div>
 
     <div class="service-grid">
       <article class="service">
         <div class="service-number">01 — ARCHITECTURE</div>
-        <h3 data-i18n="service1Title">Arhitectură</h3>
-        <p data-i18n="service1Text">Concepte și proiecte arhitecturale pentru spații contemporane și funcționale.</p>
+        <h3>Arhitectură</h3>
+        <p>Concepte și proiecte arhitecturale pentru spații contemporane și funcționale.</p>
       </article>
 
       <article class="service">
         <div class="service-number">02 — INTERIOR</div>
-        <h3 data-i18n="service2Title">Design interior</h3>
-        <p data-i18n="service2Text">Amenajări echilibrate, materiale atent alese și identitate vizuală.</p>
+        <h3>Design interior</h3>
+        <p>Amenajări echilibrate, materiale atent alese și identitate vizuală.</p>
       </article>
 
       <article class="service">
         <div class="service-number">03 — TECHNICAL</div>
-        <h3 data-i18n="service3Title">Proiectare tehnică</h3>
-        <p data-i18n="service3Text">Soluții și documentații tehnice adaptate cerințelor proiectului.</p>
+        <h3>Proiectare tehnică</h3>
+        <p>Soluții și documentații tehnice adaptate cerințelor proiectului.</p>
       </article>
     </div>
   </div>
@@ -679,9 +689,9 @@ footer span { color: var(--gold); }
 <section id="projects">
   <div class="container">
     <div class="section-title center">
-      <div class="overline" data-i18n="projectsOverline">Selecție de lucrări</div>
-      <h2 data-i18n="projectsTitle">Proiecte cu <span>personalitate</span></h2>
-      <p data-i18n="projectsIntro">Imagini demonstrative. Înlocuiește-le cu fotografiile proiectelor DDL.</p>
+      <div class="overline">Selecție de lucrări</div>
+      <h2>Proiecte cu <span>personalitate</span></h2>
+      <p>Imagini demonstrative. Înlocuiește-le cu fotografiile proiectelor DDL.</p>
     </div>
 
     <div class="projects-grid">
@@ -712,32 +722,35 @@ footer span { color: var(--gold); }
   </div>
 </section>
 
+<!-- ECHIPA DDL - NUME SI FUNCTII ACTUALIZATE -->
 <section class="team" id="team">
   <div class="container">
     <div class="section-title center">
-      <div class="overline" data-i18n="teamOverline">Oamenii din spatele ideilor</div>
-      <h2 data-i18n="teamTitle">Echipa <span>DDL</span></h2>
-      <p data-i18n="teamIntro">Creativitate, colaborare și atenție la detalii.</p>
+      <div class="overline">Oamenii din spatele ideilor</div>
+      <h2>Echipa <span>DDL</span></h2>
+      <p>Profesionalism, creativitate și atenție la fiecare detaliu.</p>
     </div>
 
     <div class="team-grid">
+
       <article class="team-card">
-        <div class="avatar">A</div>
-        <h3>Nume Prenume</h3>
+        <div class="avatar">DD</div>
+        <h3>DAN DOMȘA</h3>
         <p>ARHITECT</p>
       </article>
 
       <article class="team-card">
-        <div class="avatar">D</div>
-        <h3>Nume Prenume</h3>
-        <p>DESIGNER</p>
+        <div class="avatar">LD</div>
+        <h3>LUCIA DOMȘA</h3>
+        <p>INGINER CONSTRUCTOR</p>
       </article>
 
       <article class="team-card">
-        <div class="avatar">P</div>
-        <h3>Nume Prenume</h3>
-        <p>PROIECTANT</p>
+        <div class="avatar">CC</div>
+        <h3>COSMIN CÂRLUGEA</h3>
+        <p>ARHITECT</p>
       </article>
+
     </div>
   </div>
 </section>
@@ -745,9 +758,9 @@ footer span { color: var(--gold); }
 <section class="reviews" id="reviews">
   <div class="container">
     <div class="section-title center">
-      <div class="overline" data-i18n="reviewsOverline">Experiențe reale</div>
-      <h2 data-i18n="reviewsTitle">Recenzii și <span>testimoniale</span></h2>
-      <p data-i18n="reviewsIntro">Părerile clienților sunt importante pentru noi.</p>
+      <div class="overline">Experiențe reale</div>
+      <h2>Recenzii și <span>testimoniale</span></h2>
+      <p>Părerile clienților sunt importante pentru noi.</p>
     </div>
 
     <div class="review-top">
@@ -775,7 +788,7 @@ footer span { color: var(--gold); }
       <textarea class="field" id="reviewText" rows="5" maxlength="1000" placeholder="Scrie experiența ta..." required></textarea>
 
       <button class="button" type="submit">Trimite recenzia</button>
-      <p class="form-note">Recenziile sunt salvate doar în browserul tău în această versiune demonstrativă. Pentru publicare comună este necesară o bază de date și moderare.</p>
+      <p class="form-note">Recenziile sunt salvate local în browserul tău. Pentru publicarea lor tuturor vizitatorilor este necesară o bază de date.</p>
       <p id="reviewMessage" role="status" aria-live="polite"></p>
     </form>
   </div>
@@ -784,9 +797,9 @@ footer span { color: var(--gold); }
 <section id="contact">
   <div class="container contact-layout">
     <div class="contact-copy">
-      <div class="overline" data-i18n="contactOverline">Următorul pas</div>
-      <h2 data-i18n="contactTitle">Hai să creăm ceva <span>remarcabil.</span></h2>
-      <p data-i18n="contactText">Povestește-ne despre ideea ta și hai să discutăm despre următorul proiect.</p>
+      <div class="overline">Următorul pas</div>
+      <h2>Hai să creăm ceva <span>remarcabil.</span></h2>
+      <p>Povestește-ne despre ideea ta și hai să discutăm despre următorul proiect.</p>
 
       <div class="contact-item">
         <strong>Email</strong>
@@ -834,8 +847,8 @@ navMenu.querySelectorAll('a').forEach(link => {
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// FILTRU DE CUVINTE NEPOTRIVITE
-// Adaugă aici cuvintele pe care vrei să le filtrezi.
+// FILTRU PENTRU CUVINTE NEPOTRIVITE
+// Adaugă termenii pe care dorești să îi filtrezi.
 const blockedWords = [
   'cuvantvulgar1',
   'cuvantvulgar2',
@@ -848,15 +861,14 @@ function censorText(text) {
   blockedWords.forEach(word => {
     const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regex = new RegExp(escaped, 'gi');
-
     result = result.replace(regex, match => '*'.repeat(match.length));
   });
 
   return result;
 }
 
-// RECENZII
-const STORAGE_KEY = 'ddl_reviews_v2';
+// SISTEM RECENZII
+const STORAGE_KEY = 'ddl_reviews_v3';
 let selectedRating = 0;
 
 function getReviews() {
@@ -971,7 +983,7 @@ document.getElementById('reviewForm').addEventListener('submit', event => {
 
 renderReviews();
 
-// FORMULAR CONTACT - deschide aplicația de email
+// FORMULAR CONTACT
 document.getElementById('contactForm').addEventListener('submit', event => {
   event.preventDefault();
 
@@ -991,112 +1003,18 @@ document.getElementById('contactForm').addEventListener('submit', event => {
     'mailto:contact@ddl.ro?subject=' + mailSubject + '&body=' + mailBody;
 });
 
-// TRADUCERI
-const translations = {
-  ro: {
-    home:'Acasă', about:'Despre', services:'Servicii',
-    projects:'Proiecte', team:'Echipă', reviews:'Recenzii',
-    contact:'Contact',
-    heroOverline:'DDL · Birou de proiectare',
-    heroTitle:'Arta de a crea.<br><span>Viziunea de a construi.</span>',
-    heroText:'Dezvoltăm proiecte în care arhitectura, funcționalitatea și estetica se întâlnesc într-o singură viziune.',
-    heroButton:'Discută cu noi', heroProjects:'Vezi proiectele',
-    aboutOverline:'Povestea noastră',
-    aboutTitle:'Mai mult decât un proiect. <span>O viziune.</span>',
-    aboutText1:'Credem că fiecare spațiu merită o abordare atentă, creativă și adaptată oamenilor care îl folosesc.',
-    aboutText2:'La DDL urmărim echilibrul dintre estetică, funcționalitate și soluții tehnice bine gândite.',
-    servicesOverline:'Expertiză',
-    servicesTitle:'Ce putem <span>realiza</span>',
-    servicesIntro:'Servicii dezvoltate în jurul ideilor și nevoilor fiecărui client.',
-    service1Title:'Arhitectură',
-    service1Text:'Concepte și proiecte arhitecturale pentru spații contemporane și funcționale.',
-    service2Title:'Design interior',
-    service2Text:'Amenajări echilibrate, materiale atent alese și identitate vizuală.',
-    service3Title:'Proiectare tehnică',
-    service3Text:'Soluții și documentații tehnice adaptate cerințelor proiectului.',
-    projectsOverline:'Selecție de lucrări',
-    projectsTitle:'Proiecte cu <span>personalitate</span>',
-    projectsIntro:'Imagini demonstrative. Înlocuiește-le cu fotografiile proiectelor DDL.',
-    teamOverline:'Oamenii din spatele ideilor',
-    teamTitle:'Echipa <span>DDL</span>',
-    teamIntro:'Creativitate, colaborare și atenție la detalii.',
-    reviewsOverline:'Experiențe reale',
-    reviewsTitle:'Recenzii și <span>testimoniale</span>',
-    reviewsIntro:'Părerile clienților sunt importante pentru noi.',
-    contactOverline:'Următorul pas',
-    contactTitle:'Hai să creăm ceva <span>remarcabil.</span>',
-    contactText:'Povestește-ne despre ideea ta și hai să discutăm despre următorul proiect.'
-  },
-
-  en: {
-    home:'Home', about:'About', services:'Services',
-    projects:'Projects', team:'Team', reviews:'Reviews',
-    contact:'Contact',
-    heroOverline:'DDL · Design Office',
-    heroTitle:'The art of creating.<br><span>The vision to build.</span>',
-    heroText:'We develop projects where architecture, functionality and aesthetics meet in one vision.',
-    heroButton:'Talk to us', heroProjects:'View projects',
-    aboutOverline:'Our story',
-    aboutTitle:'More than a project. <span>A vision.</span>',
-    aboutText1:'We believe every space deserves a thoughtful, creative approach adapted to the people who use it.',
-    aboutText2:'At DDL we seek balance between aesthetics, functionality and well-designed technical solutions.',
-    servicesOverline:'Expertise',
-    servicesTitle:'What we can <span>create</span>',
-    servicesIntro:'Services built around every client’s ideas and needs.',
-    service1Title:'Architecture',
-    service1Text:'Architectural concepts and projects for contemporary, functional spaces.',
-    service2Title:'Interior design',
-    service2Text:'Balanced interiors, carefully selected materials and visual identity.',
-    service3Title:'Technical design',
-    service3Text:'Technical solutions and documentation adapted to project requirements.',
-    projectsOverline:'Selected work',
-    projectsTitle:'Projects with <span>personality</span>',
-    projectsIntro:'Demo images. Replace them with photographs of DDL projects.',
-    teamOverline:'The people behind the ideas',
-    teamTitle:'The <span>DDL</span> team',
-    teamIntro:'Creativity, collaboration and attention to detail.',
-    reviewsOverline:'Real experiences',
-    reviewsTitle:'Reviews and <span>testimonials</span>',
-    reviewsIntro:'Our clients’ opinions matter to us.',
-    contactOverline:'The next step',
-    contactTitle:'Let’s create something <span>remarkable.</span>',
-    contactText:'Tell us about your idea and let’s discuss your next project.'
-  }
-};
-
-const originalTexts = new Map();
-
-document.querySelectorAll('[data-i18n]').forEach(element => {
-  originalTexts.set(element, element.innerHTML);
-});
-
+// TRADUCERE MENIU
 document.getElementById('language').addEventListener('change', event => {
-  const language = event.target.value;
-  const dictionary = translations[language];
+  const english = event.target.value === 'en';
+  const labels = english
+    ? ['Home','About','Services','Projects','Team','Reviews','Contact']
+    : ['Acasă','Despre','Servicii','Proiecte','Echipă','Recenzii','Contact'];
 
-  document.documentElement.lang = language;
-
-  document.querySelectorAll('[data-i18n]').forEach(element => {
-    const key = Object.keys(translations.ro).find(k =>
-      translations.ro[k] === originalTexts.get(element)
-    );
-
-    // Folosește cheia memorată la prima încărcare.
-    const translationKey = element.dataset.translationKey ||
-      Object.keys(translations.ro).find(k =>
-        translations.ro[k] === originalTexts.get(element)
-      );
-
-    if (translationKey && dictionary[translationKey]) {
-      element.innerHTML = dictionary[translationKey];
-    }
+  document.querySelectorAll('#navMenu a').forEach((link, index) => {
+    link.textContent = labels[index];
   });
-});
 
-// Asocierea cheilor de traducere după încărcarea paginii.
-document.querySelectorAll('[data-i18n]').forEach(element => {
-  const key = element.getAttribute('data-i18n');
-  if (key) element.dataset.translationKey = key;
+  document.documentElement.lang = english ? 'en' : 'ro';
 });
 </script>
 
