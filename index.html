@@ -1,1383 +1,899 @@
 
 <!DOCTYPE html>
-<html lang="ro" dir="ltr">
+<html lang="ro">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="DDL - Birou de proiectare. Arhitectură, design interior și proiectare.">
-<title>DDL | Birou de proiectare</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-:root {
-  --black: #101010;
-  --black-light: #191919;
-  --gold: #c9a45c;
-  --white: #f5f2eb;
-  --gray: #aaa49a;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--black);
-  color: var(--white);
-  font-family: 'Montserrat', sans-serif;
-  line-height: 1.7;
-}
-
-body, button, input, textarea {
-  font-family: 'Montserrat', sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  font: inherit;
-}
-
-.container {
-  width: min(1150px, 90%);
-  margin: auto;
-}
-
-.gold {
-  color: var(--gold);
-}
-
-.section {
-  padding: 105px 0;
-}
-
-.section-label {
-  color: var(--gold);
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  font-size: 11px;
-  margin-bottom: 15px;
-}
-
-.section-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(38px, 5vw, 58px);
-  font-weight: 500;
-  line-height: 1.1;
-  margin-bottom: 25px;
-}
-
-.section-description {
-  color: var(--gray);
-  max-width: 650px;
-  font-size: 14px;
-}
-
-.btn {
-  display: inline-block;
-  border: 1px solid var(--gold);
-  background: var(--gold);
-  color: #111;
-  padding: 14px 27px;
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  transition: .3s;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background: transparent;
-  color: var(--gold);
-}
-
-/* NAVIGATION */
-
-header {
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  width: 100%;
-  background: rgba(16,16,16,.95);
-  border-bottom: 1px solid rgba(201,164,92,.2);
-  backdrop-filter: blur(10px);
-}
-
-.navbar {
-  min-height: 82px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
-}
-
-.logo-main {
-  font-family: 'Cormorant Garamond', serif;
-  color: var(--gold);
-  font-size: 43px;
-  font-weight: 600;
-  letter-spacing: 5px;
-  line-height: 1;
-}
-
-.logo-subtitle {
-  font-size: 8px;
-  letter-spacing: 2px;
-  color: #ddd;
-  text-transform: uppercase;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-  list-style: none;
-}
-
-.nav-links a {
-  color: #ddd;
-  font-size: 10px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  transition: .3s;
-}
-
-.nav-links a:hover {
-  color: var(--gold);
-}
-
-/* LANGUAGE MENU */
-
-.language-menu {
-  position: relative;
-  flex-shrink: 0;
-}
-
-.language-toggle {
-  background: transparent;
-  color: var(--gold);
-  border: 1px solid var(--gold);
-  padding: 9px 13px;
-  cursor: pointer;
-  font-size: 11px;
-  letter-spacing: 2px;
-  transition: .3s;
-}
-
-.language-toggle:hover {
-  background: var(--gold);
-  color: #111;
-}
-
-.arrow {
-  margin-left: 7px;
-}
-
-.language-options {
-  display: none;
-  position: absolute;
-  top: 115%;
-  right: 0;
-  min-width: 175px;
-  background: #151515;
-  border: 1px solid var(--gold);
-  box-shadow: 0 12px 30px rgba(0,0,0,.4);
-  z-index: 2000;
-}
-
-.language-options.active {
-  display: block;
-}
-
-.language-options button {
-  display: block;
-  width: 100%;
-  padding: 11px 15px;
-  color: #eee;
-  background: transparent;
-  border: none;
-  text-align: left;
-  cursor: pointer;
-  font-size: 12px;
-  transition: .2s;
-}
-
-.language-options button:hover,
-.language-options button.selected {
-  background: var(--gold);
-  color: #111;
-}
-
-.menu-toggle {
-  display: none;
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  background: transparent;
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
-/* HERO */
-
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  background:
-    linear-gradient(90deg, rgba(0,0,0,.88), rgba(0,0,0,.38)),
-    url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=85')
-    center/cover no-repeat;
-}
-
-.hero-content {
-  padding-top: 100px;
-  max-width: 780px;
-}
-
-.hero-label {
-  color: var(--gold);
-  font-size: 12px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  margin-bottom: 22px;
-}
-
-.hero h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(55px, 9vw, 105px);
-  font-weight: 400;
-  line-height: .98;
-  margin-bottom: 25px;
-}
-
-.hero p {
-  color: #ddd;
-  font-size: 15px;
-  max-width: 510px;
-  margin-bottom: 35px;
-}
-
-/* ABOUT */
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 65px;
-  align-items: center;
-}
-
-.about-image {
-  width: 100%;
-  height: 480px;
-  object-fit: cover;
-  filter: brightness(.8);
-}
-
-.about-text p {
-  color: var(--gray);
-  font-size: 14px;
-  margin-bottom: 18px;
-}
-
-/* SERVICES */
-
-.services {
-  background: #171717;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  margin-top: 50px;
-}
-
-.service-card {
-  border: 1px solid #34302a;
-  padding: 35px 28px;
-  min-height: 220px;
-  transition: .3s;
-}
-
-.service-card:hover {
-  border-color: var(--gold);
-  transform: translateY(-5px);
-}
-
-.service-number {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 34px;
-  color: var(--gold);
-  margin-bottom: 15px;
-}
-
-.service-card h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 25px;
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-
-.service-card p {
-  color: var(--gray);
-  font-size: 12px;
-}
-
-/* PORTFOLIO */
-
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 22px;
-  margin-top: 45px;
-}
-
-.project {
-  position: relative;
-  height: 340px;
-  overflow: hidden;
-  background: #222;
-}
-
-.project img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: .5s;
-  filter: brightness(.75);
-}
-
-.project:hover img {
-  transform: scale(1.06);
-  filter: brightness(.55);
-}
-
-.project-caption {
-  position: absolute;
-  bottom: 25px;
-  left: 25px;
-  right: 25px;
-}
-
-.project-caption h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 28px;
-  font-weight: 500;
-}
-
-.project-caption span {
-  color: var(--gold);
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-/* QUOTE */
-
-.quote-section {
-  text-align: center;
-  background: #171717;
-  padding: 90px 20px;
-}
-
-.quote-section blockquote {
-  max-width: 850px;
-  margin: auto;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(30px, 5vw, 49px);
-  line-height: 1.2;
-}
-
-.quote-mark {
-  color: var(--gold);
-  font-size: 55px;
-}
-
-/* CONTACT */
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: .8fr 1.2fr;
-  gap: 65px;
-  margin-top: 40px;
-}
-
-.contact-info p {
-  color: var(--gray);
-  margin-bottom: 20px;
-  font-size: 13px;
-}
-
-.contact-info strong {
-  color: var(--gold);
-  display: block;
-  font-size: 11px;
-  letter-spacing: 2px;
-  margin-bottom: 5px;
-  text-transform: uppercase;
-}
-
-.contact-form {
-  display: grid;
-  gap: 15px;
-}
-
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 15px;
-  background: #191919;
-  border: 1px solid #38332b;
-  color: white;
-  outline: none;
-  font-size: 13px;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: var(--gold);
-}
-
-.contact-form textarea {
-  min-height: 140px;
-  resize: vertical;
-}
-
-.contact-form button {
-  justify-self: start;
-}
-
-/* FOOTER */
-
-footer {
-  background: #090909;
-  border-top: 1px solid #332b1e;
-  padding: 30px 0;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-}
-
-footer p {
-  color: #888;
-  font-size: 10px;
-}
-
-/* RTL ARABIC */
-
-html[dir="rtl"] body {
-  font-family: 'Noto Naskh Arabic', sans-serif;
-}
-
-html[dir="rtl"] .hero-content,
-html[dir="rtl"] .about-text,
-html[dir="rtl"] .section,
-html[dir="rtl"] .contact-info,
-html[dir="rtl"] .contact-form {
-  text-align: right;
-}
-
-html[dir="rtl"] .language-options {
-  right: auto;
-  left: 0;
-}
-
-html[dir="rtl"] .language-options button {
-  text-align: right;
-}
-
-html[dir="rtl"] .project-caption {
-  left: 25px;
-  right: 25px;
-  text-align: right;
-}
-
-html[dir="rtl"] .contact-form button {
-  justify-self: start;
-}
-
-/* RESPONSIVE */
-
-@media(max-width: 900px) {
-  .nav-links {
-    gap: 12px;
-  }
-
-  .nav-links a {
-    font-size: 9px;
-  }
-
-  .about-grid,
-  .contact-grid {
-    gap: 35px;
-  }
-}
-
-@media(max-width: 700px) {
-  .navbar {
-    min-height: 72px;
-  }
-
-  .logo-main {
-    font-size: 35px;
-  }
-
-  .logo-subtitle {
-    font-size: 7px;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 72px;
-    left: 0;
-    width: 100%;
-    padding: 25px;
-    background: #101010;
-    border-bottom: 1px solid var(--gold);
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .nav-links a {
-    font-size: 11px;
-  }
-
-  .navbar {
-    gap: 10px;
-  }
-
-  .language-menu {
-    margin-left: auto;
-  }
-
-  .language-toggle {
-    padding: 8px 10px;
-  }
-
-  .about-grid,
-  .contact-grid,
-  .services-grid,
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .about-image {
-    height: 320px;
-  }
-
-  .project {
-    height: 270px;
-  }
-
-  .section {
-    padding: 75px 0;
-  }
-
-  .footer-content {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DDL - Birou de proiectare. Soluții moderne de arhitectură, proiectare și design.">
+  <title>DDL | Birou de proiectare</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold: #c6a15b;
+      --gold-light: #e2c68b;
+      --black: #090909;
+      --dark: #111;
+      --gray: #aaa;
+      --white: #f7f4ed;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, textarea, select {
+      font: inherit;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(9,9,9,.94);
+      border-bottom: 1px solid rgba(198,161,91,.25);
+      backdrop-filter: blur(12px);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 17px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 5px;
+    }
+
+    .logo small {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--white);
+      text-transform: uppercase;
+      margin-top: -10px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      list-style: none;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .language {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 0;
+      color: var(--gold);
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 150px 20px 80px;
+      background:
+        linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.85)),
+        url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=85') center/cover;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-size: 12px;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 92px);
+      line-height: 1.05;
+      margin: 25px 0;
+    }
+
+    h1 span, h2 span {
+      color: var(--gold);
+    }
+
+    .hero p {
+      color: #ddd;
+      max-width: 650px;
+      margin: 0 auto 35px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 27px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      background: transparent;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 11px;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .btn:hover {
+      background: var(--gold);
+      color: #090909;
+    }
+
+    section {
+      padding: 100px 25px;
+      scroll-margin-top: 85px;
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 55px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(38px, 5vw, 58px);
+      margin-top: 10px;
+    }
+
+    .section-heading p {
+      color: var(--gray);
+      max-width: 650px;
+      margin: 10px auto 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .about-grid img {
+      width: 100%;
+      height: 430px;
+      object-fit: cover;
+    }
+
+    .about-text h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      color: var(--gray);
+      margin-bottom: 18px;
+    }
+
+    .services {
+      background: #101010;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      padding: 35px 27px;
+      border: 1px solid #292929;
+      background: #141414;
+      transition: .3s;
+    }
+
+    .service-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-5px);
+    }
+
+    .service-card .number {
+      color: var(--gold);
+      font-size: 13px;
+      letter-spacing: 3px;
+    }
+
+    .service-card h3 {
+      font-size: 29px;
+      margin: 17px 0;
+    }
+
+    .service-card p {
+      color: var(--gray);
+      font-size: 13px;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project {
+      position: relative;
+      overflow: hidden;
+      height: 300px;
+      background: #222;
+    }
+
+    .project img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .5s;
+    }
+
+    .project:hover img {
+      transform: scale(1.06);
+      opacity: .65;
+    }
+
+    .project-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 25px;
+      background: linear-gradient(transparent, rgba(0,0,0,.9));
+    }
+
+    .project-info h3 {
+      font-size: 25px;
+    }
+
+    .project-info p {
+      color: var(--gold-light);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .reviews {
+      background: #101010;
+    }
+
+    .review-summary {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .review-summary strong {
+      display: block;
+      color: var(--gold);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 58px;
+    }
+
+    .stars {
+      color: var(--gold);
+      letter-spacing: 4px;
+      font-size: 20px;
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .review-card {
+      background: #171717;
+      border: 1px solid #303030;
+      padding: 28px;
+    }
+
+    .review-card p {
+      color: #ccc;
+      font-size: 13px;
+      margin: 18px 0;
+    }
+
+    .review-card h3 {
+      font-size: 24px;
+      color: var(--gold);
+    }
+
+    .review-card small {
+      color: #888;
+    }
+
+    .review-form {
+      max-width: 700px;
+      margin: 55px auto 0;
+      padding: 35px;
+      border: 1px solid #333;
+      background: #141414;
+    }
+
+    .review-form h3 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .form-control {
+      width: 100%;
+      background: #090909;
+      border: 1px solid #333;
+      color: white;
+      padding: 14px;
+      margin-bottom: 15px;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--gold);
+    }
+
+    .rating-select {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 15px 0 25px;
+    }
+
+    .rating-select button {
+      border: none;
+      background: none;
+      color: #555;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    .rating-select button.active {
+      color: var(--gold);
+    }
+
+    .form-note {
+      color: #888;
+      font-size: 11px;
+      margin-top: 12px;
+    }
+
+    .contact {
+      text-align: center;
+    }
+
+    .contact-details {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 35px;
+      margin: 35px 0;
+      color: var(--gray);
+    }
+
+    .contact-details strong {
+      color: var(--gold);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    footer {
+      padding: 35px 20px;
+      text-align: center;
+      background: #050505;
+      border-top: 1px solid #292929;
+      color: #888;
+      font-size: 12px;
+    }
+
+    footer span {
+      color: var(--gold);
+    }
+
+    @media(max-width: 900px) {
+      .nav-links {
+        gap: 12px;
+        font-size: 9px;
+      }
+
+      .cards, .review-grid, .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width: 700px) {
+      nav {
+        flex-wrap: wrap;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px 0;
+        font-size: 12px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .about-grid, .cards, .review-grid, .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid img {
+        height: 300px;
+      }
+
+      section {
+        padding: 75px 20px;
+      }
+
+      .review-form {
+        padding: 22px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-  <div class="container navbar">
-
-    <a href="#home" class="logo">
-      <span class="logo-main">DDL</span>
-      <span class="logo-subtitle" data-translate="brandSubtitle">Birou de proiectare</span>
-    </a>
+  <nav>
+    <a href="#acasa" class="logo">DDL<small>Birou de proiectare</small></a>
 
     <button class="menu-toggle" id="menuToggle" aria-label="Deschide meniul">☰</button>
 
     <ul class="nav-links" id="navLinks">
-      <li><a href="#home" data-translate="home">Acasă</a></li>
-      <li><a href="#about" data-translate="about">Despre noi</a></li>
-      <li><a href="#services" data-translate="services">Servicii</a></li>
-      <li><a href="#portfolio" data-translate="portfolio">Proiecte</a></li>
-      <li><a href="#contact" data-translate="contact">Contact</a></li>
+      <li><a href="#acasa">Acasă</a></li>
+      <li><a href="#despre">Despre noi</a></li>
+      <li><a href="#servicii">Servicii</a></li>
+      <li><a href="#portofoliu">Portofoliu</a></li>
+      <li><a href="#recenzii">Recenzii</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li>
+        <select class="language" aria-label="Selectează limba" id="language">
+          <option value="ro">RO</option>
+          <option value="en">EN</option>
+        </select>
+      </li>
     </ul>
-
-    <div class="language-menu">
-      <button class="language-toggle" id="languageToggle"
-        aria-expanded="false" aria-label="Select language">
-        <span id="currentLanguage">RO</span>
-        <span class="arrow">⌄</span>
-      </button>
-
-      <div class="language-options" id="languageOptions">
-        <button type="button" data-lang="ro">🇷🇴 Română</button>
-        <button type="button" data-lang="en">🇬🇧 English</button>
-        <button type="button" data-lang="fr">🇫🇷 Français</button>
-        <button type="button" data-lang="es">🇪🇸 Español</button>
-        <button type="button" data-lang="it">🇮🇹 Italiano</button>
-        <button type="button" data-lang="nl">🇳🇱 Nederlands</button>
-        <button type="button" data-lang="ar">🇸🇦 العربية</button>
-      </div>
-    </div>
-
-  </div>
+  </nav>
 </header>
 
 <main>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="container hero-content">
-    <div class="hero-label" data-translate="heroLabel">DDL · Birou de proiectare</div>
-    <h1 data-translate="heroTitle">Arhitectură cu viziune.</h1>
-    <p data-translate="heroSubtitle">
-      Transformăm ideile în spații remarcabile. Proiectăm cu pasiune,
-      precizie și atenție pentru fiecare detaliu.
-    </p>
-    <a href="#portfolio" class="btn" data-translate="heroButton">Descoperă proiectele</a>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="section" id="about">
-  <div class="container about-grid">
-    <img class="about-image"
-      src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1100&q=85"
-      alt="Arhitectură modernă">
-
-    <div class="about-text">
-      <div class="section-label" data-translate="aboutLabel">Povestea noastră</div>
-      <h2 class="section-title" data-translate="aboutTitle">Despre DDL</h2>
-
-      <p data-translate="aboutText1">
-        DDL este un birou de proiectare dedicat creării unor spații
-        funcționale, armonioase și contemporane.
+  <section class="hero" id="acasa">
+    <div class="hero-content">
+      <div class="eyebrow">DDL · Birou de proiectare</div>
+      <h1>Proiectăm spații.<br><span>Inspirăm viitorul.</span></h1>
+      <p>
+        Transformăm ideile în proiecte bine gândite, prin creativitate,
+        precizie și atenție la fiecare detaliu.
       </p>
-
-      <p data-translate="aboutText2">
-        Combinăm creativitatea, experiența tehnică și atenția pentru
-        detalii pentru a transforma fiecare idee într-un proiect coerent.
-      </p>
-
-      <p data-translate="aboutText3">
-        Credem în arhitectura care îmbină estetica, funcționalitatea
-        și respectul pentru mediul construit.
-      </p>
+      <a href="#contact" class="btn">Solicită o ofertă</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- SERVICES -->
-<section class="section services" id="services">
-  <div class="container">
-    <div class="section-label" data-translate="servicesLabel">Ce facem</div>
-    <h2 class="section-title" data-translate="servicesTitle">Serviciile noastre</h2>
-    <p class="section-description" data-translate="servicesIntro">
-      Oferim soluții complete de proiectare, de la concept până la
-      detaliile care dau personalitate fiecărui spațiu.
-    </p>
+  <section id="despre">
+    <div class="container about-grid">
+      <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85" alt="Interior modern">
 
-    <div class="services-grid">
-
-      <article class="service-card">
-        <div class="service-number">01</div>
-        <h3 data-translate="service1Title">Arhitectură</h3>
-        <p data-translate="service1Text">Concepte arhitecturale și proiecte adaptate nevoilor fiecărui client.</p>
-      </article>
-
-      <article class="service-card">
-        <div class="service-number">02</div>
-        <h3 data-translate="service2Title">Design interior</h3>
-        <p data-translate="service2Text">Spații interioare echilibrate, elegante și funcționale.</p>
-      </article>
-
-      <article class="service-card">
-        <div class="service-number">03</div>
-        <h3 data-translate="service3Title">Proiectare tehnică</h3>
-        <p data-translate="service3Text">Documentații și soluții tehnice pentru proiecte de construcții.</p>
-      </article>
-
-      <article class="service-card">
-        <div class="service-number">04</div>
-        <h3 data-translate="service4Title">Randări 3D</h3>
-        <p data-translate="service4Text">Vizualizări realiste pentru prezentarea viitoarelor spații.</p>
-      </article>
-
-      <article class="service-card">
-        <div class="service-number">05</div>
-        <h3 data-translate="service5Title">Renovări</h3>
-        <p data-translate="service5Text">Reconfigurarea și modernizarea spațiilor existente.</p>
-      </article>
-
-      <article class="service-card">
-        <div class="service-number">06</div>
-        <h3 data-translate="service6Title">Consultanță</h3>
-        <p data-translate="service6Text">Îndrumare și consultanță pentru alegerea soluțiilor potrivite.</p>
-      </article>
-
+      <div class="about-text">
+        <div class="eyebrow">Despre noi</div>
+        <h2>Idei transformate în <span>realitate.</span></h2>
+        <p>
+          DDL este un birou de proiectare dedicat realizării unor proiecte
+          moderne, funcționale și atent dezvoltate.
+        </p>
+        <p>
+          Punem accent pe calitate, comunicare și soluții adaptate
+          nevoilor fiecărui client.
+        </p>
+        <a href="#servicii" class="btn">Descoperă serviciile</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- PORTFOLIO -->
-<section class="section" id="portfolio">
-  <div class="container">
-    <div class="section-label" data-translate="portfolioLabel">Selecție de lucrări</div>
-    <h2 class="section-title" data-translate="portfolioTitle">Proiectele noastre</h2>
-    <p class="section-description" data-translate="portfolioIntro">
-      Câteva exemple vizuale de arhitectură și design. Înlocuiește
-      imaginile cu proiectele reale ale biroului DDL.
-    </p>
-
-    <div class="portfolio-grid">
-
-      <article class="project">
-        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85" alt="Locuință modernă">
-        <div class="project-caption">
-          <span data-translate="projectCategory1">Arhitectură rezidențială</span>
-          <h3 data-translate="project1">Locuință contemporană</h3>
-        </div>
-      </article>
-
-      <article class="project">
-        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85" alt="Design interior">
-        <div class="project-caption">
-          <span data-translate="projectCategory2">Design interior</span>
-          <h3 data-translate="project2">Eleganță minimalistă</h3>
-        </div>
-      </article>
-
-      <article class="project">
-        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=85" alt="Casă modernă">
-        <div class="project-caption">
-          <span data-translate="projectCategory3">Arhitectură</span>
-          <h3 data-translate="project3">Forme și lumină</h3>
-        </div>
-      </article>
-
-      <article class="project">
-        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85" alt="Spațiu modern">
-        <div class="project-caption">
-          <span data-translate="projectCategory4">Design contemporan</span>
-          <h3 data-translate="project4">Armonie în spațiu</h3>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- QUOTE -->
-<section class="quote-section">
-  <div class="quote-mark">“</div>
-  <blockquote data-translate="quote">
-    Arhitectura nu înseamnă doar spații construite, ci experiențe
-    create pentru oameni.
-  </blockquote>
-  <p class="section-label" style="margin-top:25px;">DDL</p>
-</section>
-
-<!-- CONTACT -->
-<section class="section" id="contact">
-  <div class="container">
-    <div class="section-label" data-translate="contactLabel">Să discutăm</div>
-    <h2 class="section-title" data-translate="contactTitle">Contactează-ne</h2>
-    <p class="section-description" data-translate="contactIntro">
-      Ai o idee sau un proiect în plan? Suntem aici să discutăm
-      despre următorul tău proiect.
-    </p>
-
-    <div class="contact-grid">
-
-      <div class="contact-info">
-        <p>
-          <strong data-translate="emailLabel">Email</strong>
-          contact@ddl.ro
-        </p>
-
-        <p>
-          <strong data-translate="phoneLabel">Telefon</strong>
-          +40 700 000 000
-        </p>
-
-        <p>
-          <strong data-translate="locationLabel">Locație</strong>
-          România
-        </p>
+  <section class="services" id="servicii">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Ce facem</div>
+        <h2>Serviciile <span>noastre</span></h2>
+        <p>Soluții complete, adaptate fiecărui proiect.</p>
       </div>
 
-      <form class="contact-form" id="contactForm">
-        <input type="text" id="name" required
-          data-placeholder="namePlaceholder" placeholder="Numele tău">
+      <div class="cards">
+        <article class="service-card">
+          <div class="number">01 / ARHITECTURĂ</div>
+          <h3>Proiectare arhitecturală</h3>
+          <p>Concepte arhitecturale și soluții funcționale pentru spații moderne.</p>
+        </article>
 
-        <input type="email" id="email" required
-          data-placeholder="emailPlaceholder" placeholder="Adresa ta de email">
+        <article class="service-card">
+          <div class="number">02 / INTERIOR</div>
+          <h3>Design interior</h3>
+          <p>Organizarea și amenajarea spațiilor cu atenție la estetică și confort.</p>
+        </article>
 
-        <textarea id="message" required
-          data-placeholder="messagePlaceholder"
-          placeholder="Descrie proiectul tău"></textarea>
-
-        <button type="submit" class="btn" data-translate="sendButton">
-          Trimite mesajul
-        </button>
-      </form>
-
+        <article class="service-card">
+          <div class="number">03 / TEHNIC</div>
+          <h3>Proiectare tehnică</h3>
+          <p>Documentații și soluții tehnice adaptate cerințelor proiectului.</p>
+        </article>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <section id="portofoliu">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Selecție de proiecte</div>
+        <h2>Portofoliul <span>nostru</span></h2>
+        <p>Fiecare proiect începe cu o idee și se dezvoltă prin atenție la detalii.</p>
+      </div>
+
+      <div class="portfolio-grid">
+        <article class="project">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80" alt="Casă contemporană">
+          <div class="project-info">
+            <h3>Casa contemporană</h3>
+            <p>Arhitectură</p>
+          </div>
+        </article>
+
+        <article class="project">
+          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80" alt="Design interior">
+          <div class="project-info">
+            <h3>Eleganță modernă</h3>
+            <p>Design interior</p>
+          </div>
+        </article>
+
+        <article class="project">
+          <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80" alt="Spațiu rezidențial">
+          <div class="project-info">
+            <h3>Spațiu rezidențial</h3>
+            <p>Proiectare</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="recenzii">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Părerea clienților</div>
+        <h2>Recenzii și <span>testimoniale</span></h2>
+        <p>Experiențele și opiniile celor care au colaborat cu noi.</p>
+      </div>
+
+      <div class="review-summary">
+        <strong id="averageRating">—</strong>
+        <div class="stars" id="averageStars">☆☆☆☆☆</div>
+        <p id="reviewCount">Nu există încă recenzii publicate.</p>
+      </div>
+
+      <div class="review-grid" id="reviewList">
+        <!-- Recenziile aprobate vor apărea aici. -->
+      </div>
+
+      <form class="review-form" id="reviewForm">
+        <h3>Lasă o <span>recenzie</span></h3>
+
+        <input
+          class="form-control"
+          type="text"
+          id="reviewName"
+          placeholder="Numele tău"
+          maxlength="50"
+          required
+        >
+
+        <label for="reviewRating">Evaluarea ta:</label>
+        <div class="rating-select" id="ratingSelect" aria-label="Alege o evaluare">
+          <button type="button" data-rating="1" aria-label="1 stea">★</button>
+          <button type="button" data-rating="2" aria-label="2 stele">★</button>
+          <button type="button" data-rating="3" aria-label="3 stele">★</button>
+          <button type="button" data-rating="4" aria-label="4 stele">★</button>
+          <button type="button" data-rating="5" aria-label="5 stele">★</button>
+        </div>
+
+        <textarea
+          class="form-control"
+          id="reviewText"
+          rows="5"
+          placeholder="Scrie experiența ta..."
+          maxlength="1000"
+          required
+        ></textarea>
+
+        <button class="btn" type="submit">Trimite recenzia</button>
+
+        <p class="form-note">
+          Recenzia este salvată local în acest browser pentru demonstrație.
+          Nu este publicată automat pentru ceilalți vizitatori.
+        </p>
+        <p id="reviewMessage" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Hai să discutăm</div>
+        <h2>Începem un proiect <span>împreună?</span></h2>
+        <p>Contactează-ne pentru mai multe informații sau pentru o ofertă.</p>
+      </div>
+
+      <div class="contact-details">
+        <div>
+          <strong>Email</strong>
+          <a href="mailto:contact@ddl.ro">contact@ddl.ro</a>
+        </div>
+        <div>
+          <strong>Telefon</strong>
+          <a href="tel:+40700000000">+40 700 000 000</a>
+        </div>
+        <div>
+          <strong>Locație</strong>
+          România
+        </div>
+      </div>
+
+      <a class="btn" href="mailto:contact@ddl.ro?subject=Solicitare%20oferta%20DDL">
+        Solicită o ofertă
+      </a>
+    </div>
+  </section>
 </main>
 
 <footer>
-  <div class="container footer-content">
-    <div class="logo">
-      <span class="logo-main">DDL</span>
-      <span class="logo-subtitle" data-translate="brandSubtitle">Birou de proiectare</span>
-    </div>
-
-    <p>© <span id="year"></span> DDL. <span data-translate="copyright">Toate drepturile rezervate.</span></p>
-  </div>
+  <p>© <span id="year"></span> <span>DDL</span> – Birou de proiectare. Toate drepturile rezervate.</p>
 </footer>
 
 <script>
-const translations = {
-  ro: {
-    brandSubtitle: "Birou de proiectare",
-    home: "Acasă",
-    about: "Despre noi",
-    services: "Servicii",
-    portfolio: "Proiecte",
-    contact: "Contact",
-    heroLabel: "DDL · Birou de proiectare",
-    heroTitle: "Arhitectură cu viziune.",
-    heroSubtitle: "Transformăm ideile în spații remarcabile. Proiectăm cu pasiune, precizie și atenție pentru fiecare detaliu.",
-    heroButton: "Descoperă proiectele",
-    aboutLabel: "Povestea noastră",
-    aboutTitle: "Despre DDL",
-    aboutText1: "DDL este un birou de proiectare dedicat creării unor spații funcționale, armonioase și contemporane.",
-    aboutText2: "Combinăm creativitatea, experiența tehnică și atenția pentru detalii pentru a transforma fiecare idee într-un proiect coerent.",
-    aboutText3: "Credem în arhitectura care îmbină estetica, funcționalitatea și respectul pentru mediul construit.",
-    servicesLabel: "Ce facem",
-    servicesTitle: "Serviciile noastre",
-    servicesIntro: "Oferim soluții complete de proiectare, de la concept până la detaliile care dau personalitate fiecărui spațiu.",
-    service1Title: "Arhitectură",
-    service1Text: "Concepte arhitecturale și proiecte adaptate nevoilor fiecărui client.",
-    service2Title: "Design interior",
-    service2Text: "Spații interioare echilibrate, elegante și funcționale.",
-    service3Title: "Proiectare tehnică",
-    service3Text: "Documentații și soluții tehnice pentru proiecte de construcții.",
-    service4Title: "Randări 3D",
-    service4Text: "Vizualizări realiste pentru prezentarea viitoarelor spații.",
-    service5Title: "Renovări",
-    service5Text: "Reconfigurarea și modernizarea spațiilor existente.",
-    service6Title: "Consultanță",
-    service6Text: "Îndrumare și consultanță pentru alegerea soluțiilor potrivite.",
-    portfolioLabel: "Selecție de lucrări",
-    portfolioTitle: "Proiectele noastre",
-    portfolioIntro: "Câteva exemple vizuale de arhitectură și design. Înlocuiește imaginile cu proiectele reale ale biroului DDL.",
-    projectCategory1: "Arhitectură rezidențială",
-    projectCategory2: "Design interior",
-    projectCategory3: "Arhitectură",
-    projectCategory4: "Design contemporan",
-    project1: "Locuință contemporană",
-    project2: "Eleganță minimalistă",
-    project3: "Forme și lumină",
-    project4: "Armonie în spațiu",
-    quote: "Arhitectura nu înseamnă doar spații construite, ci experiențe create pentru oameni.",
-    contactLabel: "Să discutăm",
-    contactTitle: "Contactează-ne",
-    contactIntro: "Ai o idee sau un proiect în plan? Suntem aici să discutăm despre următorul tău proiect.",
-    emailLabel: "Email",
-    phoneLabel: "Telefon",
-    locationLabel: "Locație",
-    namePlaceholder: "Numele tău",
-    emailPlaceholder: "Adresa ta de email",
-    messagePlaceholder: "Descrie proiectul tău",
-    sendButton: "Trimite mesajul",
-    copyright: "Toate drepturile rezervate.",
-    emailSubject: "Solicitare proiect DDL",
-    emailGreeting: "Nume",
-    emailMessage: "Mesaj"
-  },
+  // Meniu mobil
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
 
-  en: {
-    brandSubtitle: "Design Studio",
-    home: "Home",
-    about: "About us",
-    services: "Services",
-    portfolio: "Projects",
-    contact: "Contact",
-    heroLabel: "DDL · Design Studio",
-    heroTitle: "Architecture with vision.",
-    heroSubtitle: "We transform ideas into remarkable spaces. We design with passion, precision and attention to every detail.",
-    heroButton: "Discover our projects",
-    aboutLabel: "Our story",
-    aboutTitle: "About DDL",
-    aboutText1: "DDL is a design studio dedicated to creating functional, harmonious and contemporary spaces.",
-    aboutText2: "We combine creativity, technical expertise and attention to detail to turn every idea into a coherent project.",
-    aboutText3: "We believe in architecture that combines aesthetics, functionality and respect for the built environment.",
-    servicesLabel: "What we do",
-    servicesTitle: "Our services",
-    servicesIntro: "We provide complete design solutions, from the initial concept to the details that give each space its character.",
-    service1Title: "Architecture",
-    service1Text: "Architectural concepts and projects tailored to each client's needs.",
-    service2Title: "Interior design",
-    service2Text: "Balanced, elegant and functional interior spaces.",
-    service3Title: "Technical design",
-    service3Text: "Technical documentation and solutions for construction projects.",
-    service4Title: "3D rendering",
-    service4Text: "Realistic visualizations of future spaces.",
-    service5Title: "Renovations",
-    service5Text: "Reconfiguration and modernization of existing spaces.",
-    service6Title: "Consulting",
-    service6Text: "Guidance and advice to help choose the right solutions.",
-    portfolioLabel: "Selected work",
-    portfolioTitle: "Our projects",
-    portfolioIntro: "A selection of architecture and design visuals. Replace these images with actual DDL projects.",
-    projectCategory1: "Residential architecture",
-    projectCategory2: "Interior design",
-    projectCategory3: "Architecture",
-    projectCategory4: "Contemporary design",
-    project1: "Contemporary home",
-    project2: "Minimalist elegance",
-    project3: "Shapes and light",
-    project4: "Harmony in space",
-    quote: "Architecture is not only about built spaces, but about experiences created for people.",
-    contactLabel: "Let's talk",
-    contactTitle: "Contact us",
-    contactIntro: "Have an idea or a project in mind? We are here to discuss your next project.",
-    emailLabel: "Email",
-    phoneLabel: "Phone",
-    locationLabel: "Location",
-    namePlaceholder: "Your name",
-    emailPlaceholder: "Your email address",
-    messagePlaceholder: "Describe your project",
-    sendButton: "Send message",
-    copyright: "All rights reserved.",
-    emailSubject: "DDL project enquiry",
-    emailGreeting: "Name",
-    emailMessage: "Message"
-  },
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
 
-  fr: {
-    brandSubtitle: "Bureau d'études",
-    home: "Accueil",
-    about: "À propos",
-    services: "Services",
-    portfolio: "Projets",
-    contact: "Contact",
-    heroLabel: "DDL · Bureau d'études",
-    heroTitle: "L'architecture avec vision.",
-    heroSubtitle: "Nous transformons les idées en espaces remarquables. Nous concevons avec passion, précision et attention aux détails.",
-    heroButton: "Découvrir nos projets",
-    aboutLabel: "Notre histoire",
-    aboutTitle: "À propos de DDL",
-    aboutText1: "DDL est un bureau d'études dédié à la création d'espaces fonctionnels, harmonieux et contemporains.",
-    aboutText2: "Nous associons créativité, expertise technique et souci du détail pour transformer chaque idée en un projet cohérent.",
-    aboutText3: "Nous croyons en une architecture qui allie esthétique, fonctionnalité et respect de l'environnement bâti.",
-    servicesLabel: "Nos activités",
-    servicesTitle: "Nos services",
-    servicesIntro: "Nous proposons des solutions complètes, du concept initial aux détails qui donnent du caractère à chaque espace.",
-    service1Title: "Architecture",
-    service1Text: "Concepts architecturaux et projets adaptés aux besoins de chaque client.",
-    service2Title: "Design intérieur",
-    service2Text: "Des espaces intérieurs équilibrés, élégants et fonctionnels.",
-    service3Title: "Conception technique",
-    service3Text: "Documents et solutions techniques pour les projets de construction.",
-    service4Title: "Rendus 3D",
-    service4Text: "Visualisations réalistes des futurs espaces.",
-    service5Title: "Rénovations",
-    service5Text: "Reconfiguration et modernisation des espaces existants.",
-    service6Title: "Conseil",
-    service6Text: "Conseils pour choisir les solutions les plus adaptées.",
-    portfolioLabel: "Sélection de réalisations",
-    portfolioTitle: "Nos projets",
-    portfolioIntro: "Une sélection d'images d'architecture et de design. Remplacez-les par les projets réels de DDL.",
-    projectCategory1: "Architecture résidentielle",
-    projectCategory2: "Design intérieur",
-    projectCategory3: "Architecture",
-    projectCategory4: "Design contemporain",
-    project1: "Maison contemporaine",
-    project2: "Élégance minimaliste",
-    project3: "Formes et lumière",
-    project4: "Harmonie de l'espace",
-    quote: "L'architecture ne concerne pas seulement les espaces construits, mais aussi les expériences créées pour les personnes.",
-    contactLabel: "Parlons-en",
-    contactTitle: "Contactez-nous",
-    contactIntro: "Vous avez une idée ou un projet en tête ? Parlons ensemble de votre prochain projet.",
-    emailLabel: "E-mail",
-    phoneLabel: "Téléphone",
-    locationLabel: "Lieu",
-    namePlaceholder: "Votre nom",
-    emailPlaceholder: "Votre adresse e-mail",
-    messagePlaceholder: "Décrivez votre projet",
-    sendButton: "Envoyer le message",
-    copyright: "Tous droits réservés.",
-    emailSubject: "Demande de projet DDL",
-    emailGreeting: "Nom",
-    emailMessage: "Message"
-  },
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
 
-  es: {
-    brandSubtitle: "Estudio de diseño",
-    home: "Inicio",
-    about: "Nosotros",
-    services: "Servicios",
-    portfolio: "Proyectos",
-    contact: "Contacto",
-    heroLabel: "DDL · Estudio de diseño",
-    heroTitle: "Arquitectura con visión.",
-    heroSubtitle: "Transformamos ideas en espacios extraordinarios. Diseñamos con pasión, precisión y atención a cada detalle.",
-    heroButton: "Descubre nuestros proyectos",
-    aboutLabel: "Nuestra historia",
-    aboutTitle: "Sobre DDL",
-    aboutText1: "DDL es un estudio de diseño dedicado a crear espacios funcionales, armoniosos y contemporáneos.",
-    aboutText2: "Combinamos creatividad, experiencia técnica y atención al detalle para convertir cada idea en un proyecto coherente.",
-    aboutText3: "Creemos en una arquitectura que combina estética, funcionalidad y respeto por el entorno construido.",
-    servicesLabel: "Qué hacemos",
-    servicesTitle: "Nuestros servicios",
-    servicesIntro: "Ofrecemos soluciones completas de diseño, desde el concepto inicial hasta los detalles que dan personalidad a cada espacio.",
-    service1Title: "Arquitectura",
-    service1Text: "Conceptos arquitectónicos y proyectos adaptados a cada cliente.",
-    service2Title: "Diseño de interiores",
-    service2Text: "Espacios interiores equilibrados, elegantes y funcionales.",
-    service3Title: "Diseño técnico",
-    service3Text: "Documentación y soluciones técnicas para proyectos de construcción.",
-    service4Title: "Renders 3D",
-    service4Text: "Visualizaciones realistas de futuros espacios.",
-    service5Title: "Reformas",
-    service5Text: "Reconfiguración y modernización de espacios existentes.",
-    service6Title: "Consultoría",
-    service6Text: "Asesoramiento para elegir las soluciones adecuadas.",
-    portfolioLabel: "Selección de trabajos",
-    portfolioTitle: "Nuestros proyectos",
-    portfolioIntro: "Una selección visual de arquitectura y diseño. Sustituye estas imágenes por proyectos reales de DDL.",
-    projectCategory1: "Arquitectura residencial",
-    projectCategory2: "Diseño de interiores",
-    projectCategory3: "Arquitectura",
-    projectCategory4: "Diseño contemporáneo",
-    project1: "Vivienda contemporánea",
-    project2: "Elegancia minimalista",
-    project3: "Formas y luz",
-    project4: "Armonía en el espacio",
-    quote: "La arquitectura no trata solo de espacios construidos, sino de experiencias creadas para las personas.",
-    contactLabel: "Hablemos",
-    contactTitle: "Contáctanos",
-    contactIntro: "¿Tienes una idea o un proyecto en mente? Estamos aquí para hablar de tu próximo proyecto.",
-    emailLabel: "Correo electrónico",
-    phoneLabel: "Teléfono",
-    locationLabel: "Ubicación",
-    namePlaceholder: "Tu nombre",
-    emailPlaceholder: "Tu correo electrónico",
-    messagePlaceholder: "Describe tu proyecto",
-    sendButton: "Enviar mensaje",
-    copyright: "Todos los derechos reservados.",
-    emailSubject: "Consulta de proyecto DDL",
-    emailGreeting: "Nombre",
-    emailMessage: "Mensaje"
-  },
+  // Anul din footer
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-  it: {
-    brandSubtitle: "Studio di progettazione",
-    home: "Home",
-    about: "Chi siamo",
-    services: "Servizi",
-    portfolio: "Progetti",
-    contact: "Contatti",
-    heroLabel: "DDL · Studio di progettazione",
-    heroTitle: "Architettura con visione.",
-    heroSubtitle: "Trasformiamo le idee in spazi straordinari. Progettiamo con passione, precisione e attenzione a ogni dettaglio.",
-    heroButton: "Scopri i nostri progetti",
-    aboutLabel: "La nostra storia",
-    aboutTitle: "Chi è DDL",
-    aboutText1: "DDL è uno studio di progettazione dedicato alla creazione di spazi funzionali, armoniosi e contemporanei.",
-    aboutText2: "Uniamo creatività, competenza tecnica e attenzione ai dettagli per trasformare ogni idea in un progetto coerente.",
-    aboutText3: "Crediamo in un'architettura che unisce estetica, funzionalità e rispetto per l'ambiente costruito.",
-    servicesLabel: "Cosa facciamo",
-    servicesTitle: "I nostri servizi",
-    servicesIntro: "Offriamo soluzioni complete, dal concept iniziale ai dettagli che danno carattere a ogni spazio.",
-    service1Title: "Architettura",
-    service1Text: "Concept architettonici e progetti su misura per ogni cliente.",
-    service2Title: "Interior design",
-    service2Text: "Spazi interni equilibrati, eleganti e funzionali.",
-    service3Title: "Progettazione tecnica",
-    service3Text: "Documentazione e soluzioni tecniche per progetti edilizi.",
-    service4Title: "Rendering 3D",
-    service4Text: "Visualizzazioni realistiche degli spazi futuri.",
-    service5Title: "Ristrutturazioni",
-    service5Text: "Riorganizzazione e modernizzazione degli spazi esistenti.",
-    service6Title: "Consulenza",
-    service6Text: "Consulenza per scegliere le soluzioni più adatte.",
-    portfolioLabel: "Una selezione di lavori",
-    portfolioTitle: "I nostri progetti",
-    portfolioIntro: "Una selezione di immagini di architettura e design. Sostituiscile con i progetti reali di DDL.",
-    projectCategory1: "Architettura residenziale",
-    projectCategory2: "Interior design",
-    projectCategory3: "Architettura",
-    projectCategory4: "Design contemporaneo",
-    project1: "Casa contemporanea",
-    project2: "Eleganza minimalista",
-    project3: "Forme e luce",
-    project4: "Armonia nello spazio",
-    quote: "L'architettura non riguarda solo gli spazi costruiti, ma le esperienze create per le persone.",
-    contactLabel: "Parliamone",
-    contactTitle: "Contattaci",
-    contactIntro: "Hai un'idea o un progetto in mente? Siamo qui per parlare del tuo prossimo progetto.",
-    emailLabel: "E-mail",
-    phoneLabel: "Telefono",
-    locationLabel: "Posizione",
-    namePlaceholder: "Il tuo nome",
-    emailPlaceholder: "Il tuo indirizzo e-mail",
-    messagePlaceholder: "Descrivi il tuo progetto",
-    sendButton: "Invia messaggio",
-    copyright: "Tutti i diritti riservati.",
-    emailSubject: "Richiesta progetto DDL",
-    emailGreeting: "Nome",
-    emailMessage: "Messaggio"
-  },
+  // Filtru de limbaj nepotrivit.
+  // Completează lista cu variantele pe care dorești să le filtrezi.
+  const blockedWords = [
+    'cuvantvulgar1',
+    'cuvantvulgar2',
+    'cuvantvulgar3'
+  ];
 
-  nl: {
-    brandSubtitle: "Ontwerpbureau",
-    home: "Home",
-    about: "Over ons",
-    services: "Diensten",
-    portfolio: "Projecten",
-    contact: "Contact",
-    heroLabel: "DDL · Ontwerpbureau",
-    heroTitle: "Architectuur met visie.",
-    heroSubtitle: "Wij transformeren ideeën in bijzondere ruimtes. We ontwerpen met passie, precisie en oog voor elk detail.",
-    heroButton: "Ontdek onze projecten",
-    aboutLabel: "Ons verhaal",
-    aboutTitle: "Over DDL",
-    aboutText1: "DDL is een ontwerpbureau dat zich richt op het creëren van functionele, harmonieuze en eigentijdse ruimtes.",
-    aboutText2: "We combineren creativiteit, technische expertise en oog voor detail om elk idee om te zetten in een samenhangend ontwerp.",
-    aboutText3: "Wij geloven in architectuur die esthetiek, functionaliteit en respect voor de gebouwde omgeving combineert.",
-    servicesLabel: "Wat we doen",
-    servicesTitle: "Onze diensten",
-    servicesIntro: "Wij bieden complete ontwerpoplossingen, van het eerste concept tot de details die elke ruimte karakter geven.",
-    service1Title: "Architectuur",
-    service1Text: "Architectonische concepten en ontwerpen afgestemd op elke klant.",
-    service2Title: "Interieurontwerp",
-    service2Text: "Evenwichtige, elegante en functionele interieurs.",
-    service3Title: "Technisch ontwerp",
-    service3Text: "Technische documentatie en oplossingen voor bouwprojecten.",
-    service4Title: "3D-visualisaties",
-    service4Text: "Realistische visualisaties van toekomstige ruimtes.",
-    service5Title: "Renovaties",
-    service5Text: "Herindeling en modernisering van bestaande ruimtes.",
-    service6Title: "Advies",
-    service6Text: "Begeleiding bij het kiezen van de juiste oplossingen.",
-    portfolioLabel: "Een selectie van ons werk",
-    portfolioTitle: "Onze projecten",
-    portfolioIntro: "Een selectie van architectuur- en ontwerpbeelden. Vervang deze door echte DDL-projecten.",
-    projectCategory1: "Woonarchitectuur",
-    projectCategory2: "Interieurontwerp",
-    projectCategory3: "Architectuur",
-    projectCategory4: "Eigentijds ontwerp",
-    project1: "Eigentijdse woning",
-    project2: "Minimalistische elegantie",
-    project3: "Vormen en licht",
-    project4: "Harmonie in ruimte",
-    quote: "Architectuur gaat niet alleen over gebouwde ruimtes, maar over ervaringen die voor mensen worden gecreëerd.",
-    contactLabel: "Laten we praten",
-    contactTitle: "Neem contact op",
-    contactIntro: "Heb je een idee of een project in gedachten? We bespreken graag je volgende project.",
-    emailLabel: "E-mail",
-    phoneLabel: "Telefoon",
-    locationLabel: "Locatie",
-    namePlaceholder: "Je naam",
-    emailPlaceholder: "Je e-mailadres",
-    messagePlaceholder: "Beschrijf je project",
-    sendButton: "Bericht versturen",
-    copyright: "Alle rechten voorbehouden.",
-    emailSubject: "DDL-projectaanvraag",
-    emailGreeting: "Naam",
-    emailMessage: "Bericht"
-  },
+  function censorText(text) {
+    let result = text;
 
-  ar: {
-    brandSubtitle: "مكتب تصميم",
-    home: "الرئيسية",
-    about: "من نحن",
-    services: "خدماتنا",
-    portfolio: "مشاريعنا",
-    contact: "اتصل بنا",
-    heroLabel: "DDL · مكتب تصميم",
-    heroTitle: "هندسة معمارية برؤية.",
-    heroSubtitle: "نحوّل الأفكار إلى مساحات استثنائية. نصمم بشغف ودقة واهتمام بكل التفاصيل.",
-    heroButton: "اكتشف مشاريعنا",
-    aboutLabel: "قصتنا",
-    aboutTitle: "عن DDL",
-    aboutText1: "DDL هو مكتب تصميم متخصص في إنشاء مساحات عملية ومتناسقة وعصرية.",
-    aboutText2: "نجمع بين الإبداع والخبرة التقنية والاهتمام بالتفاصيل لتحويل كل فكرة إلى مشروع متكامل.",
-    aboutText3: "نؤمن بالهندسة المعمارية التي تجمع بين الجمال والوظيفة واحترام البيئة المبنية.",
-    servicesLabel: "ماذا نقدم",
-    servicesTitle: "خدماتنا",
-    servicesIntro: "نقدم حلول تصميم متكاملة، من الفكرة الأولى إلى التفاصيل التي تمنح كل مساحة طابعها الخاص.",
-    service1Title: "الهندسة المعمارية",
-    service1Text: "تصورات ومشاريع معمارية تناسب احتياجات كل عميل.",
-    service2Title: "التصميم الداخلي",
-    service2Text: "مساحات داخلية متوازنة وأنيقة وعملية.",
-    service3Title: "التصميم التقني",
-    service3Text: "وثائق وحلول تقنية لمشاريع البناء.",
-    service4Title: "تصميم ثلاثي الأبعاد",
-    service4Text: "تصورات واقعية للمساحات المستقبلية.",
-    service5Title: "التجديد",
-    service5Text: "إعادة تنظيم وتحديث المساحات القائمة.",
-    service6Title: "الاستشارات",
-    service6Text: "إرشادات لاختيار الحلول المناسبة.",
-    portfolioLabel: "نماذج من أعمالنا",
-    portfolioTitle: "مشاريعنا",
-    portfolioIntro: "مجموعة من صور الهندسة المعمارية والتصميم. استبدل هذه الصور بمشاريع DDL الحقيقية.",
-    projectCategory1: "العمارة السكنية",
-    projectCategory2: "التصميم الداخلي",
-    projectCategory3: "الهندسة المعمارية",
-    projectCategory4: "التصميم المعاصر",
-    project1: "منزل عصري",
-    project2: "أناقة بسيطة",
-    project3: "الأشكال والضوء",
-    project4: "تناغم المساحات",
-    quote: "الهندسة المعمارية ليست مجرد مساحات مبنية، بل تجارب نصنعها للناس.",
-    contactLabel: "لنتحدث",
-    contactTitle: "تواصل معنا",
-    contactIntro: "هل لديك فكرة أو مشروع؟ يسعدنا مناقشة مشروعك القادم.",
-    emailLabel: "البريد الإلكتروني",
-    phoneLabel: "الهاتف",
-    locationLabel: "الموقع",
-    namePlaceholder: "اسمك",
-    emailPlaceholder: "بريدك الإلكتروني",
-    messagePlaceholder: "صف مشروعك",
-    sendButton: "إرسال الرسالة",
-    copyright: "جميع الحقوق محفوظة.",
-    emailSubject: "استفسار عن مشروع DDL",
-    emailGreeting: "الاسم",
-    emailMessage: "الرسالة"
+    blockedWords.forEach(word => {
+      const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const pattern = new RegExp(escaped, 'gi');
+      result = result.replace(pattern, match => '*'.repeat(match.length));
+    });
+
+    return result;
   }
-};
 
-const languageToggle = document.getElementById("languageToggle");
-const languageOptions = document.getElementById("languageOptions");
-const currentLanguage = document.getElementById("currentLanguage");
-const navLinks = document.getElementById("navLinks");
-const menuToggle = document.getElementById("menuToggle");
+  // Recenzii demonstrative: lista este goală până la primirea unor opinii reale.
+  const STORAGE_KEY = 'ddl_reviews_v1';
+  let selectedRating = 0;
 
-let currentLang = "ro";
-
-function setLanguage(lang) {
-  const dictionary = translations[lang];
-  if (!dictionary) return;
-
-  currentLang = lang;
-
-  document.documentElement.lang = lang;
-  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-
-  currentLanguage.textContent = lang.toUpperCase();
-
-  document.querySelectorAll("[data-translate]").forEach(element => {
-    const key = element.dataset.translate;
-    if (dictionary[key] !== undefined) {
-      element.textContent = dictionary[key];
+  function getReviews() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      return Array.isArray(saved) ? saved : [];
+    } catch {
+      return [];
     }
-  });
-
-  document.querySelectorAll("[data-placeholder]").forEach(element => {
-    const key = element.dataset.placeholder;
-    if (dictionary[key] !== undefined) {
-      element.placeholder = dictionary[key];
-    }
-  });
-
-  document.querySelectorAll(".language-options button").forEach(button => {
-    button.classList.toggle("selected", button.dataset.lang === lang);
-    button.setAttribute("aria-pressed", button.dataset.lang === lang);
-  });
-
-  languageOptions.classList.remove("active");
-  languageToggle.setAttribute("aria-expanded", "false");
-}
-
-languageToggle.addEventListener("click", () => {
-  const isOpen = languageOptions.classList.toggle("active");
-  languageToggle.setAttribute("aria-expanded", String(isOpen));
-});
-
-document.querySelectorAll(".language-options button").forEach(button => {
-  button.addEventListener("click", () => {
-    setLanguage(button.dataset.lang);
-  });
-});
-
-document.addEventListener("click", event => {
-  if (!event.target.closest(".language-menu")) {
-    languageOptions.classList.remove("active");
-    languageToggle.setAttribute("aria-expanded", "false");
   }
-});
 
-menuToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-});
+  function saveReviews(reviews) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+  }
 
-document.querySelectorAll(".nav-links a").forEach(link => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("active");
+  const ratingButtons = document.querySelectorAll('#ratingSelect button');
+
+  ratingButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      selectedRating = Number(button.dataset.rating);
+
+      ratingButtons.forEach(star => {
+        star.classList.toggle(
+          'active',
+          Number(star.dataset.rating) <= selectedRating
+        );
+      });
+    });
   });
-});
 
-document.getElementById("year").textContent = new Date().getFullYear();
+  function renderReviews() {
+    const reviews = getReviews();
+    const list = document.getElementById('reviewList');
+    const average = document.getElementById('averageRating');
+    const averageStars = document.getElementById('averageStars');
+    const count = document.getElementById('reviewCount');
 
-document.getElementById("contactForm").addEventListener("submit", event => {
-  event.preventDefault();
+    list.replaceChildren();
 
-  const dictionary = translations[currentLang];
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const message = document.getElementById("message").value.trim();
+    if (!reviews.length) {
+      average.textContent = '—';
+      averageStars.textContent = '☆☆☆☆☆';
+      count.textContent = 'Nu există încă recenzii publicate.';
+      return;
+    }
 
-  const subject = encodeURIComponent(dictionary.emailSubject);
-  const body = encodeURIComponent(
-    `${dictionary.emailGreeting}: ${name}\nEmail: ${email}\n${dictionary.emailMessage}: ${message}`
-  );
+    const total = reviews.reduce((sum, review) => sum + review.rating, 0);
+    const mean = total / reviews.length;
 
-  // Înlocuiește adresa de mai jos cu adresa reală DDL.
-  window.location.href =
-    `mailto:contact@ddl.ro?subject=${subject}&body=${body}`;
-});
+    average.textContent = mean.toFixed(1) + '/5';
+    averageStars.textContent =
+      '★'.repeat(Math.round(mean)) + '☆'.repeat(5 - Math.round(mean));
+    count.textContent = reviews.length + ' recenzii';
 
-setLanguage("ro");
+    reviews.slice().reverse().forEach(review => {
+      const card = document.createElement('article');
+      card.className = 'review-card';
+
+      const stars = document.createElement('div');
+      stars.className = 'stars';
+      stars.textContent =
+        '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+
+      const paragraph = document.createElement('p');
+      paragraph.textContent = review.text;
+
+      const name = document.createElement('h3');
+      name.textContent = review.name;
+
+      const date = document.createElement('small');
+      date.textContent = review.date;
+
+      card.append(stars, paragraph, name, date);
+      list.appendChild(card);
+    });
+  }
+
+  document.getElementById('reviewForm').addEventListener('submit', event => {
+    event.preventDefault();
+
+    const nameInput = document.getElementById('reviewName');
+    const textInput = document.getElementById('reviewText');
+    const message = document.getElementById('reviewMessage');
+
+    const name = censorText(nameInput.value.trim());
+    const text = censorText(textInput.value.trim());
+
+    if (!name || !text || selectedRating < 1 || selectedRating > 5) {
+      message.textContent = 'Completează toate câmpurile și selectează numărul de stele.';
+      return;
+    }
+
+    const reviews = getReviews();
+
+    reviews.push({
+      name,
+      text,
+      rating: selectedRating,
+      date: new Date().toLocaleDateString('ro-RO')
+    });
+
+    try {
+      saveReviews(reviews);
+    } catch {
+      message.textContent = 'Recenzia nu a putut fi salvată în acest browser.';
+      return;
+    }
+
+    renderReviews();
+    event.target.reset();
+    selectedRating = 0;
+    ratingButtons.forEach(star => star.classList.remove('active'));
+    message.textContent = 'Mulțumim! Recenzia a fost salvată în acest browser.';
+  });
+
+  renderReviews();
+
+  // Schimbare simplă de limbă pentru elementele principale.
+  const translations = {
+    en: {
+      'Acasă': 'Home',
+      'Despre noi': 'About',
+      'Servicii': 'Services',
+      'Portofoliu': 'Portfolio',
+      'Recenzii': 'Reviews',
+      'Contact': 'Contact',
+      'Solicită o ofertă': 'Request a quote'
+    },
+    ro: {
+      'Home': 'Acasă',
+      'About': 'Despre noi',
+      'Services': 'Servicii',
+      'Portfolio': 'Portofoliu',
+      'Reviews': 'Recenzii',
+      'Contact': 'Contact',
+      'Request a quote': 'Solicită o ofertă'
+    }
+  };
+
+  document.getElementById('language').addEventListener('change', event => {
+    const dictionary = translations[event.target.value];
+    document.querySelectorAll('.nav-links a, .hero .btn').forEach(element => {
+      const original = element.textContent.trim();
+      if (dictionary[original]) element.textContent = dictionary[original];
+    });
+  });
 </script>
 
 </body>
