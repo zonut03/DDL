@@ -4,8 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MoneyTrack - Evidența cheltuielilor</title>
-
+<title>CashZone - Câștigă puncte</title>
 <style>
 * {
     margin: 0;
@@ -15,272 +14,196 @@
 }
 
 body {
-    background: #f3f5f9;
-    color: #202638;
+    background: #f3f5fa;
+    color: #20283b;
 }
 
 header {
-    background: linear-gradient(135deg, #171d35, #344b85);
+    background: #151d35;
     color: white;
-    padding: 28px 7%;
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-header h1 {
-    font-size: 29px;
-    margin-bottom: 7px;
+.logo {
+    font-size: 25px;
+    font-weight: bold;
 }
 
-header p {
-    color: #d6def5;
+.logo span {
+    color: #65e6a4;
+}
+
+.hero {
+    background: linear-gradient(130deg, #172443, #3659a5);
+    color: white;
+    padding: 65px 8%;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 39px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color: #dce5ff;
+    font-size: 17px;
 }
 
 .container {
     width: 90%;
-    max-width: 1150px;
+    max-width: 1100px;
     margin: 30px auto;
 }
 
-.cards {
+.balance {
+    background: white;
+    border-radius: 17px;
+    padding: 28px;
+    box-shadow: 0 5px 20px #17244312;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.balance p {
+    color: #788197;
+    margin-bottom: 9px;
+}
+
+.balance h2 {
+    font-size: 34px;
+    color: #1ba66b;
+}
+
+.points-label {
+    color: #8290a7;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.section-title {
+    margin: 35px 0 18px;
+    font-size: 23px;
+}
+
+.tasks {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 18px;
-    margin-bottom: 25px;
 }
 
-.card {
+.task {
     background: white;
     padding: 23px;
     border-radius: 15px;
-    box-shadow: 0 4px 18px #1c294010;
+    box-shadow: 0 5px 20px #17244310;
 }
 
-.card p {
-    color: #737d91;
-    font-size: 14px;
-    margin-bottom: 12px;
-}
-
-.card h2 {
-    font-size: 26px;
-}
-
-.balance {
-    border-left: 5px solid #526de5;
-}
-
-.income {
-    border-left: 5px solid #16a36a;
-}
-
-.expense {
-    border-left: 5px solid #e65353;
-}
-
-.content {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 20px;
-}
-
-.panel {
-    background: white;
-    padding: 24px;
-    border-radius: 15px;
-    box-shadow: 0 4px 18px #1c294010;
-}
-
-.panel h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    font-size: 14px;
-    font-weight: bold;
-    margin: 14px 0 7px;
-}
-
-input, select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #dce1eb;
-    border-radius: 8px;
-    outline: none;
-    font-size: 14px;
-    background: white;
-}
-
-input:focus, select:focus {
-    border-color: #526de5;
-}
-
-button {
-    cursor: pointer;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 16px;
-    font-weight: bold;
-}
-
-.add-btn {
-    width: 100%;
-    margin-top: 20px;
-    background: #526de5;
-    color: white;
-    font-size: 15px;
-}
-
-.add-btn:hover {
-    background: #3d55c5;
-}
-
-.history-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
+.task-icon {
+    font-size: 35px;
     margin-bottom: 15px;
 }
 
-.history-top h2 {
-    margin: 0;
+.task h3 {
+    margin-bottom: 10px;
 }
 
-.history-top select {
-    max-width: 160px;
+.task p {
+    color: #788197;
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 42px;
 }
 
-.transaction {
+.reward {
+    color: #1ba66b;
+    font-weight: bold;
+    margin: 16px 0;
+}
+
+.task button {
+    background: #526de5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.task button:hover {
+    background: #3e55c4;
+}
+
+.task button:disabled {
+    background: #aab3c7;
+    cursor: not-allowed;
+}
+
+.history {
+    background: white;
+    padding: 24px;
+    border-radius: 15px;
+    margin-top: 30px;
+}
+
+.history-item {
+    padding: 14px 0;
+    border-bottom: 1px solid #edf0f5;
     display: flex;
-    align-items: center;
     justify-content: space-between;
     gap: 10px;
-    padding: 15px 0;
-    border-bottom: 1px solid #edf0f5;
 }
 
-.transaction:last-child {
-    border-bottom: none;
+.history-item:last-child {
+    border: none;
 }
 
-.transaction-info {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-    background: #f0f2fa;
-    display: grid;
-    place-items: center;
-    font-size: 20px;
-}
-
-.transaction-info strong {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-}
-
-.transaction-info small {
-    color: #8992a4;
-}
-
-.amount {
+.green {
+    color: #1ba66b;
     font-weight: bold;
-    white-space: nowrap;
-}
-
-.positive {
-    color: #16a36a;
-}
-
-.negative {
-    color: #e65353;
-}
-
-.delete-btn {
-    background: #fff0f0;
-    color: #dc4545;
-    padding: 7px 10px;
-    margin-left: 7px;
 }
 
 .empty {
-    text-align: center;
-    color: #929bad;
-    padding: 35px 10px;
+    color: #8993a7;
+    padding: 15px 0;
 }
 
-.chart-panel {
-    margin-top: 20px;
-}
-
-.chart-row {
-    margin: 17px 0;
-}
-
-.chart-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    margin-bottom: 7px;
-}
-
-.bar-background {
-    height: 10px;
-    background: #edf0f6;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.bar {
-    height: 100%;
-    background: linear-gradient(90deg, #526de5, #8294f2);
-    border-radius: 20px;
+.notice {
+    background: #fff7df;
+    border: 1px solid #f1dfa4;
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 25px;
+    color: #735b17;
+    line-height: 1.5;
+    font-size: 14px;
 }
 
 footer {
     text-align: center;
-    color: #929bad;
-    padding: 30px 10px;
-    font-size: 13px;
+    padding: 30px;
+    color: #8993a7;
 }
 
-@media(max-width: 800px) {
-    .cards {
+@media(max-width: 750px) {
+    .tasks {
         grid-template-columns: 1fr;
     }
 
-    .content {
-        grid-template-columns: 1fr;
+    .hero h1 {
+        font-size: 29px;
     }
 
-    .history-top {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .history-top select {
-        max-width: 100%;
-    }
-}
-
-@media(max-width: 450px) {
-    .container {
-        width: 94%;
-    }
-
-    .panel {
-        padding: 17px;
-    }
-
-    .transaction {
-        flex-wrap: wrap;
+    header {
+        padding: 20px;
     }
 }
 </style>
@@ -289,329 +212,215 @@ footer {
 <body>
 
 <header>
-    <h1>💰 MoneyTrack</h1>
-    <p>Controlează-ți banii. Înțelege-ți cheltuielile. Economisește mai inteligent.</p>
+    <div class="logo">Cash<span>Zone</span> 💸</div>
+    <div>Platformă de recompense</div>
 </header>
 
-<div class="container">
+<section class="hero">
+    <h1>Transformă activitățile în puncte!</h1>
+    <p>Participă la provocări și urmărește progresul tău.</p>
+</section>
 
-    <section class="cards">
-        <div class="card balance">
-            <p>💳 Sold total</p>
-            <h2 id="balance">0,00 RON</h2>
-        </div>
+<main class="container">
 
-        <div class="card income">
-            <p>📈 Venituri totale</p>
-            <h2 id="income">0,00 RON</h2>
+    <section class="balance">
+        <div>
+            <p>Soldul tău demonstrativ</p>
+            <h2 id="balance">0 puncte</h2>
+            <div class="points-label">100 puncte = 1 leu demonstrativ</div>
         </div>
-
-        <div class="card expense">
-            <p>📉 Cheltuieli totale</p>
-            <h2 id="expense">0,00 RON</h2>
-        </div>
+        <div style="font-size:48px">💰</div>
     </section>
 
-    <section class="content">
+    <h2 class="section-title">🚀 Activități disponibile</h2>
 
-        <div class="panel">
-            <h2>➕ Adaugă o tranzacție</h2>
+    <section class="tasks">
 
-            <form id="transactionForm">
+        <article class="task">
+            <div class="task-icon">📚</div>
+            <h3>Provocarea zilei</h3>
+            <p>Rezolvă o provocare educativă.</p>
+            <div class="reward">+100 puncte</div>
+            <button onclick="completeTask('daily')"
+                    id="daily">Participă</button>
+        </article>
 
-                <label for="description">Descriere</label>
-                <input
-                    type="text"
-                    id="description"
-                    placeholder="Ex: Cumpărături supermarket"
-                    required
-                >
+        <article class="task">
+            <div class="task-icon">🧠</div>
+            <h3>Quiz rapid</h3>
+            <p>Răspunde corect la o întrebare de cultură generală.</p>
+            <div class="reward">+150 puncte</div>
+            <button onclick="startQuiz()">Începe quiz-ul</button>
+        </article>
 
-                <label for="amount">Sumă (RON)</label>
-                <input
-                    type="number"
-                    id="amount"
-                    placeholder="Ex: 150"
-                    min="0.01"
-                    step="0.01"
-                    required
-                >
-
-                <label for="type">Tip tranzacție</label>
-                <select id="type">
-                    <option value="expense">Cheltuială</option>
-                    <option value="income">Venit</option>
-                </select>
-
-                <label for="category">Categorie</label>
-                <select id="category">
-                    <option value="Mâncare">🍔 Mâncare</option>
-                    <option value="Transport">🚗 Transport</option>
-                    <option value="Haine">👕 Haine</option>
-                    <option value="Facturi">💡 Facturi</option>
-                    <option value="Divertisment">🎮 Divertisment</option>
-                    <option value="Sănătate">💊 Sănătate</option>
-                    <option value="Educație">📚 Educație</option>
-                    <option value="Locuință">🏠 Locuință</option>
-                    <option value="Salariu">💼 Salariu</option>
-                    <option value="Altele">📦 Altele</option>
-                </select>
-
-                <label for="date">Data</label>
-                <input type="date" id="date" required>
-
-                <button type="submit" class="add-btn">
-                    + Adaugă tranzacția
-                </button>
-
-            </form>
-        </div>
-
-        <div class="panel">
-            <div class="history-top">
-                <h2>📋 Istoric tranzacții</h2>
-
-                <select id="filter">
-                    <option value="all">Toate categoriile</option>
-                    <option value="Mâncare">Mâncare</option>
-                    <option value="Transport">Transport</option>
-                    <option value="Haine">Haine</option>
-                    <option value="Facturi">Facturi</option>
-                    <option value="Divertisment">Divertisment</option>
-                    <option value="Sănătate">Sănătate</option>
-                    <option value="Educație">Educație</option>
-                    <option value="Locuință">Locuință</option>
-                    <option value="Salariu">Salariu</option>
-                    <option value="Altele">Altele</option>
-                </select>
-            </div>
-
-            <div id="transactions">
-                <div class="empty">Nu există încă tranzacții.</div>
-            </div>
-        </div>
+        <article class="task">
+            <div class="task-icon">🎯</div>
+            <h3>Obiectiv personal</h3>
+            <p>Scrie un obiectiv pe care vrei să îl îndeplinești.</p>
+            <div class="reward">+50 puncte</div>
+            <button onclick="completeTask('goal')"
+                    id="goal">Finalizează</button>
+        </article>
 
     </section>
 
-    <section class="panel chart-panel">
-        <h2>📊 Cheltuieli pe categorii</h2>
-        <div id="chart">
-            <div class="empty">Adaugă cheltuieli pentru a vedea statistici.</div>
+    <div class="notice">
+        <strong>ℹ️ Informație importantă:</strong>
+        Aceasta este o demonstrație. Punctele nu reprezintă bani reali,
+        nu pot fi retrase și nu pot fi transferate pe card.
+        Pentru recompense reale este necesar un buget și un sistem
+        de plată funcțional.
+    </div>
+
+    <section class="history">
+        <h2>📋 Activitatea mea</h2>
+        <div id="history">
+            <div class="empty">Nu ai completat încă nicio activitate.</div>
         </div>
     </section>
 
-</div>
+</main>
 
 <footer>
-    MoneyTrack © 2026 | Datele sunt salvate local în browserul tău.
+    CashZone © 2026 · Proiect demonstrativ
 </footer>
 
 <script>
-const STORAGE_KEY = "moneytrack_transactions";
+const KEY = "cashzone_demo";
 
-let transactions = [];
-
-try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    const parsed = saved ? JSON.parse(saved) : [];
-    transactions = Array.isArray(parsed) ? parsed : [];
-} catch (error) {
-    transactions = [];
-}
-
-const form = document.getElementById("transactionForm");
-const descriptionInput = document.getElementById("description");
-const amountInput = document.getElementById("amount");
-const typeInput = document.getElementById("type");
-const categoryInput = document.getElementById("category");
-const dateInput = document.getElementById("date");
-const filterInput = document.getElementById("filter");
-
-const icons = {
-    "Mâncare": "🍔",
-    "Transport": "🚗",
-    "Haine": "👕",
-    "Facturi": "💡",
-    "Divertisment": "🎮",
-    "Sănătate": "💊",
-    "Educație": "📚",
-    "Locuință": "🏠",
-    "Salariu": "💼",
-    "Altele": "📦"
+let data = {
+    points: 0,
+    completed: [],
+    history: []
 };
 
-dateInput.value = new Date().toISOString().slice(0, 10);
-
-function money(value) {
-    return new Intl.NumberFormat("ro-RO", {
-        style: "currency",
-        currency: "RON"
-    }).format(value);
-}
-
-function saveTransactions() {
-    try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions));
-    } catch (error) {
-        alert("Nu s-au putut salva datele în browser.");
+try {
+    const saved = localStorage.getItem(KEY);
+    if (saved) {
+        const parsed = JSON.parse(saved);
+        if (
+            parsed &&
+            Number.isFinite(parsed.points) &&
+            Array.isArray(parsed.completed) &&
+            Array.isArray(parsed.history)
+        ) {
+            data = parsed;
+        }
     }
+} catch (error) {
+    console.log("Nu s-au putut încărca datele.");
 }
 
-form.addEventListener("submit", function(event) {
-    event.preventDefault();
+const tasks = {
+    daily: {
+        name: "Provocarea zilei",
+        points: 100
+    },
+    goal: {
+        name: "Obiectiv personal",
+        points: 50
+    }
+};
 
-    const description = descriptionInput.value.trim();
-    const amount = Number(amountInput.value);
-    const type = typeInput.value;
-    const category = categoryInput.value;
-    const date = dateInput.value;
+function save() {
+    localStorage.setItem(KEY, JSON.stringify(data));
+}
 
-    if (!description || !Number.isFinite(amount) || amount <= 0 || !date) {
-        alert("Te rugăm să completezi corect toate câmpurile.");
+function completeTask(id) {
+    if (data.completed.includes(id)) {
+        alert("Ai completat deja această activitate!");
         return;
     }
 
-    const transaction = {
-        id: Date.now() + Math.random(),
-        description,
-        amount,
-        type,
-        category,
-        date
-    };
+    const task = tasks[id];
 
-    transactions.push(transaction);
+    data.points += task.points;
+    data.completed.push(id);
 
-    saveTransactions();
-    form.reset();
-    dateInput.value = new Date().toISOString().slice(0, 10);
+    data.history.unshift({
+        name: task.name,
+        points: task.points,
+        date: new Date().toLocaleDateString("ro-RO")
+    });
 
+    save();
     render();
-});
 
-function deleteTransaction(id) {
-    if (!confirm("Sigur vrei să ștergi această tranzacție?")) {
+    alert("Felicitări! Ai primit " + task.points + " puncte demonstrative.");
+}
+
+function startQuiz() {
+    const answer = prompt(
+        "Quiz: Care este capitala României?\nA. Cluj-Napoca\nB. București\nC. Timișoara"
+    );
+
+    if (answer === null) return;
+
+    if (data.completed.includes("quiz")) {
+        alert("Ai completat deja quiz-ul!");
         return;
     }
 
-    transactions = transactions.filter(item => item.id !== id);
+    if (answer.trim().toLowerCase() === "b") {
+        data.points += 150;
+        data.completed.push("quiz");
 
-    saveTransactions();
-    render();
+        data.history.unshift({
+            name: "Quiz rapid",
+            points: 150,
+            date: new Date().toLocaleDateString("ro-RO")
+        });
+
+        save();
+        render();
+        alert("Răspuns corect! +150 puncte demonstrative.");
+    } else {
+        alert("Răspuns greșit. Mai încearcă data viitoare!");
+    }
 }
 
 function render() {
-    const income = transactions
-        .filter(item => item.type === "income")
-        .reduce((total, item) => total + item.amount, 0);
+    document.getElementById("balance").textContent =
+        data.points.toLocaleString("ro-RO") + " puncte";
 
-    const expense = transactions
-        .filter(item => item.type === "expense")
-        .reduce((total, item) => total + item.amount, 0);
-
-    const balance = income - expense;
-
-    document.getElementById("balance").textContent = money(balance);
-    document.getElementById("income").textContent = money(income);
-    document.getElementById("expense").textContent = money(expense);
-
-    document.getElementById("balance").style.color =
-        balance < 0 ? "#e65353" : "#526de5";
-
-    renderTransactions();
-    renderChart();
-}
-
-function renderTransactions() {
-    const container = document.getElementById("transactions");
-    const filter = filterInput.value;
-
-    let filtered = [...transactions];
-
-    if (filter !== "all") {
-        filtered = filtered.filter(item => item.category === filter);
+    for (const id of Object.keys(tasks)) {
+        const button = document.getElementById(id);
+        if (button) {
+            button.disabled = data.completed.includes(id);
+            button.textContent = button.disabled
+                ? "Finalizat ✓"
+                : id === "daily" ? "Participă" : "Finalizează";
+        }
     }
 
-    filtered.sort((a, b) => b.date.localeCompare(a.date));
+    const quizButton = document.querySelector(
+        'button[onclick="startQuiz()"]'
+    );
 
-    if (filtered.length === 0) {
-        container.innerHTML =
-            '<div class="empty">Nu există tranzacții pentru această selecție.</div>';
+    if (quizButton) {
+        quizButton.disabled = data.completed.includes("quiz");
+        quizButton.textContent = quizButton.disabled
+            ? "Finalizat ✓"
+            : "Începe quiz-ul";
+    }
+
+    const history = document.getElementById("history");
+
+    if (data.history.length === 0) {
+        history.innerHTML =
+            '<div class="empty">Nu ai completat încă nicio activitate.</div>';
         return;
     }
 
-    container.innerHTML = filtered.map(item => {
-        const positive = item.type === "income";
-        const sign = positive ? "+" : "-";
-        const categoryIcon = icons[item.category] || "📦";
-
-        return `
-            <div class="transaction">
-                <div class="transaction-info">
-                    <div class="icon">${categoryIcon}</div>
-                    <div>
-                        <strong>${escapeHTML(item.description)}</strong>
-                        <small>${escapeHTML(item.category)} · ${formatDate(item.date)}</small>
-                    </div>
-                </div>
-
-                <div>
-                    <span class="amount ${positive ? "positive" : "negative"}">
-                        ${sign}${money(item.amount)}
-                    </span>
-                    <button
-                        class="delete-btn"
-                        onclick="deleteTransaction(${Number(item.id)})"
-                        aria-label="Șterge tranzacția"
-                        title="Șterge"
-                    >✕</button>
-                </div>
+    history.innerHTML = data.history.map(item => `
+        <div class="history-item">
+            <div>
+                <strong>${escapeHTML(item.name)}</strong><br>
+                <small>${escapeHTML(item.date)}</small>
             </div>
-        `;
-    }).join("");
-}
-
-function renderChart() {
-    const chart = document.getElementById("chart");
-
-    const expenses = transactions.filter(item => item.type === "expense");
-
-    if (expenses.length === 0) {
-        chart.innerHTML =
-            '<div class="empty">Adaugă cheltuieli pentru a vedea statistici.</div>';
-        return;
-    }
-
-    const totals = {};
-
-    expenses.forEach(item => {
-        totals[item.category] = (totals[item.category] || 0) + item.amount;
-    });
-
-    const maximum = Math.max(...Object.values(totals));
-
-    chart.innerHTML = Object.entries(totals)
-        .sort((a, b) => b[1] - a[1])
-        .map(([category, amount]) => {
-            const percentage = (amount / maximum) * 100;
-
-            return `
-                <div class="chart-row">
-                    <div class="chart-label">
-                        <span>${icons[category] || "📦"} ${escapeHTML(category)}</span>
-                        <strong>${money(amount)}</strong>
-                    </div>
-                    <div class="bar-background">
-                        <div class="bar" style="width:${percentage}%"></div>
-                    </div>
-                </div>
-            `;
-        }).join("");
-}
-
-function formatDate(date) {
-    const parts = date.split("-");
-    return `${parts[2]}.${parts[1]}.${parts[0]}`;
+            <span class="green">+${Number(item.points)} puncte</span>
+        </div>
+    `).join("");
 }
 
 function escapeHTML(value) {
@@ -623,8 +432,6 @@ function escapeHTML(value) {
         "'": "&#039;"
     })[character]);
 }
-
-filterInput.addEventListener("change", renderTransactions);
 
 render();
 </script>
