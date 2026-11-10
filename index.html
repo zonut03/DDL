@@ -4,821 +4,816 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MovieFinder | Descoperă filme</title>
-
+<meta name="theme-color" content="#080b14">
+<title>TravelWorld | Explorează lumea</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 :root {
-    --bg: #080b16;
-    --panel: #11172a;
-    --panel2: #171f37;
-    --text: #f4f6ff;
-    --muted: #929bb5;
-    --purple: #a855f7;
-    --cyan: #00e5ff;
-    --pink: #ff3cac;
+  --bg:#080b14;
+  --panel:#101625;
+  --panel2:#151e30;
+  --text:#f2f6ff;
+  --muted:#94a3b8;
+  --cyan:#00e5ff;
+  --purple:#9b5cff;
+  --pink:#ff4fd8;
+  --green:#38f2a5;
+  --border:rgba(255,255,255,.09);
+  --shadow:0 15px 50px rgba(0,0,0,.3);
 }
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
 }
-
-body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--cyan);color:#061018}
+header{
+  height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 6%;
+  border-bottom:1px solid var(--border);
+  background:rgba(8,11,20,.88);
+  backdrop-filter:blur(18px);
+  position:sticky;
+  top:0;
+  z-index:50;
 }
-
-header {
-    height: 76px;
-    padding: 0 7%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(8,11,22,.96);
-    border-bottom: 1px solid #252c45;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+.logo{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:24px;
+  font-weight:800;
+  letter-spacing:-1px;
 }
-
-.logo {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 23px;
-    font-weight: 800;
-    color: white;
+.logo span{color:var(--cyan);text-shadow:0 0 18px var(--cyan)}
+.nav{display:flex;gap:25px;align-items:center}
+.nav a{color:var(--muted);font-size:14px;transition:.2s}
+.nav a:hover{color:var(--cyan)}
+.header-actions{display:flex;gap:10px;align-items:center}
+.btn{
+  border:1px solid var(--border);
+  color:var(--text);
+  background:var(--panel2);
+  padding:11px 17px;
+  border-radius:11px;
+  font-weight:700;
+  transition:.25s;
 }
-
-.logo span {
-    color: var(--cyan);
-    text-shadow: 0 0 15px var(--cyan);
+.btn:hover{transform:translateY(-2px);border-color:var(--cyan)}
+.btn-primary{
+  background:linear-gradient(110deg,var(--cyan),#5b9dff);
+  color:#061018;
+  border:0;
+  box-shadow:0 0 22px rgba(0,229,255,.2);
 }
-
-nav {
-    display: flex;
-    gap: 25px;
+.btn-primary:hover{box-shadow:0 0 30px rgba(0,229,255,.4)}
+.mobile-menu{display:none}
+.hero{
+  min-height:590px;
+  padding:105px 7% 90px;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  background:
+   linear-gradient(90deg,rgba(8,11,20,.97),rgba(8,11,20,.75),rgba(8,11,20,.25)),
+   url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1800') center/cover;
 }
-
-nav a {
-    text-decoration: none;
-    color: var(--muted);
-    font-size: 14px;
-    cursor: pointer;
+.hero:after{
+  content:"";
+  position:absolute;
+  width:500px;height:500px;
+  background:var(--purple);
+  filter:blur(180px);
+  opacity:.15;
+  right:-100px;top:0;
 }
-
-nav a:hover, nav a.active {
-    color: var(--cyan);
+.hero-content{max-width:720px;position:relative;z-index:2}
+.eyebrow{
+  display:inline-flex;gap:9px;align-items:center;
+  color:var(--cyan);
+  background:rgba(0,229,255,.08);
+  border:1px solid rgba(0,229,255,.22);
+  padding:9px 14px;border-radius:50px;
+  font-size:12px;font-weight:800;letter-spacing:1.5px;
 }
-
-.hero {
-    min-height: 420px;
-    padding: 90px 8%;
-    display: flex;
-    align-items: center;
-    background:
-        linear-gradient(90deg, #080b16 5%, rgba(8,11,22,.9) 40%, rgba(8,11,22,.3)),
-        url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1600')
-        center/cover;
+.hero h1{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(44px,7vw,82px);
+  line-height:1.04;
+  margin:24px 0;
+  letter-spacing:-3px;
 }
-
-.hero-content {
-    max-width: 650px;
+.hero h1 span{
+  background:linear-gradient(90deg,var(--cyan),#a58aff,var(--pink));
+  -webkit-background-clip:text;
+  color:transparent;
 }
-
-.tag {
-    color: var(--cyan);
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 3px;
-    margin-bottom: 18px;
+.hero p{color:#bdc8d8;font-size:17px;line-height:1.8;max-width:560px}
+.hero-buttons{display:flex;gap:13px;margin-top:30px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:45px;margin-top:55px;flex-wrap:wrap}
+.stat strong{font-size:25px;display:block;font-family:'Space Grotesk'}
+.stat span{font-size:12px;color:var(--muted)}
+.section{padding:75px 6%}
+.section-heading{
+ display:flex;justify-content:space-between;align-items:end;
+ gap:20px;margin-bottom:30px;flex-wrap:wrap
 }
-
-.hero h1 {
-    font-size: clamp(38px, 6vw, 65px);
-    line-height: 1.1;
-    margin-bottom: 20px;
+.section-heading h2{
+ font-family:'Space Grotesk';font-size:clamp(27px,4vw,38px);
+ letter-spacing:-1px
 }
-
-.hero h1 span {
-    color: var(--cyan);
-    text-shadow: 0 0 25px #00e5ff77;
+.section-heading p{color:var(--muted);margin-top:8px;font-size:14px}
+.accent{color:var(--cyan)}
+.search-panel{
+ background:var(--panel);border:1px solid var(--border);
+ padding:17px;border-radius:17px;
+ display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:12px;
+ margin-bottom:28px;
 }
-
-.hero p {
-    color: #c1c8dc;
-    line-height: 1.7;
-    max-width: 520px;
-    margin-bottom: 25px;
+.field label{display:block;font-size:11px;color:var(--muted);margin:0 0 7px 3px}
+.field input,.field select,.field textarea,.form-control{
+ width:100%;background:#0b1220;color:var(--text);
+ border:1px solid var(--border);border-radius:10px;
+ padding:12px;outline:none;
 }
-
-.primary-btn {
-    background: linear-gradient(90deg, #a855f7, #00c8ed);
-    border: none;
-    padding: 14px 24px;
-    color: white;
-    border-radius: 9px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 0 22px #8b5cf655;
+.field input:focus,.field select:focus,.field textarea:focus{
+ border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,229,255,.08)
 }
-
-.container {
-    width: 88%;
-    max-width: 1400px;
-    margin: 45px auto;
+.field select option{background:#101625}
+.destinations{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:20px
 }
-
-.search-area {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 30px;
+.destination{
+ background:var(--panel);border:1px solid var(--border);
+ border-radius:17px;overflow:hidden;transition:.3s;
 }
-
-.search-area input {
-    flex: 1;
-    background: var(--panel);
-    border: 1px solid #303956;
-    color: white;
-    padding: 15px 18px;
-    border-radius: 9px;
-    outline: none;
-    font-size: 15px;
+.destination:hover{
+ transform:translateY(-7px);border-color:rgba(0,229,255,.45);
+ box-shadow:0 12px 35px rgba(0,229,255,.08)
 }
-
-.search-area input:focus {
-    border-color: var(--cyan);
-    box-shadow: 0 0 12px #00e5ff33;
+.destination-image{height:220px;position:relative;overflow:hidden}
+.destination-image img{
+ width:100%;height:100%;object-fit:cover;transition:.5s
 }
-
-.search-area button {
-    background: var(--cyan);
-    color: #06101c;
-    border: none;
-    padding: 0 23px;
-    border-radius: 9px;
-    font-weight: bold;
-    cursor: pointer;
+.destination:hover img{transform:scale(1.07)}
+.image-tag{
+ position:absolute;top:14px;left:14px;
+ padding:7px 11px;border-radius:50px;
+ background:rgba(8,11,20,.8);font-size:11px;
+ border:1px solid rgba(255,255,255,.18)
 }
-
-.categories {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 35px;
+.favorite{
+ position:absolute;top:12px;right:12px;
+ width:37px;height:37px;border-radius:50%;
+ border:1px solid rgba(255,255,255,.2);
+ background:rgba(8,11,20,.75);color:white;font-size:19px
 }
-
-.category {
-    background: var(--panel);
-    color: #b9c3dc;
-    border: 1px solid #303956;
-    border-radius: 30px;
-    padding: 10px 18px;
-    cursor: pointer;
-    transition: .2s;
+.favorite.active{color:#ff5e9c;border-color:#ff5e9c}
+.destination-info{padding:19px}
+.destination-info h3{font-size:20px;font-family:'Space Grotesk'}
+.country{color:var(--muted);font-size:12px;margin-top:5px}
+.destination-info p{color:#b4c0d1;font-size:13px;line-height:1.6;margin:13px 0}
+.card-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.price{color:var(--green);font-weight:800;font-size:14px}
+.card-bottom button{padding:9px 12px;font-size:12px}
+.empty{
+ grid-column:1/-1;text-align:center;padding:50px;
+ color:var(--muted);background:var(--panel);border-radius:15px
 }
-
-.category:hover, .category.active {
-    color: #07101b;
-    background: var(--cyan);
-    border-color: var(--cyan);
-    box-shadow: 0 0 15px #00e5ff55;
+.features{
+ display:grid;grid-template-columns:repeat(4,1fr);gap:15px
 }
-
-.section-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 22px;
+.feature{
+ background:var(--panel);border:1px solid var(--border);
+ padding:22px;border-radius:15px
 }
-
-.section-title h2 {
-    font-size: 23px;
+.feature-icon{font-size:28px;margin-bottom:14px}
+.feature h3{font-size:15px;margin-bottom:8px}
+.feature p{font-size:12px;color:var(--muted);line-height:1.7}
+.dashboard{
+ display:grid;grid-template-columns:1fr 1fr;gap:20px
 }
-
-.section-title span {
-    color: var(--cyan);
-    font-size: 13px;
+.panel{
+ background:var(--panel);border:1px solid var(--border);
+ border-radius:17px;padding:23px;min-width:0
 }
-
-.movie-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
+.panel h3{font-family:'Space Grotesk';font-size:20px;margin-bottom:20px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.full{grid-column:1/-1}
+.panel-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:17px}
+.trip-item{
+ padding:15px;background:var(--panel2);border-radius:12px;
+ margin-bottom:10px;border:1px solid var(--border)
 }
-
-.movie-card {
-    background: var(--panel);
-    border: 1px solid #252e48;
-    border-radius: 13px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: .3s;
+.trip-top{display:flex;justify-content:space-between;gap:10px}
+.trip-item small{color:var(--muted)}
+.trip-item p{font-size:13px;color:var(--muted);margin-top:8px}
+.trip-item button{font-size:12px;padding:7px 10px}
+.budget-total{
+ font-family:'Space Grotesk';font-size:34px;color:var(--green);
+ margin:12px 0
 }
-
-.movie-card:hover {
-    transform: translateY(-7px);
-    border-color: var(--cyan);
-    box-shadow: 0 8px 30px #00e5ff20;
+.budget-line{
+ display:flex;justify-content:space-between;
+ padding:11px 0;border-bottom:1px solid var(--border);
+ font-size:13px
 }
-
-.poster {
-    position: relative;
-    height: 280px;
-    overflow: hidden;
+.progress{
+ height:9px;background:#252f43;border-radius:20px;
+ overflow:hidden;margin:15px 0
 }
-
-.poster img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: .4s;
+.progress div{
+ height:100%;width:0%;
+ background:linear-gradient(90deg,var(--cyan),var(--purple));
+ transition:.4s
 }
-
-.movie-card:hover .poster img {
-    transform: scale(1.07);
+.checklist{display:grid;gap:10px}
+.check-row{
+ display:flex;gap:10px;align-items:center;
+ padding:10px;background:var(--panel2);border-radius:9px;
+ font-size:13px
 }
-
-.rating {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    background: #080b16dd;
-    color: #ffd166;
-    padding: 6px 9px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: bold;
+.check-row input{accent-color:var(--cyan);width:16px;height:16px}
+.check-row:has(input:checked) span{text-decoration:line-through;color:var(--muted)}
+.note-area{min-height:110px;resize:vertical}
+.note-status{font-size:11px;color:var(--green);margin-top:8px}
+.itinerary-day{
+ border-left:2px solid var(--cyan);
+ padding:4px 0 15px 17px;margin-left:8px
 }
-
-.favorite {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    border: none;
-    background: #080b16dd;
-    color: white;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    font-size: 18px;
-    cursor: pointer;
+.itinerary-day input{margin-bottom:7px}
+.itinerary-day p{font-size:12px;color:var(--muted);margin-top:6px}
+.cta{
+ text-align:center;
+ background:linear-gradient(130deg,rgba(0,229,255,.12),rgba(155,92,255,.14));
+ border:1px solid rgba(0,229,255,.18);
+ border-radius:22px;padding:55px 20px
 }
-
-.favorite.active {
-    color: #ff3cac;
+.cta h2{font-family:'Space Grotesk';font-size:35px;margin-bottom:13px}
+.cta p{color:var(--muted);margin-bottom:24px}
+footer{
+ padding:35px 6%;border-top:1px solid var(--border);
+ color:var(--muted);font-size:12px;
+ display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap
 }
-
-.movie-info {
-    padding: 16px;
+.modal{
+ position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.8);
+ display:none;align-items:center;justify-content:center;padding:20px;
+ backdrop-filter:blur(8px)
 }
-
-.movie-info h3 {
-    font-size: 16px;
-    margin-bottom: 8px;
+.modal.show{display:flex}
+.modal-content{
+ width:min(650px,100%);max-height:90vh;overflow:auto;
+ background:var(--panel);border:1px solid rgba(0,229,255,.3);
+ border-radius:19px;box-shadow:0 0 50px rgba(0,229,255,.12)
 }
-
-.movie-meta {
-    color: var(--muted);
-    font-size: 12px;
-    display: flex;
-    justify-content: space-between;
-    gap: 5px;
+.modal-content img{width:100%;height:240px;object-fit:cover}
+.modal-body{padding:24px}
+.modal-body h2{font-family:'Space Grotesk';font-size:28px;margin-bottom:8px}
+.modal-body p{color:#bac6d7;line-height:1.7;font-size:14px;margin:14px 0}
+.modal-close{
+ float:right;background:var(--panel2);border:1px solid var(--border);
+ color:white;padding:7px 12px;border-radius:8px
 }
-
-.movie-info p {
-    color: #aab3ca;
-    font-size: 12px;
-    margin-top: 12px;
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap}
+.toast{
+ position:fixed;bottom:25px;right:25px;z-index:200;
+ padding:14px 20px;background:#132b2b;border:1px solid var(--green);
+ color:var(--green);border-radius:11px;
+ transform:translateY(100px);opacity:0;transition:.3s;
+ max-width:calc(100% - 50px)
 }
-
-.empty {
-    grid-column: 1 / -1;
-    text-align: center;
-    color: var(--muted);
-    padding: 45px;
-    background: var(--panel);
-    border-radius: 12px;
+.toast.show{transform:translateY(0);opacity:1}
+#backTop{
+ position:fixed;right:20px;bottom:85px;z-index:30;
+ display:none;border-radius:50%;width:42px;height:42px;
+ background:var(--cyan);color:#071019;border:0;font-size:19px
 }
-
-footer {
-    border-top: 1px solid #252c45;
-    padding: 30px;
-    text-align: center;
-    color: var(--muted);
-    margin-top: 60px;
-    font-size: 13px;
+@media(max-width:900px){
+ .destinations{grid-template-columns:repeat(2,1fr)}
+ .features{grid-template-columns:repeat(2,1fr)}
+ .search-panel{grid-template-columns:1fr 1fr}
+ .dashboard{grid-template-columns:1fr}
 }
-
-.modal {
-    position: fixed;
-    inset: 0;
-    z-index: 30;
-    background: #000c;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+@media(max-width:650px){
+ header{padding:0 5%;height:67px}
+ .nav{
+  display:none;position:absolute;top:67px;left:0;right:0;
+  background:#101625;padding:20px;flex-direction:column;
+  align-items:flex-start;border-bottom:1px solid var(--border)
+ }
+ .nav.open{display:flex}
+ .mobile-menu{display:block}
+ .header-actions .btn:not(.btn-primary){display:none}
+ .hero{padding:75px 6%;min-height:540px}
+ .hero h1{letter-spacing:-2px}
+ .hero-stats{gap:25px}
+ .section{padding:55px 5%}
+ .destinations{grid-template-columns:1fr}
+ .features{grid-template-columns:1fr 1fr}
+ .search-panel{grid-template-columns:1fr}
+ .form-grid{grid-template-columns:1fr}
+ .full{grid-column:auto}
+ .cta h2{font-size:27px}
 }
-
-.modal.show {
-    display: flex;
-}
-
-.modal-box {
-    background: var(--panel);
-    border: 1px solid #354365;
-    border-radius: 17px;
-    max-width: 750px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 260px 1fr;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 0 45px #a855f733;
-}
-
-.modal-box img {
-    width: 100%;
-    height: 100%;
-    min-height: 340px;
-    object-fit: cover;
-}
-
-.modal-content {
-    padding: 30px;
-}
-
-.modal-content h2 {
-    font-size: 27px;
-    margin-bottom: 12px;
-}
-
-.modal-content p {
-    color: #aeb8ce;
-    line-height: 1.7;
-    margin: 15px 0;
-}
-
-.modal-close {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 35px;
-    height: 35px;
-    border: none;
-    border-radius: 50%;
-    background: #303956;
-    color: white;
-    cursor: pointer;
-    font-size: 19px;
-}
-
-.modal-rating {
-    color: #ffd166;
-}
-
-@media(max-width: 1000px) {
-    .movie-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media(max-width: 700px) {
-    header {
-        padding: 0 5%;
-    }
-
-    nav {
-        gap: 12px;
-    }
-
-    nav a {
-        font-size: 12px;
-    }
-
-    .movie-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    .poster {
-        height: 220px;
-    }
-
-    .container {
-        width: 92%;
-    }
-
-    .modal-box {
-        grid-template-columns: 1fr;
-        max-height: 90vh;
-        overflow-y: auto;
-    }
-
-    .modal-box img {
-        height: 220px;
-        min-height: 220px;
-    }
-}
-
-@media(max-width: 380px) {
-    .movie-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .search-area button {
-        padding: 0 12px;
-    }
-}
+@media(max-width:380px){.features{grid-template-columns:1fr}}
 </style>
 </head>
-
 <body>
 
 <header>
-    <div class="logo">MOVIE<span>FINDER</span> 🎬</div>
-    <nav>
-        <a href="#" class="active" onclick="showAll(event)">Acasă</a>
-        <a href="#movies">Filme</a>
-        <a href="#" onclick="showFavorites(event)">Favorite ❤️</a>
-    </nav>
+  <a href="#" class="logo">Travel<span>World.</span></a>
+  <nav class="nav" id="nav">
+    <a href="#explore">Destinații</a>
+    <a href="#features">Funcții</a>
+    <a href="#planner">Planificator</a>
+    <a href="#budget">Buget</a>
+    <a href="#packing">Bagaje</a>
+  </nav>
+  <div class="header-actions">
+    <button class="btn" onclick="showFavorites()">♡ Favorite</button>
+    <a href="#planner" class="btn btn-primary">Planifică o excursie</a>
+    <button class="btn mobile-menu" onclick="toggleMenu()">☰</button>
+  </div>
 </header>
 
 <section class="hero">
-    <div class="hero-content">
-        <div class="tag">BUN VENIT ÎN UNIVERSUL FILMELOR</div>
-        <h1>Filmul perfect.<br><span>Experiența perfectă.</span></h1>
-        <p>
-            Descoperă filme noi, explorează genurile preferate
-            și creează propria ta listă de favorite.
-        </p>
-        <button class="primary-btn" onclick="document.getElementById('movies').scrollIntoView({behavior:'smooth'})">
-            Explorează filme →
-        </button>
+  <div class="hero-content">
+    <div class="eyebrow">✦ DESCOPERĂ LUMEA ✦</div>
+    <h1>Următoarea ta<br>aventură începe <span>aici.</span></h1>
+    <p>Descoperă locuri incredibile, planifică experiențe memorabile și transformă fiecare călătorie într-o poveste.</p>
+    <div class="hero-buttons">
+      <a href="#explore" class="btn btn-primary">Explorează destinațiile →</a>
+      <a href="#planner" class="btn">Creează o excursie</a>
     </div>
+    <div class="hero-stats">
+      <div class="stat"><strong>12+</strong><span>Destinații demo</span></div>
+      <div class="stat"><strong>4</strong><span>Categorii</span></div>
+      <div class="stat"><strong>∞</strong><span>Aventuri posibile</span></div>
+    </div>
+  </div>
 </section>
 
-<main class="container" id="movies">
-
-    <div class="search-area">
-        <input type="text" id="search" placeholder="🔍 Caută un film..." oninput="renderMovies()">
-        <button onclick="renderMovies()">Caută</button>
+<section class="section" id="explore">
+  <div class="section-heading">
+    <div>
+      <h2>Explorează <span class="accent">destinațiile</span></h2>
+      <p>Locuri spectaculoase pentru următoarea ta aventură.</p>
     </div>
+    <span class="eyebrow">🌍 TRAVEL COLLECTION</span>
+  </div>
 
-    <div class="categories">
-        <button class="category active" onclick="selectCategory('Toate',this)">Toate</button>
-        <button class="category" onclick="selectCategory('Acțiune',this)">Acțiune</button>
-        <button class="category" onclick="selectCategory('SF',this)">SF</button>
-        <button class="category" onclick="selectCategory('Comedie',this)">Comedie</button>
-        <button class="category" onclick="selectCategory('Dramă',this)">Dramă</button>
-        <button class="category" onclick="selectCategory('Animație',this)">Animație</button>
-        <button class="category" onclick="selectCategory('Horror',this)">Horror</button>
+  <div class="search-panel">
+    <div class="field">
+      <label>Caută o destinație</label>
+      <input id="search" placeholder="Ex: Tokyo, Paris, Bali..." oninput="renderDestinations()">
     </div>
-
-    <div class="section-title">
-        <h2 id="listTitle">🔥 Filme populare</h2>
-        <span id="movieCount"></span>
+    <div class="field">
+      <label>Categorie</label>
+      <select id="category" onchange="renderDestinations()">
+        <option value="all">Toate categoriile</option>
+        <option value="city">Orașe</option>
+        <option value="beach">Plaje</option>
+        <option value="nature">Natură</option>
+        <option value="island">Insule</option>
+      </select>
     </div>
+    <div class="field">
+      <label>Buget orientativ</label>
+      <select id="priceFilter" onchange="renderDestinations()">
+        <option value="all">Orice buget</option>
+        <option value="low">Economic</option>
+        <option value="medium">Moderat</option>
+        <option value="high">Premium</option>
+      </select>
+    </div>
+    <button class="btn btn-primary" onclick="resetFilters()">Resetează</button>
+  </div>
 
-    <div class="movie-grid" id="movieGrid"></div>
+  <div class="destinations" id="destinationGrid"></div>
+</section>
 
-</main>
+<section class="section" id="features">
+  <div class="section-heading">
+    <div>
+      <h2>Tot ce ai nevoie, <span class="accent">într-un singur loc</span></h2>
+      <p>Instrumente utile pentru organizarea călătoriilor tale.</p>
+    </div>
+  </div>
+  <div class="features">
+    <div class="feature"><div class="feature-icon">🗺️</div><h3>Descoperă locuri</h3><p>Explorează destinații și deschide rapid locațiile pe hartă.</p></div>
+    <div class="feature"><div class="feature-icon">❤️</div><h3>Favorite</h3><p>Salvează locurile care te inspiră și revino la ele oricând.</p></div>
+    <div class="feature"><div class="feature-icon">💰</div><h3>Planifică bugetul</h3><p>Estimează cheltuielile pentru transport, cazare și activități.</p></div>
+    <div class="feature"><div class="feature-icon">🧳</div><h3>Listă de bagaje</h3><p>Pregătește-ți lucrurile și urmărește ce ai bifat.</p></div>
+    <div class="feature"><div class="feature-icon">📅</div><h3>Planificator</h3><p>Organizează excursiile și păstrează datele importante.</p></div>
+    <div class="feature"><div class="feature-icon">📝</div><h3>Notițe</h3><p>Scrie idei, recomandări și lucruri de care vrei să-ți amintești.</p></div>
+    <div class="feature"><div class="feature-icon">📍</div><h3>Hartă</h3><p>Deschide destinațiile în Google Maps pentru orientare.</p></div>
+    <div class="feature"><div class="feature-icon">📦</div><h3>Export</h3><p>Descarcă o copie JSON a planurilor și datelor tale.</p></div>
+  </div>
+</section>
+
+<section class="section" id="planner">
+  <div class="section-heading">
+    <div>
+      <h2>Planificatorul <span class="accent">tău</span></h2>
+      <p>Creează și păstrează excursiile pe care vrei să le faci.</p>
+    </div>
+  </div>
+  <div class="dashboard">
+    <div class="panel">
+      <h3>✈️ Creează o călătorie</h3>
+      <form id="tripForm">
+        <div class="form-grid">
+          <div class="field full"><label>Numele călătoriei</label><input id="tripName" required placeholder="Ex: Vacanță de vară"></div>
+          <div class="field"><label>Destinație</label><input id="tripDestination" required placeholder="Ex: Roma, Italia"></div>
+          <div class="field"><label>Data plecării</label><input type="date" id="tripDate" required></div>
+          <div class="field"><label>Data întoarcerii</label><input type="date" id="tripEnd" required></div>
+          <div class="field"><label>Număr de persoane</label><input type="number" id="tripPeople" min="1" max="30" value="1"></div>
+          <div class="field full"><label>Descriere / obiective</label><textarea class="note-area" id="tripDescription" placeholder="Ce vrei să vizitezi?"></textarea></div>
+        </div>
+        <div class="panel-actions"><button class="btn btn-primary" type="submit">＋ Salvează călătoria</button></div>
+      </form>
+    </div>
+    <div class="panel">
+      <h3>🧭 Călătoriile mele</h3>
+      <div id="tripList"><div class="empty">Nu ai încă excursii salvate.</div></div>
+      <div class="panel-actions">
+        <button class="btn" onclick="exportData()">↓ Exportă datele</button>
+        <button class="btn" onclick="clearTrips()">Șterge excursiile</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="budget">
+  <div class="section-heading">
+    <div>
+      <h2>Calculator de <span class="accent">buget</span></h2>
+      <p>Calculează costurile estimate pentru următoarea aventură.</p>
+    </div>
+  </div>
+  <div class="dashboard">
+    <div class="panel">
+      <h3>💳 Introdu cheltuielile estimate</h3>
+      <div class="form-grid">
+        <div class="field"><label>Transport (RON)</label><input type="number" min="0" id="transport" value="500" oninput="calculateBudget()"></div>
+        <div class="field"><label>Cazare (RON)</label><input type="number" min="0" id="hotel" value="800" oninput="calculateBudget()"></div>
+        <div class="field"><label>Mâncare (RON)</label><input type="number" min="0" id="food" value="400" oninput="calculateBudget()"></div>
+        <div class="field"><label>Activități (RON)</label><input type="number" min="0" id="activities" value="250" oninput="calculateBudget()"></div>
+        <div class="field full"><label>Alte cheltuieli (RON)</label><input type="number" min="0" id="other" value="100" oninput="calculateBudget()"></div>
+      </div>
+      <div class="panel-actions"><button class="btn" onclick="resetBudget()">Resetează bugetul</button><button class="btn btn-primary" onclick="saveBudget()">Salvează bugetul</button></div>
+    </div>
+    <div class="panel">
+      <h3>📊 Rezumatul bugetului</h3>
+      <div class="budget-total" id="budgetTotal">2.050 RON</div>
+      <p style="color:var(--muted);font-size:12px">Cost total estimat</p>
+      <div class="progress"><div id="budgetProgress"></div></div>
+      <div id="budgetBreakdown"></div>
+      <p style="font-size:11px;color:var(--muted);margin-top:15px">Estimare orientativă, nu reprezintă prețuri sau rezervări confirmate.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="packing">
+  <div class="section-heading">
+    <div>
+      <h2>Pregătește-ți <span class="accent">bagajul</span></h2>
+      <p>Checklist-ul tău pentru o călătorie fără griji.</p>
+    </div>
+  </div>
+  <div class="dashboard">
+    <div class="panel">
+      <h3>🧳 Lista de bagaje</h3>
+      <div class="checklist" id="packingList"></div>
+      <div class="field" style="margin-top:17px">
+        <label>Adaugă un obiect personalizat</label>
+        <div style="display:flex;gap:8px">
+          <input id="customItem" placeholder="Ex: Ochelari de soare">
+          <button class="btn btn-primary" onclick="addPackingItem()">＋</button>
+        </div>
+      </div>
+      <div class="panel-actions"><button class="btn" onclick="resetPacking()">Resetează lista</button></div>
+      <p id="packingProgress" style="color:var(--green);font-size:12px;margin-top:13px"></p>
+    </div>
+    <div class="panel">
+      <h3>📝 Jurnal și notițe</h3>
+      <div class="field">
+        <label>Idei pentru următoarea călătorie</label>
+        <textarea class="note-area" id="travelNotes" placeholder="Scrie aici locuri de vizitat, restaurante, idei..."></textarea>
+      </div>
+      <div class="panel-actions"><button class="btn btn-primary" onclick="saveNotes()">Salvează notițele</button></div>
+      <p class="note-status" id="noteStatus"></p>
+      <div style="margin-top:25px;border-top:1px solid var(--border);padding-top:20px">
+        <h3>📅 Itinerariu rapid</h3>
+        <div class="field">
+          <label>Ziua călătoriei</label>
+          <input type="number" id="dayNumber" min="1" value="1">
+        </div>
+        <div class="field" style="margin-top:10px">
+          <label>Activitate</label>
+          <input id="dayActivity" placeholder="Ex: Vizită la muzeu">
+        </div>
+        <button class="btn btn-primary" style="margin-top:12px" onclick="addItinerary()">Adaugă activitate</button>
+        <div id="itineraryList" style="margin-top:20px"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="cta">
+    <div class="eyebrow">✦ LUMEA TE AȘTEAPTĂ ✦</div>
+    <h2>Unde mergem <span class="accent">mai departe?</span></h2>
+    <p>Fiecare călătorie începe cu un plan. Alege destinația și pornește la drum.</p>
+    <a href="#explore" class="btn btn-primary">Descoperă destinații →</a>
+  </div>
+</section>
 
 <footer>
-    MOVIEFINDER © 2026 | Creat pentru iubitorii de filme 🍿
+  <div><a href="#" class="logo">Travel<span>World.</span></a><p style="margin-top:8px">Explorează. Descoperă. Trăiește.</p></div>
+  <div>© <span id="year"></span> TravelWorld. Proiect demo.</div>
+  <div>Creat pentru aventurieri 🌍</div>
 </footer>
 
-<div class="modal" id="modal" onclick="closeOutside(event)">
-    <div class="modal-box">
-        <button class="modal-close" onclick="closeModal()">×</button>
-        <img id="modalImage" src="" alt="Poster film">
-        <div class="modal-content">
-            <h2 id="modalTitle"></h2>
-            <div class="modal-rating" id="modalRating"></div>
-            <p id="modalDescription"></p>
-            <p id="modalMeta"></p>
-            <button class="primary-btn" onclick="toggleModalFavorite()" id="modalFavorite">
-                ❤️ Adaugă la favorite
-            </button>
-        </div>
-    </div>
+<div class="modal" id="destinationModal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-content">
+    <div id="modalImage"></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
 </div>
+<div class="toast" id="toast"></div>
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
-const movies = [
-    {
-        id: 1,
-        title: "Inception",
-        year: 2010,
-        category: "SF",
-        rating: 8.8,
-        duration: "148 min",
-        image: "https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
-        description: "Un hoț specializat în extragerea secretelor din vise primește o misiune aproape imposibilă: să planteze o idee în mintea unei persoane."
-    },
-    {
-        id: 2,
-        title: "Interstellar",
-        year: 2014,
-        category: "SF",
-        rating: 8.7,
-        duration: "169 min",
-        image: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-        description: "Un grup de exploratori călătorește dincolo de galaxia noastră pentru a găsi un viitor pentru omenire."
-    },
-    {
-        id: 3,
-        title: "The Dark Knight",
-        year: 2008,
-        category: "Acțiune",
-        rating: 9.0,
-        duration: "152 min",
-        image: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-        description: "Batman încearcă să protejeze Gotham de o nouă amenințare care pune la încercare limitele orașului."
-    },
-    {
-        id: 4,
-        title: "Joker",
-        year: 2019,
-        category: "Dramă",
-        rating: 8.4,
-        duration: "122 min",
-        image: "https://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
-        description: "Povestea unui om singuratic care ajunge să devină una dintre cele mai cunoscute figuri din Gotham."
-    },
-    {
-        id: 5,
-        title: "Avengers: Endgame",
-        year: 2019,
-        category: "Acțiune",
-        rating: 8.4,
-        duration: "181 min",
-        image: "https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
-        description: "Rămași fără speranță, eroii trebuie să găsească o cale de a repara ceea ce s-a întâmplat."
-    },
-    {
-        id: 6,
-        title: "Toy Story",
-        year: 1995,
-        category: "Animație",
-        rating: 8.3,
-        duration: "81 min",
-        image: "https://image.tmdb.org/t/p/w500/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg",
-        description: "Jucăriile prind viață atunci când oamenii nu sunt prin preajmă și trăiesc aventuri neașteptate."
-    },
-    {
-        id: 7,
-        title: "The Hangover",
-        year: 2009,
-        category: "Comedie",
-        rating: 7.7,
-        duration: "100 min",
-        image: "https://image.tmdb.org/t/p/w500/A0uS9rHR56FeBtpjVki16M5xxSW.jpg",
-        description: "După o petrecere de neuitat, trei prieteni încearcă să afle ce s-a întâmplat în noaptea precedentă."
-    },
-    {
-        id: 8,
-        title: "The Conjuring",
-        year: 2013,
-        category: "Horror",
-        rating: 7.5,
-        duration: "112 min",
-        image: "https://image.tmdb.org/t/p/w500/wVYREutTvI2tmxr6ujrHT704wGF.jpg",
-        description: "Doi investigatori paranormali încearcă să ajute o familie care se confruntă cu evenimente inexplicabile."
-    },
-    {
-        id: 9,
-        title: "Forrest Gump",
-        year: 1994,
-        category: "Dramă",
-        rating: 8.8,
-        duration: "142 min",
-        image: "https://image.tmdb.org/t/p/w500/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg",
-        description: "Un om cu o perspectivă specială asupra vieții ajunge să fie martorul unor momente importante din istorie."
-    },
-    {
-        id: 10,
-        title: "Spider-Man: No Way Home",
-        year: 2021,
-        category: "Acțiune",
-        rating: 8.2,
-        duration: "148 min",
-        image: "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
-        description: "Peter Parker cere ajutorul pentru a-și recăpăta viața privată, dar lucrurile devin complicate."
-    },
-    {
-        id: 11,
-        title: "Coco",
-        year: 2017,
-        category: "Animație",
-        rating: 8.4,
-        duration: "105 min",
-        image: "https://image.tmdb.org/t/p/w500/gGEsBPAijhVUFoiNpgZXqRVWJt2.jpg",
-        description: "Un băiat pasionat de muzică pornește într-o aventură extraordinară într-o lume misterioasă."
-    },
-    {
-        id: 12,
-        title: "The Matrix",
-        year: 1999,
-        category: "SF",
-        rating: 8.7,
-        duration: "136 min",
-        image: "https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
-        description: "Un programator descoperă că realitatea pe care o cunoaște nu este ceea ce pare."
-    }
+const destinations = [
+ {id:1,name:"Paris",country:"Franța",category:"city",price:"medium",cost:2500,tag:"Romantic",emoji:"🇫🇷",image:"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=900",description:"Orașul luminilor te așteaptă cu Turnul Eiffel, muzee celebre, cafenele elegante și străzi pline de farmec.",highlights:["Turnul Eiffel","Muzeul Luvru","Montmartre"],best:"Primăvara și toamna"},
+ {id:2,name:"Tokyo",country:"Japonia",category:"city",price:"high",cost:6500,tag:"Tehnologie",emoji:"🇯🇵",image:"https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=900",description:"Un oraș fascinant unde tradiția japoneză întâlnește tehnologia, gastronomia și cultura pop.",highlights:["Shibuya","Templul Senso-ji","Tokyo Tower"],best:"Martie–mai și octombrie–noiembrie"},
+ {id:3,name:"Bali",country:"Indonezia",category:"island",price:"medium",cost:4200,tag:"Tropical",emoji:"🇮🇩",image:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=900",description:"Insulă tropicală cu temple, jungle luxuriante, terase de orez și plaje spectaculoase.",highlights:["Ubud","Templul Uluwatu","Nusa Penida"],best:"Aprilie–octombrie"},
+ {id:4,name:"Santorini",country:"Grecia",category:"island",price:"high",cost:3800,tag:"Romantic",emoji:"🇬🇷",image:"https://images.unsplash.com/photo-1533105079780-92b9be482077?w=900",description:"Case albe, cupole albastre, apusuri memorabile și priveliști superbe asupra Mării Egee.",highlights:["Oia","Fira","Red Beach"],best:"Mai–iunie și septembrie"},
+ {id:5,name:"Elveția",country:"Elveția",category:"nature",price:"high",cost:6000,tag:"Munți",emoji:"🇨🇭",image:"https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=900",description:"Peisaje alpine, lacuri cristaline, sate pitorești și trasee montane impresionante.",highlights:["Zermatt","Interlaken","Lacul Geneva"],best:"Iunie–septembrie"},
+ {id:6,name:"Maldive",country:"Maldive",category:"beach",price:"high",cost:8500,tag:"Relaxare",emoji:"🇲🇻",image:"https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=900",description:"Apă turcoaz, nisip fin, recife de corali și experiențe tropicale de neuitat.",highlights:["Male","Atoli","Recife de corali"],best:"Noiembrie–aprilie"},
+ {id:7,name:"Roma",country:"Italia",category:"city",price:"medium",cost:2400,tag:"Istorie",emoji:"🇮🇹",image:"https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=900",description:"Descoperă istoria Imperiului Roman, piețe spectaculoase și bucătăria italiană.",highlights:["Colosseum","Fontana di Trevi","Vatican"],best:"Aprilie–iunie și septembrie"},
+ {id:8,name:"New York",country:"SUA",category:"city",price:"high",cost:7500,tag:"Metropolă",emoji:"🇺🇸",image:"https://images.unsplash.com/photo-1496588152823-86ff7695e68f?w=900",description:"Zgârie-nori, parcuri urbane, spectacole și cartiere cu personalități diferite.",highlights:["Central Park","Times Square","Brooklyn Bridge"],best:"Primăvara și toamna"},
+ {id:9,name:"Islanda",country:"Islanda",category:"nature",price:"high",cost:7000,tag:"Aventură",emoji:"🇮🇸",image:"https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=900",description:"Cascade, vulcani, ghețari, izvoare termale și peisaje aproape ireale.",highlights:["Blue Lagoon","Skógafoss","Reynisfjara"],best:"Iunie–august sau iarna pentru auroră"},
+ {id:10,name:"Barcelona",country:"Spania",category:"city",price:"medium",cost:2800,tag:"Cultură",emoji:"🇪🇸",image:"https://images.unsplash.com/photo-1583422409516-2895a77efded?w=900",description:"Arhitectura lui Gaudí, plaje urbane, gastronomie și atmosferă mediteraneană.",highlights:["Sagrada Familia","Park Güell","Barceloneta"],best:"Mai–iunie și septembrie"},
+ {id:11,name:"Dubai",country:"Emiratele Arabe Unite",category:"city",price:"high",cost:5500,tag:"Lux",emoji:"🇦🇪",image:"https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=900",description:"Arhitectură futuristă, deșert, centre comerciale uriașe și experiențe spectaculoase.",highlights:["Burj Khalifa","Dubai Marina","Deșert"],best:"Noiembrie–martie"},
+ {id:12,name:"Phuket",country:"Thailanda",category:"beach",price:"low",cost:3200,tag:"Plajă",emoji:"🇹🇭",image:"https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=900",description:"Plaje exotice, insule în apropiere, piețe locale și gastronomie thailandeză.",highlights:["Patong Beach","Phi Phi","Big Buddha"],best:"Noiembrie–aprilie"}
 ];
 
-let activeCategory = "Toate";
-let favorites = [];
-let favoritesOnly = false;
-let selectedMovie = null;
+const defaultPacking = ["Pașaport / carte de identitate","Bilete și documente","Telefon și încărcător","Portofel","Haine potrivite vremii","Produse de igienă","Medicamente personale","Căști","Ochelari de soare","Adaptor de priză","Sticlă reutilizabilă","Asigurare de călătorie"];
 
-try {
-    const saved = JSON.parse(localStorage.getItem("movieFinderFavorites") || "[]");
-    if (Array.isArray(saved)) favorites = saved;
-} catch (error) {
-    favorites = [];
+function load(key,fallback){
+ try {const v=localStorage.getItem("tw_"+key);return v?JSON.parse(v):fallback}
+ catch(e){return fallback}
+}
+function save(key,value){localStorage.setItem("tw_"+key,JSON.stringify(value))}
+let favorites=load("favorites",[]);
+let trips=load("trips",[]);
+let packing=load("packing",defaultPacking.map((name,i)=>({name,checked:false,id:i})));
+let itinerary=load("itinerary",[]);
+let notes=load("notes","");
+let currentFilter="all";
+
+function toast(message){
+ const el=document.getElementById("toast");
+ el.textContent=message;el.classList.add("show");
+ clearTimeout(window.toastTimer);
+ window.toastTimer=setTimeout(()=>el.classList.remove("show"),2600);
+}
+function toggleMenu(){document.getElementById("nav").classList.toggle("open")}
+document.querySelectorAll(".nav a").forEach(a=>a.addEventListener("click",()=>document.getElementById("nav").classList.remove("open")));
+
+function renderDestinations(){
+ const query=document.getElementById("search").value.toLowerCase().trim();
+ const category=document.getElementById("category").value;
+ const price=document.getElementById("priceFilter").value;
+ const list=destinations.filter(d=>
+  (d.name+" "+d.country+" "+d.tag).toLowerCase().includes(query)&&
+  (category==="all"||d.category===category)&&
+  (price==="all"||d.price===price)&&
+  (currentFilter!=="favorites"||favorites.includes(d.id))
+ );
+ const grid=document.getElementById("destinationGrid");
+ if(!list.length){grid.innerHTML='<div class="empty">Nu am găsit destinații. Încearcă alte filtre.</div>';return}
+ grid.innerHTML=list.map(d=>`
+ <article class="destination">
+  <div class="destination-image">
+   <img src="${d.image}" alt="${d.name}" loading="lazy">
+   <span class="image-tag">${d.emoji} ${d.tag}</span>
+   <button class="favorite ${favorites.includes(d.id)?"active":""}" onclick="toggleFavorite(${d.id})" aria-label="Adaugă la favorite">${favorites.includes(d.id)?"♥":"♡"}</button>
+  </div>
+  <div class="destination-info">
+   <h3>${d.name}</h3><div class="country">${d.country}</div>
+   <p>${d.description.slice(0,105)}...</p>
+   <div class="card-bottom">
+    <span class="price">~${d.cost.toLocaleString("ro-RO")} RON / persoană</span>
+    <button class="btn btn-primary" onclick="openDestination(${d.id})">Detalii →</button>
+   </div>
+  </div>
+ </article>`).join("");
+}
+function resetFilters(){
+ document.getElementById("search").value="";
+ document.getElementById("category").value="all";
+ document.getElementById("priceFilter").value="all";
+ currentFilter="all";renderDestinations();
+}
+function toggleFavorite(id){
+ favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[...favorites,id];
+ save("favorites",favorites);renderDestinations();
+ toast(favorites.includes(id)?"Adăugat la favorite ♥":"Eliminat din favorite");
+}
+function showFavorites(){
+ currentFilter="favorites";
+ document.getElementById("search").value="";
+ document.getElementById("category").value="all";
+ document.getElementById("priceFilter").value="all";
+ renderDestinations();
+ document.getElementById("explore").scrollIntoView({behavior:"smooth"});
+}
+function openDestination(id){
+ const d=destinations.find(x=>x.id===id);
+ document.getElementById("modalImage").innerHTML=`<img src="${d.image}" alt="${d.name}">`;
+ document.getElementById("modalBody").innerHTML=`
+ <button class="modal-close" onclick="closeModal()">Închide ✕</button>
+ <h2>${d.emoji} ${d.name}</h2><span class="country">${d.country} · ${d.tag}</span>
+ <p>${d.description}</p>
+ <h3 style="font-size:15px;margin:18px 0 10px">📍 Locuri de explorat</h3>
+ <p>${d.highlights.map(x=>"• "+x).join("<br>")}</p>
+ <p><b>Perioadă recomandată:</b> ${d.best}</p>
+ <p><b>Buget orientativ:</b> ~${d.cost.toLocaleString("ro-RO")} RON / persoană</p>
+ <div class="modal-actions">
+ <button class="btn btn-primary" onclick="createTripFromDestination(${d.id})">＋ Planifică excursia</button>
+ <button class="btn" onclick="openMap('${encodeURIComponent(d.name+" "+d.country)}')">🗺️ Deschide harta</button>
+ <button class="btn" onclick="toggleFavorite(${d.id});openDestination(${d.id})">♡ Favorite</button>
+ </div>`;
+ document.getElementById("destinationModal").classList.add("show");
+}
+function closeModal(){document.getElementById("destinationModal").classList.remove("show")}
+function openMap(place){window.open("https://www.google.com/maps/search/?api=1&query="+place,"_blank","noopener")}
+function createTripFromDestination(id){
+ const d=destinations.find(x=>x.id===id);
+ closeModal();
+ document.getElementById("tripDestination").value=d.name+", "+d.country;
+ document.getElementById("tripName").value="Excursie în "+d.name;
+ document.getElementById("planner").scrollIntoView({behavior:"smooth"});
+ toast("Destinația a fost adăugată în formular!");
 }
 
-function saveFavorites() {
-    localStorage.setItem("movieFinderFavorites", JSON.stringify(favorites));
+document.getElementById("tripForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const start=document.getElementById("tripDate").value;
+ const end=document.getElementById("tripEnd").value;
+ if(end<start){toast("Data întoarcerii trebuie să fie după plecare.");return}
+ const trip={
+  id:Date.now(),
+  name:document.getElementById("tripName").value.trim(),
+  destination:document.getElementById("tripDestination").value.trim(),
+  start,end,
+  people:Math.max(1,Number(document.getElementById("tripPeople").value)||1),
+  description:document.getElementById("tripDescription").value.trim()
+ };
+ trips.unshift(trip);save("trips",trips);renderTrips();
+ e.target.reset();document.getElementById("tripPeople").value=1;
+ toast("Călătoria a fost salvată! ✈️");
+});
+function renderTrips(){
+ const el=document.getElementById("tripList");
+ if(!trips.length){el.innerHTML='<div class="empty">Nu ai încă excursii salvate.</div>';return}
+ el.innerHTML=trips.map(t=>`
+ <div class="trip-item">
+  <div class="trip-top"><div><b>${escapeHTML(t.name)}</b><br><small>📍 ${escapeHTML(t.destination)}</small></div>
+  <button class="btn" onclick="deleteTrip(${t.id})">✕</button></div>
+  <p>📅 ${formatDate(t.start)} – ${formatDate(t.end)} · 👥 ${t.people} persoane</p>
+  ${t.description?`<p>${escapeHTML(t.description)}</p>`:""}
+  <div style="margin-top:10px"><button class="btn" onclick="openMap('${encodeURIComponent(t.destination)}')">Deschide harta ↗</button></div>
+ </div>`).join("");
+}
+function deleteTrip(id){trips=trips.filter(t=>t.id!==id);save("trips",trips);renderTrips();toast("Excursie ștearsă")}
+function clearTrips(){
+ if(!trips.length)return;
+ if(confirm("Sigur vrei să ștergi toate excursiile?")){trips=[];save("trips",trips);renderTrips();toast("Excursiile au fost șterse")}
+}
+function formatDate(s){if(!s)return"—";return new Date(s+"T12:00:00").toLocaleDateString("ro-RO")}
+function escapeHTML(s){
+ return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 }
 
-function renderMovies() {
-    const grid = document.getElementById("movieGrid");
-    const search = document.getElementById("search").value.toLowerCase();
-
-    let filtered = movies.filter(movie => {
-        const matchesSearch = movie.title.toLowerCase().includes(search);
-        const matchesCategory =
-            activeCategory === "Toate" || movie.category === activeCategory;
-        const matchesFavorites =
-            !favoritesOnly || favorites.includes(movie.id);
-
-        return matchesSearch && matchesCategory && matchesFavorites;
-    });
-
-    document.getElementById("movieCount").textContent =
-        filtered.length + " filme";
-
-    if (filtered.length === 0) {
-        grid.innerHTML = '<div class="empty">Nu am găsit filme. Încearcă altă căutare.</div>';
-        return;
-    }
-
-    grid.innerHTML = filtered.map(movie => `
-        <article class="movie-card" onclick="openModal(${movie.id})">
-            <div class="poster">
-                <img
-                    src="${movie.image}"
-                    alt="${movie.title}"
-                    loading="lazy"
-                    onerror="this.src='https://placehold.co/500x700/11172a/00e5ff?text=MovieFinder'"
-                >
-                <div class="rating">⭐ ${movie.rating}</div>
-                <button
-                    class="favorite ${favorites.includes(movie.id) ? "active" : ""}"
-                    onclick="toggleFavorite(event, ${movie.id})"
-                    aria-label="Adaugă la favorite"
-                >♥</button>
-            </div>
-            <div class="movie-info">
-                <h3>${movie.title}</h3>
-                <div class="movie-meta">
-                    <span>${movie.year}</span>
-                    <span>${movie.category}</span>
-                    <span>${movie.duration}</span>
-                </div>
-                <p>⭐ ${movie.rating} / 10</p>
-            </div>
-        </article>
-    `).join("");
+const budgetFields=["transport","hotel","food","activities","other"];
+function calculateBudget(){
+ const values=budgetFields.map(id=>Math.max(0,Number(document.getElementById(id).value)||0));
+ const labels=["Transport","Cazare","Mâncare","Activități","Altele"];
+ const total=values.reduce((a,b)=>a+b,0);
+ document.getElementById("budgetTotal").textContent=total.toLocaleString("ro-RO")+" RON";
+ document.getElementById("budgetProgress").style.width=total?Math.max(...values)/total*100+"%":"0%";
+ document.getElementById("budgetBreakdown").innerHTML=values.map((v,i)=>`
+ <div class="budget-line"><span>${labels[i]}</span><b>${v.toLocaleString("ro-RO")} RON</b></div>`).join("");
+}
+function resetBudget(){budgetFields.forEach(id=>document.getElementById(id).value=0);calculateBudget()}
+function saveBudget(){
+ const values={};budgetFields.forEach(id=>values[id]=Number(document.getElementById(id).value)||0);
+ save("budget",values);toast("Buget salvat!");
+}
+function loadBudget(){
+ const values=load("budget",null);
+ if(values)budgetFields.forEach(id=>document.getElementById(id).value=values[id]??0);
+ calculateBudget();
 }
 
-function selectCategory(category, button) {
-    activeCategory = category;
-    favoritesOnly = false;
-
-    document.querySelectorAll(".category").forEach(item => {
-        item.classList.remove("active");
-    });
-
-    button.classList.add("active");
-    document.getElementById("listTitle").textContent =
-        category === "Toate" ? "🔥 Filme populare" : "🎬 " + category;
-
-    renderMovies();
+function renderPacking(){
+ const el=document.getElementById("packingList");
+ el.innerHTML=packing.map(item=>`
+ <label class="check-row">
+  <input type="checkbox" ${item.checked?"checked":""} onchange="togglePacking(${item.id})">
+  <span>${escapeHTML(item.name)}</span>
+  <button type="button" class="btn" style="margin-left:auto;padding:4px 8px" onclick="removePacking(event,${item.id})">✕</button>
+ </label>`).join("");
+ const checked=packing.filter(x=>x.checked).length;
+ document.getElementById("packingProgress").textContent=`${checked} din ${packing.length} obiecte pregătite`;
+}
+function togglePacking(id){
+ packing=packing.map(x=>x.id===id?{...x,checked:!x.checked}:x);
+ save("packing",packing);renderPacking();
+}
+function addPackingItem(){
+ const input=document.getElementById("customItem");
+ const name=input.value.trim();if(!name)return;
+ packing.push({id:Date.now(),name,checked:false});
+ save("packing",packing);input.value="";renderPacking();toast("Obiect adăugat!");
+}
+function removePacking(event,id){
+ event.preventDefault();event.stopPropagation();
+ packing=packing.filter(x=>x.id!==id);save("packing",packing);renderPacking();
+}
+function resetPacking(){
+ if(confirm("Resetezi lista de bagaje?")){
+ packing=defaultPacking.map((name,i)=>({name,checked:false,id:i}));
+ save("packing",packing);renderPacking();
+ }
 }
 
-function showFavorites(event) {
-    event.preventDefault();
-    favoritesOnly = true;
-    activeCategory = "Toate";
-
-    document.querySelectorAll(".category").forEach(item => {
-        item.classList.remove("active");
-    });
-
-    document.getElementById("listTitle").textContent = "❤️ Filme favorite";
-    renderMovies();
-
-    document.getElementById("movies").scrollIntoView({behavior: "smooth"});
+document.getElementById("travelNotes").value=notes;
+function saveNotes(){
+ notes=document.getElementById("travelNotes").value;
+ save("notes",notes);
+ document.getElementById("noteStatus").textContent="✓ Notițele au fost salvate!";
 }
-
-function showAll(event) {
-    event.preventDefault();
-    favoritesOnly = false;
-    activeCategory = "Toate";
-    document.getElementById("search").value = "";
-
-    document.querySelectorAll(".category").forEach(item => {
-        item.classList.toggle(
-            "active",
-            item.textContent.trim() === "Toate"
-        );
-    });
-
-    document.getElementById("listTitle").textContent = "🔥 Filme populare";
-    renderMovies();
+function addItinerary(){
+ const day=Math.max(1,Number(document.getElementById("dayNumber").value)||1);
+ const activity=document.getElementById("dayActivity").value.trim();
+ if(!activity){toast("Scrie mai întâi o activitate.");return}
+ itinerary.push({id:Date.now(),day,activity});
+ itinerary.sort((a,b)=>a.day-b.day);
+ save("itinerary",itinerary);
+ document.getElementById("dayActivity").value="";
+ renderItinerary();toast("Activitate adăugată!");
 }
-
-function toggleFavorite(event, id) {
-    event.stopPropagation();
-
-    if (favorites.includes(id)) {
-        favorites = favorites.filter(item => item !== id);
-    } else {
-        favorites.push(id);
-    }
-
-    saveFavorites();
-    renderMovies();
+function renderItinerary(){
+ const el=document.getElementById("itineraryList");
+ if(!itinerary.length){el.innerHTML='<p style="color:var(--muted);font-size:12px">Nu ai adăugat activități.</p>';return}
+ el.innerHTML=itinerary.map(item=>`
+ <div class="itinerary-day">
+  <b>Ziua ${item.day}</b>
+  <p>${escapeHTML(item.activity)}</p>
+  <button class="btn" style="margin-top:7px;padding:5px 9px" onclick="removeActivity(${item.id})">Șterge</button>
+ </div>`).join("");
 }
-
-function openModal(id) {
-    selectedMovie = movies.find(movie => movie.id === id);
-
-    if (!selectedMovie) return;
-
-    document.getElementById("modalImage").src = selectedMovie.image;
-    document.getElementById("modalTitle").textContent = selectedMovie.title;
-    document.getElementById("modalRating").textContent =
-        "⭐ " + selectedMovie.rating + " / 10";
-    document.getElementById("modalDescription").textContent =
-        selectedMovie.description;
-    document.getElementById("modalMeta").textContent =
-        selectedMovie.year + " · " +
-        selectedMovie.category + " · " +
-        selectedMovie.duration;
-
-    updateModalFavorite();
-
-    document.getElementById("modal").classList.add("show");
+function removeActivity(id){
+ itinerary=itinerary.filter(x=>x.id!==id);save("itinerary",itinerary);renderItinerary();
 }
-
-function updateModalFavorite() {
-    const button = document.getElementById("modalFavorite");
-
-    button.textContent = favorites.includes(selectedMovie.id)
-        ? "❤️ Elimină din favorite"
-        : "❤️ Adaugă la favorite";
+function exportData(){
+ const data={
+  application:"TravelWorld",
+  exportedAt:new Date().toISOString(),
+  favorites,trips,packing,itinerary,notes,
+  budget:load("budget",{})
+ };
+ const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement("a");
+ a.href=url;a.download="travelworld-backup.json";a.click();
+ URL.revokeObjectURL(url);toast("Backup descărcat!");
 }
-
-function toggleModalFavorite() {
-    if (!selectedMovie) return;
-
-    const id = selectedMovie.id;
-
-    if (favorites.includes(id)) {
-        favorites = favorites.filter(item => item !== id);
-    } else {
-        favorites.push(id);
-    }
-
-    saveFavorites();
-    updateModalFavorite();
-    renderMovies();
-}
-
-function closeModal() {
-    document.getElementById("modal").classList.remove("show");
-}
-
-function closeOutside(event) {
-    if (event.target.id === "modal") {
-        closeModal();
-    }
-}
-
-document.addEventListener("keydown", event => {
-    if (event.key === "Escape") closeModal();
+window.addEventListener("scroll",()=>{
+ document.getElementById("backTop").style.display=window.scrollY>400?"block":"none";
 });
 
-renderMovies();
+document.getElementById("year").textContent=new Date().getFullYear();
+renderDestinations();
+renderTrips();
+loadBudget();
+renderPacking();
+renderItinerary();
 </script>
-
 </body>
 </html>
