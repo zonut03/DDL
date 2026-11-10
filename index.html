@@ -4,206 +4,433 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CashZone - Câștigă puncte</title>
+<title>MovieFinder | Descoperă filme</title>
+
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg: #080b16;
+    --panel: #11172a;
+    --panel2: #171f37;
+    --text: #f4f6ff;
+    --muted: #929bb5;
+    --purple: #a855f7;
+    --cyan: #00e5ff;
+    --pink: #ff3cac;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
 
 body {
-    background: #f3f5fa;
-    color: #20283b;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
 }
 
 header {
-    background: #151d35;
-    color: white;
-    padding: 22px 7%;
+    height: 76px;
+    padding: 0 7%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: rgba(8,11,22,.96);
+    border-bottom: 1px solid #252c45;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .logo {
-    font-size: 25px;
-    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 23px;
+    font-weight: 800;
+    color: white;
 }
 
 .logo span {
-    color: #65e6a4;
+    color: var(--cyan);
+    text-shadow: 0 0 15px var(--cyan);
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+nav a:hover, nav a.active {
+    color: var(--cyan);
 }
 
 .hero {
-    background: linear-gradient(130deg, #172443, #3659a5);
-    color: white;
-    padding: 65px 8%;
-    text-align: center;
+    min-height: 420px;
+    padding: 90px 8%;
+    display: flex;
+    align-items: center;
+    background:
+        linear-gradient(90deg, #080b16 5%, rgba(8,11,22,.9) 40%, rgba(8,11,22,.3)),
+        url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1600')
+        center/cover;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.tag {
+    color: var(--cyan);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
 }
 
 .hero h1 {
-    font-size: 39px;
-    margin-bottom: 15px;
+    font-size: clamp(38px, 6vw, 65px);
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: var(--cyan);
+    text-shadow: 0 0 25px #00e5ff77;
 }
 
 .hero p {
-    color: #dce5ff;
-    font-size: 17px;
+    color: #c1c8dc;
+    line-height: 1.7;
+    max-width: 520px;
+    margin-bottom: 25px;
+}
+
+.primary-btn {
+    background: linear-gradient(90deg, #a855f7, #00c8ed);
+    border: none;
+    padding: 14px 24px;
+    color: white;
+    border-radius: 9px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 22px #8b5cf655;
 }
 
 .container {
-    width: 90%;
-    max-width: 1100px;
-    margin: 30px auto;
+    width: 88%;
+    max-width: 1400px;
+    margin: 45px auto;
 }
 
-.balance {
-    background: white;
-    border-radius: 17px;
-    padding: 28px;
-    box-shadow: 0 5px 20px #17244312;
+.search-area {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.search-area input {
+    flex: 1;
+    background: var(--panel);
+    border: 1px solid #303956;
+    color: white;
+    padding: 15px 18px;
+    border-radius: 9px;
+    outline: none;
+    font-size: 15px;
+}
+
+.search-area input:focus {
+    border-color: var(--cyan);
+    box-shadow: 0 0 12px #00e5ff33;
+}
+
+.search-area button {
+    background: var(--cyan);
+    color: #06101c;
+    border: none;
+    padding: 0 23px;
+    border-radius: 9px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.categories {
+    display: flex;
+    gap: 10px;
     flex-wrap: wrap;
-    gap: 15px;
+    margin-bottom: 35px;
 }
 
-.balance p {
-    color: #788197;
-    margin-bottom: 9px;
+.category {
+    background: var(--panel);
+    color: #b9c3dc;
+    border: 1px solid #303956;
+    border-radius: 30px;
+    padding: 10px 18px;
+    cursor: pointer;
+    transition: .2s;
 }
 
-.balance h2 {
-    font-size: 34px;
-    color: #1ba66b;
-}
-
-.points-label {
-    color: #8290a7;
-    font-size: 13px;
-    margin-top: 5px;
+.category:hover, .category.active {
+    color: #07101b;
+    background: var(--cyan);
+    border-color: var(--cyan);
+    box-shadow: 0 0 15px #00e5ff55;
 }
 
 .section-title {
-    margin: 35px 0 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.section-title h2 {
     font-size: 23px;
 }
 
-.tasks {
+.section-title span {
+    color: var(--cyan);
+    font-size: 13px;
+}
+
+.movie-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
 }
 
-.task {
-    background: white;
-    padding: 23px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px #17244310;
-}
-
-.task-icon {
-    font-size: 35px;
-    margin-bottom: 15px;
-}
-
-.task h3 {
-    margin-bottom: 10px;
-}
-
-.task p {
-    color: #788197;
-    font-size: 14px;
-    line-height: 1.5;
-    min-height: 42px;
-}
-
-.reward {
-    color: #1ba66b;
-    font-weight: bold;
-    margin: 16px 0;
-}
-
-.task button {
-    background: #526de5;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 12px;
-    width: 100%;
+.movie-card {
+    background: var(--panel);
+    border: 1px solid #252e48;
+    border-radius: 13px;
+    overflow: hidden;
     cursor: pointer;
+    transition: .3s;
+}
+
+.movie-card:hover {
+    transform: translateY(-7px);
+    border-color: var(--cyan);
+    box-shadow: 0 8px 30px #00e5ff20;
+}
+
+.poster {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+}
+
+.poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .4s;
+}
+
+.movie-card:hover .poster img {
+    transform: scale(1.07);
+}
+
+.rating {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #080b16dd;
+    color: #ffd166;
+    padding: 6px 9px;
+    border-radius: 6px;
+    font-size: 12px;
     font-weight: bold;
 }
 
-.task button:hover {
-    background: #3e55c4;
+.favorite {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: #080b16dd;
+    color: white;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
 }
 
-.task button:disabled {
-    background: #aab3c7;
-    cursor: not-allowed;
+.favorite.active {
+    color: #ff3cac;
 }
 
-.history {
-    background: white;
-    padding: 24px;
-    border-radius: 15px;
-    margin-top: 30px;
+.movie-info {
+    padding: 16px;
 }
 
-.history-item {
-    padding: 14px 0;
-    border-bottom: 1px solid #edf0f5;
+.movie-info h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.movie-meta {
+    color: var(--muted);
+    font-size: 12px;
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 5px;
 }
 
-.history-item:last-child {
-    border: none;
-}
-
-.green {
-    color: #1ba66b;
-    font-weight: bold;
+.movie-info p {
+    color: #aab3ca;
+    font-size: 12px;
+    margin-top: 12px;
 }
 
 .empty {
-    color: #8993a7;
-    padding: 15px 0;
-}
-
-.notice {
-    background: #fff7df;
-    border: 1px solid #f1dfa4;
-    padding: 16px;
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--muted);
+    padding: 45px;
+    background: var(--panel);
     border-radius: 12px;
-    margin-top: 25px;
-    color: #735b17;
-    line-height: 1.5;
-    font-size: 14px;
 }
 
 footer {
-    text-align: center;
+    border-top: 1px solid #252c45;
     padding: 30px;
-    color: #8993a7;
+    text-align: center;
+    color: var(--muted);
+    margin-top: 60px;
+    font-size: 13px;
 }
 
-@media(max-width: 750px) {
-    .tasks {
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    background: #000c;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-box {
+    background: var(--panel);
+    border: 1px solid #354365;
+    border-radius: 17px;
+    max-width: 750px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 45px #a855f733;
+}
+
+.modal-box img {
+    width: 100%;
+    height: 100%;
+    min-height: 340px;
+    object-fit: cover;
+}
+
+.modal-content {
+    padding: 30px;
+}
+
+.modal-content h2 {
+    font-size: 27px;
+    margin-bottom: 12px;
+}
+
+.modal-content p {
+    color: #aeb8ce;
+    line-height: 1.7;
+    margin: 15px 0;
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 50%;
+    background: #303956;
+    color: white;
+    cursor: pointer;
+    font-size: 19px;
+}
+
+.modal-rating {
+    color: #ffd166;
+}
+
+@media(max-width: 1000px) {
+    .movie-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media(max-width: 700px) {
+    header {
+        padding: 0 5%;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .movie-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .poster {
+        height: 220px;
+    }
+
+    .container {
+        width: 92%;
+    }
+
+    .modal-box {
+        grid-template-columns: 1fr;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .modal-box img {
+        height: 220px;
+        min-height: 220px;
+    }
+}
+
+@media(max-width: 380px) {
+    .movie-grid {
         grid-template-columns: 1fr;
     }
 
-    .hero h1 {
-        font-size: 29px;
-    }
-
-    header {
-        padding: 20px;
+    .search-area button {
+        padding: 0 12px;
     }
 }
 </style>
@@ -212,228 +439,385 @@ footer {
 <body>
 
 <header>
-    <div class="logo">Cash<span>Zone</span> 💸</div>
-    <div>Platformă de recompense</div>
+    <div class="logo">MOVIE<span>FINDER</span> 🎬</div>
+    <nav>
+        <a href="#" class="active" onclick="showAll(event)">Acasă</a>
+        <a href="#movies">Filme</a>
+        <a href="#" onclick="showFavorites(event)">Favorite ❤️</a>
+    </nav>
 </header>
 
 <section class="hero">
-    <h1>Transformă activitățile în puncte!</h1>
-    <p>Participă la provocări și urmărește progresul tău.</p>
+    <div class="hero-content">
+        <div class="tag">BUN VENIT ÎN UNIVERSUL FILMELOR</div>
+        <h1>Filmul perfect.<br><span>Experiența perfectă.</span></h1>
+        <p>
+            Descoperă filme noi, explorează genurile preferate
+            și creează propria ta listă de favorite.
+        </p>
+        <button class="primary-btn" onclick="document.getElementById('movies').scrollIntoView({behavior:'smooth'})">
+            Explorează filme →
+        </button>
+    </div>
 </section>
 
-<main class="container">
+<main class="container" id="movies">
 
-    <section class="balance">
-        <div>
-            <p>Soldul tău demonstrativ</p>
-            <h2 id="balance">0 puncte</h2>
-            <div class="points-label">100 puncte = 1 leu demonstrativ</div>
-        </div>
-        <div style="font-size:48px">💰</div>
-    </section>
-
-    <h2 class="section-title">🚀 Activități disponibile</h2>
-
-    <section class="tasks">
-
-        <article class="task">
-            <div class="task-icon">📚</div>
-            <h3>Provocarea zilei</h3>
-            <p>Rezolvă o provocare educativă.</p>
-            <div class="reward">+100 puncte</div>
-            <button onclick="completeTask('daily')"
-                    id="daily">Participă</button>
-        </article>
-
-        <article class="task">
-            <div class="task-icon">🧠</div>
-            <h3>Quiz rapid</h3>
-            <p>Răspunde corect la o întrebare de cultură generală.</p>
-            <div class="reward">+150 puncte</div>
-            <button onclick="startQuiz()">Începe quiz-ul</button>
-        </article>
-
-        <article class="task">
-            <div class="task-icon">🎯</div>
-            <h3>Obiectiv personal</h3>
-            <p>Scrie un obiectiv pe care vrei să îl îndeplinești.</p>
-            <div class="reward">+50 puncte</div>
-            <button onclick="completeTask('goal')"
-                    id="goal">Finalizează</button>
-        </article>
-
-    </section>
-
-    <div class="notice">
-        <strong>ℹ️ Informație importantă:</strong>
-        Aceasta este o demonstrație. Punctele nu reprezintă bani reali,
-        nu pot fi retrase și nu pot fi transferate pe card.
-        Pentru recompense reale este necesar un buget și un sistem
-        de plată funcțional.
+    <div class="search-area">
+        <input type="text" id="search" placeholder="🔍 Caută un film..." oninput="renderMovies()">
+        <button onclick="renderMovies()">Caută</button>
     </div>
 
-    <section class="history">
-        <h2>📋 Activitatea mea</h2>
-        <div id="history">
-            <div class="empty">Nu ai completat încă nicio activitate.</div>
-        </div>
-    </section>
+    <div class="categories">
+        <button class="category active" onclick="selectCategory('Toate',this)">Toate</button>
+        <button class="category" onclick="selectCategory('Acțiune',this)">Acțiune</button>
+        <button class="category" onclick="selectCategory('SF',this)">SF</button>
+        <button class="category" onclick="selectCategory('Comedie',this)">Comedie</button>
+        <button class="category" onclick="selectCategory('Dramă',this)">Dramă</button>
+        <button class="category" onclick="selectCategory('Animație',this)">Animație</button>
+        <button class="category" onclick="selectCategory('Horror',this)">Horror</button>
+    </div>
+
+    <div class="section-title">
+        <h2 id="listTitle">🔥 Filme populare</h2>
+        <span id="movieCount"></span>
+    </div>
+
+    <div class="movie-grid" id="movieGrid"></div>
 
 </main>
 
 <footer>
-    CashZone © 2026 · Proiect demonstrativ
+    MOVIEFINDER © 2026 | Creat pentru iubitorii de filme 🍿
 </footer>
 
-<script>
-const KEY = "cashzone_demo";
+<div class="modal" id="modal" onclick="closeOutside(event)">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeModal()">×</button>
+        <img id="modalImage" src="" alt="Poster film">
+        <div class="modal-content">
+            <h2 id="modalTitle"></h2>
+            <div class="modal-rating" id="modalRating"></div>
+            <p id="modalDescription"></p>
+            <p id="modalMeta"></p>
+            <button class="primary-btn" onclick="toggleModalFavorite()" id="modalFavorite">
+                ❤️ Adaugă la favorite
+            </button>
+        </div>
+    </div>
+</div>
 
-let data = {
-    points: 0,
-    completed: [],
-    history: []
-};
+<script>
+const movies = [
+    {
+        id: 1,
+        title: "Inception",
+        year: 2010,
+        category: "SF",
+        rating: 8.8,
+        duration: "148 min",
+        image: "https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
+        description: "Un hoț specializat în extragerea secretelor din vise primește o misiune aproape imposibilă: să planteze o idee în mintea unei persoane."
+    },
+    {
+        id: 2,
+        title: "Interstellar",
+        year: 2014,
+        category: "SF",
+        rating: 8.7,
+        duration: "169 min",
+        image: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+        description: "Un grup de exploratori călătorește dincolo de galaxia noastră pentru a găsi un viitor pentru omenire."
+    },
+    {
+        id: 3,
+        title: "The Dark Knight",
+        year: 2008,
+        category: "Acțiune",
+        rating: 9.0,
+        duration: "152 min",
+        image: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+        description: "Batman încearcă să protejeze Gotham de o nouă amenințare care pune la încercare limitele orașului."
+    },
+    {
+        id: 4,
+        title: "Joker",
+        year: 2019,
+        category: "Dramă",
+        rating: 8.4,
+        duration: "122 min",
+        image: "https://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
+        description: "Povestea unui om singuratic care ajunge să devină una dintre cele mai cunoscute figuri din Gotham."
+    },
+    {
+        id: 5,
+        title: "Avengers: Endgame",
+        year: 2019,
+        category: "Acțiune",
+        rating: 8.4,
+        duration: "181 min",
+        image: "https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+        description: "Rămași fără speranță, eroii trebuie să găsească o cale de a repara ceea ce s-a întâmplat."
+    },
+    {
+        id: 6,
+        title: "Toy Story",
+        year: 1995,
+        category: "Animație",
+        rating: 8.3,
+        duration: "81 min",
+        image: "https://image.tmdb.org/t/p/w500/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg",
+        description: "Jucăriile prind viață atunci când oamenii nu sunt prin preajmă și trăiesc aventuri neașteptate."
+    },
+    {
+        id: 7,
+        title: "The Hangover",
+        year: 2009,
+        category: "Comedie",
+        rating: 7.7,
+        duration: "100 min",
+        image: "https://image.tmdb.org/t/p/w500/A0uS9rHR56FeBtpjVki16M5xxSW.jpg",
+        description: "După o petrecere de neuitat, trei prieteni încearcă să afle ce s-a întâmplat în noaptea precedentă."
+    },
+    {
+        id: 8,
+        title: "The Conjuring",
+        year: 2013,
+        category: "Horror",
+        rating: 7.5,
+        duration: "112 min",
+        image: "https://image.tmdb.org/t/p/w500/wVYREutTvI2tmxr6ujrHT704wGF.jpg",
+        description: "Doi investigatori paranormali încearcă să ajute o familie care se confruntă cu evenimente inexplicabile."
+    },
+    {
+        id: 9,
+        title: "Forrest Gump",
+        year: 1994,
+        category: "Dramă",
+        rating: 8.8,
+        duration: "142 min",
+        image: "https://image.tmdb.org/t/p/w500/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg",
+        description: "Un om cu o perspectivă specială asupra vieții ajunge să fie martorul unor momente importante din istorie."
+    },
+    {
+        id: 10,
+        title: "Spider-Man: No Way Home",
+        year: 2021,
+        category: "Acțiune",
+        rating: 8.2,
+        duration: "148 min",
+        image: "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
+        description: "Peter Parker cere ajutorul pentru a-și recăpăta viața privată, dar lucrurile devin complicate."
+    },
+    {
+        id: 11,
+        title: "Coco",
+        year: 2017,
+        category: "Animație",
+        rating: 8.4,
+        duration: "105 min",
+        image: "https://image.tmdb.org/t/p/w500/gGEsBPAijhVUFoiNpgZXqRVWJt2.jpg",
+        description: "Un băiat pasionat de muzică pornește într-o aventură extraordinară într-o lume misterioasă."
+    },
+    {
+        id: 12,
+        title: "The Matrix",
+        year: 1999,
+        category: "SF",
+        rating: 8.7,
+        duration: "136 min",
+        image: "https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
+        description: "Un programator descoperă că realitatea pe care o cunoaște nu este ceea ce pare."
+    }
+];
+
+let activeCategory = "Toate";
+let favorites = [];
+let favoritesOnly = false;
+let selectedMovie = null;
 
 try {
-    const saved = localStorage.getItem(KEY);
-    if (saved) {
-        const parsed = JSON.parse(saved);
-        if (
-            parsed &&
-            Number.isFinite(parsed.points) &&
-            Array.isArray(parsed.completed) &&
-            Array.isArray(parsed.history)
-        ) {
-            data = parsed;
-        }
-    }
+    const saved = JSON.parse(localStorage.getItem("movieFinderFavorites") || "[]");
+    if (Array.isArray(saved)) favorites = saved;
 } catch (error) {
-    console.log("Nu s-au putut încărca datele.");
+    favorites = [];
 }
 
-const tasks = {
-    daily: {
-        name: "Provocarea zilei",
-        points: 100
-    },
-    goal: {
-        name: "Obiectiv personal",
-        points: 50
-    }
-};
-
-function save() {
-    localStorage.setItem(KEY, JSON.stringify(data));
+function saveFavorites() {
+    localStorage.setItem("movieFinderFavorites", JSON.stringify(favorites));
 }
 
-function completeTask(id) {
-    if (data.completed.includes(id)) {
-        alert("Ai completat deja această activitate!");
-        return;
-    }
+function renderMovies() {
+    const grid = document.getElementById("movieGrid");
+    const search = document.getElementById("search").value.toLowerCase();
 
-    const task = tasks[id];
+    let filtered = movies.filter(movie => {
+        const matchesSearch = movie.title.toLowerCase().includes(search);
+        const matchesCategory =
+            activeCategory === "Toate" || movie.category === activeCategory;
+        const matchesFavorites =
+            !favoritesOnly || favorites.includes(movie.id);
 
-    data.points += task.points;
-    data.completed.push(id);
-
-    data.history.unshift({
-        name: task.name,
-        points: task.points,
-        date: new Date().toLocaleDateString("ro-RO")
+        return matchesSearch && matchesCategory && matchesFavorites;
     });
 
-    save();
-    render();
+    document.getElementById("movieCount").textContent =
+        filtered.length + " filme";
 
-    alert("Felicitări! Ai primit " + task.points + " puncte demonstrative.");
-}
-
-function startQuiz() {
-    const answer = prompt(
-        "Quiz: Care este capitala României?\nA. Cluj-Napoca\nB. București\nC. Timișoara"
-    );
-
-    if (answer === null) return;
-
-    if (data.completed.includes("quiz")) {
-        alert("Ai completat deja quiz-ul!");
+    if (filtered.length === 0) {
+        grid.innerHTML = '<div class="empty">Nu am găsit filme. Încearcă altă căutare.</div>';
         return;
     }
 
-    if (answer.trim().toLowerCase() === "b") {
-        data.points += 150;
-        data.completed.push("quiz");
-
-        data.history.unshift({
-            name: "Quiz rapid",
-            points: 150,
-            date: new Date().toLocaleDateString("ro-RO")
-        });
-
-        save();
-        render();
-        alert("Răspuns corect! +150 puncte demonstrative.");
-    } else {
-        alert("Răspuns greșit. Mai încearcă data viitoare!");
-    }
-}
-
-function render() {
-    document.getElementById("balance").textContent =
-        data.points.toLocaleString("ro-RO") + " puncte";
-
-    for (const id of Object.keys(tasks)) {
-        const button = document.getElementById(id);
-        if (button) {
-            button.disabled = data.completed.includes(id);
-            button.textContent = button.disabled
-                ? "Finalizat ✓"
-                : id === "daily" ? "Participă" : "Finalizează";
-        }
-    }
-
-    const quizButton = document.querySelector(
-        'button[onclick="startQuiz()"]'
-    );
-
-    if (quizButton) {
-        quizButton.disabled = data.completed.includes("quiz");
-        quizButton.textContent = quizButton.disabled
-            ? "Finalizat ✓"
-            : "Începe quiz-ul";
-    }
-
-    const history = document.getElementById("history");
-
-    if (data.history.length === 0) {
-        history.innerHTML =
-            '<div class="empty">Nu ai completat încă nicio activitate.</div>';
-        return;
-    }
-
-    history.innerHTML = data.history.map(item => `
-        <div class="history-item">
-            <div>
-                <strong>${escapeHTML(item.name)}</strong><br>
-                <small>${escapeHTML(item.date)}</small>
+    grid.innerHTML = filtered.map(movie => `
+        <article class="movie-card" onclick="openModal(${movie.id})">
+            <div class="poster">
+                <img
+                    src="${movie.image}"
+                    alt="${movie.title}"
+                    loading="lazy"
+                    onerror="this.src='https://placehold.co/500x700/11172a/00e5ff?text=MovieFinder'"
+                >
+                <div class="rating">⭐ ${movie.rating}</div>
+                <button
+                    class="favorite ${favorites.includes(movie.id) ? "active" : ""}"
+                    onclick="toggleFavorite(event, ${movie.id})"
+                    aria-label="Adaugă la favorite"
+                >♥</button>
             </div>
-            <span class="green">+${Number(item.points)} puncte</span>
-        </div>
+            <div class="movie-info">
+                <h3>${movie.title}</h3>
+                <div class="movie-meta">
+                    <span>${movie.year}</span>
+                    <span>${movie.category}</span>
+                    <span>${movie.duration}</span>
+                </div>
+                <p>⭐ ${movie.rating} / 10</p>
+            </div>
+        </article>
     `).join("");
 }
 
-function escapeHTML(value) {
-    return String(value).replace(/[&<>"']/g, character => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#039;"
-    })[character]);
+function selectCategory(category, button) {
+    activeCategory = category;
+    favoritesOnly = false;
+
+    document.querySelectorAll(".category").forEach(item => {
+        item.classList.remove("active");
+    });
+
+    button.classList.add("active");
+    document.getElementById("listTitle").textContent =
+        category === "Toate" ? "🔥 Filme populare" : "🎬 " + category;
+
+    renderMovies();
 }
 
-render();
+function showFavorites(event) {
+    event.preventDefault();
+    favoritesOnly = true;
+    activeCategory = "Toate";
+
+    document.querySelectorAll(".category").forEach(item => {
+        item.classList.remove("active");
+    });
+
+    document.getElementById("listTitle").textContent = "❤️ Filme favorite";
+    renderMovies();
+
+    document.getElementById("movies").scrollIntoView({behavior: "smooth"});
+}
+
+function showAll(event) {
+    event.preventDefault();
+    favoritesOnly = false;
+    activeCategory = "Toate";
+    document.getElementById("search").value = "";
+
+    document.querySelectorAll(".category").forEach(item => {
+        item.classList.toggle(
+            "active",
+            item.textContent.trim() === "Toate"
+        );
+    });
+
+    document.getElementById("listTitle").textContent = "🔥 Filme populare";
+    renderMovies();
+}
+
+function toggleFavorite(event, id) {
+    event.stopPropagation();
+
+    if (favorites.includes(id)) {
+        favorites = favorites.filter(item => item !== id);
+    } else {
+        favorites.push(id);
+    }
+
+    saveFavorites();
+    renderMovies();
+}
+
+function openModal(id) {
+    selectedMovie = movies.find(movie => movie.id === id);
+
+    if (!selectedMovie) return;
+
+    document.getElementById("modalImage").src = selectedMovie.image;
+    document.getElementById("modalTitle").textContent = selectedMovie.title;
+    document.getElementById("modalRating").textContent =
+        "⭐ " + selectedMovie.rating + " / 10";
+    document.getElementById("modalDescription").textContent =
+        selectedMovie.description;
+    document.getElementById("modalMeta").textContent =
+        selectedMovie.year + " · " +
+        selectedMovie.category + " · " +
+        selectedMovie.duration;
+
+    updateModalFavorite();
+
+    document.getElementById("modal").classList.add("show");
+}
+
+function updateModalFavorite() {
+    const button = document.getElementById("modalFavorite");
+
+    button.textContent = favorites.includes(selectedMovie.id)
+        ? "❤️ Elimină din favorite"
+        : "❤️ Adaugă la favorite";
+}
+
+function toggleModalFavorite() {
+    if (!selectedMovie) return;
+
+    const id = selectedMovie.id;
+
+    if (favorites.includes(id)) {
+        favorites = favorites.filter(item => item !== id);
+    } else {
+        favorites.push(id);
+    }
+
+    saveFavorites();
+    updateModalFavorite();
+    renderMovies();
+}
+
+function closeModal() {
+    document.getElementById("modal").classList.remove("show");
+}
+
+function closeOutside(event) {
+    if (event.target.id === "modal") {
+        closeModal();
+    }
+}
+
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape") closeModal();
+});
+
+renderMovies();
 </script>
 
 </body>
