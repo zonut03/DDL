@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STYLEHUB | Fashion Store</title>
+<title>STYLEHUB | Premium Fashion</title>
 
 <style>
 * {
@@ -15,56 +15,60 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #f5f5f5;
+    background: #f5f5f3;
     color: #171717;
 }
 
 header {
     background: #111;
     color: white;
-    padding: 25px 7%;
+    padding: 22px 7%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 5;
 }
 
 .logo {
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 27px;
+    font-weight: 900;
     letter-spacing: 2px;
 }
 
 .logo span {
-    color: #c5f36a;
+    color: #c6f36a;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    margin-left: 25px;
-    font-size: 14px;
+    margin-left: 20px;
+    font-size: 12px;
 }
 
 .hero {
-    background: #dce2d6;
-    padding: 85px 8%;
+    background: #d9ded4;
+    padding: 85px 20px;
     text-align: center;
 }
 
 .hero h1 {
     font-size: 55px;
-    margin-bottom: 15px;
+    letter-spacing: -3px;
+    margin: 15px 0;
 }
 
 .hero p {
-    margin-bottom: 25px;
+    margin: 15px 0 25px;
     color: #555;
 }
 
-.hero a {
+.btn {
     background: #111;
     color: white;
-    padding: 15px 30px;
+    padding: 14px 25px;
     text-decoration: none;
     display: inline-block;
 }
@@ -75,15 +79,15 @@ nav a {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 15px;
+    font-size: 17px;
     font-weight: bold;
-    font-size: 20px;
 }
 
 h2 {
     text-align: center;
     margin: 45px 0 25px;
-    font-size: 30px;
+    font-size: 29px;
 }
 
 .filters {
@@ -91,7 +95,7 @@ h2 {
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
-    padding: 10px 20px 25px;
+    padding: 0 15px 25px;
 }
 
 input, select {
@@ -101,16 +105,16 @@ input, select {
 }
 
 .products {
-    padding: 10px 7% 60px;
+    padding: 0 6% 60px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 18px;
 }
 
 .card {
     background: white;
     cursor: pointer;
-    transition: .3s;
+    transition: .25s;
 }
 
 .card:hover {
@@ -127,20 +131,26 @@ input, select {
     padding: 15px;
 }
 
-.info h3 {
-    margin: 8px 0;
-    font-size: 16px;
+.info .brand {
+    font-size: 11px;
+    color: #888;
+    letter-spacing: 1px;
 }
 
-.info p {
-    color: #777;
-    font-size: 13px;
-    margin-bottom: 8px;
+.info h3 {
+    font-size: 15px;
+    margin: 9px 0;
 }
 
 .price {
     font-weight: bold;
-    color: #111 !important;
+    margin-top: 10px;
+}
+
+.tag {
+    font-size: 10px;
+    color: #777;
+    margin-top: 8px;
 }
 
 .modal {
@@ -148,49 +158,51 @@ input, select {
     position: fixed;
     inset: 0;
     background: #000b;
+    z-index: 10;
     justify-content: center;
     align-items: center;
     padding: 15px;
-    z-index: 10;
 }
 
 .modal-content {
     background: white;
-    padding: 30px;
-    width: 400px;
+    width: 420px;
     max-width: 100%;
+    padding: 25px;
     position: relative;
     text-align: center;
+    max-height: 90vh;
+    overflow: auto;
 }
 
 .modal-content img {
     width: 100%;
-    height: 230px;
+    height: 250px;
     object-fit: cover;
 }
 
 .close {
     position: absolute;
-    right: 15px;
-    top: 10px;
-    border: none;
-    background: white;
+    right: 12px;
+    top: 8px;
     font-size: 25px;
+    background: white;
+    border: 0;
     cursor: pointer;
 }
 
 .sizes {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 8px;
     margin: 20px 0;
 }
 
 .sizes button {
-    padding: 12px;
-    border: 1px solid #ccc;
+    padding: 11px 14px;
     background: white;
+    border: 1px solid #ccc;
     cursor: pointer;
 }
 
@@ -213,11 +225,23 @@ input, select {
     pointer-events: none;
 }
 
+.description {
+    font-size: 12px;
+    color: #777;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
 footer {
     background: #111;
     color: white;
     text-align: center;
     padding: 35px;
+}
+
+footer p {
+    margin-top: 10px;
+    color: #aaa;
 }
 
 @media(max-width: 850px) {
@@ -229,11 +253,11 @@ footer {
 @media(max-width: 500px) {
     header {
         flex-direction: column;
-        gap: 18px;
+        gap: 15px;
     }
 
     nav a {
-        margin: 0 8px;
+        margin: 0 7px;
     }
 
     .hero h1 {
@@ -241,7 +265,7 @@ footer {
     }
 
     .products {
-        padding: 10px 4% 40px;
+        padding: 0 4% 40px;
         gap: 10px;
     }
 
@@ -256,197 +280,299 @@ footer {
 
 <header>
     <div class="logo">STYLE<span>HUB</span></div>
+
     <nav>
         <a href="#home">HOME</a>
-        <a href="#produse">HAINE</a>
+        <a href="#produse">CLOTHING</a>
         <a href="#produse">SNEAKERS</a>
     </nav>
 </header>
 
 <section class="hero" id="home">
-    <h1>FIND YOUR STYLE.</h1>
-    <p>Discover the latest fashion and sneakers.</p>
-    <a href="#produse">SHOP NOW</a>
+    <p>PREMIUM FASHION COLLECTION</p>
+
+    <h1>YOUR STYLE.<br>YOUR RULES.</h1>
+
+    <p>Discover sneakers, luxury brands and everyday essentials.</p>
+
+    <a href="#produse" class="btn">EXPLORE COLLECTION</a>
 </section>
 
 <div class="brands">
     <span>NIKE</span>
     <span>ADIDAS</span>
+    <span>H&M</span>
     <span>ZARA</span>
+    <span>BALENCIAGA</span>
+    <span>LOUIS VUITTON</span>
     <span>PUMA</span>
     <span>LEVI'S</span>
-    <span>H&M</span>
 </div>
 
-<h2 id="produse">OUR COLLECTION</h2>
+<h2 id="produse">SHOP THE COLLECTION</h2>
 
 <div class="filters">
-    <input id="search" placeholder="Caută un produs...">
+
+    <input id="search" placeholder="Search products...">
 
     <select id="category">
-        <option value="all">Toate produsele</option>
-        <option value="Haine">Haine</option>
+        <option value="all">All categories</option>
         <option value="Sneakers">Sneakers</option>
+        <option value="Haine">Clothing</option>
     </select>
 
     <select id="brand">
-        <option value="all">Toate brandurile</option>
+        <option value="all">All brands</option>
         <option>Nike</option>
         <option>Adidas</option>
+        <option>H&M</option>
         <option>Zara</option>
+        <option>Balenciaga</option>
+        <option>Louis Vuitton</option>
         <option>Puma</option>
         <option>Levi's</option>
-        <option>H&M</option>
     </select>
+
+    <select id="sort">
+        <option value="default">Recommended</option>
+        <option value="low">Price: Low to High</option>
+        <option value="high">Price: High to Low</option>
+    </select>
+
 </div>
 
 <div class="products" id="products"></div>
 
 <div class="modal" id="modal">
+
     <div class="modal-content">
+
         <button class="close" onclick="closeModal()">×</button>
-        <img id="modalImage" src="" alt="Produs">
+
+        <img id="modalImage" src="" alt="Product">
+
         <h2 id="modalName"></h2>
+
         <p id="modalPrice"></p>
-        <p>Alege mărimea:</p>
+
+        <p class="description" id="modalDescription"></p>
+
+        <p style="margin-top:20px;font-weight:bold">
+            SELECT SIZE
+        </p>
+
         <div class="sizes" id="sizes"></div>
-        <a id="buy" class="buy disabled" target="_blank" rel="noopener">
-            ALEGE O MĂRIME
+
+        <a id="buy" class="buy disabled"
+           target="_blank" rel="noopener">
+            SELECT A SIZE
         </a>
+
+        <p class="description">
+            You will be redirected to an external product search.
+            Check prices and availability before purchasing.
+        </p>
+
     </div>
+
 </div>
 
 <footer>
     <h2>STYLEHUB</h2>
-    <p>Fashion is a way to express yourself.</p>
-    <p>© 2026 STYLEHUB. All rights reserved.</p>
+    <p>Discover your own fashion identity.</p>
+    <p>© 2026 STYLEHUB</p>
 </footer>
 
 <script>
+
 const products = [
-    {
-        name: "Nike Air Force 1",
-        brand: "Nike",
-        category: "Sneakers",
-        price: 549,
-        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700",
-        sizes: ["36","37","38","39","40","41","42","43","44"]
-    },
-    {
-        name: "Adidas Campus",
-        brand: "Adidas",
-        category: "Sneakers",
-        price: 499,
-        image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=700",
-        sizes: ["36","37","38","39","40","41","42","43"]
-    },
-    {
-        name: "Nike Hoodie",
-        brand: "Nike",
-        category: "Haine",
-        price: 249,
-        image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=700",
-        sizes: ["XS","S","M","L","XL"]
-    },
-    {
-        name: "Zara Jacket",
-        brand: "Zara",
-        category: "Haine",
-        price: 229,
-        image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=700",
-        sizes: ["S","M","L","XL"]
-    },
-    {
-        name: "Puma Suede",
-        brand: "Puma",
-        category: "Sneakers",
-        price: 329,
-        image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=700",
-        sizes: ["36","37","38","39","40","41","42","43"]
-    },
-    {
-        name: "Levi's Jeans",
-        brand: "Levi's",
-        category: "Haine",
-        price: 299,
-        image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=700",
-        sizes: ["28","30","32","34","36"]
-    },
-    {
-        name: "Adidas T-Shirt",
-        brand: "Adidas",
-        category: "Haine",
-        price: 99,
-        image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=700",
-        sizes: ["XS","S","M","L","XL"]
-    },
-    {
-        name: "H&M Sweatshirt",
-        brand: "H&M",
-        category: "Haine",
-        price: 119,
-        image: "https://images.unsplash.com/photo-1578681994506-b8f463449011?w=700",
-        sizes: ["XS","S","M","L","XL"]
-    }
+
+{
+name: "Air Force 1 '07",
+brand: "Nike",
+category: "Sneakers",
+price: 549,
+image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700",
+sizes: ["36","37","38","39","40","41","42","43","44"]
+},
+
+{
+name: "Campus 00s",
+brand: "Adidas",
+category: "Sneakers",
+price: 499,
+image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=700",
+sizes: ["36","37","38","39","40","41","42","43"]
+},
+
+{
+name: "Triple S Sneakers",
+brand: "Balenciaga",
+category: "Sneakers",
+price: 3500,
+image: "https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?w=700",
+sizes: ["36","37","38","39","40","41","42","43"]
+},
+
+{
+name: "Speed Style Sneakers",
+brand: "Balenciaga",
+category: "Sneakers",
+price: 3200,
+image: "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=700",
+sizes: ["36","37","38","39","40","41","42","43"]
+},
+
+{
+name: "LV Trainer Sneakers",
+brand: "Louis Vuitton",
+category: "Sneakers",
+price: 6500,
+image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700",
+sizes: ["36","37","38","39","40","41","42","43"]
+},
+
+{
+name: "Run Away Sneakers",
+brand: "Louis Vuitton",
+category: "Sneakers",
+price: 5200,
+image: "https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?w=700",
+sizes: ["36","37","38","39","40","41","42"]
+},
+
+{
+name: "Classic Hoodie",
+brand: "H&M",
+category: "Haine",
+price: 119,
+image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=700",
+sizes: ["XS","S","M","L","XL"]
+},
+
+{
+name: "Oversized T-Shirt",
+brand: "H&M",
+category: "Haine",
+price: 59,
+image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=700",
+sizes: ["XS","S","M","L","XL"]
+},
+
+{
+name: "Relaxed Jacket",
+brand: "Zara",
+category: "Haine",
+price: 229,
+image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=700",
+sizes: ["S","M","L","XL"]
+},
+
+{
+name: "Suede Classic",
+brand: "Puma",
+category: "Sneakers",
+price: 329,
+image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=700",
+sizes: ["36","37","38","39","40","41","42","43"]
+},
+
+{
+name: "501 Original Jeans",
+brand: "Levi's",
+category: "Haine",
+price: 299,
+image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=700",
+sizes: ["28","30","32","34","36"]
+}
+
 ];
 
 const container = document.getElementById("products");
 
 function displayProducts() {
-    const search = document.getElementById("search").value.toLowerCase();
-    const category = document.getElementById("category").value;
-    const brand = document.getElementById("brand").value;
 
-    const filtered = products.filter(p =>
-        p.name.toLowerCase().includes(search) &&
+    let search = document.getElementById("search").value.toLowerCase();
+    let category = document.getElementById("category").value;
+    let brand = document.getElementById("brand").value;
+    let sort = document.getElementById("sort").value;
+
+    let filtered = products.filter(p =>
+        (p.name + " " + p.brand).toLowerCase().includes(search) &&
         (category === "all" || p.category === category) &&
         (brand === "all" || p.brand === brand)
     );
 
+    if (sort === "low") {
+        filtered.sort((a,b) => a.price - b.price);
+    }
+
+    if (sort === "high") {
+        filtered.sort((a,b) => b.price - a.price);
+    }
+
     container.innerHTML = "";
 
-    filtered.forEach((p) => {
-        const card = document.createElement("div");
+    filtered.forEach(p => {
+
+        let card = document.createElement("div");
         card.className = "card";
 
         card.innerHTML = `
-            <img src="${p.image}" alt="${p.name}">
+            <img src="${p.image}" alt="${p.brand} ${p.name}" loading="lazy">
+
             <div class="info">
-                <p>${p.brand} · ${p.category}</p>
+                <p class="brand">${p.brand}</p>
                 <h3>${p.name}</h3>
-                <p class="price">${p.price} LEI</p>
-                <p>Apasă pentru mărimi →</p>
+                <p class="price">${p.price.toLocaleString("ro-RO")} LEI*</p>
+                <p class="tag">${p.category} · CLICK FOR DETAILS</p>
             </div>
         `;
 
         card.onclick = () => openProduct(p);
+
         container.appendChild(card);
+
     });
 
-    if (!filtered.length) {
-        container.innerHTML = "<p>Nu am găsit produse.</p>";
+    if (filtered.length === 0) {
+        container.innerHTML = "<p>No products found.</p>";
     }
+
 }
 
 function openProduct(p) {
-    document.getElementById("modal").style.display = "flex";
-    document.getElementById("modalImage").src = p.image;
-    document.getElementById("modalName").textContent = p.name;
-    document.getElementById("modalPrice").textContent = p.price + " LEI";
 
-    const sizes = document.getElementById("sizes");
+    document.getElementById("modal").style.display = "flex";
+
+    document.getElementById("modalImage").src = p.image;
+
+    document.getElementById("modalName").textContent =
+        p.name + " - " + p.brand;
+
+    document.getElementById("modalPrice").textContent =
+        p.price.toLocaleString("ro-RO") + " LEI*";
+
+    document.getElementById("modalDescription").textContent =
+        "Alege mărimea și verifică produsul la magazinul extern.";
+
+    let sizes = document.getElementById("sizes");
     sizes.innerHTML = "";
 
-    const buy = document.getElementById("buy");
+    let buy = document.getElementById("buy");
+
     buy.href = "#";
     buy.classList.add("disabled");
-    buy.textContent = "ALEGE O MĂRIME";
+    buy.textContent = "SELECT A SIZE";
 
     p.sizes.forEach(size => {
-        const button = document.createElement("button");
+
+        let button = document.createElement("button");
+
         button.textContent = size;
 
         button.onclick = () => {
+
             sizes.querySelectorAll("button").forEach(b =>
                 b.classList.remove("selected")
             );
@@ -454,374 +580,45 @@ function openProduct(p) {
             button.classList.add("selected");
 
             buy.classList.remove("disabled");
-            buy.textContent = "CAUTĂ PRODUSUL";
 
-            buy.href = "https://www.google.com/search?tbm=shop&q=" +
-                encodeURIComponent(p.brand + " " + p.name + " marimea " + size);
+            buy.textContent = "FIND PRODUCT ONLINE";
+
+            buy.href =
+                "https://www.google.com/search?tbm=shop&q=" +
+                encodeURIComponent(
+                    p.brand + " " + p.name + " size " + size
+                );
+
         };
 
         sizes.appendChild(button);
+
     });
+
 }
 
 function closeModal() {
+
     document.getElementById("modal").style.display = "none";
+
 }
 
-document.getElementById("search").addEventListener("input", displayProducts);
-document.getElementById("category").addEventListener("change", displayProducts);
-document.getElementById("brand").addEventListener("change", displayProducts);
+document.getElementById("search")
+    .addEventListener("input", displayProducts);
+
+document.getElementById("category")
+    .addEventListener("change", displayProducts);
+
+document.getElementById("brand")
+    .addEventListener("change", displayProducts);
+
+document.getElementById("sort")
+    .addEventListener("change", displayProducts);
 
 document.getElementById("modal").addEventListener("click", e => {
-    if (e.target.id === "modal") closeModal();
-});
-
-displayProducts();
-</script>
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STYLEHUB | Premium Fashion</title>
-
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#f5f5f3;color:#171717}
-header{background:#111;color:white;padding:22px 7%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5}
-.logo{font-size:27px;font-weight:900;letter-spacing:2px}
-.logo span{color:#c6f36a}
-nav a{color:white;text-decoration:none;margin-left:20px;font-size:12px}
-.hero{background:#d9ded4;padding:85px 20px;text-align:center}
-.hero h1{font-size:55px;letter-spacing:-3px}
-.hero p{margin:15px 0 25px;color:#555}
-.btn{background:#111;color:white;padding:14px 25px;text-decoration:none;display:inline-block;border:none;cursor:pointer}
-.brands{background:white;padding:25px;display:flex;justify-content:space-around;flex-wrap:wrap;gap:15px;font-size:17px;font-weight:bold}
-h2{text-align:center;margin:45px 0 25px;font-size:29px}
-.filters{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:0 15px 25px}
-input,select{padding:12px;border:1px solid #ddd;background:white}
-.products{padding:0 6% 60px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.card{background:white;cursor:pointer;transition:.25s}
-.card:hover{transform:translateY(-5px)}
-.card img{width:100%;height:260px;object-fit:cover}
-.info{padding:15px}
-.info .brand{font-size:11px;color:#888;letter-spacing:1px}
-.info h3{font-size:15px;margin:9px 0}
-.price{font-weight:bold;margin-top:10px}
-.tag{font-size:10px;color:#777;margin-top:8px}
-.modal{display:none;position:fixed;inset:0;background:#000b;z-index:10;justify-content:center;align-items:center;padding:15px}
-.modal-content{background:white;width:420px;max-width:100%;padding:25px;position:relative;text-align:center;max-height:90vh;overflow:auto}
-.modal-content img{width:100%;height:250px;object-fit:cover}
-.close{position:absolute;right:12px;top:8px;font-size:25px;background:white;border:0;cursor:pointer}
-.sizes{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:20px 0}
-.sizes button{padding:11px 14px;background:white;border:1px solid #ccc;cursor:pointer}
-.sizes button.selected{background:#111;color:white}
-.buy{display:block;background:#111;color:white;padding:15px;text-decoration:none;margin-top:15px}
-.buy.disabled{opacity:.4;pointer-events:none}
-.description{font-size:12px;color:#777;line-height:1.5;margin-top:10px}
-footer{background:#111;color:white;text-align:center;padding:35px}
-@media(max-width:850px){.products{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:500px){
-header{flex-direction:column;gap:15px}
-nav a{margin:0 7px}
-.hero h1{font-size:38px}
-.products{padding:0 4% 40px;gap:10px}
-.card img{height:180px}
-}
-</style>
-</head>
-
-<body>
-
-<header>
-<div class="logo">STYLE<span>HUB</span></div>
-<nav>
-<a href="#home">HOME</a>
-<a href="#produse">CLOTHING</a>
-<a href="#produse">SNEAKERS</a>
-</nav>
-</header>
-
-<section class="hero" id="home">
-<p>PREMIUM FASHION COLLECTION</p>
-<h1>YOUR STYLE.<br>YOUR RULES.</h1>
-<p>Discover sneakers, luxury brands and everyday essentials.</p>
-<a href="#produse" class="btn">EXPLORE COLLECTION</a>
-</section>
-
-<div class="brands">
-<span>NIKE</span>
-<span>ADIDAS</span>
-<span>H&M</span>
-<span>ZARA</span>
-<span>BALENCIAGA</span>
-<span>LOUIS VUITTON</span>
-<span>PUMA</span>
-<span>LEVI'S</span>
-</div>
-
-<h2 id="produse">SHOP THE COLLECTION</h2>
-
-<div class="filters">
-<input id="search" placeholder="Search products...">
-
-<select id="category">
-<option value="all">All categories</option>
-<option value="Sneakers">Sneakers</option>
-<option value="Haine">Clothing</option>
-</select>
-
-<select id="brand">
-<option value="all">All brands</option>
-<option>Nike</option>
-<option>Adidas</option>
-<option>H&M</option>
-<option>Zara</option>
-<option>Balenciaga</option>
-<option>Louis Vuitton</option>
-<option>Puma</option>
-<option>Levi's</option>
-</select>
-
-<select id="sort">
-<option value="default">Recommended</option>
-<option value="low">Price: Low to High</option>
-<option value="high">Price: High to Low</option>
-</select>
-</div>
-
-<div class="products" id="products"></div>
-
-<div class="modal" id="modal">
-<div class="modal-content">
-<button class="close" onclick="closeModal()">×</button>
-<img id="modalImage" src="" alt="Product">
-<h2 id="modalName"></h2>
-<p id="modalPrice"></p>
-<p class="description" id="modalDescription"></p>
-<p style="margin-top:20px;font-weight:bold">SELECT SIZE</p>
-<div class="sizes" id="sizes"></div>
-<a id="buy" class="buy disabled" target="_blank" rel="noopener">SELECT A SIZE</a>
-<p class="description">The button opens an external product search. Prices and availability must be checked with the retailer.</p>
-</div>
-</div>
-
-<footer>
-<h2>STYLEHUB</h2>
-<p>Discover your own fashion identity.</p>
-<p>© 2026 STYLEHUB</p>
-</footer>
-
-<script>
-
-const products = [
-
-{
-name:"Air Force 1 '07",
-brand:"Nike",
-category:"Sneakers",
-price:549,
-image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700",
-sizes:["36","37","38","39","40","41","42","43","44"]
-},
-
-{
-name:"Campus 00s",
-brand:"Adidas",
-category:"Sneakers",
-price:499,
-image:"https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=700",
-sizes:["36","37","38","39","40","41","42","43"]
-},
-
-{
-name:"Triple S Sneakers",
-brand:"Balenciaga",
-category:"Sneakers",
-price:3500,
-image:"https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?w=700",
-sizes:["36","37","38","39","40","41","42","43"],
-description:"Luxury-inspired chunky sneaker style. Verify the exact model with the retailer."
-},
-
-{
-name:"Speed Style Sneakers",
-brand:"Balenciaga",
-category:"Sneakers",
-price:3200,
-image:"https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=700",
-sizes:["36","37","38","39","40","41","42","43"]
-},
-
-{
-name:"LV Trainer Sneakers",
-brand:"Louis Vuitton",
-category:"Sneakers",
-price:6500,
-image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700",
-sizes:["36","37","38","39","40","41","42","43"]
-},
-
-{
-name:"Run Away Sneakers",
-brand:"Louis Vuitton",
-category:"Sneakers",
-price:5200,
-image:"https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?w=700",
-sizes:["36","37","38","39","40","41","42"]
-},
-
-{
-name:"Classic Hoodie",
-brand:"H&M",
-category:"Haine",
-price:119,
-image:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=700",
-sizes:["XS","S","M","L","XL"]
-},
-
-{
-name:"Oversized T-Shirt",
-brand:"H&M",
-category:"Haine",
-price:59,
-image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=700",
-sizes:["XS","S","M","L","XL"]
-},
-
-{
-name:"Relaxed Jacket",
-brand:"Zara",
-category:"Haine",
-price:229,
-image:"https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=700",
-sizes:["S","M","L","XL"]
-},
-
-{
-name:"Suede Classic",
-brand:"Puma",
-category:"Sneakers",
-price:329,
-image:"https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=700",
-sizes:["36","37","38","39","40","41","42","43"]
-},
-
-{
-name:"501 Original Jeans",
-brand:"Levi's",
-category:"Haine",
-price:299,
-image:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=700",
-sizes:["28","30","32","34","36"]
-}
-
-];
-
-const container=document.getElementById("products");
-
-function displayProducts(){
-
-let search=document.getElementById("search").value.toLowerCase();
-let category=document.getElementById("category").value;
-let brand=document.getElementById("brand").value;
-let sort=document.getElementById("sort").value;
-
-let filtered=products.filter(p=>
-(p.name+" "+p.brand).toLowerCase().includes(search)&&
-(category==="all"||p.category===category)&&
-(brand==="all"||p.brand===brand)
-);
-
-if(sort==="low") filtered.sort((a,b)=>a.price-b.price);
-if(sort==="high") filtered.sort((a,b)=>b.price-a.price);
-
-container.innerHTML="";
-
-filtered.forEach(p=>{
-
-let card=document.createElement("div");
-card.className="card";
-
-card.innerHTML=`
-<img src="${p.image}" alt="${p.brand} ${p.name}" loading="lazy">
-<div class="info">
-<p class="brand">${p.brand}</p>
-<h3>${p.name}</h3>
-<p class="price">${p.price.toLocaleString("ro-RO")} LEI*</p>
-<p class="tag">${p.category} · CLICK FOR DETAILS</p>
-</div>
-`;
-
-card.onclick=()=>openProduct(p);
-container.appendChild(card);
-
-});
-
-if(filtered.length===0){
-container.innerHTML="<p>No products found.</p>";
-}
-
-}
-
-function openProduct(p){
-
-document.getElementById("modal").style.display="flex";
-document.getElementById("modalImage").src=p.image;
-document.getElementById("modalName").textContent=p.name+" - "+p.brand;
-document.getElementById("modalPrice").textContent=p.price.toLocaleString("ro-RO")+" LEI*";
-document.getElementById("modalDescription").textContent=
-p.description||"Alege mărimea și verifică produsul la magazinul extern.";
-
-let sizes=document.getElementById("sizes");
-sizes.innerHTML="";
-
-let buy=document.getElementById("buy");
-buy.href="#";
-buy.classList.add("disabled");
-buy.textContent="SELECT A SIZE";
-
-p.sizes.forEach(size=>{
-
-let button=document.createElement("button");
-button.textContent=size;
-
-button.onclick=()=>{
-
-sizes.querySelectorAll("button").forEach(b=>
-b.classList.remove("selected"));
-
-button.classList.add("selected");
-
-buy.classList.remove("disabled");
-buy.textContent="FIND PRODUCT ONLINE";
-
-buy.href="https://www.google.com/search?tbm=shop&q="+
-encodeURIComponent(p.brand+" "+p.name+" size "+size);
-
-};
-
-sizes.appendChild(button);
-
-});
-
-}
-
-function closeModal(){
-document.getElementById("modal").style.display="none";
-}
-
-document.getElementById("search").addEventListener("input",displayProducts);
-document.getElementById("category").addEventListener("change",displayProducts);
-document.getElementById("brand").addEventListener("change",displayProducts);
-document.getElementById("sort").addEventListener("change",displayProducts);
-
-document.getElementById("modal").addEventListener("click",e=>{
-if(e.target.id==="modal") closeModal();
+    if (e.target.id === "modal") {
+        closeModal();
+    }
 });
 
 displayProducts();
