@@ -4,595 +4,250 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="DDL - Birou de proiectare. Arhitectură, design și proiectare.">
-<title>DDL | Birou de proiectare</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>STYLEHUB | Fashion Store</title>
 
 <style>
-:root {
-  --black: #10100f;
-  --panel: #191917;
-  --gold: #c9a66b;
-  --light: #f3eee5;
-  --muted: #aaa69d;
-  --line: rgba(201,166,107,.25);
-}
-
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background: var(--black);
-  color: var(--light);
-  font-family: 'DM Sans', sans-serif;
-  line-height: 1.7;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #171717;
 }
-
-a { color: inherit; text-decoration: none; }
-button, input, textarea, select { font: inherit; }
 
 header {
-  position: fixed;
-  z-index: 100;
-  width: 100%;
-  top: 0;
-  background: rgba(16,16,15,.94);
-  border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(15px);
+    background: #111;
+    color: white;
+    padding: 25px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav {
-  max-width: 1250px;
-  margin: auto;
-  padding: 18px 25px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 
-.brand {
-  color: var(--gold);
-  font-family: 'Playfair Display', serif;
-  font-size: 35px;
-  letter-spacing: 5px;
-  line-height: 1;
+.logo span {
+    color: #c5f36a;
 }
 
-.brand small {
-  display: block;
-  font: 9px 'DM Sans', sans-serif;
-  color: var(--light);
-  letter-spacing: 3px;
-  margin-top: 8px;
-}
-
-.nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 23px;
-  list-style: none;
-}
-
-.nav-menu a {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: #ddd;
-  transition: .3s;
-}
-
-.nav-menu a:hover { color: var(--gold); }
-
-.language {
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  background: transparent;
-  padding: 7px;
-}
-
-.menu-button {
-  display: none;
-  background: transparent;
-  color: var(--gold);
-  border: 0;
-  font-size: 26px;
-  cursor: pointer;
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 14px;
 }
 
 .hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  padding: 150px 8%;
-  background:
-    linear-gradient(90deg, rgba(10,10,9,.96), rgba(10,10,9,.6), rgba(10,10,9,.3)),
-    url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=85') center/cover;
-}
-
-.hero-content {
-  max-width: 760px;
-  position: relative;
-  z-index: 1;
-}
-
-.overline {
-  color: var(--gold);
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  font-size: 11px;
+    background: #dce2d6;
+    padding: 85px 8%;
+    text-align: center;
 }
 
 .hero h1 {
-  font: 500 clamp(55px, 8vw, 105px)/1.05 'Playfair Display', serif;
-  margin: 25px 0;
+    font-size: 55px;
+    margin-bottom: 15px;
 }
-
-.hero h1 span { color: var(--gold); }
 
 .hero p {
-  max-width: 560px;
-  color: #ccc;
-  font-size: 15px;
-  margin-bottom: 35px;
+    margin-bottom: 25px;
+    color: #555;
 }
 
-.button {
-  display: inline-block;
-  padding: 14px 27px;
-  border: 1px solid var(--gold);
-  background: var(--gold);
-  color: #111;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-size: 10px;
-  cursor: pointer;
-  transition: .3s;
+.hero a {
+    background: #111;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    display: inline-block;
 }
 
-.button:hover {
-  background: transparent;
-  color: var(--gold);
+.brands {
+    background: white;
+    padding: 25px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-weight: bold;
+    font-size: 20px;
 }
 
-.button-outline {
-  background: transparent;
-  color: var(--gold);
-  margin-left: 10px;
+h2 {
+    text-align: center;
+    margin: 45px 0 25px;
+    font-size: 30px;
 }
 
-section {
-  padding: 110px 25px;
-  scroll-margin-top: 80px;
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px 20px 25px;
 }
 
-.container {
-  max-width: 1150px;
-  margin: auto;
+input, select {
+    padding: 12px;
+    border: 1px solid #ddd;
+    background: white;
 }
 
-.section-title {
-  margin-bottom: 55px;
+.products {
+    padding: 10px 7% 60px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
 
-.section-title.center { text-align: center; }
-
-.section-title h2 {
-  font: 500 clamp(38px, 5vw, 65px)/1.15 'Playfair Display', serif;
-  margin-top: 12px;
+.card {
+    background: white;
+    cursor: pointer;
+    transition: .3s;
 }
 
-.section-title h2 span { color: var(--gold); }
-
-.section-title p {
-  color: var(--muted);
-  max-width: 600px;
-  margin: 15px auto 0;
-  font-size: 13px;
+.card:hover {
+    transform: translateY(-5px);
 }
 
-.about-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 65px;
-  align-items: center;
+.card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
 }
 
-.about-photo {
-  position: relative;
-  padding: 0 20px 20px 0;
+.info {
+    padding: 15px;
 }
 
-.about-photo:after {
-  content: "";
-  position: absolute;
-  border: 1px solid var(--gold);
-  inset: 20px 0 0 20px;
-  z-index: -1;
+.info h3 {
+    margin: 8px 0;
+    font-size: 16px;
 }
 
-.about-photo img {
-  width: 100%;
-  height: 480px;
-  object-fit: cover;
+.info p {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 8px;
 }
 
-.about-copy h2 {
-  font: 500 48px/1.2 'Playfair Display', serif;
-  margin: 15px 0 25px;
+.price {
+    font-weight: bold;
+    color: #111 !important;
 }
 
-.about-copy h2 span { color: var(--gold); }
-
-.about-copy p {
-  color: var(--muted);
-  margin-bottom: 17px;
-  font-size: 14px;
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #000b;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    z-index: 10;
 }
 
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 15px;
-  margin-top: 35px;
-  padding-top: 25px;
-  border-top: 1px solid var(--line);
+.modal-content {
+    background: white;
+    padding: 30px;
+    width: 400px;
+    max-width: 100%;
+    position: relative;
+    text-align: center;
 }
 
-.stat strong {
-  display: block;
-  color: var(--gold);
-  font: 36px 'Playfair Display', serif;
+.modal-content img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
 }
 
-.stat small {
-  color: var(--muted);
-  font-size: 10px;
-  text-transform: uppercase;
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    border: none;
+    background: white;
+    font-size: 25px;
+    cursor: pointer;
 }
 
-.services, .reviews, .team {
-  background: var(--panel);
+.sizes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 20px 0;
 }
 
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 20px;
+.sizes button {
+    padding: 12px;
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
 }
 
-.service {
-  padding: 38px 30px;
-  border: 1px solid var(--line);
-  transition: .3s;
+.sizes button.selected {
+    background: #111;
+    color: white;
 }
 
-.service:hover {
-  background: #22211d;
-  transform: translateY(-6px);
+.buy {
+    display: block;
+    background: #111;
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+    margin-top: 15px;
 }
 
-.service-number {
-  color: var(--gold);
-  font-size: 12px;
-  letter-spacing: 3px;
-}
-
-.service h3 {
-  font: 26px 'Playfair Display', serif;
-  margin: 25px 0 15px;
-}
-
-.service p {
-  font-size: 13px;
-  color: var(--muted);
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap: 20px;
-}
-
-.project {
-  position: relative;
-  height: 350px;
-  overflow: hidden;
-  background: #222;
-}
-
-.project:first-child {
-  grid-row: span 2;
-  height: 720px;
-}
-
-.project img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: .5s;
-}
-
-.project:hover img { transform: scale(1.05); }
-
-.project-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 35px 25px 25px;
-  background: linear-gradient(transparent,rgba(0,0,0,.9));
-}
-
-.project-caption h3 {
-  font: 27px 'Playfair Display', serif;
-}
-
-.project-caption p {
-  color: var(--gold);
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-/* ECHIPA DDL */
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 25px;
-}
-
-.team-card {
-  text-align: center;
-  padding: 40px 25px;
-  border: 1px solid var(--line);
-  background: #111;
-  transition: .3s;
-}
-
-.team-card:hover {
-  border-color: var(--gold);
-  transform: translateY(-6px);
-}
-
-.avatar {
-  width: 115px;
-  height: 115px;
-  border-radius: 50%;
-  margin: 0 auto 25px;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(145deg,#393124,#171613);
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  font: 43px 'Playfair Display',serif;
-}
-
-.team-card h3 {
-  font: 25px 'Playfair Display',serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 9px;
-}
-
-.team-card p {
-  color: var(--gold);
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-/* RECENZII */
-.review-top {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.review-top strong {
-  display: block;
-  color: var(--gold);
-  font: 60px 'Playfair Display',serif;
-}
-
-.stars {
-  color: var(--gold);
-  letter-spacing: 4px;
-  font-size: 20px;
-}
-
-.review-top p {
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.review-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 20px;
-}
-
-.review-card {
-  background: #111;
-  padding: 30px;
-  border: 1px solid var(--line);
-}
-
-.review-card .quote {
-  color: var(--gold);
-  font: 48px 'Playfair Display',serif;
-  line-height: 1;
-}
-
-.review-card p {
-  color: #ccc;
-  font-size: 13px;
-  margin: 15px 0 25px;
-  overflow-wrap: anywhere;
-}
-
-.review-card h3 {
-  font: 22px 'Playfair Display',serif;
-}
-
-.review-card small {
-  color: #888;
-  font-size: 10px;
-}
-
-.review-form {
-  max-width: 700px;
-  margin: 60px auto 0;
-  border: 1px solid var(--line);
-  padding: 35px;
-}
-
-.review-form h3 {
-  font: 34px 'Playfair Display',serif;
-  text-align: center;
-  margin-bottom: 25px;
-}
-
-.review-form h3 span { color: var(--gold); }
-
-.field {
-  width: 100%;
-  background: #10100f;
-  color: white;
-  border: 1px solid #39372f;
-  padding: 14px;
-  margin-bottom: 15px;
-  outline: none;
-}
-
-.field:focus { border-color: var(--gold); }
-
-.rating-picker {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin: 15px 0 25px;
-}
-
-.rating-picker button {
-  border: none;
-  background: none;
-  font-size: 32px;
-  color: #555;
-  cursor: pointer;
-}
-
-.rating-picker button.active { color: var(--gold); }
-
-.form-note {
-  color: #999;
-  font-size: 11px;
-  margin-top: 15px;
-}
-
-#reviewMessage {
-  margin-top: 15px;
-  color: var(--gold);
-  font-size: 13px;
-}
-
-.contact-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-}
-
-.contact-copy h2 {
-  font: 50px 'Playfair Display',serif;
-  margin: 15px 0;
-}
-
-.contact-copy h2 span { color: var(--gold); }
-
-.contact-copy p { color: var(--muted); }
-
-.contact-item {
-  margin-top: 25px;
-  font-size: 13px;
-  color: var(--muted);
-}
-
-.contact-item strong {
-  display: block;
-  color: var(--gold);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.contact-form {
-  padding: 30px;
-  border: 1px solid var(--line);
+.buy.disabled {
+    opacity: .4;
+    pointer-events: none;
 }
 
 footer {
-  padding: 30px 20px;
-  text-align: center;
-  border-top: 1px solid var(--line);
-  color: #999;
-  font-size: 11px;
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 35px;
 }
 
-footer span { color: var(--gold); }
-
-@media(max-width: 900px) {
-  .nav-menu { gap: 12px; }
-  .nav-menu a { font-size: 9px; }
-  .service-grid, .review-grid, .team-grid {
-    grid-template-columns: repeat(2,1fr);
-  }
+@media(max-width: 850px) {
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-@media(max-width: 700px) {
-  .menu-button { display: block; }
+@media(max-width: 500px) {
+    header {
+        flex-direction: column;
+        gap: 18px;
+    }
 
-  .nav-menu {
-    display: none;
-    position: absolute;
-    top: 75px;
-    left: 0;
-    width: 100%;
-    padding: 25px;
-    background: #10100f;
-    flex-direction: column;
-    align-items: flex-start;
-  }
+    nav a {
+        margin: 0 8px;
+    }
 
-  .nav-menu.open { display: flex; }
+    .hero h1 {
+        font-size: 38px;
+    }
 
-  .about-layout, .contact-layout, .projects-grid {
-    grid-template-columns: 1fr;
-  }
+    .products {
+        padding: 10px 4% 40px;
+        gap: 10px;
+    }
 
-  .about-photo img { height: 320px; }
-
-  .service-grid, .review-grid, .team-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .project:first-child {
-    grid-row: auto;
-    height: 350px;
-  }
-
-  section { padding: 75px 20px; }
-  .hero { padding: 140px 25px 80px; }
-  .stats { gap: 8px; }
-  .stat strong { font-size: 28px; }
-  .review-form { padding: 22px; }
+    .card img {
+        height: 180px;
+    }
 }
 </style>
 </head>
@@ -600,765 +255,229 @@ footer span { color: var(--gold); }
 <body>
 
 <header>
-<nav>
-  <a class="brand" href="#home">DDL<small>DESIGN & ARCHITECTURE</small></a>
-
-  <button class="menu-button" id="menuButton" aria-label="Deschide meniul">☰</button>
-
-  <ul class="nav-menu" id="navMenu">
-    <li><a href="#home">Acasă</a></li>
-    <li><a href="#about">Despre</a></li>
-    <li><a href="#services">Servicii</a></li>
-    <li><a href="#projects">Proiecte</a></li>
-    <li><a href="#team">Echipă</a></li>
-    <li><a href="#reviews">Recenzii</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li>
-      <select class="language" id="language" aria-label="Selectează limba">
-        <option value="ro">RO</option>
-        <option value="en">EN</option>
-      </select>
-    </li>
-  </ul>
-</nav>
+    <div class="logo">STYLE<span>HUB</span></div>
+    <nav>
+        <a href="#home">HOME</a>
+        <a href="#produse">HAINE</a>
+        <a href="#produse">SNEAKERS</a>
+    </nav>
 </header>
 
-<main>
-
 <section class="hero" id="home">
-  <div class="hero-content">
-    <div class="overline">DDL · Birou de proiectare</div>
-    <h1>Arta de a crea.<br><span>Viziunea de a construi.</span></h1>
-    <p>Dezvoltăm proiecte în care arhitectura, funcționalitatea și estetica se întâlnesc într-o singură viziune.</p>
-    <a href="#contact" class="button">Discută cu noi</a>
-    <a href="#projects" class="button button-outline">Vezi proiectele</a>
-  </div>
+    <h1>FIND YOUR STYLE.</h1>
+    <p>Discover the latest fashion and sneakers.</p>
+    <a href="#produse">SHOP NOW</a>
 </section>
 
-<section id="about">
-  <div class="container about-layout">
-    <div class="about-photo">
-      <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1100&q=85" alt="Arhitectură și design interior">
+<div class="brands">
+    <span>NIKE</span>
+    <span>ADIDAS</span>
+    <span>ZARA</span>
+    <span>PUMA</span>
+    <span>LEVI'S</span>
+    <span>H&M</span>
+</div>
+
+<h2 id="produse">OUR COLLECTION</h2>
+
+<div class="filters">
+    <input id="search" placeholder="Caută un produs...">
+
+    <select id="category">
+        <option value="all">Toate produsele</option>
+        <option value="Haine">Haine</option>
+        <option value="Sneakers">Sneakers</option>
+    </select>
+
+    <select id="brand">
+        <option value="all">Toate brandurile</option>
+        <option>Nike</option>
+        <option>Adidas</option>
+        <option>Zara</option>
+        <option>Puma</option>
+        <option>Levi's</option>
+        <option>H&M</option>
+    </select>
+</div>
+
+<div class="products" id="products"></div>
+
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <button class="close" onclick="closeModal()">×</button>
+        <img id="modalImage" src="" alt="Produs">
+        <h2 id="modalName"></h2>
+        <p id="modalPrice"></p>
+        <p>Alege mărimea:</p>
+        <div class="sizes" id="sizes"></div>
+        <a id="buy" class="buy disabled" target="_blank" rel="noopener">
+            ALEGE O MĂRIME
+        </a>
     </div>
-
-    <div class="about-copy">
-      <div class="overline">Povestea noastră</div>
-      <h2>Mai mult decât un proiect. <span>O viziune.</span></h2>
-      <p>Credem că fiecare spațiu merită o abordare atentă, creativă și adaptată oamenilor care îl folosesc.</p>
-      <p>La DDL urmărim echilibrul dintre estetică, funcționalitate și soluții tehnice bine gândite.</p>
-
-      <div class="stats">
-        <div class="stat"><strong>01</strong><small>Creativitate</small></div>
-        <div class="stat"><strong>02</strong><small>Precizie</small></div>
-        <div class="stat"><strong>03</strong><small>Calitate</small></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="services" id="services">
-  <div class="container">
-    <div class="section-title center">
-      <div class="overline">Expertiză</div>
-      <h2>Ce putem <span>realiza</span></h2>
-      <p>Servicii dezvoltate în jurul ideilor și nevoilor fiecărui client.</p>
-    </div>
-
-    <div class="service-grid">
-      <article class="service">
-        <div class="service-number">01 — ARCHITECTURE</div>
-        <h3>Arhitectură</h3>
-        <p>Concepte și proiecte arhitecturale pentru spații contemporane și funcționale.</p>
-      </article>
-
-      <article class="service">
-        <div class="service-number">02 — INTERIOR</div>
-        <h3>Design interior</h3>
-        <p>Amenajări echilibrate, materiale atent alese și identitate vizuală.</p>
-      </article>
-
-      <article class="service">
-        <div class="service-number">03 — TECHNICAL</div>
-        <h3>Proiectare tehnică</h3>
-        <p>Soluții și documentații tehnice adaptate cerințelor proiectului.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="container">
-    <div class="section-title center">
-      <div class="overline">Selecție de lucrări</div>
-      <h2>Proiecte cu <span>personalitate</span></h2>
-      <p>Imagini demonstrative. Înlocuiește-le cu fotografiile proiectelor DDL.</p>
-    </div>
-
-    <div class="projects-grid">
-      <article class="project">
-        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85" alt="Proiect rezidențial">
-        <div class="project-caption">
-          <h3>Residence Concept</h3>
-          <p>Arhitectură rezidențială</p>
-        </div>
-      </article>
-
-      <article class="project">
-        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85" alt="Design interior">
-        <div class="project-caption">
-          <h3>Modern Living</h3>
-          <p>Design interior</p>
-        </div>
-      </article>
-
-      <article class="project">
-        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85" alt="Amenajare contemporană">
-        <div class="project-caption">
-          <h3>Contemporary Space</h3>
-          <p>Concept și proiectare</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ECHIPA DDL - NUME SI FUNCTII ACTUALIZATE -->
-<section class="team" id="team">
-  <div class="container">
-    <div class="section-title center">
-      <div class="overline">Oamenii din spatele ideilor</div>
-      <h2>Echipa <span>DDL</span></h2>
-      <p>Profesionalism, creativitate și atenție la fiecare detaliu.</p>
-    </div>
-
-    <div class="team-grid">
-
-      <article class="team-card">
-        <div class="avatar">DD</div>
-        <h3>DAN DOMȘA</h3>
-        <p>ARHITECT</p>
-      </article>
-
-      <article class="team-card">
-        <div class="avatar">LD</div>
-        <h3>LUCIA DOMȘA</h3>
-        <p>INGINER CONSTRUCTOR</p>
-      </article>
-
-      <article class="team-card">
-        <div class="avatar">CC</div>
-        <h3>COSMIN CÂRLUGEA</h3>
-        <p>ARHITECT</p>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<section class="reviews" id="reviews">
-  <div class="container">
-    <div class="section-title center">
-      <div class="overline">Experiențe reale</div>
-      <h2>Recenzii și <span>testimoniale</span></h2>
-      <p>Părerile clienților sunt importante pentru noi.</p>
-    </div>
-
-    <div class="review-top">
-      <strong id="averageRating">—</strong>
-      <div class="stars" id="averageStars">☆☆☆☆☆</div>
-      <p id="reviewCount">Nu există încă recenzii.</p>
-    </div>
-
-    <div class="review-grid" id="reviewList"></div>
-
-    <form class="review-form" id="reviewForm">
-      <h3>Lasă o <span>recenzie</span></h3>
-
-      <input class="field" id="reviewName" type="text" maxlength="50" placeholder="Numele tău" required>
-
-      <label for="ratingPicker">Evaluarea ta:</label>
-      <div class="rating-picker" id="ratingPicker">
-        <button type="button" data-rating="1" aria-label="1 stea">★</button>
-        <button type="button" data-rating="2" aria-label="2 stele">★</button>
-        <button type="button" data-rating="3" aria-label="3 stele">★</button>
-        <button type="button" data-rating="4" aria-label="4 stele">★</button>
-        <button type="button" data-rating="5" aria-label="5 stele">★</button>
-      </div>
-
-      <textarea class="field" id="reviewText" rows="5" maxlength="1000" placeholder="Scrie experiența ta..." required></textarea>
-
-      <button class="button" type="submit">Trimite recenzia</button>
-      <p class="form-note">Recenziile sunt salvate local în browserul tău. Pentru publicarea lor tuturor vizitatorilor este necesară o bază de date.</p>
-      <p id="reviewMessage" role="status" aria-live="polite"></p>
-    </form>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="container contact-layout">
-    <div class="contact-copy">
-      <div class="overline">Următorul pas</div>
-      <h2>Hai să creăm ceva <span>remarcabil.</span></h2>
-      <p>Povestește-ne despre ideea ta și hai să discutăm despre următorul proiect.</p>
-
-      <div class="contact-item">
-        <strong>Email</strong>
-        <a href="mailto:contact@ddl.ro">contact@ddl.ro</a>
-      </div>
-
-      <div class="contact-item">
-        <strong>Telefon</strong>
-        <a href="tel:+40700000000">+40 700 000 000</a>
-      </div>
-
-      <div class="contact-item">
-        <strong>Locație</strong>
-        România
-      </div>
-    </div>
-
-    <form class="contact-form" id="contactForm">
-      <input class="field" id="contactName" type="text" placeholder="Numele tău" required>
-      <input class="field" id="contactEmail" type="email" placeholder="Adresa de email" required>
-      <input class="field" id="contactSubject" type="text" placeholder="Subiectul proiectului">
-      <textarea class="field" id="contactMessage" rows="5" placeholder="Descrie proiectul tău..." required></textarea>
-      <button type="submit" class="button">Trimite mesajul</button>
-    </form>
-  </div>
-</section>
-
-</main>
+</div>
 
 <footer>
-  <p>© <span id="year"></span> <span>DDL</span> — Design & Architecture. Toate drepturile rezervate.</p>
+    <h2>STYLEHUB</h2>
+    <p>Fashion is a way to express yourself.</p>
+    <p>© 2026 STYLEHUB. All rights reserved.</p>
 </footer>
 
 <script>
-const menuButton = document.getElementById('menuButton');
-const navMenu = document.getElementById('navMenu');
-
-menuButton.addEventListener('click', () => {
-  navMenu.classList.toggle('open');
-});
-
-navMenu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => navMenu.classList.remove('open'));
-});
-
-document.getElementById('year').textContent = new Date().getFullYear();
-
-// FILTRU PENTRU CUVINTE NEPOTRIVITE
-// Adaugă termenii pe care dorești să îi filtrezi.
-const blockedWords = [
-  'cuvantvulgar1',
-  'cuvantvulgar2',
-  'cuvantvulgar3'
+const products = [
+    {
+        name: "Nike Air Force 1",
+        brand: "Nike",
+        category: "Sneakers",
+        price: 549,
+        image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700",
+        sizes: ["36","37","38","39","40","41","42","43","44"]
+    },
+    {
+        name: "Adidas Campus",
+        brand: "Adidas",
+        category: "Sneakers",
+        price: 499,
+        image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=700",
+        sizes: ["36","37","38","39","40","41","42","43"]
+    },
+    {
+        name: "Nike Hoodie",
+        brand: "Nike",
+        category: "Haine",
+        price: 249,
+        image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=700",
+        sizes: ["XS","S","M","L","XL"]
+    },
+    {
+        name: "Zara Jacket",
+        brand: "Zara",
+        category: "Haine",
+        price: 229,
+        image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=700",
+        sizes: ["S","M","L","XL"]
+    },
+    {
+        name: "Puma Suede",
+        brand: "Puma",
+        category: "Sneakers",
+        price: 329,
+        image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=700",
+        sizes: ["36","37","38","39","40","41","42","43"]
+    },
+    {
+        name: "Levi's Jeans",
+        brand: "Levi's",
+        category: "Haine",
+        price: 299,
+        image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=700",
+        sizes: ["28","30","32","34","36"]
+    },
+    {
+        name: "Adidas T-Shirt",
+        brand: "Adidas",
+        category: "Haine",
+        price: 99,
+        image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=700",
+        sizes: ["XS","S","M","L","XL"]
+    },
+    {
+        name: "H&M Sweatshirt",
+        brand: "H&M",
+        category: "Haine",
+        price: 119,
+        image: "https://images.unsplash.com/photo-1578681994506-b8f463449011?w=700",
+        sizes: ["XS","S","M","L","XL"]
+    }
 ];
 
-function censorText(text) {
-  let result = text;
+const container = document.getElementById("products");
 
-  blockedWords.forEach(word => {
-    const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const regex = new RegExp(escaped, 'gi');
-    result = result.replace(regex, match => '*'.repeat(match.length));
-  });
+function displayProducts() {
+    const search = document.getElementById("search").value.toLowerCase();
+    const category = document.getElementById("category").value;
+    const brand = document.getElementById("brand").value;
 
-  return result;
-}
+    const filtered = products.filter(p =>
+        p.name.toLowerCase().includes(search) &&
+        (category === "all" || p.category === category) &&
+        (brand === "all" || p.brand === brand)
+    );
 
-// SISTEM RECENZII
-const STORAGE_KEY = 'ddl_reviews_v3';
-let selectedRating = 0;
+    container.innerHTML = "";
 
-function getReviews() {
-  try {
-    const reviews = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-    return Array.isArray(reviews) ? reviews : [];
-  } catch {
-    return [];
-  }
-}
+    filtered.forEach((p) => {
+        const card = document.createElement("div");
+        card.className = "card";
 
-function renderReviews() {
-  const reviews = getReviews();
-  const list = document.getElementById('reviewList');
-  const average = document.getElementById('averageRating');
-  const stars = document.getElementById('averageStars');
-  const count = document.getElementById('reviewCount');
+        card.innerHTML = `
+            <img src="${p.image}" alt="${p.name}">
+            <div class="info">
+                <p>${p.brand} · ${p.category}</p>
+                <h3>${p.name}</h3>
+                <p class="price">${p.price} LEI</p>
+                <p>Apasă pentru mărimi →</p>
+            </div>
+        `;
 
-  list.replaceChildren();
-
-  if (reviews.length === 0) {
-    average.textContent = '—';
-    stars.textContent = '☆☆☆☆☆';
-    count.textContent = 'Nu există încă recenzii.';
-    return;
-  }
-
-  const total = reviews.reduce((sum, item) => sum + item.rating, 0);
-  const avg = total / reviews.length;
-
-  average.textContent = avg.toFixed(1) + '/5';
-  stars.textContent = '★'.repeat(Math.round(avg)) + '☆'.repeat(5 - Math.round(avg));
-  count.textContent = reviews.length + ' recenzii';
-
-  reviews.slice().reverse().forEach(item => {
-    const card = document.createElement('article');
-    card.className = 'review-card';
-
-    const quote = document.createElement('div');
-    quote.className = 'quote';
-    quote.textContent = '“';
-
-    const rating = document.createElement('div');
-    rating.className = 'stars';
-    rating.textContent = '★'.repeat(item.rating) + '☆'.repeat(5 - item.rating);
-
-    const paragraph = document.createElement('p');
-    paragraph.textContent = item.text;
-
-    const name = document.createElement('h3');
-    name.textContent = item.name;
-
-    const date = document.createElement('small');
-    date.textContent = item.date;
-
-    card.append(quote, rating, paragraph, name, date);
-    list.appendChild(card);
-  });
-}
-
-document.querySelectorAll('#ratingPicker button').forEach(button => {
-  button.addEventListener('click', () => {
-    selectedRating = Number(button.dataset.rating);
-
-    document.querySelectorAll('#ratingPicker button').forEach(star => {
-      star.classList.toggle(
-        'active',
-        Number(star.dataset.rating) <= selectedRating
-      );
+        card.onclick = () => openProduct(p);
+        container.appendChild(card);
     });
-  });
+
+    if (!filtered.length) {
+        container.innerHTML = "<p>Nu am găsit produse.</p>";
+    }
+}
+
+function openProduct(p) {
+    document.getElementById("modal").style.display = "flex";
+    document.getElementById("modalImage").src = p.image;
+    document.getElementById("modalName").textContent = p.name;
+    document.getElementById("modalPrice").textContent = p.price + " LEI";
+
+    const sizes = document.getElementById("sizes");
+    sizes.innerHTML = "";
+
+    const buy = document.getElementById("buy");
+    buy.href = "#";
+    buy.classList.add("disabled");
+    buy.textContent = "ALEGE O MĂRIME";
+
+    p.sizes.forEach(size => {
+        const button = document.createElement("button");
+        button.textContent = size;
+
+        button.onclick = () => {
+            sizes.querySelectorAll("button").forEach(b =>
+                b.classList.remove("selected")
+            );
+
+            button.classList.add("selected");
+
+            buy.classList.remove("disabled");
+            buy.textContent = "CAUTĂ PRODUSUL";
+
+            buy.href = "https://www.google.com/search?tbm=shop&q=" +
+                encodeURIComponent(p.brand + " " + p.name + " marimea " + size);
+        };
+
+        sizes.appendChild(button);
+    });
+}
+
+function closeModal() {
+    document.getElementById("modal").style.display = "none";
+}
+
+document.getElementById("search").addEventListener("input", displayProducts);
+document.getElementById("category").addEventListener("change", displayProducts);
+document.getElementById("brand").addEventListener("change", displayProducts);
+
+document.getElementById("modal").addEventListener("click", e => {
+    if (e.target.id === "modal") closeModal();
 });
 
-document.getElementById('reviewForm').addEventListener('submit', event => {
-  event.preventDefault();
-
-  const name = censorText(document.getElementById('reviewName').value.trim());
-  const text = censorText(document.getElementById('reviewText').value.trim());
-  const message = document.getElementById('reviewMessage');
-
-  if (!name || !text || selectedRating < 1) {
-    message.textContent = 'Completează toate câmpurile și selectează o evaluare.';
-    return;
-  }
-
-  const reviews = getReviews();
-
-  reviews.push({
-    name,
-    text,
-    rating: selectedRating,
-    date: new Date().toLocaleDateString('ro-RO')
-  });
-
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
-  } catch {
-    message.textContent = 'Nu s-a putut salva recenzia în acest browser.';
-    return;
-  }
-
-  renderReviews();
-  event.target.reset();
-  selectedRating = 0;
-
-  document.querySelectorAll('#ratingPicker button').forEach(star => {
-    star.classList.remove('active');
-  });
-
-  message.textContent = 'Mulțumim! Recenzia a fost salvată în acest browser.';
-});
-
-renderReviews();
-
-// FORMULAR CONTACT
-document.getElementById('contactForm').addEventListener('submit', event => {
-  event.preventDefault();
-
-  const name = document.getElementById('contactName').value.trim();
-  const email = document.getElementById('contactEmail').value.trim();
-  const subject = document.getElementById('contactSubject').value.trim();
-  const message = document.getElementById('contactMessage').value.trim();
-
-  const mailSubject = encodeURIComponent(subject || 'Solicitare proiect DDL');
-  const mailBody = encodeURIComponent(
-    'Nume: ' + name +
-    '\nEmail: ' + email +
-    '\n\nMesaj:\n' + message
-  );
-
-  window.location.href =
-    'mailto:contact@ddl.ro?subject=' + mailSubject + '&body=' + mailBody;
-});
-
-// TRADUCERE MENIU
-document.getElementById('language').addEventListener('change', event => {
-  const english = event.target.value === 'en';
-  const labels = english
-    ? ['Home','About','Services','Projects','Team','Reviews','Contact']
-    : ['Acasă','Despre','Servicii','Proiecte','Echipă','Recenzii','Contact'];
-
-  document.querySelectorAll('#navMenu a').forEach((link, index) => {
-    link.textContent = labels[index];
-  });
-
-  document.documentElement.lang = english ? 'en' : 'ro';
-});
+displayProducts();
 </script>
 
 </body>
 </html>
-
-<!-- ================= PROIECTELE NOASTRE ================= -->
-<section id="proiecte" class="ddl-projects">
-  <div class="ddl-projects-container">
-
-    <div class="ddl-projects-heading">
-      <span class="ddl-projects-label">PORTOFOLIU</span>
-      <h2>Proiectele <span>noastre</span></h2>
-      <p>
-        Prezentăm câteva locații comerciale și exemple de spații
-        de retail din România.
-      </p>
-      <div class="ddl-gold-line"></div>
-    </div>
-
-    <div class="ddl-projects-grid">
-
-      <!-- SIGMA CLUJ -->
-      <article class="ddl-project-card">
-        <div class="ddl-project-image">
-          <img
-            src="https://zcj.ro/images/db/1_3_189543_1567676406_03923.jpg"
-            alt="Interior magazin Pepco"
-            loading="lazy">
-          <span class="ddl-project-city">CLUJ-NAPOCA</span>
-        </div>
-        <div class="ddl-project-info">
-          <span class="ddl-project-type">RETAIL · COMERCIAL</span>
-          <h3>Pepco – Sigma Center</h3>
-          <p>
-            Locație comercială situată în Sigma Shopping Center,
-            pe strada Republicii nr. 109, Cluj-Napoca.
-          </p>
-          <span class="ddl-project-location">Cluj-Napoca, România</span>
-        </div>
-      </article>
-
-      <!-- PLATINIA CLUJ -->
-      <article class="ddl-project-card">
-        <div class="ddl-project-image">
-          <img
-            src="https://cdn.storage.teliportme.com/360-content-thumbnail/6422303/2439854/800_300.jpg"
-            alt="Magazin Pepco din Platinia Shopping Center"
-            loading="lazy">
-          <span class="ddl-project-city">CLUJ-NAPOCA</span>
-        </div>
-        <div class="ddl-project-info">
-          <span class="ddl-project-type">RETAIL · COMERCIAL</span>
-          <h3>Pepco – Platinia</h3>
-          <p>
-            Magazin amplasat în Platinia Shopping Center,
-            Calea Mănăștur nr. 2–6, Cluj-Napoca.
-          </p>
-          <span class="ddl-project-location">Cluj-Napoca, România</span>
-        </div>
-      </article>
-
-      <!-- BRASOV -->
-      <article class="ddl-project-card">
-        <div class="ddl-project-image">
-          <img
-            src="https://i0.1616.ro/media/2/2621/35706/18518228/1/pepco-auchantitan.jpg?width=1200"
-            alt="Exemplu de amenajare magazin Pepco"
-            loading="lazy">
-          <span class="ddl-project-city">BRAȘOV</span>
-        </div>
-        <div class="ddl-project-info">
-          <span class="ddl-project-type">RETAIL · COMERCIAL</span>
-          <h3>Retail – Brașov</h3>
-          <p>
-            Exemplu de spațiu comercial pentru prezentarea
-            conceptului de magazin și a amenajării interioare.
-          </p>
-          <span class="ddl-project-location">Brașov, România</span>
-        </div>
-      </article>
-
-      <!-- SIBIU -->
-      <article class="ddl-project-card">
-        <div class="ddl-project-image">
-          <img
-            src="https://www.retail.ro/storage/image_thumbs/thumbs/c5adc9693511f8b812e00a8e5e11bc53/1200x628-00-90.png?v=1729073899"
-            alt="Exemplu de magazin retail modern"
-            loading="lazy">
-          <span class="ddl-project-city">SIBIU</span>
-        </div>
-        <div class="ddl-project-info">
-          <span class="ddl-project-type">RETAIL · COMERCIAL</span>
-          <h3>Retail – Sibiu</h3>
-          <p>
-            Exemplu de spațiu comercial modern, cu zone de expunere,
-            circulații și organizare funcțională.
-          </p>
-          <span class="ddl-project-location">Sibiu, România</span>
-        </div>
-      </article>
-
-      <!-- ORADEA -->
-      <article class="ddl-project-card">
-        <div class="ddl-project-image">
-          <img
-            src="https://storage0.dms.mpinteractiv.ro/media/1/1481/21335/22332875/1/6-pepco-magazin.jpg"
-            alt="Exemplu de amenajare spațiu comercial"
-            loading="lazy">
-          <span class="ddl-project-city">ORADEA</span>
-        </div>
-        <div class="ddl-project-info">
-          <span class="ddl-project-type">RETAIL · COMERCIAL</span>
-          <h3>Retail – Oradea</h3>
-          <p>
-            Exemplu de amenajare comercială, cu accent pe
-            funcționalitate, iluminat și organizarea spațiului.
-          </p>
-          <span class="ddl-project-location">Oradea, România</span>
-        </div>
-      </article>
-
-      <!-- IASI -->
-      <article class="ddl-project-card">
-        <div class="ddl-project-image">
-          <img
-            src="https://www.espreso.co.rs/data/images/2024/07/11/12/1519087_profimedia0886414683_ls.jpg"
-            alt="Exemplu de magazin într-un centru comercial"
-            loading="lazy">
-          <span class="ddl-project-city">IAȘI</span>
-        </div>
-        <div class="ddl-project-info">
-          <span class="ddl-project-type">RETAIL · COMERCIAL</span>
-          <h3>Retail – Iași</h3>
-          <p>
-            Exemplu de spațiu comercial într-un centru comercial,
-            cu vitrină și acces direct pentru clienți.
-          </p>
-          <span class="ddl-project-location">Iași, România</span>
-        </div>
-      </article>
-
-    </div>
-
-    <div class="ddl-projects-footer">
-      <p>
-        Ai un proiect în plan? Hai să discutăm despre
-        următoarea ta construcție.
-      </p>
-      <a href="#contact" class="ddl-projects-button">
-        CONTACTEAZĂ-NE <span>→</span>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<style>
-/* ================= DDL PROJECTS ================= */
-
-.ddl-projects {
-  background: #090909;
-  color: #f5f5f5;
-  padding: 100px 22px;
-  font-family: inherit;
-}
-
-.ddl-projects-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.ddl-projects-heading {
-  text-align: center;
-  margin-bottom: 55px;
-}
-
-.ddl-projects-label {
-  color: #c9a45c;
-  font-size: 12px;
-  letter-spacing: 5px;
-  font-weight: 700;
-}
-
-.ddl-projects-heading h2 {
-  font-size: clamp(34px, 5vw, 54px);
-  margin: 16px 0;
-  font-weight: 700;
-  color: #fff;
-}
-
-.ddl-projects-heading h2 span {
-  color: #c9a45c;
-}
-
-.ddl-projects-heading p {
-  color: #aaa;
-  font-size: 15px;
-  line-height: 1.8;
-}
-
-.ddl-gold-line {
-  width: 65px;
-  height: 2px;
-  background: #c9a45c;
-  margin: 25px auto 0;
-}
-
-.ddl-projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 27px;
-}
-
-.ddl-project-card {
-  background: #111;
-  border: 1px solid rgba(201,164,92,.23);
-  overflow: hidden;
-  transition: transform .35s ease, border-color .35s ease;
-}
-
-.ddl-project-card:hover {
-  transform: translateY(-8px);
-  border-color: #c9a45c;
-}
-
-.ddl-project-image {
-  height: 235px;
-  position: relative;
-  overflow: hidden;
-  background: #222;
-}
-
-.ddl-project-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform .5s ease;
-}
-
-.ddl-project-card:hover .ddl-project-image img {
-  transform: scale(1.07);
-}
-
-.ddl-project-city {
-  position: absolute;
-  left: 15px;
-  bottom: 15px;
-  background: #c9a45c;
-  color: #090909;
-  padding: 8px 13px;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 2px;
-}
-
-.ddl-project-info {
-  padding: 25px 23px 27px;
-}
-
-.ddl-project-type {
-  color: #c9a45c;
-  font-size: 10px;
-  letter-spacing: 2px;
-  font-weight: 700;
-}
-
-.ddl-project-info h3 {
-  color: #fff;
-  font-size: 21px;
-  margin: 13px 0;
-}
-
-.ddl-project-info p {
-  color: #aaa;
-  font-size: 13px;
-  line-height: 1.8;
-  min-height: 70px;
-}
-
-.ddl-project-location {
-  display: block;
-  color: #c9a45c;
-  font-size: 12px;
-  margin-top: 18px;
-}
-
-.ddl-projects-footer {
-  text-align: center;
-  margin-top: 65px;
-}
-
-.ddl-projects-footer p {
-  color: #bbb;
-  margin-bottom: 25px;
-}
-
-.ddl-projects-button {
-  display: inline-block;
-  text-decoration: none;
-  background: #c9a45c;
-  color: #090909;
-  padding: 15px 27px;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  transition: .3s;
-}
-
-.ddl-projects-button:hover {
-  background: #fff;
-  transform: translateY(-3px);
-}
-
-.ddl-projects-button span {
-  margin-left: 12px;
-  font-size: 17px;
-}
-
-/* TABLET */
-@media (max-width: 900px) {
-  .ddl-projects-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* TELEFON */
-@media (max-width: 600px) {
-  .ddl-projects {
-    padding: 70px 16px;
-  }
-
-  .ddl-projects-grid {
-    grid-template-columns: 1fr;
-    gap: 22px;
-  }
-
-  .ddl-project-image {
-    height: 220px;
-  }
-
-  .ddl-project-info p {
-    min-height: auto;
-  }
-}
-</style>
